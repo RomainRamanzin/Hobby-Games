@@ -1,0 +1,135 @@
+html,
+body {
+  height: 100%;
+}
+footer {
+    background-color: #027b9a;
+    color: #fff;
+    padding: 50px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    width: 100%;
+}
+/*navbar*/
+.block-return-home{
+    text-align: center;
+}
+.navbar-brand{
+    max-width: 40%;
+    height: auto;
+}
+.navbar-toggler{
+    background-color: white;
+    margin: auto;
+}
+.container-menu-logo{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.navbar-expand-lg{
+    background-color: #626973;
+}
+.nav-item-btn-menu{
+    background-color: #7692FF;
+    border-radius: 5px;
+    margin: 0 5px 0 10px;
+}
+.nav-item{
+    margin: 0 10px;
+}
+.navbar-nav .nav-item .nav-link{
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-family: sans-serif;
+}
+.navbar-nav .nav-item-btn-menu .nav-link{
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-family: sans-serif;
+}
+.btn-menu-connexion{
+    display: flex;
+    justify-content: center;
+}
+.logo-hobby{
+    object-fit: cover; 
+    max-width: 100%;
+}
+.title-company{
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 5% 0;
+}
+.text-company{
+    text-align: left;
+    margin: 10% 0;
+    line-height: 1.5em;
+}
+/*footer*/
+.image-company{
+    max-width: 70%;
+}
+.company-history{
+    text-align: left;
+    margin: 10% 0;
+    line-height: 1.5em;
+    padding: 0 30px 0 0;
+}
+
+/*contactez nous*/
+.text-company a {
+    text-decoration: none;
+    color: #ffffff;
+    line-height: 2.5em;
+    word-wrap: break-word;
+}
+.text-company a:hover{
+    color: #000000;
+}
+
+/*information*/
+.confidential-footer{
+    text-align: left;
+    margin: 10% 0;
+}
+.list-information{
+    list-style: none;
+    padding: unset;
+}
+.list-information li{
+    margin: 5% 0;
+}
+.confidential-footer ul li a{
+    text-decoration: none;
+    color: #ffffff;
+    list-style-type: none;
+    text-transform: capitalize;
+}
+.confidential-footer ul li a:hover{
+    color: #000000;
+    transition: 0.3s;
+}
+/*Suivez nous*/
+.icon-footer a{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 30px;
+    margin: 0 5%;
+}
+.icon-footer a:hover{
+    color: #000000;
+    transition: 0.3s;
+}
+
+@media (min-width: 992px){
+    .navbar-expand-lg .navbar-collapse {
+        justify-content: center;
+    }
+}
