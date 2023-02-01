@@ -1,0 +1,70 @@
+.title{
+    font-size: 27px;
+    text-align: center;
+    margin: 6% 0 3% 0;
+    text-transform: uppercase;
+    border-top: solid 2px #cececc;
+    border-bottom: solid 2px #cececc;
+    padding: 10px 0;
+}
+.title span{
+    color: #6685ff;
+}
+.title-history{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 2em;
+    margin-bottom: 3%;
+}
+.paragraphe-entreprise{
+    font-size: 15px;
+    line-height: 1.5em;
+    text-align: justify;
+}
+.image-entreprise{
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+}
+.image-entreprise img{
+    object-fit: cover;
+    max-width: 90%;
+}
+.title-worth{
+    font-size: 20px;
+    font-weight: 500;
+}
+.block-history{
+    padding: 0 3%;
+}
+.block-second{
+    display: flex;
+    justify-self: center;
+    padding: 0 20px;
+    margin: 3% 0;
+}
+.icon-title{
+    display: flex;
+    align-items: center;
+}
+.block-worth i {
+    font-size: 30px;
+    margin: 0 5%;
+    color: #6685ff;;
+}
+.description-worth{
+    margin: 5%;
+    text-align: justify;
+    font-size: 17px;
+}
+.block-presentation{
+    display: flex;
+    margin: 3% 0;
+}
+@media screen and (max-width: 576px){
+    .block-presentation{
+        flex-direction: column;
+    }
+}
