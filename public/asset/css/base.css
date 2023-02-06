@@ -124,7 +124,6 @@
     text-decoration: none;
     color: #ffffff;
     list-style-type: none;
-    text-transform: capitalize;
 }
 .confidential-footer ul li a:hover{
     color: #7692FF;
