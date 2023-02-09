@@ -23,7 +23,7 @@ class RegistrationFormType extends AbstractType
                 'label' => false
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                'label' => "J'accepte les conditions d'utilisation",
+                'label' => false,
                 'attr' => ['class' => 'checkbox-accept'],
                 'mapped' => false,
                 'constraints' => [
@@ -50,8 +50,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

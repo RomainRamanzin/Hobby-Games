@@ -1,53 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}
+  Register
+{% endblock %}
 
 {% block body %}
-<link href="/asset/css/login.css" rel="stylesheet">
-<link href="https://fr.allfont.net/allfont.css?fonts=jura-medium" rel="stylesheet" type="text/css" />
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
-    <div class="box-container-login">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="ascend-div">
-                    <div class="block-login">
-                        <div class="form-login">
-                            <h1 class="title-login">inscrivez-vous</h1>
-                                    {{ form_start(registrationForm) }}
-                                <div class="content-input">
-                                    <label class="label-form" for="inputEmail">email</label>
-                                    {{ form_row(registrationForm.email) }}
-                                    </div>
-                                    <div class="content-input">
-                                        <label class="label-form" for="inputPassword">mot de passe</label>
-                                        {{ form_row(registrationForm.plainPassword, {
-                                            label: 'Password'
-                                        }) }}
-                                    </div>
-                                    <div class="content-reset-password">
-                                        {{ form_row(registrationForm.agreeTerms) }}
-                                    </div>
-                                    <div class="content-boutton">
-                                        <button class="btn-register" type="submit">
-                                            s'inscrire
-                                        </button>
-                                    </div>
-                                {{ form_end(registrationForm) }}
-                            </div>
-                        </div>
-                    </div>
+  <link href="/asset/css/login.css" rel="stylesheet" />
+  <link href="https://fr.allfont.net/allfont.css?fonts=jura-medium" rel="stylesheet" type="text/css" />
+  {% for flash_error in app.flashes('verify_email_error') %}
+    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+  {% endfor %}
+  <div class="box-container-login">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+          <div class="ascend-div">
+            <div class="block-login">
+              <div class="card-form-login">
+                <h1 class="title-connexion-interface">inscrivez-vous</h1>
+                {{ form_start(registrationForm) }}
+                <div class="content-input">
+                  <label class="label-form" for="inputEmail">email</label>
+                  {{ form_row(registrationForm.email) }}
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="box-image">
-                        <div class="ascend-div">
-                            <img class="login-page-image" src="/asset/image/mario-register.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
+                <div class="content-input">
+                  <label class="label-form" for="inputPassword">mot de passe</label>
+                  {{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}
                 </div>
+                <div class="condition-agree">
+                  <label class="label-text">J'accepte les conditions d'utilisation</label>{{ form_row(registrationForm.agreeTerms) }}
+                </div>
+                <div class="content-boutton">
+                  <button class="btn-login" type="submit">s'inscrire</button>
+                </div>
+                {{ form_end(registrationForm) }}
+              </div>
             </div>
+          </div>
         </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+          <div class="box-image">
+            <div class="ascend-div">
+              <img class="login-page-image" src="/asset/image/mario-register.png" alt="" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 {% endblock %}
