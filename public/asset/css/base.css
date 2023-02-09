@@ -5,6 +5,7 @@
 }
 .wrapper-area {
     overflow: hidden;
+    min-height: calc(100vh - 231px);
 }
 /* Styles pour le footer */
 .footer {
