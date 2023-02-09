@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Hello PolitiqueConfidentialiteController!
+{% endblock %}
+
+{% block body %}
+  <link href="/asset/css/reglementations/politique-confidentialite.css" rel="stylesheet" />
+
+  <div class="page-contain">
+    <div class="container">
+      <div class="row">
+        <h1 class="title-page">Politique de confidentialité</h1>
+        <div class="image-protection">
+          <img class="image-protection-data" src="/asset/image/security.jpg" />
+        </div>
+        <div class="block-confidential">
+          <label class="sub-title-confidential">1. La politique de confidentialité</label>
+          <p class="text-confidential">Notre entreprise se voue à ne jamais utiliser les informations de nos utilisateurs à des fins commerciales.Nous collectons uniquement les données nécessaires pour permettre un fonctionnement adéquat de notre site.Vous pouvez être assuré-e que vos informations ne seront jamais vendues ou partagées avec des entreprises tierces.</p>
+        </div>
+        <div class="block-principe">
+          <label class="sub-title-confidential">2. Nos principes concernant la protection des données</label>
+          <p class="text-confidential">Nous avons une forte éthique concernant la protection des données personnelles. Nous considérons la confiance placée en nous pour protéger vos informations comme l’un de nos plus importants engagements. Nous croyons qu'il est primordial de respecter la vie privée des utilisateurs de notre blog pour garantir un environnement de discussion et d'engagement qui soit sûr et convivial pour tous.</p>
+        </div>
+        <div class="block-reglement">
+          <label class="sub-title-confidential">3. Les règlementations</label>
+          <p class="text-confidential">Nous respectons les lois RGPD et CNIL pour garantir la protection des données personnelles de nos utilisateurs. Nous comprenons l'importance de protéger la vie privée des vrais amateurs de jeux vidéo sur notre blog. Nous avons pris des mesures de sécurité pour stocker vos informations en toute sécurité et conformément aux lois européennes sur la protection des données.</p>
+        </div>
+        <div class="block-reglement">
+          <label class="sub-title-confidential">4. Vous avez des questions supplémentaires ?</label>
+          <p class="text-confidential">Si vous avez des questions concernant notre politique de confidentialité, veuillez contacter notre support client qui sera heureux de vous aider. Nos représentants sont réactifs et compétents, et ils travailleront avec vous pour résoudre tout problème de manière efficace. Vous pouvez aussi prendre connaissance de nos conditions général et de nos mentions légales</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
