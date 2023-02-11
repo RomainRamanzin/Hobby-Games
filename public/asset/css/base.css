@@ -6,8 +6,7 @@
 .wrapper-area {
     overflow: hidden;
     min-height: calc(100vh - 231px);
-    padding: 5% 0;
-    background: #001b3b;
+    /* padding: 5% 0; */
 }
 /* Styles pour le footer */
 .footer {
