@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Hello ActualiteController!
+{% endblock %}
+
+{% block body %}
+  <link href="/asset/css/actualite.css" rel="stylesheet" />
+  <div class="page-presentation">
+    <div class="container">
+      <div class="row">
+        <div class="actualite-1">
+          <div class="block-title-actualite">
+            <h1 class="title-actualite">Top 5 des actualités du jour</h1>
+          </div>
+          <div class="block-contain-card">
+            {% for actu in top %}
+              <div class="card-actu">
+                <img src="{{ actu.coverImageUrlBySize.lg }}" />
+                <div class="card-title">
+                  <div>
+                    <label class="label-actualite">{{ actu.title }}</label>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="actualite-2">
+          <div class="block-title-actualite">
+            <h1 class="title-actualite">Toutes les actualités du jour</h1>
+          </div>
+          <div class="block-contain-card">
+            {% for actujour in actujours %}
+              <div class="card-actu">
+                <img src="{{ actujour.coverImageUrlBySize.lg }}" />
+                <div class="card-title">
+                  <div>
+                    <label class="label-actualite">{{ actujour.title }}</label>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
