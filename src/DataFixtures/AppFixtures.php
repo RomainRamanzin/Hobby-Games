@@ -300,7 +300,11 @@ class AppFixtures extends Fixture
         $user1 = new User();
         $user1->setAvatar('https://cdn-s-www.leprogres.fr/images/ED82BE29-CBAC-40EC-B71C-285CD717A43C/NW_raw/la-voiture-noire-de-bugatti-modele-unique-photo-dr-1608828241.jpg');
         $user1->setEmail('romain.ramanzin@gmail.com');
-        $user1->setPassword(''); //password
+
+        $plainPassword = '12345678';
+        $encodedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
+        $user1->setPassword($encodedPassword);
+
         $user1->setRoles(['ROLE_ADMIN']);
         $user1->setPseudo('RomainRr');
         $user1->setSurname('Ramanzin');
@@ -312,7 +316,9 @@ class AppFixtures extends Fixture
         $user2 = new User();
         $user2->setAvatar('https://cdn-s-www.leprogres.fr/images/2A582881-689E-4C24-945F-36CE264EF61A/NW_raw/apres-la-berline-le-coupe-et-le-cabriolet-les-nouveautes-se-poursuivent-a-l-occasion-du-50e-anniversaire-de-bmw-m-gmbh-avec-une-4eme-variante-la-touring-la-version-du-moteur-six-cylindres-en-ligne-avec-technologie-m-twinpower-turbo-developpee-pour-les-modeles-competition-de-la-gamme-bmw-m3-m4-developpe-une-puissance-maximale-de-510-ch-(375-kw)-et-un-couple-maximal-de-650-nm-1655890820.jpg');
         $user2->setEmail('sinanyzc27200@hotmail.com');
-        $user2->setPassword(''); //password
+        $plainPassword = '12345678';
+        $encodedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
+        $user2->setPassword($encodedPassword);
         $user2->setRoles(['ROLE_ADMIN']);
         $user2->setPseudo('Sinanyzc');
         $user2->setSurname('Yazici');
@@ -323,7 +329,9 @@ class AppFixtures extends Fixture
 
         $user3 = new User();
         $user3->setEmail('bob.eponge@gmail.com');
-        $user3->setPassword(''); //password
+        $plainPassword = '12345678';
+        $encodedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
+        $user3->setPassword($encodedPassword);
         $user3->setRoles(['ROLE_ADMIN']);
         $user3->setPseudo('Boblp');
         $user3->setSurname('Eponge');
