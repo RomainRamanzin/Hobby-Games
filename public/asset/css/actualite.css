@@ -1,26 +1,27 @@
-
+.page-presentation{
+  margin: 5% 0;
+}
 .block-title-actualite{
-    margin-bottom: 3%;
+  margin: 2% 0;
 }
 .title-actualite{
     font-size: 20px;
     text-align: left;
-    color:#fff;
+    color:#7692FF;
     margin: unset;
     text-transform: uppercase;
 }
 .block-contain-card{
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
+    justify-content: left;
 }
 .card-actu {
-    width: calc(20% - 20px);
+  width: 19%;
   height: 350px;
   position: relative;
   overflow: hidden;
-  margin-right: 1%;
-  margin-bottom: 3%;
+  margin: 0 1% 1% 0;
   transition: transform .5s ease;
   }
   .card-actu img {
@@ -43,12 +44,11 @@
     right: 0;
     color: white;
     padding: 0.5rem;
-    height: 80px;
   }
   .label-actualite{
     color: #fff;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 500;
     text-align: center;
   }
   @media screen and (max-width: 1280px) {
@@ -68,3 +68,22 @@
       width: calc(50% - 10px);
     }
   }
+  @media screen and (max-width: 480px) {
+    .title-actualite{
+      font-size: 17px;
+    }
+    .label-actualite{
+      font-size: 13px;
+    }
+    .block-title-actualite{
+      margin: 10% 0 5% 0;
+    }
+    .card-actu:hover{
+      transition: unset;
+      transform: unset;
+    }
+    .block-contain-card{
+      justify-content: center;
+  }
+  }
+  

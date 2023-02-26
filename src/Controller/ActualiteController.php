@@ -19,6 +19,22 @@ class ActualiteController extends AbstractController
         return $actualites;
     }
 
+    public function AllActu()
+    {
+        $actualites = $this->CallApi();
+
+        $allActus = [];
+        foreach ($actualites as $actualite) {
+            $strDate = substr($actualite['datePublished'], 5, 2);
+            $jourActuel = date("m");
+            if ($strDate == $jourActuel) {
+                array_push($allActus, $actualite);
+            }
+        }
+
+        return $allActus;
+    }
+
     public function TopActu()
     {
         $actualites = $this->CallApi();
@@ -50,10 +66,10 @@ class ActualiteController extends AbstractController
         return $top;
     }
 
-    #[Route('/actualite', name: 'app_actualite')]
-    public function index(): Response
+    public function ActuJour()
     {
         $actualites = $this->CallApi();
+
         $top = $this->TopActu();
 
         $actujours = [];
@@ -67,8 +83,24 @@ class ActualiteController extends AbstractController
                 });
             }
         }
+
+        return $actujours;
+    }
+
+    #[Route('/actualite', name: 'app_actualite')]
+    public function index(): Response
+    {
+        $actualites = $this->CallApi();
+
+        $top = $this->TopActu();
+
+        $actujours = $this->ActuJour();
+
+        $allActus = $this->AllActu();
+
         return $this->render('actualite/index.html.twig', [
             'controller_name' => 'ActualiteController',
+            'allActus' => $allActus,
             'actujours' => $actujours,
             'top' => $top,
         ]);
