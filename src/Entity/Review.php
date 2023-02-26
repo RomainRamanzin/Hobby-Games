@@ -29,6 +29,9 @@ class Review
     #[ORM\OneToOne(mappedBy: 'review', cascade: ['persist', 'remove'])]
     private ?Publication $publication = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $title = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -95,6 +98,18 @@ class Review
         }
 
         $this->publication = $publication;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }
