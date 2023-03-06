@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
     <link href="/asset/css/base.css" rel="stylesheet" />
     {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
+    <link rel="stylesheet" href="">
     {% block stylesheets %}
       {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -73,9 +75,13 @@
       </nav>
     </header>
     <div class="wrapper-area">
+
+
       {% block body %}
 
       {% endblock %}
+
+
     </div>
     <footer class="footer">
       <div class="container">

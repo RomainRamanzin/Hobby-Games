@@ -46,6 +46,33 @@ class GameRepository extends ServiceEntityRepository
             ->getQuery();
     }
 
+
+    public function filterQuery($search, $type, $platform)
+    {
+        $query = $this->createQueryBuilder('g')
+            ->orderBy('g.id', 'ASC');
+
+        if ($search) {
+            $query->andWhere('g.name LIKE :search')
+                ->setParameter('search', '%' . $search . '%');
+        }
+
+        if ($type) {
+
+            $query->join('g.types', 't')
+                ->andWhere('t = :type')
+                ->setParameter('type', $type);
+        }
+
+        if ($platform) {
+            $query->join('g.platforms', 'p')
+                ->andWhere('p = :platform')
+                ->setParameter('platform', $platform);
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
     //    /**
     //     * @return Game[] Returns an array of Game objects
     //     */

@@ -11,35 +11,52 @@
 {% block body %}
 
 	<div class="container my-5">
-	
-		<div class="row p-4">
-			{# Game Card #}
-			{% for game in games %}
-				<div class="col-lg-3 col-md-6 p-2">
-					<a href="{{ path('app_jeu', {'id' : game.id }) }}">
-						<div class="card-jeux" style="background-image: url('{{ game.poster }}');">
-							<div class="card-jeux-overlay">
-								<div class="card-jeux-title">{{ game.name }}</div>
-								<div class="card-jeux-badges">
-									{% for type in game.Types %}
-										<span class="card-jeux-badge">{{ type.name }}</span>
-									{% endfor %}
+		<div
+			class="glass">
+			{# Search Bar #}
+
+			{{ form_start(formSearch) }}
+			<div class="search-component mb-3">
+				<div class="search-filter-text">Filtrer les jeux</div>
+				{{ form_widget(formSearch.search) }}
+				{{ form_widget(formSearch.type) }}
+				{{ form_widget(formSearch.platform) }}
+				{{ form_widget(formSearch.submit) }}
+			</div>
+			{{ form_end(formSearch) }}
+
+			{# {{ form(formSearch, {'attr': {'class': 'form-search'}}) }} #}
+
+			<div
+				class="row">
+				{# Game Card #}
+				{% for game in games %}
+					<div class="col-lg-3 col-md-6 p-2">
+						<a href="{{ path('app_jeu', {'id' : game.id }) }}">
+							<div class="card-jeux" style="background-image: url('{{ game.poster }}');">
+								<div class="card-jeux-overlay">
+									<div class="card-jeux-title">{{ game.name }}</div>
+									<div class="card-jeux-badges">
+										{% for type in game.Types %}
+											<span class="card-jeux-badge">{{ type.name }}</span>
+										{% endfor %}
+									</div>
 								</div>
 							</div>
-						</div>
-					</a>
-				</div>
-			{% endfor %}
-		</div>
-		<div class="d-flex justify-content-center">
-			{{ knp_pagination_render(games) }}
+						</a>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="d-flex justify-content-center bg-dark">
+				{# {{ knp_pagination_render(games) }} #}
+			</div>
 		</div>
 	</div>
 
 
 	{# {% for game in games %}
-						<img src="{{ game.poster }}" alt="image du jeu" width="200" height="200">
-						{{ game.name }}
-						{{ game.releaseDate|date('Y-m-d') }}
-					{% endfor %} #}
+											<img src="{{ game.poster }}" alt="image du jeu" width="200" height="200">
+											{{ game.name }}
+											{{ game.releaseDate|date('Y-m-d') }}
+										{% endfor %} #}
 {% endblock %}

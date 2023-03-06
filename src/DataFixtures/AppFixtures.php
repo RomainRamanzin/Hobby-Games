@@ -314,7 +314,7 @@ class AppFixtures extends Fixture
         $manager->persist($user1);
 
         $user2 = new User();
-        $user2->setAvatar('https://cdn-s-www.leprogres.fr/images/2A582881-689E-4C24-945F-36CE264EF61A/NW_raw/apres-la-berline-le-coupe-et-le-cabriolet-les-nouveautes-se-poursuivent-a-l-occasion-du-50e-anniversaire-de-bmw-m-gmbh-avec-une-4eme-variante-la-touring-la-version-du-moteur-six-cylindres-en-ligne-avec-technologie-m-twinpower-turbo-developpee-pour-les-modeles-competition-de-la-gamme-bmw-m3-m4-developpe-une-puissance-maximale-de-510-ch-(375-kw)-et-un-couple-maximal-de-650-nm-1655890820.jpg');
+        $user2->setAvatar('https://www.bmw.fr/content/dam/bmw/common/all-models/m-series/m5-sedan/2021/Overview/bmw-m5-cs-onepager-mc-m5-cs-highlights-hero-teaser-desktop.jpg.asset.1627456767620.jpg');
         $user2->setEmail('sinanyzc27200@hotmail.com');
         $plainPassword = '12345678';
         $encodedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);

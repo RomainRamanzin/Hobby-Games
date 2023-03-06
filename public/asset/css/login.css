@@ -1,4 +1,8 @@
 .box-container-login{
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10% 0;
     background: linear-gradient(to top right, #ffffff, #6685ff);
 }
