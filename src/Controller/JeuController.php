@@ -77,14 +77,14 @@ class JeuController extends AbstractController
             $platform = null;
         }
 
-        $games = $gameRepository->filterQuery($search, $type, $platform);
+        // $games = $gameRepository->filterQuery($search, $type, $platform);
 
-        // // Récuperer les jeux paginés
-        // $games = $paginator->paginate(
-        //     $gameRepository->paginatorQuery(),
-        //     $request->query->getInt('page', 1),
-        //     40
-        // );
+        // Récuperer les jeux paginés
+        $games = $paginator->paginate(
+            $gameRepository->filterQuery($search, $type, $platform),
+            $request->query->getInt('page', 1),
+            40
+        );
 
         return $this->render('jeu/index.html.twig', [
             'controller_name' => 'JeuController',

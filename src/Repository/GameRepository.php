@@ -70,7 +70,7 @@ class GameRepository extends ServiceEntityRepository
                 ->setParameter('platform', $platform);
         }
 
-        return $query->getQuery()->getResult();
+        return $query->getQuery();
     }
 
     //    /**
