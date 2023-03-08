@@ -18,10 +18,10 @@
 			{{ form_start(formSearch) }}
 			<div class="search-component mb-3">
 				<div class="search-filter-text">Filtrer les jeux</div>
-				{{ form_widget(formSearch.search) }}
-				{{ form_widget(formSearch.type) }}
-				{{ form_widget(formSearch.platform) }}
-				{{ form_widget(formSearch.submit) }}
+				{{ form_widget(formSearch.search, {'attr': {'class': 'form-control' , 'placeholder': 'Rechercher un jeu'}}) }}
+				{{ form_widget(formSearch.type,  {'attr': {'class': 'form-select'}}) }}
+				{{ form_widget(formSearch.platform, {'attr': {'class': 'form-select'}}) }}
+				{{ form_widget(formSearch.submit, {'attr': {'class': 'btn btn-primary px-5'}}) }}
 			</div>
 			{{ form_end(formSearch) }}
 

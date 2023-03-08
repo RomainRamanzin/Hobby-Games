@@ -23,19 +23,12 @@ class JeuController extends AbstractController
         //Création du formulaire de recherche
         $formSearch = $this->createFormBuilder()
             ->add('search', TextType::class, [
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'Rechercher un jeu'
-                ],
                 'required' => false,
             ])
             ->add('type', EntityType::class, [
                 'multiple' => false,
                 'class' => Type::class,
                 'choice_label' => 'name',
-                'attr' => [
-                    'class' => 'form-select'
-                ],
                 'placeholder' => 'Type de jeu',
                 'required' => false,
             ])
@@ -43,17 +36,11 @@ class JeuController extends AbstractController
                 'multiple' => false,
                 'class' => Platform::class,
                 'choice_label' => 'name',
-                'attr' => [
-                    'class' => 'form-select'
-                ],
                 'placeholder' => 'Plateforme',
                 'required' => false,
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Rechercher',
-                'attr' => [
-                    'class' => 'btn btn-primary'
-                ]
             ])
             ->getForm();
 
@@ -77,13 +64,11 @@ class JeuController extends AbstractController
             $platform = null;
         }
 
-        // $games = $gameRepository->filterQuery($search, $type, $platform);
-
         // Récuperer les jeux paginés
         $games = $paginator->paginate(
             $gameRepository->filterQuery($search, $type, $platform),
             $request->query->getInt('page', 1),
-            40
+            32
         );
 
         return $this->render('jeu/index.html.twig', [
