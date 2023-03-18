@@ -152,7 +152,7 @@ class AppFixtures extends Fixture
         $manager->persist($brand4);
 
 
-        
+
         //platform
         $platform1 = new Platform();
         $platform1->setName('PC');
@@ -314,7 +314,7 @@ class AppFixtures extends Fixture
         $manager->persist($user1);
 
         $user2 = new User();
-        $user2->setAvatar('https://cdn-s-www.leprogres.fr/images/2A582881-689E-4C24-945F-36CE264EF61A/NW_raw/apres-la-berline-le-coupe-et-le-cabriolet-les-nouveautes-se-poursuivent-a-l-occasion-du-50e-anniversaire-de-bmw-m-gmbh-avec-une-4eme-variante-la-touring-la-version-du-moteur-six-cylindres-en-ligne-avec-technologie-m-twinpower-turbo-developpee-pour-les-modeles-competition-de-la-gamme-bmw-m3-m4-developpe-une-puissance-maximale-de-510-ch-(375-kw)-et-un-couple-maximal-de-650-nm-1655890820.jpg');
+        $user2->setAvatar('https://www.motortrend.com/uploads/2021/11/Classic-BMW-Motorsport-logo-M-50th-Anniversary-1.jpg');
         $user2->setEmail('sinanyzc27200@hotmail.com');
         $plainPassword = '12345678';
         $encodedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
@@ -384,59 +384,592 @@ class AppFixtures extends Fixture
 
         //articles
         $article1 = new Article();
-        $article1->setTitle('Le jeu vidéo est-il un sport ?');
-        $article1->setCover('https://media.nouvelobs.com/ext/uri/sreferentiel.nouvelobs.com/file/rue89/bb41753b673f994d18fd127b71c44dff.jpg');
+        $article1->setTitle("Dépasser les frontières du réalisme : le pari tenu par Red Dead Redemption II");
+        $article1->setCover("//image.jeuxvideo.com/medias-md/167785/1677849627-5852-card.png");
         $article1->setIsValided(true);
-        $article1->setPublicationDate(new \DateTime('2022-12-09'));
-        $article1->setLastLodifiedDate(new \DateTime('2022-12-09'));
+        $article1->setPublicationDate(new \DateTime('2023-03-05T15:00:03.151Z'));
+        $article1->setLastLodifiedDate(new \DateTime('2023-03-05T15:00:03.151Z'));
         $article1->setNumberOfViews(1836);
         $article1->setWritedBy($user1);
         $article1->setValidatedBy($user2);
         $manager->persist($article1);
 
-        $article2 = new Article();
-        $article2->setTitle('Comment devenir un pro du jeu vidéo ?');
-        $article2->setCover('https://www.letudiant.fr/static/uploads/mediatheque/ETU_ETU/1/5/2644415-metier-gamer-pro-letudiant-766x438.jpg');
-        $article2->setIsValided(true);
-        $article2->setPublicationDate(new \DateTime('2022-12-10'));
-        $article2->setLastLodifiedDate(new \DateTime('2022-12-19'));
-        $article2->setNumberOfViews(17986);
-        $article2->setWritedBy($user2);
-        $article2->setValidatedBy($user1);
-        $manager->persist($article2);
-
-
         //section articles
         $section1 = new Section();
-        $section1->setTitle('Introduction');
-        $section1->setDescription('Dans cet article, nous allons voir si le jeu vidéo est un sport');
+        $section1->setTitle("Introduction");
+        $section1->setDescription("Dans ce nouvel épisode de JV Legends, nous vous emmenons dans l’un des univers de Rockstar Games avec Red Dead Redemption II. Ce jeu, qui a marqué l'industrie du jeu vidéo, a su transcender son format afin de proposer une aventure ultra-réaliste. En nous intéressant à ses coulisses, nous nous rendons vite compte qu’une obsession était au cœur de son développement : celle du détail.");
         $section1->setArticle($article1);
         $manager->persist($section1);
 
+        //section articles
         $section2 = new Section();
-        $section2->setTitle('Définition');
-        $section2->setDescription('Voici la définition du jeu vidéo');
+        $section2->setTitle('La richesse d’un univers');
+        $section2->setDescription("La qualité principale qui fait le charme de Red Dead Redemption II est sa dévotion envers la retransmission du réel. Cet aspect se décline en plusieurs points. D’un côté, il faut souligner la grande attention donnée aux PNJ. Avec un doublage mobilisant 1200 acteurs différents pour 2200 jours de tournage, ces derniers nous présentent un beau panel de ce qu’est la nature humaine. D’un autre côté, cet ultra-réalisme intervient dans le gameplay. La physique du jeu est bluffante. Chaque animation, aussi insignifiante soit-elle, est réalisée avec minutie. Contrairement à Grand Theft Auto V, le studio a mis un point d’honneur à imposer les limites du réel au joueur. Ainsi, il n’est pas possible de semer le chaos partout dans la map. Puisque les primes seront là pour vous rappeler vos méfaits. Et par la même occasion, grignoter votre porte-monnaie. Les imprévus que l’on peut expérimenter durant l’aventure renforcent la sensation de réalité. Le jeu insinue qu’il a toujours un coup d’avance sur nous. De bons points certes, mais qui peuvent frustrer. Certains gamers y voyant un manque de fun dans l’expérience de jeu, troqué pour une réalité trop oppressante. Le jeu est donc susceptible de ne pas être compris de tous. Rendre vivant un univers aussi vaste que celui de Red Dead Redemption II exige naturellement un budget colossal. Ainsi, ce n’est pas moins de 550 millions de dollars qui ont été requis pour le développement du jeu. Une somme justifiée par les 300 000 animations et les 500 000 lignes de dialogue conçues pour l'occasion. Les créateurs du jeu disent fièrement que l’équipe a pu travailler 100 heures par semaine, et ce à plusieurs reprises sur la dernière année de production. Néanmoins, notre société est de plus en plus sensible aux questions du bien-être de l'employé, et de sa quantité de travail. Alors oui, le souci du détail est valorisé. Oui, nous avons un bijou à la fin. Mais ce résultat vaut-il réellement le coup à ce prix-là ?");
+        $section2->setPicture('https://image.jeuxvideo.com/medias-md/167766/1677661978-7916-capture-d-ecran.jpg');
         $section2->setArticle($article1);
         $manager->persist($section2);
 
+        //section articles
         $section3 = new Section();
-        $section3->setTitle('Conclusion');
-        $section3->setDescription('Voici la conclusion de l\'article');
+        $section3->setTitle('Une maîtrise bluffante');
+        $section3->setDescription("Red Dead Redemption II a su maîtriser les aspects les plus importants. Premièrement, l’écriture. Au-delà du récit de la rédemption d’Arthur Morgan, nous sommes le témoin des derniers moments d’une bande, dont les liens entre ses membres s'estompent. Le script final compte d’ailleurs 2000 pages… rien que pour la quête principale ! Alors si nous parlons de l’intégralité du jeu, les pages de scripts atteignent environ 2 mètres 50. L’ambition du studio était si grande qu’ils ont dû couper plus de 5 heures de quêtes. Pour illustrer cette belle narration, rien de mieux qu’un environnement à couper le souffle. Entre les forêts, où les rayons du soleil se faufilent à travers les arbres, les sommets engloutis par la neige ou le décor tropical de Guarma, tout est pensé minutieusement pour faire voyager le joueur. Pour accompagner l'orchestre, des détails comme la pilosité faciale d’Arthur qui se développe à mesure de nos périples, afin de nous rendre compte du chemin parcouru entre deux passages chez le barber. Tout comme la relation que nous devons entretenir avec notre cheval, à mesure que l'on s'occupe de lui. Vous l'aurez deviné, l'expression \"le diable se trouve dans les détails\" convient parfaitement à Red Dead Redemption II. Chacun d'eux contribuent à un ensemble, où le moindre élément permet de mettre en valeur le suivant. Dans tous les aspects, Rockstar a su montrer sa grande expertise.");
         $section3->setArticle($article1);
         $manager->persist($section3);
 
+        /*-------------------------------------------------------*/
+
+        //articles
+        $article2 = new Article();
+        $article2->setTitle('Dragon Ball Budokai Tenkaichi : surprise, la mythique franchise fait son grand retour ! Premières images');
+        $article2->setCover('//image.jeuxvideo.com/medias-md/167808/1678082642-6292-card.png');
+        $article2->setIsValided(true);
+        $article2->setPublicationDate(new \DateTime('2023-03-06T06:08:45.437Z'));
+        $article2->setLastLodifiedDate(new \DateTime('2023-03-06T06:08:45.437Z'));
+        $article2->setNumberOfViews(2000);
+        $article2->setWritedBy($user1);
+        $article2->setValidatedBy($user2);
+        $manager->persist($article2);
+
+        //section articles
         $section4 = new Section();
-        $section4->setTitle('Introduction');
-        $section4->setDescription('Dans cet article, nous allons voir comment devenir un pro du jeu vidéo');
+        $section4->setTitle('Dragon Ball Budokai Tenkaichi : surprise, la mythique franchise fait son grand retour ! Premières images');
+        $section4->setDescription("Durant les années 2000, les fans de Dragon Ball se regroupaient souvent autour d'une licence de jeux de combat en 3D, la désormais mythique franchise des Budokai Tenkaichi. Mais depuis 2007, la licence n'avait connu aucun nouvel épisode dit principal. Ceci est sur le point de changer.");
         $section4->setArticle($article2);
         $manager->persist($section4);
 
+        //section articles
         $section5 = new Section();
-        $section5->setTitle('Quel jeu choisir ?');
-        $section5->setDescription('Voici les jeux à choisir pour devenir un pro du jeu vidéo');
+        $section5->setTitle('Dragon Ball Z Budokai Tenkaichi : 16 ans déjà');
+        $section5->setDescription("En 2005, Bandai renouvellait fortement l'intérêt des joueurs pour la licence Dragon Ball Z en publiant Dragon Ball Z : Budokai Tenkaichi sur PS2, qui faisait plus ou moins suite à la franchise Budokai. Le succès est important et, dès 2006, un second opus voit le jour, lui-même suivi d'un troisième épisode en 2007 sur PS2 et Wii. Des dizaines de personnages pouvaient alors être incarnés, accompagnés des nombreuses transformations issues des divers arcs. Et depuis ? Eh bien, rien. La franchise Budokai \"tout court\" s'est poursuivie sur PSP, et il a fallu attendre 2015 pour retrouver Dragon Ball dans un jeu de combat avec Dragon Ball Xenoverse. L'approche était un peu différente puisqu'il s'agissait de créer son personnage, et d'aller sauver l'espace-temps. Ces dernières années, les jeux de combats Dragon Ball étaient représentés de fort belle manière par Dragon Ball FighterZ, qui misait sur la 2D et sur des animations de haute volée conçues par Arc System Works, et par Dragon Ball Xenoverse 2, héritier spirituel des Budokai.");
         $section5->setArticle($article2);
         $manager->persist($section5);
 
+        //section articles
+        $section6 = new Section();
+        $section6->setTitle('Budokai Tenkaichi est de retour !');
+        $section6->setDescription("Mais nombreux étaient les joueurs à demander le retour de Budokai Tenkaichi, et il semblerait que Bandai Namco ait entendu cette demande. Sans prévenir personne, l'éditeur vient tout simplement d'annoncer celui qu'on appellera pour le moment Dragon Ball Budokai Tenkaichi 4 ! Bandai Namco a en effet profité de son événement Dragon Ball Games Battle Hour, dédié aux jeux de la licence, pour dévoiler le premier teaser du nouveau jeu de combat estampillé Dragon Ball. On y voir des images du premier jeu, diffusés sur une vieille télévision cathodique, et sur lesquelles on voit Son Goku concentrer son ki pour se transformer. Quelques secondes plus tard, cette transformation prend tout l'écran, et semble beaucoup plus moderne puisqu'affichée en HD. Un remaster est-il en approche ? Non ! On aperçoit encore le personnage mythique se concentrer mais cette fois, il se transforme en Super Saiyajin God Super Saiyajin, et arbore sa chevelure bleue découverte dans Super. Si les fans doutaient encore, Bandai Namco met fin à tout suspense en fin de vidéo, indiquant à l'écran qu'un nouveau Budokai Tenkaichi commence. Le titre officiel de ce nouvel opus n'a pas été officiellement dévoilé, mais le teaser insiste sur le nom de Sparking, qui était l'intitulé officiel de la licence en japonais. De la même manière, nous ne pouvons pas vous communiquer de date de sortie, puisque rien n'a été annoncé. On peut cependant décemment l'attendre pour la fin de l'année ou pour 2024.");
+        $section6->setPicture('https://image.jeuxvideo.com/medias-md/167808/1678082696-672-capture-d-ecran.png');
+        $section6->setArticle($article2);
+        $manager->persist($section6);
+
+        /*-------------------------------------------------------*/
+
+        //articles
+        $article3 = new Article();
+        $article3->setTitle('Un pilote de F1 compare la Red Bull championne du monde à… Call of Duty');
+        $article3->setCover('//image.jeuxvideo.com/medias-md/167809/1678089811-8336-card.png');
+        $article3->setIsValided(true);
+        $article3->setPublicationDate(new \DateTime('2023-03-06T08:17:26.528Z'));
+        $article3->setLastLodifiedDate(new \DateTime('2023-03-06T08:17:26.528Z'));
+        $article3->setNumberOfViews(3000);
+        $article3->setWritedBy($user1);
+        $article3->setValidatedBy($user2);
+        $manager->persist($article3);
+
+        //section articles
+        $section7 = new Section();
+        $section7->setTitle('Introduction');
+        $section7->setDescription("Ça y est, la Formule 1 a lancé sa saison 2023 ce week-end du côté de Sakir pour le Grand Prix de Barheïn. En parallèle, EA a déjà commencé à teaser son F1 2023, mais c'est pluôt Call of Duty qui nous intéresse aujourd'hui. Signe le que jeu vidéo est désormais partout, la monoplace du champion du monde Max Verstappen a récemment été comparée au FPS d'Activision.");
+        $section7->setArticle($article3);
+        $manager->persist($section7);
+
+        //section articles
+        $section8 = new Section();
+        $section8->setTitle('La F1 et le jeu vidéo, deux mondes pas si éloignés que ça');
+        $section8->setDescription("On l'a vu durant la pandémie, les pilotes de Formule 1 ne sont pas les derniers lorsqu'il s'agit de jouer. Alors évidemment, cela est majoritairement passé par des courses virtuelles, avec Charles Leclerc et Lando Norris en tête de file. Les pilotes de la catégorie reine sont donc sur Twitch, et il est plus que probable qu'ils soient nombreux à lancer F1 22, FIFA ou Call of Duty sur leur temps libre. Et cela, c'est sans compter les nombreux pilotes virtuels qui s'affrontent sur Gran Turismo 7, Assetto Corsa et iRacing, ou encore ceux qui cherchent à mener leur écurie au sommet dans F1 Manager 2022. Le jeu vidéo ayant depuis longtemps franchi la frontière de l'activité de niche, il peut être cité pour faire des comparaisons ou simplement en tant que objet culturel, les grosses licences parlant à beaucoup de monde. On en a très récemment eu la preuve durant le premier week-end de course de la saison. Après les essais hivernaux, les pilotes se sont enfin retrouvés pour préparer le premier Grand Prix. Comme d'habitude, on a retrouvé les essais libres, les qualifications et la course, mais cette première échéance permettait aussi de savoir où en étaient concrètement les écuries.");
+        $section8->setPicture('https://image.jeuxvideo.com/medias/165159/1651593123-3622-capture-d-ecran.jpg');
+        $section8->setArticle($article3);
+        $manager->persist($section8);
+
+        //section articles
+        $section9 = new Section();
+        $section9->setTitle("Piloter la Red Bull, c'est comme jouer à Call of Duty");
+        $section9->setDescription("L'an dernier, Red Bull a largement dominé la saison, suivi par Ferrari, Mercedes et Alpine. On se demandait donc comment se comportait la voiture championne du monde vis-à-vis des autres monoplaces de la grille. La réponse nous est venue d'Alexander Albon, ancien coéquipier de Max Verstappen chez Red Bull et désormais chez Williams aux côtés de Logan Sargeant. Interrogé sur son ancien coéquipier et sa monoplace, le pilote thaïlandais n'a pas hésité à utiliser Call of Duty pour faire une comparaison !");
+        $section9->setPicture('https://pbs.twimg.com/media/FqNUEaXWcAArDjW?format=jpg&name=small');
+        $section9->setArticle($article3);
+        $manager->persist($section9);
+
+        $section10 = new Section();
+        $section10->setTitle("Conclusion");
+        $section10->setDescription("Autrement dit, le train avant de la Red Bull championne du monde serait aussi sensible que la visée d'un joueur de Call of Duty qui mettrait la sensibilité au maximum. Cela peut faire peur tant ces monoplaces sont rapides et demandent un temps de réaction extrêmement court, mais cela semble totalement convenir à celui qui, dès ce week-end, a fait comprendre qu'il était là pour conquérir un troisième titre mondial. La domination a d'ailleurs été globale chez Red Bull puisque les deux voitures ont fini aux deux premières places. Si la comparaison avec Call of Duty peut faire sourire, elle a globalement très bien été reçue sur les réseaux sociaux, avec de nombreux commentaires indiquant qu'elle était très parlante. On rappelle que depuis quelques années, la F1 a largement regagné en popularité, notamment grâce à l'arrivée de la série Drive to Survive sur Netflix, et aux divers changements opérés pour rendre la compétition plus acharnée.");
+        $section10->setArticle($article3);
+        $manager->persist($section10);
+
+        /*-------------------------------------------------------*/
+
+        //articles
+        $article4 = new Article();
+        $article4->setTitle('Fortnite va bientôt faire du Call of Duty, une vraie révolution ?');
+        $article4->setCover('//image.jeuxvideo.com/medias-md/167810/1678098676-9458-card.jpg');
+        $article4->setIsValided(true);
+        $article4->setPublicationDate(new \DateTime('2023-03-06T10:35:34.481Z'));
+        $article4->setLastLodifiedDate(new \DateTime('2023-03-06T10:35:34.481Z'));
+        $article4->setNumberOfViews(4000);
+        $article4->setWritedBy($user1);
+        $article4->setValidatedBy($user2);
+        $manager->persist($article4);
+
+        //section articles
+        $section11 = new Section();
+        $section11->setTitle('Introduction');
+        $section11->setDescription("Fortnite évolue constamment, et pourrait très bientôt franchir un cap attendu par une partie des joueurs depuis bien longtemps. Après avoir ajouté un mode sans construction, le battle royale pourrait aller lorgner du côté de la concurrence !");
+        $section11->setArticle($article4);
+        $manager->persist($section11);
+
+        //section articles
+        $section12 = new Section();
+        $section12->setTitle('Fortnite à la sauce FPS, ce serait pour très bientôt !');
+        $section12->setDescription("La première saison du chapitre 4 de Fortnite arrivera bientôt à son terme, et les dataminers et autres insiders commencent à relayer quelques rumeurs sur les potentiels changements à venir dans le cadre de la saison 2. Et parmi les rumeurs les plus importantes, on en trouve une qui a été relayée par HYPEX, ShiinaBR et Tom Henderson. Autant dire qu'au regard des sources, tout cela est très solide, et qu'on attend désormais une annonce en bonne et due forme au sujet de l'arrivée de la vue à la première personne ! Car oui, c'est bien de cela dont on parle. Au cours de la saison 2 du Chapitre 4, la vue FPS devrait accompagner des collaborations avec l'Attaque des Titans et Resident Evil 4 Remake. La fin de la saison 1 étant prévue pour le 8 mars, on devrait assister au début de la saison 2 dès le vendredi 9 mars ou le samedi 10.");
+        $section12->setPicture('https://image.jeuxvideo.com/medias-sm/167775/1677754825-9482-capture-d-ecran.jpg');
+        $section12->setArticle($article4);
+        $manager->persist($section12);
+
+        //section articles
+        $section13 = new Section();
+        $section13->setTitle('Aller chercher Warzone et Apex Legends sur leur propre terrain');
+        $section13->setDescription("D'après les diverses sources, il s'agirait d'un paramètre optionnel que les joueurs pourront activer et désactiver à volonté. On ne devrait donc pas découvrir un mode de jeu spécifique, mais plutôt une nouvelle façon de jouer au Battle Royale d'Epic Games.");
+        $section13->setPicture('https://image.jeuxvideo.com/medias-sm/167775/1677754825-9695-capture-d-ecran.jpg');
+        $section13->setArticle($article4);
+        $manager->persist($section13);
+
+        /*-------------------------------------------------------*/
+
+        //articles
+        $article5 = new Article();
+        $article5->setTitle("Star Wars Jedi Survivor : \"j'ai toujours voulu voir ça comme une trilogie\" déclare le réalisateur");
+        $article5->setCover('//image.jeuxvideo.com/medias-md/167810/1678096873-9625-card.png');
+        $article5->setIsValided(true);
+        $article5->setPublicationDate(new \DateTime('2023-03-06T10:58:14.645Z'));
+        $article5->setLastLodifiedDate(new \DateTime('2023-03-06T10:58:14.645Z'));
+        $article5->setNumberOfViews(4000);
+        $article5->setWritedBy($user1);
+        $article5->setValidatedBy($user2);
+        $manager->persist($article5);
+
+        //section articles
+        $section14 = new Section();
+        $section14->setTitle('Introduction');
+        $section14->setDescription("Entre Hogwarts Legacy et Tears of the Kingdom, on a presque tendance à oublier qu'un autre très gros action-RPG solo basé sur une licence culte arrive prochainement. Prévu pour le 28 avril prochain, Star Wars Jedi : Survivor commence cependant à faire parler de lui, et il pourrait incarner le deuxième épisode d'une trilogie qui s'annonce très intéressante. On l'oublierait presque, mais le pourtant très attendu Star Wars Jedi : Survivor arrive dans un peu moins de deux mois sur PC et consoles exclusivement next-gen (PlayStation 5 et Xbox Series) ! Cet action-RPG se déroulant dans l'univers fascinant imaginé par George Lucas fera suite au très encourageant Star Wars Jedi : Fallen Order, paru en 2019 et dont les nombreuses promesses donnaient très envie de voir son potentiel exploité à fond dans une éventuelle suite. Sans grande surprise, Electronic Arts avait annoncé cette dernière, qui plus est pour la nouvelle génération de machines, et il se pourrait que ce ne soit que la deuxième étape d'une trilogie…");
+        $section14->setArticle($article5);
+        $manager->persist($section14);
+
+        //section articles
+        $section15 = new Section();
+        $section15->setTitle("Star Wars Jedi, la nouvelle pépite solo d'EA");
+        $section15->setDescription("Lors de sa sortie en novembre 2019, Star Wars Jedi : Fallen Order avait surpris son monde. Crédité d'un très bon 16/20 dans nos colonnes, il avait su créer la surprise après des premiers aperçus modérément enthousiastes à l'E3 quelques mois plus tôt, en s'imposant comme le véritable renouveau de la licence Star Wars dans le paysage vidéoludique, près de 10 ans après son dernier jeu solo. L'épopée de Cal Kestis avait en effet séduit les joueurs et la presse, agréablement surpris par ce jeu d'action-aventure aux éléments de progression connotés RPG et aux inspirations contemporaines multiples, de Tomb Raider à Dark Souls en passant par Uncharted. Après plusieurs jeux essentiellement multijoueur au bilan mitigé, Star Wars était de retour en force.");
+        $section15->setPicture('https://image.jeuxvideo.com/medias-sm/157381/1573812861-379-capture-d-ecran.jpg');
+        $section15->setArticle($article5);
+        $manager->persist($section15);
+
+        //section articles
+        $section16 = new Section();
+        $section16->setTitle("Une suite plus qu'évidente sur les rails…");
+        $section16->setDescription("Par chance, le renouveau de la licence confié à Respawn Entertainment fut couronné de succès, au point de mieux se vendre que prévu, prouvant que le solo avait clairement un avenir chez EA, éditeur pourtant très frileux sur les titres dépourvu de toute forme de multi. Néanmoins, Star Wars Jedi : Fallen Order n'était pas exempt de défauts, et c'est une des raisons pour lesquelles une suite était vivement espérée par les fans, conquis par cette expérience franchement réussie mais dont le potentiel n'attendait que d'être bien mieux exploité. En annonçant Star Wars Jedi : Survivor sur consoles next-gen uniquement (en plus de la version PC), l'éditeur confirmait sa volonté de transformer l'essai, et en dépit de son léger report (du 17 mars au 28 avril), il y a vraiment de quoi être enthousiaste à l'approche de la sortie de cette suite.");
+        $section16->setPicture('https://image.jeuxvideo.com/medias-sm/158937/1589372708-9046-capture-d-ecran.jpg');
+        $section16->setArticle($article5);
+        $manager->persist($section16);
+
+        //section articles
+        $section17 = new Section();
+        $section17->setTitle("… voire peut-être un troisième épisode ?");
+        $section17->setDescription("Nos confrères d'IGN ont récemment eu la possibilité d'essayer pour la première fois Star Wars Jedi : Survivor, mais aussi de s'entretenir avec Stig Asmussen, réalisateur du jeu chez Respawn. À en croire la tête pensante du projet, ce deuxième épisode ne conclura en rien l'arc narratif autour de Cal Kestis, puisque Star Wars Jedi semble pensé comme une trilogie. La sortie d'un troisième épisode est ainsi plus que probable si \"Survivor\" fonctionne au moins auss bien que \"Fallen Order\", ce qui est non seulement cohérent, mais pas vraiment surprenant lorsque l'on apprend que Respawn envisageait déjà une suite à Star Wars Jedi : Fallen Order avant même que ce dernier ne soit publié :");
+        $section17->setArticle($article5);
+        $manager->persist($section17);
+
+        /*-------------------------------------------------------*/
+
+        //articles
+        $article6 = new Article();
+        $article6->setTitle("C'est flippant ! 14 minutes de gameplay pour Dead Island 2");
+        $article6->setCover('//image.jeuxvideo.com/medias-md/167818/1678175189-9824-card.png');
+        $article6->setIsValided(true);
+        $article6->setPublicationDate(new \DateTime('2023-03-07T07:55:17.823Z'));
+        $article6->setLastLodifiedDate(new \DateTime('2023-03-07T07:55:17.823Z'));
+        $article6->setNumberOfViews(8000);
+        $article6->setWritedBy($user1);
+        $article6->setValidatedBy($user2);
+        $manager->persist($article6);
+
+        //section articles
+        $section18 = new Section();
+        $section18->setTitle('Introduction');
+        $section18->setDescription("Dead Island 2 sortira dans quelques semaines, et vient pour l'occasion de dévoiler un quart d'heure de gameplay ! Deep Silver dévoile quatorze minutes de gameplay issues du jeu Dead Island 2 à venir prochainement. Découvrez les fonctionnalités principales du titre, où il s'agit de faire de la charpie de morts-vivants.");
+        $section18->setArticle($article6);
+        $manager->persist($section18);
+
+        //section articles
+        $section19 = new Section();
+        $section19->setTitle('Découvrez le gameplay de Dani dans Dead Island 2');
+        $section19->setDescription("Dead Island 2 vous demandera très tôt de choisir un personnage, parmi les six disponibles. Chaque personnage aura droit à un gameplay dédié, certains plutôt bourrins, d'autres plutôt agiles et rapides. Le choix du personnage influera sur votre progression : vous ne pourrez pas débloquer les mêmes compétences et les mêmes cartes de compétences en gagnant des niveaux, selon le personnage choisi. Dans cette vidéo de gameplay, on découvre ainsi le personnage Dani, assez agile au combat.");
+        $section19->setPicture('https://image.jeuxvideo.com/medias-md/166081/1660809880-4689-capture-d-ecran.jpg');
+        $section19->setArticle($article6);
+        $manager->persist($section19);
+
+        //section articles
+        $section20 = new Section();
+        $section20->setTitle('Les cartes de compétences pour des personnages complémentaires');
+        $section20->setDescription("Le système de classes du jeu montre bien que Dead Island 2 est pensé pour le multijoueur en coopération, avec des classes complémentaires. D'ailleurs, les cartes de compétences rappellent d'autres jeux en coop qui utilisent des systèmes similaires, comme Back 4 Blood. Ces cartes, dans Dead Island 2, vous permettront de modifier votre personnage pour lui ajouter des statistiques, des fonctionnalités, et améliorer ses caractéristiques dans certaines domaines. Certaines cartes sont dédiées à un seul personnage, d'autres à plusieurs d'entre eux. Dans tous les cas, il faudra les débloquer au fur et à mesure de votre progression en gagnant des niveaux, en accomplissant des quêtes, et en explorant.");
+        $section20->setPicture('https://image.jeuxvideo.com/medias-md/166437/1664369918-9731-capture-d-ecran.jpg');
+        $section20->setArticle($article6);
+        $manager->persist($section20);
+
+        //section articles
+        $section21 = new Section();
+        $section21->setTitle('Crafter et améliorer ses armes');
+        $section21->setDescription("Comme dans les épisodes précédents, Dead Island 2 mettra en avant les armes et leur personnalisation. Une grande variété d'armes est promise, principalement au corps-à-corps. En explorant, vous découvrirez des plans pour crafter de nouvelles armes ou modifier celles que vous avez déjà. Ainsi, vous pourrez ajouter des \"pouvoirs\" à vos armes, comme de l'électricité, du feu, etc ... On peut voir dans la vidéo que le joueur ajoute du feu à son katana, puis un effet de zone qui enflammera les ennemis à proximité lorsqu'il enflammera un zombie. Les armes à distance existent également dans le jeu, puisque la vidéo nous montre Dani utilisant des pistolets et un fusil.");
+        $section21->setPicture('https://image.jeuxvideo.com/medias-md/166437/1664369599-7156-artwork.jpg');
+        $section21->setArticle($article6);
+        $manager->persist($section21);
+
+        /*-----------------------*/
+
+        //articles
+        $article7 = new Article();
+        $article7->setTitle("Il y a 20 ans, Metal Gear Solid 2 sortait sur Xbox. Le début d’une histoire en pointillé entre Konami, Kojima et Microsoft");
+        $article7->setCover('//image.jeuxvideo.com/medias-md/167786/1677863576-6787-card.gif');
+        $article7->setIsValided(true);
+        $article7->setPublicationDate(new \DateTime('2023-03-07T06:30:02.780Z'));
+        $article7->setLastLodifiedDate(new \DateTime('2023-03-07T06:30:02.780Z'));
+        $article7->setNumberOfViews(4800);
+        $article7->setWritedBy($user1);
+        $article7->setValidatedBy($user2);
+        $manager->persist($article7);
+
+        //section articles
+        $section22 = new Section();
+        $section22->setTitle('Introduction');
+        $section22->setDescription("Il y a 20 ans en Europe, Konami décidait de sortir sur la toute première console de Microsoft son jeu d’infiltration star, Metal Gear Solid, par l’intermédiaire de l’édition “Substance” du deuxième volet. Les joueurs Xbox, qui n’avaient d’yeux que pour Sam Fisher (Splinter Cell) à cette époque, ont alors pu découvrir toutes les forces du titre d’Hideo Kojima. Cette première incursion de Solid Snake sur la machine américaine fut le point de départ d’une histoire avec des hauts et des bas entre le célèbre créateur et la firme de Redmond.");
+        $section22->setArticle($article7);
+        $manager->persist($section22);
+
+        //section articles
+        $section23 = new Section();
+        $section23->setTitle('2003 : Solid Snake tente le X');
+        $section23->setDescription("C’est le 7 mars 2003 que l’édition spéciale de Metal Gear Solid 2 : Sons of Liberty, sous-titrée Substance, débarqua sur la toute première console de jeux de Microsoft en Europe. Alors que la machine n’avait pas encore soufflé sa première bougie chez nous, Konami – et plus précisément son directeur exécutif Kazumi Kitaue – respectait la promesse faite au géant américain pendant le développement de sa machine, celle d’accompagner le succès de la Xbox avec ses productions. Après l’édition Inner Fears de Silent Hill 2 qui contenait un scénario bonus, le groupe japonais livra sa version gonflée à bloc de MGS 2, l’autre franchise forte de Konami. Outre la possibilité de refaire le jeu en choisissant son personnage, MGS 2 : Substance proposait plus de 500 missions annexes afin de pousser le joueur à dompter toutes les mécaniques du système de jeu, grâce à 300 VR missions et 200 missions alternatives (dans les environnements du tanker et de Big Shell). Le titre contenait également les “Snake Tales” avec ses cinq histoires s’inspirant de diverses situations du jeu original. Le mini-jeu de skateboard était quant à lui réservé à la version PlayStation 2 du titre, quand bien même il aurait été montré dans les bandes-annonces Xbox de l’époque.");
+        $section23->setPicture('https://image.jeuxvideo.com/images-sm/pc/m/g/mgsspc005.jpg');
+        $section23->setArticle($article7);
+        $manager->persist($section23);
+
+        //section articles
+        $section24 = new Section();
+        $section24->setTitle('En pointillé');
+        $section24->setDescription("Quand le nom d’Hideo Kojima est cité, le commun des mortels pense immédiatement à l’univers de la PlayStation. Quoi de plus normal ? Après tout, Metal Gear Solid fut un carton sur la PSOne, et le troisième comme le quatrième volet furent des exclusivités PlayStation 2/3. Avec la Xbox 360, Konami continua de soutenir à sa façon la marque américaine. La société japonaise opta pour une arrivée des Castlevania : Lords of Shadow simultanément sur PlayStation 3 et Xbox 360, tandis que des compilations de MGS, Zone of the Enders et Silent Hill furent proposées afin que les joueurs Xbox puissent enfin se frotter à ZoE, MGS 3, MGS Peace Walker et Silent Hill 3. C’est lors de la conférence E3 Xbox de 2009 que les liens entre Kojima et Microsoft semblèrent se resserrer. Le célèbre créateur donna en effet de sa personne en jouant un petit sketch avec Don Mattrick, l’ancien patron de la marque américaine, pour révéler Metal Gear Rising : Revengeance. Cette présentation avait fait l'effet d'une petite bombe sur la Toile.");
+        $section24->setPicture('https://image.jeuxvideo.com/images-sm/x3/c/a/castlevania-lords-of-shadow-collection-xbox-360-1377113728-054.jpg');
+        $section24->setArticle($article7);
+        $manager->persist($section24);
+
+        //section articles
+        $section24 = new Section();
+        $section24->setTitle('Suite');
+        $section24->setDescription("Il revint lors de la conférence de 2013 pour présenter Metal Gear Solid V : The Phantom Pain. Malheureusement, lors de la sortie du jeu sur Xbox One et PlayStation 4, Digital Foundry démontra que la superior version n’était autre que la version PS4, ce qui raviva la guerre des consoles à un moment où Microsoft était déjà en difficulté. Bien que le célèbre créateur figurait sur la vidéo d’annonce de la Xbox One aux côtés de Spielberg, ses jeux sortaient surtout chez la concurrence. À la gamescom 2014, Konami révéla le futur projet d’Hideo Kojima, un nouvel épisode de Silent Hill, via un teaser jouable qui fit sensation avec P.T. Cette démo était exclusive à la console de Sony tandis que le projet Silent Hills n’était annoncé que sur PlayStation 4. Quand Hideo Kojima quitta Konami en 2015 et fonda Kojima Productions, c’est une fois de plus vers la firme de Tokyo qu’il se tourna pour développer Death Stranding. Alors que les joueurs Xbox n’attendaient plus rien du papa de Metal Gear Solid, Microsoft annonça pendant son Showcase de 2022 le développement d’un projet exclusif à l’écosystème Xbox avec Kojima Productions. Un titre dont on ne sait officiellement pas grand-chose, si ce n’est qu’il est décrit comme “fou” par son créateur.");
+        $section24->setPicture('https://image.jeuxvideo.com/medias-sm/165462/1654623779-6127-capture-d-ecran.jpg');
+        $section24->setArticle($article7);
+        $manager->persist($section24);
+
+        //section articles
+        $section25 = new Section();
+        $section25->setTitle('Pour en conclure');
+        $section25->setDescription("Après toutes ces années faites de rendez-vous manqués, Xbox et Kojima s’unissent enfin autour d’un projet commun dont nous espérons avoir bientôt des nouvelles. Est-ce le début d’une véritable relation de confiance entre le créateur japonais et le constructeur américain ? Cela semble en prendre le chemin.");
+        $section25->setArticle($article7);
+        $manager->persist($section25);
+
+        /*-----------------------*/
+
+        //articles
+        $article8 = new Article();
+        $article8->setTitle("Zelda Breath of the Wild : énorme performance de ce joueur qui termine le jeu à 100% à l’aveugle");
+        $article8->setCover('//image.jeuxvideo.com/medias-md/167827/1678274000-8730-card.png');
+        $article8->setIsValided(true);
+        $article8->setPublicationDate(new \DateTime('2023-03-08T13:32:31.542Z'));
+        $article8->setLastLodifiedDate(new \DateTime('2023-03-08T13:32:31.542Z'));
+        $article8->setNumberOfViews(1800);
+        $article8->setWritedBy($user1);
+        $article8->setValidatedBy($user2);
+        $manager->persist($article8);
+
+        //section articles
+        $section22 = new Section();
+        $section22->setTitle('Introduction');
+        $section22->setDescription("Alors que la sortie de Tears of the Kingdom approche à grands pas, certains joueurs continuent d'exploiter Breath of the Wild dans ses moindres recoins. Et puisque tout le monde n'a pas forcément envie de le faire en speedrun, d'autres ont des idées un peu plus originales pour le terminer de manière quelque peu improbable, en rajoutant un soupçon de défi pour rendre le challenge intéressant…Alors que la sortie de Tears of the Kingdom approche à grands pas, certains joueurs continuent d'exploiter Breath of the Wild dans ses moindres recoins. Et puisque tout le monde n'a pas forcément envie de le faire en speedrun, d'autres ont des idées un peu plus originales pour le terminer de manière quelque peu improbable, en rajoutant un soupçon de défi pour rendre le challenge intéressant… Alors qu'il a fêté son sixième anniversaire la semaine dernière, The Legend of Zelda : Breath of the Wild est toujours aussi populaire chez les joueurs du monde entier. Certes, ces derniers attendent fébrilement sa suite, The Legend of Zelda : Tears of the Kingdom, à paraître le 12 mai prochain, mais ils s'ocupent toujours aussi bien sur le titre testament de la Wii U, qui a lancé conjointement la Nintendo Switch le 3 mars 2017 et entamé une nouvelle ère de succès du côté de chez Nintendo. À défaut de speedrunner le jeu, certains joueurs à l'imagination fertile trouvent de nouvelles façons originales de terminer ce chef-d'œuvre ayant changé la face du jeu vidéo avec sa vision révolutionnaire du monde ouvert…");
+        $section22->setPicture('https://image.jeuxvideo.com/medias-md/161467/1614670273-863-capture-d-ecran.jpg');
+        $section22->setArticle($article8);
+        $manager->persist($section22);
+
+        //section articles
+        $section23 = new Section();
+        $section23->setTitle('Mille et une façons de terminer Breath of the Wild');
+        $section23->setDescription("En tant qu'héritier assumé de The Legend of Zelda, premier titre de la franchise sorti en 1986 sur NES dont il est une sorte de reboot spirituel, Breath of the Wild est un épisode plus ouvert que jamais, en tout cas davantage que la mythique licence de Nintendo ne l'a jamais été. De par sa dimension open world quasiment sans limites, il offrait ainsi aux joueurs du monde entier une quantité infinie de possibilités de le terminer, et pas forcément sous l'angle du speedrun. Certes, la scène concernée est très active, et celui qui fut élu jeu de l'année en 2017 peut se finir désormais en moins de 25 minutes (!), comme l'imaginait son producteur visionnaire Eiji Aonuma dès 2016. Toutefois, achever aussi vite la quête principale de Breath of the Wild requiert énormément de skill et n'est pas à la portée de tout le monde ; heureusement, les joueurs rivalisent d'ingéniosité pour trouver d'autres challenges et marquer l'histoire du jeu à leur manière.");
+        $section23->setPicture('https://image.jeuxvideo.com/medias-sm/146609/1466090734-9982-capture-d-ecran.jpg');
+        $section23->setArticle($article8);
+        $manager->persist($section23);
+
+        //section articles
+        $section24 = new Section();
+        $section24->setTitle('Un open world pas comme les autres');
+        $section24->setDescription("Lorsqu'il fut présenté lors de l'E3 2016, The Legend of Zelda : Breath of the Wild avait divisé les joueurs ainsi que la presse, certains s'inquiétant (en plus d'un niveau de réalisation pas spécialement \"moderne\") d'une nouvelle formule plus ouverte assez peu inspirée, singeant notamment le système de tours de synchronisation cher à Ubisoft et à la série des Assassin's Creed, que ce nouveau Zelda semblait reprendre à sa manière avec les désormais célèbres Tours Sheikah. Néanmoins, à la différence de nombreux open worlds contemporains, Breath of the Wild a tendance à accorder une immense liberté de progression au joueur, ne lui donnant plus ou moins aucune consigne une fois sorti du fameux Plateau du Prélude. De quoi stimuler l'imagination et la créativité des explorateurs en herbe, à qui un des plus grands bacs à sable de l'histoire est ainsi offert sur un plateau – ou plutôt, à ses pieds.");
+        $section24->setPicture('https://image.jeuxvideo.com/medias-md/167828/1678276751-2682-artwork.png');
+        $section24->setArticle($article8);
+        $manager->persist($section24);
+
+        //section articles
+        $section25 = new Section();
+        $section25->setTitle('La carte, cet élément si futile…');
+        $section25->setDescription("Dans un jeu en monde ouvert, vous en conviendrez, l'utilisation de la carte est prépondérante, que vous disposiez d'un bon sens de l'orientation ou non. Breath of the Wild ne déroge pas à la règle, et les fameuses tours Sheikah ont pour but de révéler la carte de la région qu'elles dominent pour faciliter la progression. Mais à aucun moment, le titre de Nintendo n'impose son utilisation, et n'oblige aucunement les joueurs à activer les terminaux en haut de chacune des tours avec la tablette Sheikah pour débloquer la carte de la région concernée. Cette illustration supplémentaire de la liberté quasi infinie dont jouissent les joueurs de Breath of the Wild a inspiré un certain LusciousRonaldo, utilisateur de Reddit s'étant lancé le défi de finir le jeu sans jamais débloquer la moindre \"map\". Après tout, pourquoi utiliser une carte quand on peut faire sans ?");
+        $section25->setPicture('https://image.jeuxvideo.com/medias-md/167828/1678281068-9654-artwork.jpg');
+        $section25->setArticle($article8);
+        $manager->persist($section25);
+
+        //section articles
+        $section26 = new Section();
+        $section26->setTitle('Finir Breath of the Wild sans carte, un bel exploit !');
+        $section26->setDescription("Là où l'exploit de ce joueur est particulièrement intéressant, c'est qu'il ne s'agit pas d'un speedrun classique où il \"suffit\" de foncer jusqu'au château d'Hyrule directement après avoir obtenu la paravoile pour finir le jeu très rapidement. L'objectif de LusciousRonaldo était de compléter l'intégralité des missions de Breath of the Wild, sanctuaires compris, sans jamais déverrouiller une seule carte en-dehors de celle, obligatoire pour progresser, du plateau du Prélude (mais elle ne révèle qu'une portion ridicule du monde ouvert du jeu). L'idée était de faire apparaître l'intégralité des points d'intérêt sur le module \"'carte\" de la tablette Sheikah, mais sans jamais utiliser celle-ci pour débloquer les cartes des régions, ce qui constitue un joli défi requérant une grosse connaissance du jeu. Cette performance complexe, ce joueur méthodique n'a pu l'accomplir, selon lui, qu'après avoir déjà terminé \"normalement\" le jeu d'origine \"7 ou 8 fois\" avant de se lancer dans ce défi. Son but était de revivre \"le sentiment d'isolement et de découverte\" expérimenté lors de sa toute première partie, que seule une exploration non assistée par la carte pouvait satisfaire. Non seulement LusciousRonaldo est parvenu à ses fins, mais l'a prouvé avec deux captures d'écran, où tous les points d'intérêt (sanctuaires, villages, relais, créatures…) sont débloqués, mais où aucune carte ne l'est. En bonus, il a joint également celle affichant l'historique de ses déplacements sur la carte pour montrer le cheminement utilisé :");
+        $section26->setPicture('https://image.jeuxvideo.com/medias-md/167828/1678281068-4036-artwork.jpg');
+        $section26->setArticle($article8);
+        $manager->persist($section26);
+
+        /*-----------------------*/
+
+        //articles
+        $article9 = new Article();
+        $article9->setTitle("Énervés, ces développeurs affichent et insultent les tricheurs de leur jeu");
+        $article9->setCover('//image.jeuxvideo.com/medias-md/167828/1678278729-2485-card.jpg');
+        $article9->setIsValided(true);
+        $article9->setPublicationDate(new \DateTime('2023-03-08T13:21:20.702Z'));
+        $article9->setLastLodifiedDate(new \DateTime('2023-03-08T13:21:20.702Z'));
+        $article9->setNumberOfViews(1800);
+        $article9->setWritedBy($user1);
+        $article9->setValidatedBy($user2);
+        $manager->persist($article9);
+
+        //section articles
+        $section27 = new Section();
+        $section27->setTitle('Introduction');
+        $section27->setDescription("Depuis de nombreuses années, la triche est un véritable fléau qui gâche l'expérience proposée par les jeux multijoueurs en ligne. Pour combattre ce problème, les développeurs consacrent une partie de leur temps à créer des outils anti-cheat efficaces. D'autres préfèrent directement afficher et insulter leurs tricheurs pour qu'ils servent d'exemples.");
+        $section27->setArticle($article9);
+        $manager->persist($section27);
+
+        //section articles
+        $section28 = new Section();
+        $section28->setTitle('La triche, fléau moderne du jeu en ligne ?');
+        $section28->setDescription("Si vous êtes habitué à jouer à des expériences en ligne, vous avez sûrement croisé de nombreux tricheurs tout au long de votre vie de joueur. S'il s'agit d'une pratique qui existe depuis toujours, cette dernière semble avoir pris des proportions considérables récemment à en croire les plaintes des différentes communautés. C'est particulièrement le cas dans le monde du Battle Royale, avec des titres comme Call of Duty : Warzone 2.0 dans lesquels les développeurs essaient de lutter autant qu'ils peuvent en déployant des outils pour contrer les cheaters.");
+        $section28->setPicture('https://image.jeuxvideo.com/medias-sm/167637/1676365979-5324-capture-d-ecran.jpg');
+        $section28->setArticle($article9);
+        $manager->persist($section28);
+
+        //section articles
+        $section29 = new Section();
+        $section29->setTitle('Valorant');
+        $section29->setDescription("Certains éditeurs ont eu recours à des solutions radicales comme Riot Games qui, avec la sortie de Valorant, a créé un anti-cheat puissant mais très gourmand en ressources et qui tourne en permanence appelé Vanguard. Pas de quoi satisfaire les joueurs non plus. Au-delà de ces outils, d'autres développeurs n'hésitent pas à être plus directs dans leur façon de contrer ce problème, à l'image des équipes de Escape From Tarkov.");
+        $section29->setPicture('https://image.jeuxvideo.com/medias-sm/159120/1591199877-6806-capture-d-ecran.jpg');
+        $section29->setArticle($article9);
+        $manager->persist($section29);
+
+        //section articles
+        $section30 = new Section();
+        $section30->setTitle("Un coup marketing plutôt qu'une vraie solution aux problèmes ?");
+        $section30->setDescription("Dans un post Reddit, Nikita Buyanov, Chief Operating Offcier et chef du studio Battlestate Games qui développe Escape from Tarkov, a annoncé que les développeurs avaient banni des milliers de tricheurs qu'ils traitent de \"bâtards\" et de \"rebuts de l'humanité\". Sur Twitter, le compte officiel du jeu a même publié une liste avec les noms de ces cheaters dans un Google Sheet. Au-delà de ça, il explique que les équipes ont toujours été au courant de ce problème et qu'elles essaient continuellement d'y remédier. Pour cela, ils bloquent des \"milliers de tricheurs\" par jour en leur laissant à peine le temps de jouer un peu. Leur système d'anti-cheat, le Battleye, serait constamment amélioré. Rien que la semaine dernière, il aurait été mis à jour quatre fois. En parallèle, ils développent de nouveaux outils de détection anti-cheat et améliorent le système de signalement pour que les choses s'arrangent.        ");
+        $section30->setPicture('https://image.jeuxvideo.com/medias-sm/151560/1515596803-2201-capture-d-ecran.png');
+        $section30->setArticle($article9);
+        $manager->persist($section30);
+
+        //section articles
+        $section31 = new Section();
+        $section31->setTitle("Pour en conclure");
+        $section31->setDescription("Derrière ces explications, les joueurs peinent à être convaincus comme en témoigne le commentaire d'un utilisateur Reddit juste en dessous du patron de Battlestate Games qui l'a même ratio en termes d'upvotes. Celui qui se présente comme un joueur avec plus de 6000 heures sur le jeu étalées sur trois ans explique que ce n'est pas la première fois que les développeurs font ce genre de coup d'éclat et que les choses ne changent pas. Il continue de voir des noms qu'il a report par le passé dont certains qui ont la réputation et le niveau maximaux permis par le jeu. Il remet surtout en question le fait que les équipes bannissent des milliers de joueurs chaque jour car certains ne sont pas détectés malgré ces vagues bannissements. Comme façon efficace de contrer ce problème, le joueur évoque par exemple l'intégration d'une double authentification à l'aide d'un numéro de portable qui réduirait grandement le nombre de cheaters. Vous l'aurez compris, mais le torchon brûle entre les développeurs d'Escape from Tarkov et leurs joueurs et on espère qu'une solution sera vite trouvée pour que les choses reviennent à la normale.");
+        $section31->setPicture('https://image.jeuxvideo.com/medias-sm/151560/1515596801-9622-capture-d-ecran.png');
+        $section31->setArticle($article9);
+        $manager->persist($section31);
+
+        /*-----------------------*/
+
+        //articles
+        $article10 = new Article();
+        $article10->setTitle("Resident Evil 4 : un remake qui ridiculise les précédents, la taille du jeu enfin connue !");
+        $article10->setCover('//image.jeuxvideo.com/medias-md/167820/1678195304-6839-card.jpg');
+        $article10->setIsValided(true);
+        $article10->setPublicationDate(new \DateTime('2023-03-07T13:25:38.979Z'));
+        $article10->setLastLodifiedDate(new \DateTime('2023-03-07T13:25:38.979Z'));
+        $article10->setNumberOfViews(500);
+        $article10->setWritedBy($user1);
+        $article10->setValidatedBy($user2);
+        $manager->persist($article10);
+
+        //section articles
+        $section32 = new Section();
+        $section32->setTitle('Introduction');
+        $section32->setDescription("Resident Evil 4, épisode culte de la saga phare de Capcom, reviendra bientôt sous forme de remake sur nos machines. Nous retrouvons dès lors le personnage de Leon S. Kennedy plongé en pleine enquête afin de retrouver la fille du Président des Etats-Unis. Le jeu supprime les QTE, le couteau de Leon est désormais destructible mais gagne en puissance et permet d’effectuer des Stealth Kills et Leon peut maintenant dévier des attaques pour empêcher de subir des dégâts. En plus d’un gameplay modernisé et des graphismes dignes de nos nouvelles consoles, le jeu accueillera des surprises dans sa structure. Bref, tout un tas de nouveautés qui justifie un remake ; Capcom a aussi retravaillé l’importance de certains personnages comme Ashley qui sera un peu moins passive");
+        $section32->setPicture('https://image.jeuxvideo.com/medias-md/166633/1666333854-595-capture-d-ecran.jpg');
+        $section32->setArticle($article10);
+        $manager->persist($section32);
+
+        $section33 = new Section();
+        $section33->setTitle('Information');
+        $section33->setDescription("Autre information de taille, et c'est le cas de le dire : Resident Evil 4 est désormais disponible en préchargement sur la Xbox Series X et pèse le joli poids de 67,2 Go (lequel devrait être similaire sur PS5). À titre de comparaison et comme le soulignent nos confrères de wccftech, Resident Evil Village était jusqu'à présent le jeu le plus volumineux de la série en termes de taille de fichier en pesant environ 27 Go au lancement. Un bel écart donc, puisque le remake de RE4 pèse deux fois plus que Resident Evil Village et près de trois fois plus que les remakes de RE2 et RE3. \"Le premier RE4 était déjà le jeu le plus long de la série, et il semble que Capcom ne fasse qu'ajouter à la campagne, et non la retrancher\", notent à ce propos les journalistes.");
+        $section33->setPicture('https://image.jeuxvideo.com/medias-sm/166633/1666333841-701-capture-d-ecran.jpg');
+        $section33->setArticle($article10);
+        $manager->persist($section33);
+
+        $section34 = new Section();
+        $section34->setTitle('Bientôt le show');
+        $section34->setDescription("On le rappelle, Resident Evil 4 sortira le 24 mars 2023 sur PC, PlayStation 5, PlayStation 4 et Xbox Series. Le jeu sera proposé dans une édition standard, mais aussi dans une édition \"Deluxe\" avec sa flopée de DLC. En attendant, Capcom a annoncé la diffusion d'un \"showcase\" mettant en avant Resident Evil 4, mais également Mega Man Battle Network Legacy Collection et \"d'autres titres prévus pour 2023\", avant de préciser que les versions PlayStation et Xbox de Monster Hunter Rise : Sunbreak seraient également mises à l'honneur. Street Fighter 6 sera également présent tout comme Ghost Trick : Détective Fantôme et Exoprimal , TPS futuriste qui s'était laissé approcher lors du Tokyo Game Show 2022. L'événement de l'éditeur, intitulé \"Capcom Spotlight\", sera diffusé ce jeudi 9 mars à 23h30 heure française, et durera 26 minutes.");
+        $section34->setPicture('https://image.jeuxvideo.com/medias-sm/166633/1666333841-4140-capture-d-ecran.jpg');
+        $section34->setArticle($article10);
+        $manager->persist($section34);
+
+        /*-----------------------*/
+
+        //articles
+        $article11 = new Article();
+        $article11->setTitle("GTA : le grand méchant de Vice City est mort, un hommage vibrant de la part de Rockstar Games ");
+        $article11->setCover('//image.jeuxvideo.com/medias-md/167822/1678219345-7168-card.jpg');
+        $article11->setIsValided(true);
+        $article11->setPublicationDate(new \DateTime('2023-03-07T20:03:23.654Z'));
+        $article11->setLastLodifiedDate(new \DateTime('2023-03-07T20:03:23.654Z'));
+        $article11->setNumberOfViews(580);
+        $article11->setWritedBy($user1);
+        $article11->setValidatedBy($user2);
+        $manager->persist($article11);
+
+        //section articles
+        $section35 = new Section();
+        $section35->setTitle('Introduction');
+        $section35->setDescription("Les Grand Theft Auto ne sont pas que de gigantesques bacs à sable où il est possible de faire tout et n'importe quoi, ils sont aussi des titres aux histoires impactantes et aux personnages hauts en couleur. Malheureusement, aujourd'hui, l'un des acteurs de la licence phare vient de s'éteindre.");
+        $section35->setArticle($article11);
+        $manager->persist($section35);
+
+        //section articles
+        $section36 = new Section();
+        $section36->setTitle("Rockstar réalise un bel hommage pour Tom Sizemore");
+        $section36->setDescription("Tom Sizemore est mort le 3 mars dernier… Alors âgé de 61 ans, l'acteur était avant tout connu pour avoir tourné dans plusieurs films cultes à commencer par Speed Kills, mais aussi Il faut sauver le soldat Ryan de Steven Spielberg et bien entendu Heat. Notez qu'il a également donné vie à Sonny Forelli, le grand méchant de GTA Vice City. D'ailleurs, Rockstar Games, attristé par la nouvelle, a réalisé aujourd'hui un bel hommage à la star disparue.");
+        $section36->setPicture('https://pbs.twimg.com/media/FqZETNCX0AIGSn6?format=jpg&name=small');
+        $section36->setArticle($article11);
+        $manager->persist($section36);
+
+        //section articles
+        $section37 = new Section();
+        $section37->setTitle('Tom Sizemore');
+        $section37->setDescription("De nombreuses stars américaines ont également rendu un bel hommage à Tom Sizemore, à commencer par Danny Trejo qui a dévoilé une photo où on peut voir l'acteur décédé en compagnie du réalisateur Michael Mann, mais aussi de Jon Voight, Val Kilmer et Robert De Niro. Robert De Niro a lui aussi pris la parole dans le journal The Hollywood Reporter afin d'exprimer sa tristesse et son affection. De notre côté, toutes les pensées vont bien évidemment à la famille de Tom Sizemore, un homme qui a eu le droit à des rôles cultes aussi bien au cinéma que dans le jeu vidéo.");
+        $section37->setPicture('https://pbs.twimg.com/media/FqZZ7pkacAAsjD_?format=jpg&name=small');
+        $section37->setArticle($article11);
+        $manager->persist($section37);
+
+        /*-----------------------*/
+
+        //articles
+        $article12 = new Article();
+        $article12->setTitle("Le meilleur Zelda-like de ces dernières années arrive enfin en boîte (et notice) sur Nintendo Switch et PS4 !");
+        $article12->setCover('//image.jeuxvideo.com/medias-md/167826/1678260518-1570-card.jpg');
+        $article12->setIsValided(true);
+        $article12->setPublicationDate(new \DateTime('2023-03-08T08:29:50.192Z'));
+        $article12->setLastLodifiedDate(new \DateTime('2023-03-08T08:29:50.192Z'));
+        $article12->setNumberOfViews(800);
+        $article12->setWritedBy($user1);
+        $article12->setValidatedBy($user2);
+        $manager->persist($article12);
+
+        //section articles
+        $section38 = new Section();
+        $section38->setTitle('Introduction');
+        $section38->setDescription("En 2022, tout le monde n'en a eu que pour Elden Ring et God of War Ragnarök, voire éventuellement Horizon Forbidden West ou A Plague Tale Requiem. Pourtant, de nombreux jeux indépendants d'excellente facture ont vu le jour l'année dernière, et l'un de ceux dont la sortie boîte était la plus convoitée va enfin bénéficier de ce privilège tant attendu un an après sa sortie. Il y a un an, un jeu aussi mignon que particulièrement délicat à maîtriser voyait le jour : l'excellent Tunic paraissait sur PC, Xbox One et Xbox Series, et nous lui avions attribué à sa sortie un 17/20 amplement mérité. Quelque peu envieux du succès de ce Zelda-like mystérieux mettant en scène un adorable petit renard parodiant la tenue de Link, les joueurs Nintendo Switch furent récompensés de leur patience en septembre, le titre de Finji débarquant enfin sur la console hybride de Nintendo à l'automne mais aussi sur celles de Sony au même moment. Disponible depuis le 27 septembre sur toutes les plates-formes, dont la PlayStation 4 et la PlayStation 5, il ne manquait plus qu'une chose à Tunic : une sortie boîte, très convoitée par les collectionneurs, notamment pour un élément bien particulier qu'elle avait toutes les chances de renfermer…");
+        $section38->setArticle($article12);
+        $manager->persist($section38);
+
+        //section articles
+        $section39 = new Section();
+        $section39->setTitle("Tunic en boîte, c'est fait pour !");
+        $section39->setDescription("Sensation indépendante de 2022 au même titre qu'un Stray également maintes fois primé (il faut croire que les quadrupèdes à fourrure rousse ont la cote !), Tunic est un action-RPG désireux de rendre hommage à The Legend of Zelda, aussi bien dans son esthétique qui rappelle ce jeu d'aventure mythique, que dans une mécanique de jeu surprenante puisant explicitement son inspiration dans les jeux d'aventure des années 1980, notamment ceux importés du Japon par les joueurs occidentaux incapables de lire la langue de Miyamoto. Les développeurs de Tunic ont en effet admis avoir voulu retranscrire l'expérience de joueurs faisant face à une notice écrite avec un alphabet qu'ils ne savent pas traduire, et devant en déduire ce qu'ils peuvent notamment à l'aide des illustrations et de leur progression dans le jeu, ajoutant tout un tas de notes personnelles au stylo sur ce fameux livret. Dans ce titre volontairement cryptique sur de nombreux points, qui emprunte également à Hollow Knight ou aux fameux \"Souls\" dans bon nombre d'éléments de gameplay ainsi que dans sa narration pour le moins obscure, les principaux \"collectibles\" à récupérer sont les pages d'un livret d'instruction disséminées partout sur la carte du jeu, afin de reconstituer ce dernier dans son intégralité. Le manuel en question est en grande partie la clé de la compréhension de l'univers de Tunic, et constitue une des idées de gameplay les plus brillantes de ces dernières années. L'hommage plus qu'évident que Tunic cherche à rendre au tout premier Zelda réside donc principalement dans l'utilisation de ce manuel écrit dans un langage runique incompréhensible et dont seuls les dessins permettent d'en déduire le sens… et de résoudre bon nombre de ses énigmes, parfois tordues (et encore, c'est un euphémisme !).");
+        $section39->setPicture('https://image.jeuxvideo.com/medias-md/167826/1678261303-1771-artwork.png');
+        $section39->setArticle($article12);
+        $manager->persist($section39);
+
+        //section articles
+        $section40 = new Section();
+        $section40->setTitle("Quid du fameux manuel d'instructions ?");
+        $section40->setDescription("Pour toutes ces raisons, Tunic était donc un titre dont la sortie en boîte était extrêmement attendue, même si les plus exigeants (*) estiment qu'inclure la notice dans une telle édition relève de l'hérésie. Le site Fangamer a en tout cas fini par dévoiler la version boîte du jeu de Finji, éditée dans une édition \"Deluxe\" commercialisée à 45 dollars (soit environ 43€, NDLR) et pour le coup très riche en terme de contenu. Cette version boîte renferme en effet plus que le livret d'instruction tant convoitée, dont une reproduction intégrale des pages au format 13x10cm est incluse, puisqu'on y retrouve également la carte (dépliante) du monde de Tunic, deux planches d'autocollants, un manuel des commandes avec des concept arts ainsi qu'un code pour télécharger son excellente bande originale, signée Lifeformed et Janice Kwan (et dont nous vous recommandons vivement l'écoute, soit dit en passant). (*) Sans doute les mêmes joueurs que ceux refusant toute forme d'assistance dans \"leurs\" jeux alors que cela ne les regarde pas, vu qu'ils peuvent y jouer sans aide et/ou mode facile, et que l'accessibilité pour le plus grand nombre est une nécessité ? Ne me sautez pas à la gorge, le débat reste ouvert !");
+        $section40->setPicture('https://image.jeuxvideo.com/medias-sm/167826/1678263899-5134-artwork.png');
+        $section40->setArticle($article12);
+        $manager->persist($section40);
+
+        //section articles
+        $section41 = new Section();
+        $section41->setTitle("Les joueurs Xbox pas récompensés…");
+        $section41->setDescription("Malheureusement, il y a une ombre au tableau, qui risque de désespérer les joueurs Xbox encore attachés au format physique. Alors que Tunic fut une exclusivité console pendant 6 mois du côté de chez Microsoft, Tunic n'aura pas droit à une version boîte sur Xbox, que ce soit une version Xbox One, une version Xbox Series X, ou une édition indiquant regrouper les deux machines sur sa jaquette. Le titre de Finji sortira en effet uniquement sur PS4 (compatible PS5) et sur Switch, les deux supports généralement privilégiés par les distributeurs de jeux indépendants bénéficiant d'une sortie physique décalée par rapport à leur première parution en dématérialisée. Il n'est du coup hélas pas étonnant de ne pas voir Tunic disposer d'une version boîte sur consoles Xbox, même si cela reste regrettable pour les collectionneurs de boîtes vertes. Peut-être se rabattront-ils sur une des deux autres éditions, vu que malgré tout, cette sortie tant attendue de Tunic en version boîte semble plus que valoir le coup (et le coût) !");
+        $section41->setPicture('https://image.jeuxvideo.com/medias-md/164804/1648042213-3290-artwork.jpg');
+        $section41->setArticle($article12);
+        $manager->persist($section41);
+
+        /*-----------------------*/
+
+        //articles
+        $article13 = new Article();
+        $article13->setTitle('The Last of Us : cette parodie avec des Claqueurs sous Unreal Engine 5 est aussi drôle qu’impressionnante');
+        $article13->setCover('//image.jeuxvideo.com/medias-md/167827/1678272791-8953-card.jpeg');
+        $article13->setIsValided(true);
+        $article13->setPublicationDate(new \DateTime('2023-03-08T11:01:47.467Z'));
+        $article13->setLastLodifiedDate(new \DateTime('2023-03-08T11:01:47.467Z'));
+        $article13->setNumberOfViews(200);
+        $article13->setWritedBy($user1);
+        $article13->setValidatedBy($user2);
+        $manager->persist($article13);
+
+        //section articles
+        $section42 = new Section();
+        $section42->setTitle('Introduction');
+        $section42->setDescription("Chez Naughty Dog, on a voulu créer une histoire sombre et bouleversante lors de la création de The Last of Us. Par-delà le monde, l’aventure d’Ellie et Joel a eu un impact considérable et n’a eu de cesse de stimuler la créativité de certains, à l’image de la chaîne YouTube AFK. Avec leur vidéo « Clickers », les équipes d’Epically Casual ont eu envie de prendre le contre-pied total en imaginant une parodie légère et désopilante où l’on suit deux Claqueurs.");
+        $section42->setArticle($article13);
+        $manager->persist($section42);
+
+        //section articles
+        $section43 = new Section();
+        $section43->setTitle('De nouveaux projets The Last of Us, y compris chez les fans');
+        $section43->setDescription("Dans quelques jours, la folie The Last of Us commencera à diminuer petit à petit avec la diffusion de l’ultime épisode de cette première saison, une poignée de minutes qui risquent de diviser les fans selon les récentes déclarations de l’actrice Bella Ramsey qui incarne le personnage d’Ellie'. Après neuf épisodes haletants, la série tirera sa révérence jusqu’à la diffusion de la saison 2, d’ores et déjà confirmée par le diffuseur américain HBO. Nouveau coup de maître pour la chaîne étasunienne puisque l’adaptation du chef-d’œuvre de Naughty Dog fait l’unanimité sur la toile, réussissant même quelques fulgurances la plaçant au-dessus du jeu vidéo original comme on le soulignait dans notre avis de l’épisode 8. Dimanche, le clap de fin retentira pour la chaîne HBO qui, à cet instant, rendra son bébé au studio de développement californien. Des projets autour de cet univers, il y en a encore bel et bien. Si l’on s’interroge encore sur la possibilité d’un The Last of Us Part. III, le studio Naughty Dog planche actuellement sur un projet annexe qui mettrait l’accent sur le multijoueur dont on attend impatiemment les premiers extraits de gameplay. Pendant ce temps, les fans de la communauté The Last of Us rivalisent d’originalité et se servent de l’univers du jeu pour créer leurs propres projets, à l’image de cette parodie qui réveillera notre compassion pour les terribles Claqueurs. Dimanche, le clap de fin retentira pour la chaîne HBO qui, à cet instant, rendra son bébé au studio de développement californien. Des projets autour de cet univers, il y en a encore bel et bien. Si l’on s’interroge encore sur la possibilité d’un The Last of Us Part. III, le studio Naughty Dog planche actuellement sur un projet annexe qui mettrait l’accent sur le multijoueur dont on attend impatiemment les premiers extraits de gameplay. Pendant ce temps, les fans de la communauté The Last of Us rivalisent d’originalité et se servent de l’univers du jeu pour créer leurs propres projets, à l’image de cette parodie qui réveillera notre compassion pour les terribles Claqueurs.");
+        $section43->setPicture('https://image.jeuxvideo.com/medias-sm/167827/1678272929-2799-capture-d-ecran.png');
+        $section43->setArticle($article13);
+        $manager->persist($section43);
+
+        //section articles
+        $section44 = new Section();
+        $section44->setTitle('Martyrisés, cette parodie nous met à la place des Claqueurs et c’est tordant');
+        $section44->setDescription("Sur la chaîne YouTube AFK, les équipes de production d’Epically Casual ont eu une idée pour le moins originale. Dans le jeu, Joel et Ellie sont entre autres menacés par les Claqueurs, une évolution des infectés qui les rend certes aveugles mais terriblement puissants et redoutés. Mais qu’en est-il si les rôles étaient inversés ? Grâce aux prouesses de l’Unreal Engine 5, ils ont pu reproduire deux Claqueurs et les faire interagir de manière désopilante, s’amusant de leur cécité en les faisant jouer à colin-maillard (un jeu enfantin appelé Marco Polo, outre-Atlantique) et se moquant des humains parfois très maladroits face à eux. S’ils sont très dangereux dans le jeu, cette brillante parodie de The Last of Us tend à les humaniser et à nous mettre à leur place, eux qui se prennent parfois des briques ou des bouteilles de verre en pleine tête et qui vivent dans la crainte de croiser, eux aussi, un danger menaçant leur existence. Bref, leurs interactions et leurs dialogues font mouche et, en commentaires, on applaudit le travail accompli, tout en réclamant d’autres formats de ce genre et en espérant qu’il n’arrivera rien à de grave à cet adorable et pourtant si létal duo de claqueurs.");
+        $section44->setArticle($article13);
+        $manager->persist($section44);
+
+        /*-----------------------*/
+
+        //articles
+        $article14 = new Article();
+        $article14->setTitle("Square Enix et les NFT, ce n'est malheureusement pas finia");
+        $article14->setCover("//image.jeuxvideo.com/medias-md/167818/1678183632-8524-card.gif");
+        $article14->setIsValided(true);
+        $article14->setPublicationDate(new \DateTime('2023-03-07T10:13:54.020Z'));
+        $article14->setLastLodifiedDate(new \DateTime('2023-03-07T10:13:54.020Z'));
+        $article14->setNumberOfViews(200);
+        $article14->setWritedBy($user1);
+        $article14->setValidatedBy($user2);
+        $manager->persist($article14);
+
+        //section articles
+        $section45 = new Section();
+        $section45->setTitle("Introduction");
+        $section45->setDescription("Le patron de Square Enix est sur le départ, prêt à être remplacé par du sang neuf. Malheureusement, la compagnie ne semble pas vouloir mettre de côté ses ambitions dans le domaine de la blockchain.");
+        $section45->setArticle($article14);
+        $manager->persist($section45);
+
+        //section articles
+        $section45 = new Section();
+        $section45->setTitle('Final Fantasy NFT');
+        $section45->setDescription("L’année dernière, nous dressions un premier bilan de l’arrivée des NFT chez les géants du jeu vidéo. Nous expliquions que les éditeurs, conscients de l’impopularité de tout ce qui touche à la blockchain auprès d’une partie des joueurs, avançaient à tâtons. Yosuke Matsuda, le PDG de Square Enix depuis 10 ans, a souvent montré son envie de mener sa société sur les chemins sinueux des NFT. Malgré tout, lors de la revente de Crystal Dynamics et d’Eidos Montreal, le responsable expliquait que l’argent récolté allait être utilisé “pour financer les efforts visant à améliorer les licences du groupe” plutôt que pour “développer des domaines d’investissement liés à la blockchain”. Récemment, l’éditeur japonais a annoncé le remplacement de son PDG afin de remodeler l'équipe de direction dans le but “d'adopter des innovations technologiques en constante évolution et de maximiser la créativité du groupe”. Sous réserve d’approbation des actionnaires au mois de juin, c’est Takashi Kiryu qui deviendra le grand patron, un ancien de Dentsu Innovation Initiative, groupe connu pour ses investissements dans le Métavers. Vous le voyez venir : rien n’indique que Square Enix va mettre de côté ses projets NFT, bien au contraire.");
+        $section45->setPicture('https://image.jeuxvideo.com/medias-sm/167058/1670575196-3740-capture-d-ecran.jpg');
+        $section45->setArticle($article14);
+        $manager->persist($section45);
+
+        //section articles
+        $section46 = new Section();
+        $section46->setTitle('Le Web 3.0 toujours au planning');
+        $section46->setDescription("C’est lors d’une conférence de presse s’étant déroulée le 3 mars 2023 que Takashi Kiryu a pris la parole. Il a tout d’abord expliqué son amour pour Final Fantasy et Dragon Quest, lui qui s’est acheté les jeux d’origine le jour de leur sortie. Il cite Tobal No.1 comme étant son titre préféré de tous les temps. Derrière le joueur se cache aussi le businessman. Kiryu a précisé qu’il allait continuer de suivre la stratégie de Square Enix envers le Web 3.0, stratégie initiée par Yosuke Matsuda. D’après lui, la blockchain et tout ce qui en découle “a le potentiel de conduire à la prochaine étape de croissance de la société”. De son côté, Matsuda ne restera pas chez Square Enix après son départ à la retraite, mais il continuera à regarder ce que fait le groupe, “en tant que fan de l'entreprise” explique-t-il. Lors de la séance de questions-réponses, il a également déclaré qu'il recevait parfois des avis sévères de la part des joueurs, mais que cela faisait partie du “véritable plaisir d'être une entreprise qui fournit du contenu\".");
+        $section46->setPicture('https://image.jeuxvideo.com/medias-sm/166628/1666280028-9497-capture-d-ecran.jpg');
+        $section46->setArticle($article14);
+        $manager->persist($section46);
 
         //reviews
         $review1 = new Review();
