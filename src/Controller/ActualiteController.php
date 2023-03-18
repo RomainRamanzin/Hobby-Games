@@ -5,104 +5,73 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Doctrine\ORM\EntityManagerInterface;
+use App\Repository\ArticleRepository;
+use App\Repository\SectionRepository;
+use App\Entity\Article;
+use App\Entity\Section;
 
 class ActualiteController extends AbstractController
 {
-    public function CallApi()
-    {
-        $json = file_get_contents('https://api.jvc.gg/news/datePublished.desc?preset=all&publicationType=game_news&offset=0&limit=20');
-        $data = json_decode($json, true);
-
-        $actualites = [];
-        $actualites = $data['data']['items'];
-
-        return $actualites;
-    }
-
-    public function AllActu()
-    {
-        $actualites = $this->CallApi();
-
-        $allActus = [];
-        foreach ($actualites as $actualite) {
-            $strDate = substr($actualite['datePublished'], 5, 2);
-            $jourActuel = date("m");
-            if ($strDate == $jourActuel) {
-                array_push($allActus, $actualite);
-            }
-        }
-
-        return $allActus;
-    }
-
-    public function TopActu()
-    {
-        $actualites = $this->CallApi();
-
-        $actuTop = [];
-        $current_date = date("Y-m-d H:i:s");
-
-        foreach ($actualites as $actualite) {
-            $date = str_replace(array('T', 'Z'), ' ', $actualite['datePublished']);
-            array_push($actuTop, $date);
-        }
-
-        usort($actuTop, function ($a, $b) use ($current_date) {
-            $t1 = abs(strtotime($a) - strtotime($current_date));
-            $t2 = abs(strtotime($b) - strtotime($current_date));
-            return $t1 - $t2;
-        });
-
-        $five_closest_dates = array_slice($actuTop, 0, 5);
-
-        $top = [];
-        foreach ($actualites as $actualite) {
-            $date = str_replace(array('T', 'Z'), ' ', $actualite['datePublished']);
-            if (in_array($date, $five_closest_dates)) {
-                array_push($top, $actualite);
-            }
-        }
-
-        return $top;
-    }
-
-    public function ActuJour()
-    {
-        $actualites = $this->CallApi();
-
-        $top = $this->TopActu();
-
-        $actujours = [];
-        foreach ($actualites as $actualite) {
-            $strDate = substr($actualite['datePublished'], 8, 2);
-            $jourActuel = date("d");
-            if ($strDate == $jourActuel) {
-                array_push($actujours, $actualite);
-                $actujours = array_udiff($actujours, $top, function ($a, $b) {
-                    return serialize($a) === serialize($b) ? 0 : 1;
-                });
-            }
-        }
-
-        return $actujours;
-    }
 
     #[Route('/actualite', name: 'app_actualite')]
-    public function index(): Response
+    public function index(ArticleRepository $articleRepository): Response
     {
-        $actualites = $this->CallApi();
+        // Récupération de toutes les actualités
+        $articles = $articleRepository->findAllSorted();
 
-        $top = $this->TopActu();
+        // Création d'un tableau de copie des actualités
+        $copieArticles = $articles;
 
-        $actujours = $this->ActuJour();
+        // Récupération des 5 dernières actualités
+        $topActu = array_slice($copieArticles, 0, 5);
 
-        $allActus = $this->AllActu();
+        // Récupération de toutes les actualités sauf les 5 dernières
+        $allActu = array_slice($copieArticles, 5);
 
         return $this->render('actualite/index.html.twig', [
             'controller_name' => 'ActualiteController',
-            'allActus' => $allActus,
-            'actujours' => $actujours,
-            'top' => $top,
+            'allActu' => $allActu,
+            'topActu' => $topActu,
+        ]);
+    }
+
+    #[Route('/actualite/{id}', name: 'app_actualite_show', methods: ['GET'])]
+    public function show(Article $articles, SectionRepository $sectionRepository, ArticleRepository $articleRepository): Response
+    {
+        // Récupération des sections de l'actualité
+        $sections = $sectionRepository->findBy(['article' => $articles->getId()]);
+        // Récupération de toutes les actualités
+        $allArticles = $articleRepository->findAllSorted();
+
+        // Suppression des sections Introduction, Conclusion, Information et Suite
+        foreach ($sections as $section) {
+            if ($section->getTitle() == 'Introduction' || $section->getTitle() == 'Conclusion' || $section->getTitle() == 'Information' || $section->getTitle() == 'Suite' || $section->getTitle() == 'Pour en conclure') {
+                $section->setTitle('');
+            }
+        }
+
+        //boucle pour récupérer toutes les actualités sauf celle dans laquelle on est 
+        foreach ($allArticles as $article) {
+            if ($article->getId() != $articles->getId()) {
+                $randomArticle[] = $article;
+            }
+        }
+
+        // Mélange du tableau
+        shuffle($randomArticle);
+
+        // Récupération des 5 premiers éléments
+        $randomFive = array_slice($randomArticle, 0, 5);
+
+        // Récupération de la date de publication de l'actualité
+        $dateActu = $articles->getPublicationDate();
+
+        return $this->render('actualite/show.html.twig', [
+            'article' => $articles,
+            'sections' => $sections,
+            'dateActu' => $dateActu,
+            'randomFive' => $randomFive
         ]);
     }
 }

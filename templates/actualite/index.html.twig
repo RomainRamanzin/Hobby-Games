@@ -1,67 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  Hello ActualiteController!
+  HobbyGames - Actualités
 {% endblock %}
 
 {% block body %}
   <link href="/asset/css/actualite.css" rel="stylesheet" />
   <div class="page-presentation">
     <div class="container">
-      <div class="row">
-        <div class="actualite-1">
-          <div class="block-title-actualite">
-            <h1 class="title-actualite">Top 5 des actualités du jour</h1>
+      <div class="glass">
+        <div class="actualite-top-five">
+          <div class="block-title-news-top">
+            <h1 class="title-news">Top 5 des actualités</h1>
           </div>
-          <div class="block-contain-card">
-            {% for actu in top %}
-              <div class="card-actu">
-                <img src="{{ actu.coverImageUrlBySize.lg }}" />
-                <div class="card-title">
-                  <div>
-                    <label class="label-actualite">{{ actu.title }}</label>
+          <div class="contain-top-actu-card">
+            {% for actu in topActu %}
+              {% if loop.first %}
+                <a class="link-of-actuality" href="{{ path('app_actualite_show', { id: actu.id }) }}">
+                  <div class="content-first">
+                    <div class="actu-image">
+                      <img class="top-actu-image" src="{{ actu.cover }}" alt="image-presentation-actualite" />
+                    </div>
+                    <div class="actu-text">
+                      <label class="label-title">{{ actu.title }}</label>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </a>
+              {% else %}
+                <a class="link-of-actuality" href="{{ path('app_actualite_show', { id: actu.id }) }}">
+                  <div class="content-actu">
+                    <div class="actu-image">
+                      <img class="top-actu-image" src="{{ actu.cover }}" alt="image-presentation-actualite" />
+                    </div>
+                    <div class="actu-text">
+                      <label class="label-title">{{ actu.title }}</label>
+                    </div>
+                  </div>
+                </a>
+              {% endif %}
             {% endfor %}
           </div>
         </div>
-        <div class="actualite-2">
-          <div class="block-title-actualite">
-            <h1 class="title-actualite">Les actualités du jour</h1>
+        <div class="actualite-all">
+          <div class="block-title-news">
+            <h1 class="title-news">Toutes les actualités du mois</h1>
           </div>
           <div class="block-contain-card">
-            {% for actujour in actujours %}
+            {% for Actu in allActu %}
               <div class="card-actu">
-                <img src="{{ actujour.coverImageUrlBySize.lg }}" />
-                <div class="card-title">
-                  <div>
-                    <label class="label-actualite">{{ actujour.title }}</label>
+                <a href="{{ path('app_actualite_show', { id: Actu.id }) }}">
+                  <img src="{{ Actu.cover }}" alt="image-card-actualite" />
+                  <div class="card-title">
+                    <div>
+                      <label class="label-actualite">{{ Actu.title }}</label>
+                    </div>
                   </div>
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-        <div class="actualite-3">
-          <div class="block-title-actualite">
-            <h1 class="title-actualite">Toutes les actualités du mois</h1>
-            {# <select>
-              <option value="">Tous</option>
-              <option value="">Nintendo</option>
-              <option value="">Xbox</option>
-              <option value="">Playstation</option>
-            </select> #}
-          </div>
-          <div class="block-contain-card">
-            {% for allActu in allActus %}
-              <div class="card-actu">
-                <img src="{{ allActu.coverImageUrlBySize.lg }}" />
-                <div class="card-title">
-                  <div>
-                    <label class="label-actualite">{{ allActu.title }}</label>
-                  </div>
-                </div>
+                </a>
               </div>
             {% endfor %}
           </div>

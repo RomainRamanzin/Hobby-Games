@@ -3,11 +3,24 @@
     padding: 0;
     box-sizing: border-box;
 }
+/*important*/
+h1, h2, h3, h4, h5, h6, label, p{
+    padding: unset;
+    margin: unset;
+}
 .wrapper-area {
     overflow: hidden;
     min-height: calc(100vh - 231px);
-    /* padding: 5% 0; */
-    
+}
+
+body {
+    background-image: url('https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?cs=srgb&dl=pexels-lucie-liz-3165335.jpg&fm=jpg%27');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* background-image: linear-gradient(109deg, #00DBDE 0%, #FC00FF 100%);
+    background: linear-gradient(to top right, #ffffff, #6685ff);  */
 }
 /* Styles pour le footer */
 .footer {
