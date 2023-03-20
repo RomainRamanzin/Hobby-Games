@@ -206,6 +206,8 @@ class AppFixtures extends Fixture
         $game1->setEditor($editeur2);
         $manager->persist($game1);
 
+       
+
         $game2 = new Game();
         $game2->setName('Call of Duty: Black Ops Cold War');
         $game2->setReleaseDate(new \DateTime('2020-11-13'));
@@ -219,6 +221,26 @@ class AppFixtures extends Fixture
         $game2->addType($type3);
         $game2->setEditor($editeur3);
         $manager->persist($game2);
+
+        $picture1 = new GamePicture();
+        $picture1->setPicture('https://image.jeuxvideo.com/medias/159967/1599666332-6811-capture-d-ecran.jpg');
+        $picture1->setGame($game2);
+        $manager->persist($picture1);
+
+        $picture2 = new GamePicture();
+        $picture2->setPicture('https://image.jeuxvideo.com/medias/159967/1599666332-7835-capture-d-ecran.jpg');
+        $picture2->setGame($game2);
+        $manager->persist($picture2);
+
+        $picture3 = new GamePicture();
+        $picture3->setPicture('https://image.jeuxvideo.com/medias/159967/1599666333-3976-capture-d-ecran.jpg');
+        $picture3->setGame($game2);
+        $manager->persist($picture3);
+
+        $picture4 = new GamePicture();
+        $picture4->setPicture('https://image.jeuxvideo.com/medias/159967/1599666333-4679-capture-d-ecran.jpg');
+        $picture4->setGame($game2);
+        $manager->persist($picture4);
 
         $game3 = new Game();
         $game3->setName('Cyberpunk 2077');
@@ -392,6 +414,7 @@ class AppFixtures extends Fixture
         $article1->setNumberOfViews(1836);
         $article1->setWritedBy($user1);
         $article1->setValidatedBy($user2);
+        $article1->setGame($game2);
         $manager->persist($article1);
 
         $article2 = new Article();
@@ -403,7 +426,20 @@ class AppFixtures extends Fixture
         $article2->setNumberOfViews(17986);
         $article2->setWritedBy($user2);
         $article2->setValidatedBy($user1);
+        $article2->setGame($game2);
         $manager->persist($article2);
+
+        $article3 = new Article();
+        $article3->setTitle('Comment devenir un pro du jeu vidéo ?');
+        $article3->setCover('https://www.letudiant.fr/static/uploads/mediatheque/ETU_ETU/1/5/2644415-metier-gamer-pro-letudiant-766x438.jpg');
+        $article3->setIsValided(true);
+        $article3->setPublicationDate(new \DateTime('2022-12-10'));
+        $article3->setLastLodifiedDate(new \DateTime('2022-12-19'));
+        $article3->setNumberOfViews(17986);
+        $article3->setWritedBy($user2);
+        $article3->setValidatedBy($user1);
+        $article3->setGame($game2);
+        $manager->persist($article3);
 
 
         //section articles

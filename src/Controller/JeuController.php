@@ -22,6 +22,7 @@ class JeuController extends AbstractController
     {
         //Création du formulaire de recherche
         $formSearch = $this->createFormBuilder()
+            ->setMethod('GET')
             ->add('search', TextType::class, [
                 'required' => false,
             ])
@@ -49,6 +50,7 @@ class JeuController extends AbstractController
         $formSearch->handleRequest($request);
 
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+            
             $data = $formSearch->getData();
             // dd($data['search']);
 
@@ -56,9 +58,8 @@ class JeuController extends AbstractController
             $type = $data['type'];
             $platform = $data['platform'];
 
-            $filteredQuery = $gameRepository->filterQuery($search, $type, $platform);
-        }
-        else{
+        } else {
+            // Initialisation des variables de recherche
             $search = null;
             $type = null;
             $platform = null;
@@ -68,7 +69,7 @@ class JeuController extends AbstractController
         $games = $paginator->paginate(
             $gameRepository->filterQuery($search, $type, $platform),
             $request->query->getInt('page', 1),
-            32
+            36
         );
 
         return $this->render('jeu/index.html.twig', [
@@ -81,7 +82,8 @@ class JeuController extends AbstractController
     #[Route('/jeu/{id}', name: 'app_jeu')]
     public function show(Game $game): Response
     {
-        dd($game);
+
+        //récuperer les articles liés au jeu ou à la plateforme
 
         return $this->render('jeu/show.html.twig', [
             'controller_name' => 'JeuController',

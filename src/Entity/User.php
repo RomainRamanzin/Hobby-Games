@@ -325,6 +325,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getAvatar(): ?string
     {
+        if ($this->avatar === null) {
+            return 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?s=200&d=mp';
+        }
         return $this->avatar;
     }
 
