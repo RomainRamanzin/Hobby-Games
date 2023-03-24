@@ -21,7 +21,7 @@
 			{# Game Infos #}
 			<div class="row d-flex justify-content-center">
 				<div class="col-xl-4 col-lg-6">
-					<img class="img-jeu" src="{{ game.poster }}" alt="">
+					<img class="img-jeu" src="{{ game.poster }}" alt="Image du jeu">
 				</div>
 
 				<div class="col-xl-6 col-lg-6 game-infos">
@@ -114,7 +114,7 @@
 					{% else %}
 						{% for publication in game.publications|slice(0, 3) %}
 							<div class="col-lg-4 col-sm-6 mb-3">
-								<div class="card-avis">
+								<div class="card-avis h-100">
 									<div class="avis-top-card">
 										<img class="avis-top-pp-image" src="{{ publication.user.avatar }}" alt="image de profil">
 										<div class="avis-top-card-data">
@@ -135,7 +135,7 @@
 
 									<div class="avis-bottom-card">
 										<div class="avis-bottom-card-title">{{ publication.review.title }}</div>
-										<div class="avis-bottom-card-text">{{ publication.review.content }}</div>
+										<div class="avis-bottom-card-text">{{ publication.review.content|length > 100 ? publication.review.content|slice(0, 100) ~ '...' : publication.review.content }}</div>
 									</div>
 								</div>
 							</div>
