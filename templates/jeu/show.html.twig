@@ -1,0 +1,205 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hobby Games |
+	{{ game.name }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="/asset/css/jeux.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+	<div class="container my-5">
+		<div class="glass p-sm-5 p-3">
+			<a class="btn btn-primary px-4 mb-5" href="{{ path('app_jeux') }}">
+				<i class="fa-solid fa-arrow-left pe-3"></i>
+				Retour aux jeux
+			</a>
+
+			{# Game Infos #}
+			<div class="row d-flex justify-content-center">
+				<div class="col-xl-4 col-lg-6">
+					<img class="img-jeu" src="{{ game.poster }}" alt="Image du jeu">
+				</div>
+
+				<div class="col-xl-6 col-lg-6 game-infos">
+					<div class="game-title">
+						{{ game.name }}
+					</div>
+					<div class="game-platform">
+						Plateformes :
+						{% for platform in game.platforms %}
+							<span class="badge-platform">{{ platform.name }}</span>
+						{% endfor %}
+					</div>
+					<div class="game-release">
+						Date de sortie :
+						<div class="game-release-date">
+							{{ game.releaseDate|format_datetime('full', 'none', locale='fr') }}
+						</div>
+					</div>
+					<div class="game-description">
+						Description :
+						<div class="game-description-text">
+							{{ game.description }}
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<hr
+			class="hr my-5 mx-5">
+
+			{# Game Caracterisiques #}
+			<div class="row m-3">
+				<div class="section-title">
+					<i class="fa-solid fa-gear"></i>
+					Caractéristiques
+				</div>
+				<table class="mt-3 caracteristics-table">
+					<tr>
+						<th>Date de sortie</th>
+						<td>{{ game.releaseDate|format_datetime('full', 'none', locale='fr')  }}</td>
+					</tr>
+					<tr>
+						<th>Plateformes</th>
+						<td>
+							<div class="multiple-caracteristics">
+								{% for platform in game.platforms %}
+									<span class="">{{ platform.name }}</span>
+								{% endfor %}
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>Genre</th>
+						<td>
+							<div class="multiple-caracteristics">
+								{% for genre in game.types %}
+									<span>{{ genre.name }}</span>
+								{% endfor %}
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>Editeur</th>
+						<td>{{ game.editor.name }}</td>
+					</tr>
+					<tr>
+						<th>Age minimum</th>
+						<td>{{ game.ageLimit }}
+							ans</td>
+					</tr>
+				</table>
+			</div>
+
+
+			<hr
+			class="hr my-5">
+
+			{# Game Avis #}
+			<div class="row m-3">
+				<div class="section-title">
+					<i class="fa-solid fa-comments"></i>
+					Avis de la communauté
+				</div>
+				<div class="d-flex justify-content-center">
+					{% if game.publications|length == 0 %}
+						<div class="col-12 d-flex justify-content-center">
+							<p class="no-review">Soyez le premier à laisser un avis</p>
+						</div>
+					{% else %}
+						{% for publication in game.publications|slice(0, 3) %}
+							<div class="col-lg-4 col-sm-6 mb-3">
+								<div class="card-avis h-100">
+									<div class="avis-top-card">
+										<img class="avis-top-pp-image" src="{{ publication.user.avatar }}" alt="image de profil">
+										<div class="avis-top-card-data">
+											<div class="avis-top-card-rate">
+											
+												{% for i in 1..5 %}
+													{% if i <= publication.review.rate %}
+														<i class="fas fa-star"></i>
+													{% else %}
+														<i class="far fa-star"></i>
+													{% endif %}
+												{% endfor %}
+											</div>
+											<div class="avis-top-card-username">{{ publication.user.pseudo }}</div>
+											<div class="avis-top-card-date">{{ publication.review.publicationDate|format_datetime('short', 'none', locale='fr') }}</div>
+										</div>
+									</div>
+
+									<div class="avis-bottom-card">
+										<div class="avis-bottom-card-title">{{ publication.review.title }}</div>
+										<div class="avis-bottom-card-text">{{ publication.review.content|length > 100 ? publication.review.content|slice(0, 100) ~ '...' : publication.review.content }}</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					{% endif %}
+				</div>
+
+				<div class="col-12 d-flex justify-content-center">
+					<a class="btn btn-primary px-4" href="{{ path('app_avis', { 'id' : game.id }) }}">
+						Voir tous les avis
+					</a>
+				</div>
+			</div>
+
+
+			<hr
+			class="hr my-5">
+
+			{# Game Avis #}
+			<div class="row m-3">
+				<div class="section-title">
+					<i class="fa-solid fa-image"></i>
+					Images du jeu
+				</div>
+				{% if game.pictures|length == 0 %}
+					<div class="col-12 d-flex justify-content-center">
+						<p class="no-image">Aucune image disponible</p>
+					</div>
+				{% else %}
+					{% for gamePicture in game.pictures|slice(0, 4) %}
+						<div class="col-md-6 col-12 mb-4">
+							<img class="avis-section-image" src="{{ gamePicture.picture }}" alt="">
+						</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+
+
+			<hr
+			class="hr my-5">
+
+			{# Game Articles #}
+			<div class="row m-3">
+				<div class="section-title">
+					<i class="fa-solid fa-square-rss"></i>
+					Articles
+				</div>
+				{% for article in game.articles|slice(0, 3) %}
+					<div class="col-lg-3 col-sm-6 mb-3">
+						<div class="article-card" style="background-image : url({{ article.cover }})">
+							<div class="article-card-overlay">
+								{{ article.title }}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				<div class="discover-more col-lg-3 col-sm-6">
+					<a class="dicover-more-text" href="">Voir plus d'articles
+						<i class="fa-solid fa-circle-plus"></i>
+					</a>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+{% endblock %}

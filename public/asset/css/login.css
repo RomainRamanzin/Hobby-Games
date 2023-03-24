@@ -1,0 +1,142 @@
+.box-container-login{
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10% 0;
+    background: linear-gradient(to top right, #ffffff, #6685ff);
+}
+.block-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.card-form-login{
+    border-radius: 15px;
+    padding: 50px;
+    background-color: rgb(255 250 250 / 20%);
+    width: 75%;
+}
+.box-image{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.login-page-image{
+    display: flex;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.label-form{
+    text-transform: capitalize;
+    font-size: 1.2em;
+    font-family: Georgia, serif;
+}
+.content-input .label-form i{
+    margin: 15px;
+    color: #ffffff;
+}
+.label-text{
+    font-size: 15px;
+    margin: 2% 0;
+    line-height: normal;
+}
+.link-connexion{
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+}
+.title-connexion-interface{
+    text-transform: uppercase;
+    font-size: 1.5em;
+    text-align: center;
+    margin: unset;
+}
+.content-input{
+    margin: 5% 0;
+}
+.content-boutton{
+    margin: 5% 0;
+}
+.btn-login{
+    background-color: #6685ff;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
+}
+.btn-login:hover{
+    background-color: #3e64fe;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+.box-reset-btn{
+    max-width: 50%;
+    margin: auto;
+}
+.ascend-div {
+    animation: ascend 1s ease-in-out;
+    opacity: 0; /* pour que la div soit invisible au début */
+    transform: translateX(-150px); /* pour que la div soit en dehors de l'écran au début */
+    animation-fill-mode: forwards;
+  }
+  @keyframes ascend {
+    from{
+      opacity: 0;
+      transform: translateX(-150px);
+    }
+    to{
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+.box-center{
+    text-align: center;
+}
+.link-connexion{
+    text-decoration: none;
+    color: #000000;
+    line-height: 2em;
+    word-wrap: break-word;
+    font-weight: 600;
+    font-size: 15px;
+}
+.link-connexion:hover{
+    color: #FF0000;
+}
+.checkbox-accept{
+    margin: 0 0 0 20px;
+}
+.condition-agree{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (max-width: 576px){
+    .title-connexion-interface{
+        font-size: 1.2em;
+    }
+    .label-form{
+        font-size: 1em;
+    }
+    .btn-login{
+        font-size: 1em;
+    }
+    .login-page-image{
+        max-width: 70%;
+    }
+    .card-form-login{
+        padding: 20px;
+        width: 90%;
+    }
+}

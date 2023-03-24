@@ -44,6 +44,9 @@ class Article
     #[ORM\ManyToOne(inversedBy: 'articles_validated')]
     private ?User $validated_by = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $title = null;
+
     public function __construct()
     {
         $this->sections = new ArrayCollection();
@@ -176,6 +179,18 @@ class Article
     public function setValidatedBy(?User $validated_by): self
     {
         $this->validated_by = $validated_by;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

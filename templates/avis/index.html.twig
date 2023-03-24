@@ -1,0 +1,310 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hobby Games | Avis
+	{{ game.name }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="/asset/css/avis.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+	<div class="container my-5">
+		<div class="glass p-sm-5 p-3">
+			<a class="btn btn-primary px-4 mb-3" href="{{ path('app_jeu', {'id': game.id}) }}">
+				<i class="fa-solid fa-arrow-left pe-3"></i>
+				Retour aux jeu
+			</a>
+
+			<div class="page-title text-center">
+				{{ game.name }}
+			</div>
+
+			{# Section stat #}
+			<div class="row card-avis-stats">
+				<div class="col-2 card-avis-stats-left">
+
+					<div class="card-avis-stats-title">
+						Note moyenne
+					</div>
+
+					{# Calcul de la moyenne des notes #}
+					{% if publications|length == 0 %}
+						{% set averageRate = null %}
+					{% else %}
+						{% set averageRate = 0 %}
+						{% for publication in publications %}
+							{% set averageRate = averageRate + publication.review.rate %}
+						{% endfor %}
+						{% set averageRate = averageRate / publications|length %}
+					{% endif %}
+
+					<div class="card-avis-stats-note">
+						{{ averageRate is not null ? averageRate|number_format(1, '.', '') : '--'}}
+					</div>
+					<div class="card-avis-stats-stars">
+						{% for i in 1..5 %}
+							{% if i <= averageRate %}
+								<i class="fas fa-star"></i>
+							{% else %}
+								<i class="far fa-star"></i>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+
+				<div
+					class="col-8 card-avis-stats-center">
+
+					{# 5 étoiles #}
+					<div class="graph-card">
+						<div class="graph-card-stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+
+						{# Calcul de nombre de notes correspondantes à 5 étoiles #}
+						{% set countByRate5 = 0 %}
+						{% for publication in publications %}
+							{% if publication.review.rate == 5 %}
+								{% set countByRate5 = countByRate5 + 1 %}
+							{% endif %}
+						{% endfor %}
+
+						<div class="graph-card-bar">
+							<div class="graph-card-bar-fill bar-fill-5" style="width: {{ countByRate5 > 0 ? (100 * countByRate5) / publications|length : 0 }}%"></div>
+						</div>
+						<div class="graph-card-value">
+							{{ countByRate5 }}
+						</div>
+					</div>
+
+					{# 4 étoiles #}
+					<div class="graph-card">
+						<div class="graph-card-stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="far fa-star"></i>
+						</div>
+
+						{# Calcul de nombre de notes correspondantes à 4 étoiles #}
+						{% set countByRate4 = 0 %}
+						{% for publication in publications %}
+							{% if publication.review.rate == 4 %}
+								{% set countByRate4 = countByRate4 + 1 %}
+							{% endif %}
+						{% endfor %}
+
+						<div class="graph-card-bar">
+							<div class="graph-card-bar-fill bar-fill-4" style="width: {{ countByRate4 > 0 ? (100 * countByRate4) / publications|length : 0 }}%"></div>
+						</div>
+						<div class="graph-card-value">
+							{{ countByRate4 }}
+						</div>
+					</div>
+
+					{# 3 étoiles #}
+					<div class="graph-card">
+						<div class="graph-card-stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="far fa-star"></i>
+							<i class="far fa-star"></i>
+						</div>
+
+						{# Calcul de nombre de notes correspondantes à 3 étoiles #}
+						{% set countByRate3 = 0 %}
+						{% for publication in publications %}
+							{% if publication.review.rate == 3 %}
+								{% set countByRate3 = countByRate3 + 1 %}
+							{% endif %}
+						{% endfor %}
+						<div class="graph-card-bar">
+							<div class="graph-card-bar-fill bar-fill-3" style="width: {{ countByRate3 > 0 ? (100 * countByRate3) / publications|length : 0 }}%"></div>
+						</div>
+						<div class="graph-card-value">
+							{{ countByRate3 }}
+						</div>
+					</div>
+
+					{# 2 étoiles #}
+					<div class="graph-card">
+						<div class="graph-card-stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="far fa-star"></i>
+							<i class="far fa-star"></i>
+							<i class="far fa-star"></i>
+						</div>
+
+						{# Calcul de nombre de notes correspondantes à 2 étoiles #}
+						{% set countByRate2 = 0 %}
+						{% for publication in publications %}
+							{% if publication.review.rate == 2 %}
+								{% set countByRate2 = countByRate2 + 1 %}
+							{% endif %}
+						{% endfor %}
+						<div class="graph-card-bar">
+							<div class="graph-card-bar-fill bar-fill-2" style="width: {{ countByRate2 > 0 ? (100 * countByRate2) / publications|length : 0 }}%"></div>
+						</div>
+						<div class="graph-card-value">
+							{{ countByRate2 }}
+						</div>
+					</div>
+
+					{# 1 étoiles #}
+					<div class="graph-card">
+						<div class="graph-card-stars">
+							<i class="fas fa-star"></i>
+							<i class="far fa-star"></i>
+							<i class="far fa-star"></i>
+							<i class="far fa-star"></i>
+							<i class="far fa-star"></i>
+						</div>
+
+						{# Calcul de nombre de notes correspondantes à 1 étoiles #}
+						{% set countByRate1 = 0 %}
+						{% for publication in publications %}
+							{% if publication.review.rate == 1 %}
+								{% set countByRate1 = countByRate1 + 1 %}
+							{% endif %}
+						{% endfor %}
+						<div class="graph-card-bar">
+							<div class="graph-card-bar-fill bar-fill-1" style="width: {{ countByRate1 > 0 ? (100 * countByRate1) / publications|length : 0 }}%"></div>
+						</div>
+						<div class="graph-card-value">
+							{{ countByRate1 }}
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-2 card-avis-stats-right">
+					<a href="{{ path('app_avis_add', {'id': game.id}) }}" class="card-avis-btn-donner-avis">
+						<i class="fa-regular fa-pen-to-square"></i>
+						Donner votre avis
+					</a>
+					<div class="card-avis-stats-count">
+						{{ game.publications|length }}
+						avis
+					</div>
+				</div>
+			</div>
+			{# end stat section #}
+
+
+			{# Section avis de l'utilisateur si connecté et un avis est posté pour ce jeu #}
+			{% if authUserPublication %}
+				<div class="row d-flex flex-column align-items-center">
+					<div class="col-9">
+						<div class="section-title">
+							Votre avis
+						</div>
+						<div class="avis-card">
+							<div class="avis-card-header">
+								<div class="avis-card-data">
+									<img class="avis-card-avatar" src="{{ authUserPublication.user.avatar }}" alt="User avatar">
+									<div class="avis-card-user-data">
+										<div class="avis-card-user-name">
+											{{ authUserPublication.user.pseudo }}
+										</div>
+										<div class="avis-card-user-date">
+											Posté le
+											{{ authUserPublication.review.publicationDate|date('d/m/Y') }}
+										</div>
+									</div>
+								</div>
+								<div class="avis-card-note">
+									{% for i in 1..5 %}
+										{% if i <= authUserPublication.review.rate %}
+											<i class="fas fa-star"></i>
+										{% else %}
+											<i class="far fa-star"></i>
+										{% endif %}
+									{% endfor %}
+
+								</div>
+							</div>
+							<hr class="separator">
+							<div class="avis-card-body">
+								<div class="avis-card-body-title">
+									{{ authUserPublication.review.title }}
+								</div>
+								<div class="avis-card-body-content">
+									{{ authUserPublication.review.content }}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+			{# section avis de l'utilisateur #}
+
+			{# Avis section #}
+			<div class="row avis-section">
+				<div class="col-9 section-title">
+					Tous les avis lecteurs ({{ game.publications|length }})
+				</div>
+				<div class="col-9 avis">
+
+					{% if publications|length == 0 %}
+						<div class="laisser-un-avis">
+							Soyez le premier à donner votre avis sur ce jeu !
+						</div>
+					{% else %}
+						{% for publication in publications %}
+
+							<div class="avis-card">
+								<div class="avis-card-header">
+									<div class="avis-card-data">
+										<img class="avis-card-avatar" src="{{ publication.user.avatar }}" alt="User avatar">
+										<div class="avis-card-user-data">
+											<div class="avis-card-user-name">
+												{{ publication.user.pseudo }}
+											</div>
+											<div class="avis-card-user-date">
+												Posté le
+												{{ publication.review.publicationDate|date('d/m/Y') }}
+											</div>
+										</div>
+									</div>
+									<div class="avis-card-note">
+										{% for i in 1..5 %}
+											{% if i <= publication.review.rate %}
+												<i class="fas fa-star"></i>
+											{% else %}
+												<i class="far fa-star"></i>
+											{% endif %}
+										{% endfor %}
+
+									</div>
+								</div>
+								<hr class="separator">
+								<div class="avis-card-body">
+									<div class="avis-card-body-title">
+										{{ publication.review.title }}
+									</div>
+									<div class="avis-card-body-content">
+										{{ publication.review.content }}
+									</div>
+								</div>
+							</div>
+
+						{% endfor %}
+
+					{% endif %}
+				</div>
+			</div>
+			{# end avis section #}
+
+		</div>
+	</div>
+{% endblock %}

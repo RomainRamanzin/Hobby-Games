@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hobby Games | Les jeux
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="/asset/css/jeux.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+	<div class="container my-5">
+		<div
+			class="glass">
+			{# Search Bar #}
+
+			{{ form_start(formSearch) }}
+			<div class="search-component mb-3">
+				<div class="search-filter-text">Filtrer les jeux</div>
+				{{ form_widget(formSearch.search, {'attr': {'class': 'form-control' , 'placeholder': 'Rechercher un jeu'}}) }}
+				{{ form_widget(formSearch.type,  {'attr': {'class': 'form-select'}}) }}
+				{{ form_widget(formSearch.platform, {'attr': {'class': 'form-select'}}) }}
+				{{ form_widget(formSearch.submit, {'attr': {'class': 'btn btn-primary px-5'}}) }}
+			</div>
+			{{ form_end(formSearch) }}
+
+			<div
+				class="row">
+				{# Game Card #}
+				{% for game in games %}
+					<div class="col-lg-3 col-md-6 p-2">
+						<a class="link-card-jeux" href="{{ path('app_jeu', {'id' : game.id }) }}">
+							<div class="card-jeux" style="background-image: url('{{ game.poster }}');">
+								<div class="card-jeux-overlay">
+									<div class="card-jeux-title">{{ game.name }}</div>
+									<div class="card-jeux-badges">
+										{% for type in game.Types %}
+											<span class="card-jeux-badge">{{ type.name }}</span>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				{% endfor %}
+				{# si il n'y a aucun résultat #}
+
+				{% if games|length == 0 %}
+					<div class="col-12">
+						<div class="alert alert-danger text-center" role="alert">
+							Aucun résultat
+						</div>
+					</div>
+				{% endif %}
+			</div>
+			<div class="d-flex justify-content-center">
+				{{ knp_pagination_render(games) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -39,28 +39,62 @@ class GameRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Game[] Returns an array of Game objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('g')
-//            ->andWhere('g.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('g.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function paginatorQuery()
+    {
+        return $this->createQueryBuilder('g')
+            ->orderBy('g.id', 'ASC')
+            ->getQuery();
+    }
 
-//    public function findOneBySomeField($value): ?Game
-//    {
-//        return $this->createQueryBuilder('g')
-//            ->andWhere('g.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+
+    public function filterQuery($search, $type, $platform)
+    {
+        $query = $this->createQueryBuilder('g')
+            ->orderBy('g.id', 'ASC');
+
+        if ($search) {
+            $query->andWhere('g.name LIKE :search')
+                ->setParameter('search', '%' . $search . '%');
+        }
+
+        if ($type) {
+
+            $query->join('g.types', 't')
+                ->andWhere('t = :type')
+                ->setParameter('type', $type);
+        }
+
+        if ($platform) {
+            $query->join('g.platforms', 'p')
+                ->andWhere('p = :platform')
+                ->setParameter('platform', $platform);
+        }
+
+        return $query->getQuery();
+    }
+
+    //    /**
+    //     * @return Game[] Returns an array of Game objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('g')
+    //            ->andWhere('g.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('g.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Game
+    //    {
+    //        return $this->createQueryBuilder('g')
+    //            ->andWhere('g.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }
