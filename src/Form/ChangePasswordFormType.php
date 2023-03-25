@@ -17,12 +17,14 @@ class ChangePasswordFormType extends AbstractType
         $builder
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'attr' => ['class' => 'form-control'],
                 'options' => [
                     'attr' => [
                         'autocomplete' => 'new-password',
                     ],
                 ],
                 'first_options' => [
+                    'attr' => ['class' => 'form-control'],
                     'constraints' => [
                         new NotBlank([
                             'message' => 'Please enter a password',
@@ -34,17 +36,18 @@ class ChangePasswordFormType extends AbstractType
                             'max' => 4096,
                         ]),
                     ],
-                    'label' => 'New password',
+                    'label' => 'Nouveau mot de passe',
                 ],
                 'second_options' => [
-                    'label' => 'Repeat Password',
+                    'attr' => ['class' => 'form-control'],
+                    'label' => 'Répétez le mot de passe',
                 ],
+                'attr' => ['class' => 'form-control'],
                 'invalid_message' => 'The password fields must match.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
