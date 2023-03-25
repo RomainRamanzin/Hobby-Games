@@ -121,7 +121,7 @@ body {
     word-wrap: break-word;
 }
 .text-company a:hover{
-    color: #000000;
+    color: #7692FF;
 }
 
 /*information*/
@@ -156,7 +156,7 @@ body {
     margin: 0 5%;
 }
 .icon-footer a:hover{
-    color: #000000;
+    color: #7692FF;
     transition: 0.3s;
 }
 .navbar-nav .nav-item:hover{

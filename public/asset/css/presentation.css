@@ -8,7 +8,16 @@
     border-top: solid 2px #cececc;
     border-bottom: solid 2px #cececc;
     padding: 10px 0;
+        color: white;
     width: 100%;
+}
+.glass {
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(30px);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    background-clip: padding-box;
 }
 .title span{
     color: #6685ff;
@@ -18,11 +27,13 @@
     font-weight: 500;
     line-height: 2em;
     margin-bottom: 3%;
+        color: white;
 }
 .paragraphe-entreprise{
     font-size: 15px;
     line-height: 1.5em;
     text-align: justify;
+        color: white;
 }
 .image-entreprise{
     display: flex;
@@ -36,6 +47,7 @@
 .title-worth{
     font-size: 20px;
     font-weight: 500;
+        color: white;
 }
 .block-history{
     padding: 0 3%;
@@ -44,6 +56,7 @@
     height: 100%;
     width: 100%;
     flex-direction: column;
+        color: white;
 }
 .icon-title{
     display: flex;
@@ -58,6 +71,7 @@
     margin: 5%;
     text-align: justify;
     font-size: 15px;
+        color: white;
 }
 .block-presentation, .block-teams, .block-community{
     margin: 5% 0;
@@ -113,5 +127,8 @@
     }
     .block-presentation{
         margin: 10% 0;
+    }
+    .glass{
+        padding: 10px;
     }
 }
