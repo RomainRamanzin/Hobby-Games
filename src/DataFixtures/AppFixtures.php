@@ -363,47 +363,6 @@ class AppFixtures extends Fixture
         $manager->persist($user3);
 
 
-        //category sanctions
-        $categorySanction1 = new CategorySanction();
-        $categorySanction1->setName('Troll');
-        $manager->persist($categorySanction1);
-
-        $categorySanction2 = new CategorySanction();
-        $categorySanction2->setName('Harcèlement');
-        $manager->persist($categorySanction2);
-
-        $categorySanction3 = new CategorySanction();
-        $categorySanction3->setName('Propos racistes');
-        $manager->persist($categorySanction3);
-
-        $categorySanction4 = new CategorySanction();
-        $categorySanction4->setName('Propos homophobes');
-
-        $manager->persist($categorySanction4);
-        $categorySanction4->setName('Contenu pornographique');
-        $manager->persist($categorySanction4);
-
-        $categorySanction5 = new CategorySanction();
-        $categorySanction5->setName('Contenu violent');
-        $manager->persist($categorySanction5);
-
-
-        //Sanctions
-        $sanction1 = new Sanction();
-        $sanction1->setComment("Vous avez été sanctionné pour avoir troller");
-        $sanction1->setBanDuration(20);
-        $sanction1->setCategory($categorySanction1);
-        $sanction1->setUser($user1);
-        $manager->persist($sanction1);
-
-        $sanction2 = new Sanction();
-        $sanction2->setComment("Vous avez été sanctionné pour avoir publié du contenu pornographique");
-        $sanction2->setBanDuration(168);
-        $sanction2->setCategory($categorySanction4);
-        $sanction2->setUser($user2);
-        $manager->persist($sanction2);
-
-
         //articles
         $article1 = new Article();
         $article1->setTitle('Le jeu vidéo est-il un sport ?');
@@ -506,8 +465,7 @@ class AppFixtures extends Fixture
         $review4->setPublicationDate(new \DateTime('2022-12-21'));
         $review4->setIsDeleted(true);
         $manager->persist($review4);
-
-
+        
 
         //publication
         $publication1 = new Publication();
@@ -533,14 +491,7 @@ class AppFixtures extends Fixture
         $publication4->setReview($review4);
         $manager->persist($publication4);
 
-
-
-
-
-
-
-
-
+        // Save data in database
         $manager->flush();
     }
 }
