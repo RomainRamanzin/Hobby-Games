@@ -48,6 +48,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="/about">forum</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contactez-nous">contactez-nous</a>
+              </li>
               {# si la personne est pas connecté alors afficher un bouton connexion sinon
                                 deux pour visiter le profil et se déconnecter #}
               {% if app.user == null %}
@@ -110,16 +113,16 @@
               <div class="confidential-footer">
                 <ul class="list-information">
                   <li>
-                    <a href="http://">mentions légales</a>
+                    <a href="/mentions-legales">mentions légales</a>
                   </li>
                   <li>
-                    <a href="http://">politique de confidentialité</a>
+                    <a href="/politique-confidentialite">politique de confidentialité</a>
+                  </li>
+                  <li>
+                    <a href="/conditions-generales">Conditions générales</a>
                   </li>
                   <li>
                     <a href="/presentation-entreprise">en savoir plus sur nous</a>
-                  </li>
-                  <li>
-                    <a href="/presentation-entreprise">Contactez-nous</a>
                   </li>
                 </ul>
               </div>

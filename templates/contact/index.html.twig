@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  HobbyGames - Contactez-nous
+{% endblock %}
+
+{% block body %}
+  <link href="/asset/css/contact.css" rel="stylesheet" />
+  <div class="page-presentation">
+    <div class="container">
+      <div class="glass">
+        <div class="animation-div">
+          <h1 class="title-contact">Contactez-nous</h1>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+              <div class="animation-div">
+                <div class="container-contact">
+                  {{ form_start(formulaire) }}
+                  <div class="box-input-contain">
+                    <label class="label-contact">Nom</label>
+                    {{ form_widget(formulaire.nom) }}
+                  </div>
+                  <div class="box-input-contain">
+                    <label class="label-contact">email</label>
+                    {{ form_widget(formulaire.email) }}
+                  </div>
+                  <div class="box-input-contain-last">
+                    <label class="label-contact">message</label>
+                    {{ form_widget(formulaire.message) }}
+                  </div>
+                  <div class="bouton-submit-contact">
+                    <button type="submit" class="btn-contact">Envoyer</button>
+                  </div>
+                  {{ form_end(formulaire) }}
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+              <div class="container-contact-second">
+                <div class="animation-div">
+                  <div class="box-content-text">
+                    <ul class="text-contact-ul">
+                      <li class="text-contact-li">Si vous avez des questions, n'hésitez pas à nous contacter en utilisant le formulaire ci-dessous.</li>
+                      <li class="text-contact-li">Vous pouvez également nous signaler tout bug ou erreur que vous avez rencontré sur notre site, afin que nous puissions y remédier rapidement.</li>
+                      <li class="text-contact-li">Votre avis est important pour nous! Nous ferons de notre mieux pour vous répondre dans les plus brefs délais.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -10,54 +10,58 @@
     <div class="container">
       <div class="glass">
         <div class="actualite-top-five">
-          <div class="block-title-news-top">
-            <h1 class="title-news">Top 5 des actualités</h1>
-          </div>
-          <div class="contain-top-actu-card">
-            {% for actu in topActu %}
-              {% if loop.first %}
-                <a class="link-of-actuality" href="{{ path('app_actualite_show', { id: actu.id }) }}">
-                  <div class="content-first">
-                    <div class="actu-image">
-                      <img class="top-actu-image" src="{{ actu.cover }}" alt="image-presentation-actualite" />
+          <div class="animation-div">
+            <div class="block-title-news-top">
+              <h1 class="title-news">Top 5 des actualités</h1>
+            </div>
+            <div class="contain-top-actu-card">
+              {% for actu in topActu %}
+                {% if loop.first %}
+                  <a class="link-of-actuality" href="{{ path('app_actualite_show', { id: actu.id }) }}">
+                    <div class="content-first">
+                      <div class="actu-image">
+                        <img class="top-actu-image" src="{{ actu.cover }}" alt="image-presentation-actualite" />
+                      </div>
+                      <div class="actu-text">
+                        <label class="label-title">{{ actu.title }}</label>
+                      </div>
                     </div>
-                    <div class="actu-text">
-                      <label class="label-title">{{ actu.title }}</label>
+                  </a>
+                {% else %}
+                  <a class="link-of-actuality" href="{{ path('app_actualite_show', { id: actu.id }) }}">
+                    <div class="content-actu">
+                      <div class="actu-image">
+                        <img class="top-actu-image" src="{{ actu.cover }}" alt="image-presentation-actualite" />
+                      </div>
+                      <div class="actu-text">
+                        <label class="label-title">{{ actu.title }}</label>
+                      </div>
                     </div>
-                  </div>
-                </a>
-              {% else %}
-                <a class="link-of-actuality" href="{{ path('app_actualite_show', { id: actu.id }) }}">
-                  <div class="content-actu">
-                    <div class="actu-image">
-                      <img class="top-actu-image" src="{{ actu.cover }}" alt="image-presentation-actualite" />
-                    </div>
-                    <div class="actu-text">
-                      <label class="label-title">{{ actu.title }}</label>
-                    </div>
-                  </div>
-                </a>
-              {% endif %}
-            {% endfor %}
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
           </div>
         </div>
         <div class="actualite-all">
-          <div class="block-title-news">
-            <h1 class="title-news">Toutes les actualités du mois</h1>
-          </div>
-          <div class="block-contain-card">
-            {% for Actu in allActu %}
-              <div class="card-actu">
-                <a href="{{ path('app_actualite_show', { id: Actu.id }) }}">
-                  <img src="{{ Actu.cover }}" alt="image-card-actualite" />
-                  <div class="card-title">
-                    <div>
-                      <label class="label-actualite">{{ Actu.title }}</label>
+          <div class="animation-div">
+            <div class="block-title-news">
+              <h1 class="title-news">Toutes les actualités du mois</h1>
+            </div>
+            <div class="block-contain-card">
+              {% for Actu in allActu %}
+                <div class="card-actu">
+                  <a href="{{ path('app_actualite_show', { id: Actu.id }) }}">
+                    <img src="{{ Actu.cover }}" alt="image-card-actualite" />
+                    <div class="card-title">
+                      <div>
+                        <label class="label-actualite">{{ Actu.title }}</label>
+                      </div>
                     </div>
-                  </div>
-                </a>
-              </div>
-            {% endfor %}
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
           </div>
         </div>
       </div>
