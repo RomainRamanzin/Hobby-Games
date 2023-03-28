@@ -176,11 +176,17 @@
 
 .game-platform{
     white-space: nowrap;
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+    color: var(--color-secondary);
+}
+
+.badges-plateforme{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
-    color: var(--color-secondary);
+    gap: 10px;
 }
 
 .badge-platform{
@@ -188,6 +194,7 @@
     color: var(--color-tertiary);
     padding: 2px 10px;
     border-radius: 20px;
+    white-space: nowrap;
     /* font-size: 0.7rem; */
 }
 
@@ -251,7 +258,9 @@
 
 .multiple-caracteristics{
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /* gap: 20px; */
 }
 
 .avis-section-image{
@@ -369,4 +378,12 @@
         padding: 5px 10px;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .card-avis{
+        margin-inline: 0;
+    }
+}
+    
+
     

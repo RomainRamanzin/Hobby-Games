@@ -13,7 +13,7 @@
 
 	<div class="container my-5">
 		<div class="glass p-sm-5 p-3">
-			<a class="btn btn-primary px-4 mb-5" href="{{ path('app_jeux') }}">
+			<a class="btn btn-primary px-4 mb-3" href="{{ path('app_jeux') }}">
 				<i class="fa-solid fa-arrow-left pe-3"></i>
 				Retour aux jeux
 			</a>
@@ -29,10 +29,12 @@
 						{{ game.name }}
 					</div>
 					<div class="game-platform">
-						Plateformes :
-						{% for platform in game.platforms %}
-							<span class="badge-platform">{{ platform.name }}</span>
-						{% endfor %}
+						<span>Plateformes :</span>
+						<div class="badges-plateforme">
+							{% for platform in game.platforms %}
+								<span class="badge-platform">{{ platform.name }}</span>
+							{% endfor %}
+						</div>
 					</div>
 					<div class="game-release">
 						Date de sortie :
@@ -54,7 +56,7 @@
 			class="hr my-5 mx-5">
 
 			{# Game Caracterisiques #}
-			<div class="row m-3">
+			<div class="row m-1">
 				<div class="section-title">
 					<i class="fa-solid fa-gear"></i>
 					Caractéristiques
@@ -106,20 +108,20 @@
 					<i class="fa-solid fa-comments"></i>
 					Avis de la communauté
 				</div>
-				<div class="d-flex justify-content-center">
+				<div class="d-flex flex-wrap justify-content-center">
 					{% if game.publications|length == 0 %}
 						<div class="col-12 d-flex justify-content-center">
 							<p class="no-review">Soyez le premier à laisser un avis</p>
 						</div>
 					{% else %}
 						{% for publication in game.publications|slice(0, 3) %}
-							<div class="col-lg-4 col-sm-6 mb-3">
+							<div class="col-lg-4 col-sm-12 mb-3">
 								<div class="card-avis h-100">
 									<div class="avis-top-card">
 										<img class="avis-top-pp-image" src="{{ publication.user.avatar }}" alt="image de profil">
 										<div class="avis-top-card-data">
 											<div class="avis-top-card-rate">
-											
+
 												{% for i in 1..5 %}
 													{% if i <= publication.review.rate %}
 														<i class="fas fa-star"></i>

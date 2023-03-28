@@ -43,23 +43,27 @@ class AvisController extends AbstractController
     public function add(Game $game, Request $request, EntityManagerInterface $entityManager, PublicationRepository $publicationRepository): Response
     {
         //récupérer l'utilisateur connecté
-        $user = $this->getUser();
-        if (!$user) {
-            return $this->redirectToRoute('app_login');
-        }
+        // $user = $this->getUser();
+        // if (!$user) {
+        //     return $this->redirectToRoute('app_login');
+        // }
 
-        //vérifier si l'utilisateur a deja laisser une publication sur ce jeu
-        $publication = $publicationRepository->findOneBy([
-            'user' => $user,
-            'game' => $game
-        ]);
+        // //vérifier si l'utilisateur a deja laisser une publication sur ce jeu
+        // $publication = $publicationRepository->findOneBy([
+        //     'user' => $user,
+        //     'game' => $game
+        // ]);
 
-        if ($publication) {
-            $review = $publication->getReview();
-        }
-        else {
-            $review = new Review();
-        }
+        // if ($publication) {
+        //     $review = $publication->getReview();
+        // }
+        // else {
+        //     $review = new Review();
+        // }
+
+        //todo: Verouiller avec l'utilisateur connecté
+        
+        $review = new Review();
 
         $formReview = $this->createFormBuilder($review)
             ->add('rate', ChoiceType::class, [

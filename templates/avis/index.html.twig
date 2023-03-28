@@ -24,7 +24,7 @@
 
 			{# Section stat #}
 			<div class="row card-avis-stats">
-				<div class="col-2 card-avis-stats-left">
+				<div class="col-xl-2 col-md-5  col-8 card-avis-stats-left">
 
 					<div class="card-avis-stats-title">
 						Note moyenne
@@ -56,7 +56,7 @@
 				</div>
 
 				<div
-					class="col-8 card-avis-stats-center">
+					class="col-xl-8 col-md-12 card-avis-stats-center">
 
 					{# 5 étoiles #}
 					<div class="graph-card">
@@ -187,7 +187,7 @@
 
 				</div>
 
-				<div class="col-2 card-avis-stats-right">
+				<div class="col-xl-2 col-md-5 col-8 card-avis-stats-right">
 					<a href="{{ path('app_avis_add', {'id': game.id}) }}" class="card-avis-btn-donner-avis">
 						<i class="fa-regular fa-pen-to-square"></i>
 						Donner votre avis
@@ -250,10 +250,10 @@
 
 			{# Avis section #}
 			<div class="row avis-section">
-				<div class="col-9 section-title">
+				<div class="col-lg-9 col-12 section-title">
 					Tous les avis lecteurs ({{ game.publications|length }})
 				</div>
-				<div class="col-9 avis">
+				<div class="col-lg-9 col-12 avis">
 
 					{% if publications|length == 0 %}
 						<div class="laisser-un-avis">

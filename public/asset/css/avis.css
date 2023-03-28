@@ -33,6 +33,7 @@
      background-clip: padding-box;
      padding: 1rem;
      margin: 2rem 3rem;
+     display: flex;
 }
 
 
@@ -75,6 +76,7 @@
      justify-content: center;
      align-items: center;
      flex: 1;
+     margin-inline: .5rem;
 }
 
 .graph-card-bar{
@@ -298,4 +300,43 @@
      font-weight: 500;
      color: var(--quarter-color);
      margin: 0;
+}
+
+
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+     
+     .card-avis-stats{
+          margin-inline: 0;
+          justify-content: space-evenly;
+          gap: 1rem;
+     }
+
+     .card-avis-stats-left{
+          order: 1;
+     }
+
+     .card-avis-stats-center{
+          order: 3;
+          padding: 0;
+     }
+
+     .card-avis-stats-right{
+         order: 2;
+     }
+     
+}
+
+@media screen and (max-width: 768px) {
+     
+     .card-avis-stats{
+          margin-inline: 0;
+          justify-content: space-evenly;
+          gap: 1rem;
+     }
+
+     .avis-card-header{
+          flex-direction: column;
+          align-items: center;
+     }
+     
 }
