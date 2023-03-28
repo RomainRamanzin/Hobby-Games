@@ -9,85 +9,89 @@
   <div div class="page-presentation">
     <div class="container">
       <div class="glass">
-        <div class="return-before-page">
-          <a class="return-before-link" href="/actualite"><i class="fa-solid fa-newspaper"></i>Actualité</a><label class="return-slash">/</label><label class="return-before">{{ article.title }}</label>
-        </div>
-        <div class="box-container-title-of-news">
-          <h1 class="title-actualite">{{ article.title }}</h1>
-        </div>
-        <div class="container">
-          <div class="row">
-            {% for sectionInfo in sections %}
-              {% if sectionInfo.picture == '' %}
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                  <label class="sub-description-news">{{ sectionInfo.description }}</label>
-                </div>
-              {% else %}
-                {% if loop.index0 is even %}
-                  <div class="box-container-news">
-                    <div class="box-text">
-                      {% if sectionInfo.title != '' %}
-                        <div class="title-center-news">
-                          <label class="sub-title-news">{{ sectionInfo.title }}</label>
-                        </div>
-                      {% endif %}
-                      <label class="sub-description-news">{{ sectionInfo.description }}</label>
-                    </div>
-                    <div class="box-image">
-                      {% if sectionInfo.picture != '' %}
-                        <div class="image-news-ilustration">
-                          <div class="img-news">
-                            <img src="{{ sectionInfo.picture }}" alt="images-actualite" />
-                          </div>
-                        </div>
-                      {% endif %}
-                    </div>
-                  </div>
-                {% else %}
-                  <div class="box-container-news">
-                    <div class="box-image">
-                      {% if sectionInfo.picture != '' %}
-                        <div class="image-news-ilustration">
-                          <div class="img-news">
-                            <img src="{{ sectionInfo.picture }}" alt="image-actualite" />
-                          </div>
-                        </div>
-                      {% endif %}
-                    </div>
-                    <div class="box-text">
-                      {% if sectionInfo.title != '' %}
-                        <div class="title-center-news">
-                          <label class="sub-title-news">{{ sectionInfo.title }}</label>
-                        </div>
-                      {% endif %}
-                      <label class="sub-description-news">{{ sectionInfo.description }}</label>
-                    </div>
-                  </div>
-                {% endif %}
-              {% endif %}
-            {% endfor %}
+        <div class="animation-div">
+          <div class="return-before-page">
+            <a class="return-before-link" href="/actualite"><i class="fa-solid fa-newspaper"></i>Actualité</a><label class="return-slash">/</label><label class="return-before">{{ article.title }}</label>
           </div>
         </div>
-        <div class="block-date-news">
-          <label class="date-news">Cette publication date du : {{ dateActu|date('d/m/Y') }}</label>
-        </div>
-        <div class="recommandation-news">
-          <h1 class="title-news">Recommandation</h1>
-          <i class="fa-solid fa-location-dot"></i>
-        </div>
-        <div class="block-contain-card">
-          {% for Actu in randomFive %}
-            <div class="card-actu">
-              <a href="{{ path('app_actualite_show', { id: Actu.id }) }}">
-                <img src="{{ Actu.cover }}" alt="recommandation-image" />
-                <div class="card-title">
-                  <div>
-                    <label class="label-actualite">{{ Actu.title }}</label>
+        <div class="animation-div">
+          <div class="box-container-title-of-news">
+            <h1 class="title-actualite">{{ article.title }}</h1>
+          </div>
+          <div class="container">
+            <div class="row">
+              {% for sectionInfo in sections %}
+                {% if sectionInfo.picture == '' %}
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <label class="sub-description-news">{{ sectionInfo.description }}</label>
                   </div>
-                </div>
-              </a>
+                {% else %}
+                  {% if loop.index0 is even %}
+                    <div class="box-container-news">
+                      <div class="box-text">
+                        {% if sectionInfo.title != '' %}
+                          <div class="title-center-news">
+                            <label class="sub-title-news">{{ sectionInfo.title }}</label>
+                          </div>
+                        {% endif %}
+                        <label class="sub-description-news">{{ sectionInfo.description }}</label>
+                      </div>
+                      <div class="box-image">
+                        {% if sectionInfo.picture != '' %}
+                          <div class="image-news-ilustration">
+                            <div class="img-news">
+                              <img src="{{ sectionInfo.picture }}" alt="images-actualite" />
+                            </div>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% else %}
+                    <div class="box-container-news">
+                      <div class="box-image">
+                        {% if sectionInfo.picture != '' %}
+                          <div class="image-news-ilustration">
+                            <div class="img-news">
+                              <img src="{{ sectionInfo.picture }}" alt="image-actualite" />
+                            </div>
+                          </div>
+                        {% endif %}
+                      </div>
+                      <div class="box-text">
+                        {% if sectionInfo.title != '' %}
+                          <div class="title-center-news">
+                            <label class="sub-title-news">{{ sectionInfo.title }}</label>
+                          </div>
+                        {% endif %}
+                        <label class="sub-description-news">{{ sectionInfo.description }}</label>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
             </div>
-          {% endfor %}
+          </div>
+          <div class="block-date-news">
+            <label class="date-news">Cette publication date du : {{ dateActu|date('d/m/Y') }}</label>
+          </div>
+          <div class="recommandation-news">
+            <h1 class="title-news">Recommandation</h1>
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="block-contain-card">
+            {% for Actu in randomFive %}
+              <div class="card-actu">
+                <a href="{{ path('app_actualite_show', { id: Actu.id }) }}">
+                  <img src="{{ Actu.cover }}" alt="recommandation-image" />
+                  <div class="card-title">
+                    <div>
+                      <label class="label-actualite">{{ Actu.title }}</label>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>

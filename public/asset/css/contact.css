@@ -1,0 +1,112 @@
+.page-presentation {
+    margin: 5% 0;
+}
+.glass {
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(30px);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    background-clip: padding-box;
+}
+.container-contact{
+    margin: 10% 5%;
+}
+.container-contact-second{
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: 0 5%;
+}
+.box-input-contain{
+    margin-bottom: 3%;
+}
+.box-input-contain-last{
+    margin-bottom: 5%;
+}
+.title-contact{
+    font-size: 25px;
+        text-align: center;
+        text-transform: uppercase;
+        border-top: solid 2px #cececc;
+        border-bottom: solid 2px #cececc;
+        padding: 10px 0;
+        color: white;
+        width: 100%;
+}
+.label-contact{
+    font-size: 1.2em;
+    font-family: Georgia, serif;
+    color: white;
+    text-transform: capitalize;
+}
+.text-contact-ul{
+    margin: unset;
+    padding: unset;
+}
+.text-contact-li{
+    font-size: 1.2em;
+    color: white;
+    line-height: 1.5em;
+    margin-bottom: 5%;
+    list-style-type: none;
+    text-align: justify;
+}
+.bouton-submit-contact{
+    text-align: center;
+}
+.btn-contact {
+    background-color: #6685ff;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
+}
+.btn-contact:hover {
+    background-color: #3e64fe;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+.animation-div {
+    animation: ascend 1s ease-in-out;
+    opacity: 0;
+    /* pour que la div soit invisible au début */
+    transform: translateY(100px);
+    /* pour que la div soit en dehors de l'écran au début */
+    animation-fill-mode: forwards;
+}
+
+@keyframes ascend {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media screen and (max-width: 576px) {
+    .title-contact {
+        font-size: 20px;
+    }
+    .label-contact {
+        font-size: 1em;
+    }
+    .text-contact-li {
+        font-size: 1em;
+    }
+    .btn-contact {
+        font-size: 1em;
+    }
+}
