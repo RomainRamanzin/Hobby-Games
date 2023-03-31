@@ -1,3 +1,11 @@
+:root {
+    --primary-color: rgb(253, 13, 213);
+    --color-secondary: #0cd6ff;
+    /* --color-primary: #4433f9; */
+    /* --color-secondary: #b9b9b9; */
+    --color-tertiary: #fff;
+}
+
 .glass {
     padding: 30px;
     background-color: rgba(255, 255, 255, 0.2);
@@ -19,6 +27,10 @@
     gap: 30px;
     padding: 20px;
     background-color: rgba(208, 208, 208, 0.1);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 2px solid transparent;
+    background-clip: padding-box;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
 }
@@ -89,7 +101,7 @@
 }
 
 .card-jeux .card-jeux-badge {
-    background-color: #fff;
+    background-color: var(--color-secondary);
     color: #000;
     padding: 2px 10px;
     border-radius: 20px;
@@ -97,16 +109,18 @@
 }
 
 .pagination {
-    gap: 10px;
-    color: red;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
+    gap: 10px;
     align-items: center;
     justify-content: center;
 }
 
 .pagination span {
-    background-color: lightgrey;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     border: solid 1px rgb(69, 69, 69);
     border-radius: 5px;
     padding: 8px 16px;
@@ -114,13 +128,13 @@
 }
 
 .pagination span a {
-    color: black;
+    color: var(--color-secondary);
     text-decoration: none;
 }
 
 .pagination .current {
-    border: solid 3px rgb(118, 146, 255);
-    color:rgb(118, 146, 255);
+    border: solid 3px var(--color-secondary);
+    color: var(--color-secondary);
 }
 
 @media screen and (max-width: 1000px) {
@@ -146,11 +160,7 @@
 
 /* Page affichage d'un jeu */
 
-:root {
-    --color-primary: #4433f9;
-    --color-secondary: #b9b9b9;
-    --color-tertiary: #fff;
-}
+
 
 
 .img-jeu{
@@ -191,8 +201,8 @@
 }
 
 .badge-platform{
-    background-color: var(--color-primary);
-    color: var(--color-tertiary);
+    background-color: var(--color-secondary);
+    color: #000;
     padding: 2px 10px;
     border-radius: 20px;
     white-space: nowrap;
@@ -245,7 +255,7 @@
 }
 
 .caracteristics-table , th , td{
-    border: 1px solid var(--color-secondary);
+    border: 1px solid lightgray;
     border-collapse: collapse;
     padding: 5px 30px;
     color: var(--color-secondary);
@@ -358,6 +368,13 @@
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
+}
+
+.avis-top-card-username{
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    color: #000;
 }
 
 .avis-bottom-card{
