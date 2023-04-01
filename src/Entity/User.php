@@ -50,9 +50,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $account_creation_date = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Sanction::class)]
-    private Collection $sanctions;
-
     #[ORM\OneToMany(mappedBy: 'writed_by', targetEntity: Article::class)]
     private Collection $articles_writed;
 
@@ -68,7 +65,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->account_creation_date = new \DateTime();
-        $this->sanctions = new ArrayCollection();
         $this->articles_writed = new ArrayCollection();
         $this->articles_validated = new ArrayCollection();
         $this->publications = new ArrayCollection();
@@ -205,36 +201,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Sanction>
-     */
-    public function getSanctions(): Collection
-    {
-        return $this->sanctions;
-    }
-
-    public function addSanction(Sanction $sanction): self
-    {
-        if (!$this->sanctions->contains($sanction)) {
-            $this->sanctions->add($sanction);
-            $sanction->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSanction(Sanction $sanction): self
-    {
-        if ($this->sanctions->removeElement($sanction)) {
-            // set the owning side to null (unless already changed)
-            if ($sanction->getUser() === $this) {
-                $sanction->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Article>
      */
     public function getArticlesWrited(): Collection
@@ -326,6 +292,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getAvatar(): ?string
     {
+        if ($this->avatar === null) {
+            return 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?s=200&d=mp';
+        }
         return $this->avatar;
     }
 

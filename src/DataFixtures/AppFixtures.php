@@ -206,6 +206,8 @@ class AppFixtures extends Fixture
         $game1->setEditor($editeur2);
         $manager->persist($game1);
 
+       
+
         $game2 = new Game();
         $game2->setName('Call of Duty: Black Ops Cold War');
         $game2->setReleaseDate(new \DateTime('2020-11-13'));
@@ -219,6 +221,26 @@ class AppFixtures extends Fixture
         $game2->addType($type3);
         $game2->setEditor($editeur3);
         $manager->persist($game2);
+
+        $picture1 = new GamePicture();
+        $picture1->setPicture('https://image.jeuxvideo.com/medias/159967/1599666332-6811-capture-d-ecran.jpg');
+        $picture1->setGame($game2);
+        $manager->persist($picture1);
+
+        $picture2 = new GamePicture();
+        $picture2->setPicture('https://image.jeuxvideo.com/medias/159967/1599666332-7835-capture-d-ecran.jpg');
+        $picture2->setGame($game2);
+        $manager->persist($picture2);
+
+        $picture3 = new GamePicture();
+        $picture3->setPicture('https://image.jeuxvideo.com/medias/159967/1599666333-3976-capture-d-ecran.jpg');
+        $picture3->setGame($game2);
+        $manager->persist($picture3);
+
+        $picture4 = new GamePicture();
+        $picture4->setPicture('https://image.jeuxvideo.com/medias/159967/1599666333-4679-capture-d-ecran.jpg');
+        $picture4->setGame($game2);
+        $manager->persist($picture4);
 
         $game3 = new Game();
         $game3->setName('Cyberpunk 2077');
@@ -341,47 +363,6 @@ class AppFixtures extends Fixture
         $manager->persist($user3);
 
 
-        //category sanctions
-        $categorySanction1 = new CategorySanction();
-        $categorySanction1->setName('Troll');
-        $manager->persist($categorySanction1);
-
-        $categorySanction2 = new CategorySanction();
-        $categorySanction2->setName('Harcèlement');
-        $manager->persist($categorySanction2);
-
-        $categorySanction3 = new CategorySanction();
-        $categorySanction3->setName('Propos racistes');
-        $manager->persist($categorySanction3);
-
-        $categorySanction4 = new CategorySanction();
-        $categorySanction4->setName('Propos homophobes');
-
-        $manager->persist($categorySanction4);
-        $categorySanction4->setName('Contenu pornographique');
-        $manager->persist($categorySanction4);
-
-        $categorySanction5 = new CategorySanction();
-        $categorySanction5->setName('Contenu violent');
-        $manager->persist($categorySanction5);
-
-
-        //Sanctions
-        $sanction1 = new Sanction();
-        $sanction1->setComment("Vous avez été sanctionné pour avoir troller");
-        $sanction1->setBanDuration(20);
-        $sanction1->setCategory($categorySanction1);
-        $sanction1->setUser($user1);
-        $manager->persist($sanction1);
-
-        $sanction2 = new Sanction();
-        $sanction2->setComment("Vous avez été sanctionné pour avoir publié du contenu pornographique");
-        $sanction2->setBanDuration(168);
-        $sanction2->setCategory($categorySanction4);
-        $sanction2->setUser($user2);
-        $manager->persist($sanction2);
-
-
         //articles
         $article1 = new Article();
         $article1->setTitle("Dépasser les frontières du réalisme : le pari tenu par Red Dead Redemption II");
@@ -392,7 +373,20 @@ class AppFixtures extends Fixture
         $article1->setNumberOfViews(1836);
         $article1->setWritedBy($user1);
         $article1->setValidatedBy($user2);
+        $article1->setGame($game2);
         $manager->persist($article1);
+
+        $article2 = new Article();
+        $article2->setTitle('Comment devenir un pro du jeu vidéo ?');
+        $article2->setCover('https://www.letudiant.fr/static/uploads/mediatheque/ETU_ETU/1/5/2644415-metier-gamer-pro-letudiant-766x438.jpg');
+        $article2->setIsValided(true);
+        $article2->setPublicationDate(new \DateTime('2022-12-10'));
+        $article2->setLastLodifiedDate(new \DateTime('2022-12-19'));
+        $article2->setNumberOfViews(17986);
+        $article2->setWritedBy($user2);
+        $article2->setValidatedBy($user1);
+        $manager->persist($article2);
+
 
         //section articles
         $section1 = new Section();
@@ -1003,8 +997,7 @@ class AppFixtures extends Fixture
         $review4->setPublicationDate(new \DateTime('2022-12-21'));
         $review4->setIsDeleted(true);
         $manager->persist($review4);
-
-
+        
 
         //publication
         $publication1 = new Publication();
@@ -1030,14 +1023,7 @@ class AppFixtures extends Fixture
         $publication4->setReview($review4);
         $manager->persist($publication4);
 
-
-
-
-
-
-
-
-
+        // Save data in database
         $manager->flush();
     }
 }
