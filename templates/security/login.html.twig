@@ -22,6 +22,17 @@
           <div class="ascend-div">
             <div class="block-login">
               <div class="card-form-login">
+                {# Parcourir les flash #}
+                {% for label, messages in app.flashes %}
+                  {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                {% endfor %}
+
+                {# Afficher le formulaire #}
+
                 <form method="post">
                   {% if error %}
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

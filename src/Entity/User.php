@@ -67,6 +67,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
+        $this->account_creation_date = new \DateTime();
         $this->sanctions = new ArrayCollection();
         $this->articles_writed = new ArrayCollection();
         $this->articles_validated = new ArrayCollection();
