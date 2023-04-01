@@ -1,8 +1,25 @@
 body{
     background: linear-gradient(to top right, #ffffff, #6685ff);
 }
-.d-flex {
-    height: 100vh;
+@media screen and (max-width: 576px) {
+    body:before {
+        content: "";
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+        background: linear-gradient(to top right, #ffffff, #6685ff);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+}
+.page-container {
+    margin: 10% 0;
 }
 .block-login {
     display: flex;
@@ -167,14 +184,15 @@ body{
     color: #FF0000;
 }
 
-.checkbox-accept {
-    margin: 0 0 0 20px;
-}
-
 .condition-agree {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
+}
+.form-check{
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 @media screen and (max-width: 576px) {
@@ -201,6 +219,13 @@ body{
         .d-flex {
             height: 110vh;
         }
+}
+
+@media screen and (max-width: 1024px) {
+    .card-form-login {
+        padding: 20px;
+        width: 100%;
+    }
 }
 
 .birthday-form {
