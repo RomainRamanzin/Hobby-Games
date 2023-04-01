@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  Register
+  HobbyGames - Inscription
 {% endblock %}
 
 {% block body %}
@@ -10,7 +10,7 @@
   {% for flash_error in app.flashes('verify_email_error') %}
     <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
   {% endfor %}
-  <div class="box-container-login">
+  <div class="d-flex justify-content-center align-items-center">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -20,12 +20,28 @@
                 <h1 class="title-connexion-interface">inscrivez-vous</h1>
                 {{ form_start(registrationForm) }}
                 <div class="content-input">
-                  <label class="label-form" for="inputEmail">email</label>
+                  <label class="label-form" for="inputPseudo">Pseudo</label>
+                  {{ form_row(registrationForm.pseudo) }}
+                </div>
+                <div class="content-input">
+                  <label class="label-form" for="inputName">Nom</label>
+                  {{ form_row(registrationForm.surname) }}
+                </div>
+                <div class="content-input">
+                  <label class="label-form" for="inputFirstname">Prénom</label>
+                  {{ form_row(registrationForm.first_name) }}
+                </div>
+                <div class="content-input">
+                  <label class="label-form" for="inputEmail">Adresse mail</label>
                   {{ form_row(registrationForm.email) }}
                 </div>
                 <div class="content-input">
                   <label class="label-form" for="inputPassword">mot de passe</label>
                   {{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}
+                </div>
+                <div class="content-input">
+                  <label class="label-form" for="inputBirth">Date de naissance</label>
+                  {{ form_row(registrationForm.date_of_birth) }}
                 </div>
                 <div class="condition-agree">
                   <label class="label-text">J'accepte les conditions d'utilisation</label>{{ form_row(registrationForm.agreeTerms) }}

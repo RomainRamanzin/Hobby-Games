@@ -3,15 +3,28 @@
     padding: 0;
     box-sizing: border-box;
 }
+/*important*/
+h1, h2, h3, h4, h5, h6, label, p{
+    padding: unset;
+    margin: unset;
+}
 .wrapper-area {
     overflow: hidden;
     min-height: calc(100vh - 231px);
-    /* padding: 5% 0; */
-    
+}
+
+body {
+    background-image: url('https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?cs=srgb&dl=pexels-lucie-liz-3165335.jpg&fm=jpg%27');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* background-image: linear-gradient(109deg, #00DBDE 0%, #FC00FF 100%);
+    background: linear-gradient(to top right, #ffffff, #6685ff);  */
 }
 /* Styles pour le footer */
 .footer {
-    background-color: #393d42;
+    background-color: #2c4058;
     color: #ffffff;
     font-size: 14px;
     text-align: center;
@@ -43,14 +56,25 @@
     margin: 0 auto;
 }
 .navbar-expand-lg{
-    background-color: #393d42;
+    background-color: #2c4058;
+}
+.navbar-nav .nav-item-btn-menu .nav-link {
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 17px;
+}
+.navbar-nav .nav-item-btn-menu .nav-link::first-letter {
+    text-transform: capitalize;
 }
 .nav-item-btn-menu{
-    background-color: #7692FF;
-    border-radius: 5px;
     margin: 0 5px 0 10px;
     width: 100%;
     text-align: center;
+}
+.nav-item-btn-menu:hover{
+    background-color: #7692FF;
+    border-radius: 5px;
 }
 .nav-item{
     margin: 0 10px;
@@ -58,14 +82,12 @@
 .navbar-nav .nav-item .nav-link{
     color: white;
     text-decoration: none;
-    text-transform: capitalize;
     font-family: sans-serif;
+    font-size: 17px;
+    transition: ease 0.3s;
 }
-.navbar-nav .nav-item-btn-menu .nav-link{
-    color: white;
-    text-decoration: none;
+.navbar-nav .nav-item .nav-link::first-letter{
     text-transform: capitalize;
-    font-family: sans-serif;
 }
 .btn-menu-connexion{
     display: flex;
@@ -108,7 +130,7 @@
     word-wrap: break-word;
 }
 .text-company a:hover{
-    color: #000000;
+    color: #7692FF;
 }
 
 /*information*/
@@ -130,7 +152,7 @@
 }
 .confidential-footer ul li a:hover{
     color: #7692FF;
-    transition: 0.3s;
+    transition: ease 0.3s;
 }
 /*Suivez nous*/
 .icon-footer{
@@ -143,13 +165,13 @@
     margin: 0 5%;
 }
 .icon-footer a:hover{
-    color: #000000;
-    transition: 0.3s;
+    color: #7692FF;
+    transition: ease 0.3s;
 }
 .navbar-nav .nav-item:hover{
     background-color: #7692FF;
     border-radius: 5px;
-    transition: 0.3s;
+    transition: ease 0.3s;
 }
 @media screen and (max-width: 576px) {
     .block-return-home{

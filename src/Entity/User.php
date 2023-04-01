@@ -67,6 +67,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
+        $this->account_creation_date = new \DateTime();
         $this->sanctions = new ArrayCollection();
         $this->articles_writed = new ArrayCollection();
         $this->articles_validated = new ArrayCollection();
@@ -331,6 +332,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAvatar(?string $avatar): self
     {
         $this->avatar = $avatar;
+
+        return $this;
+    }
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }
