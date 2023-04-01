@@ -30,7 +30,7 @@
 					</div>
 
 					{# ne surtout pas oublier d'enlever le NOT #}
-					{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
 						{# display form for review #}
 						{{ form_start(formReview) }}
