@@ -29,54 +29,43 @@
 						Laisser votre avis
 					</div>
 
-					{# ne surtout pas oublier d'enlever le NOT #}
-					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
-						{# display form for review #}
-						{{ form_start(formReview) }}
-						<div class="form-inputs">
-							<div class="form-group">
-								<div class="form-label">
-									Votre Note :
-								</div>
-								<div class="form-rate">
-									{{ form_widget(formReview.rate) }}
-									<span class="form-rate-max-value">/5</span>
-								</div>
+					{# display form for review #}
+					{{ form_start(formReview) }}
+					<div class="form-inputs">
+						<div class="form-group">
+							<div class="form-label">
+								Votre Note :
 							</div>
-							<div class="form-group">
-								<div class="form-label">
-									Titre de l'avis :
-								</div>
-								{{ form_widget(formReview.title) }}
+							<div class="form-rate">
+								{{ form_widget(formReview.rate) }}
+								<span class="form-rate-max-value">/5</span>
 							</div>
-							<div class="form-group">
-								<div class="form-label">
-									Contenu de l'avis :
-								</div>
-								{{ form_widget(formReview.content, {'attr':{'rows':10}}) }}
+						</div>
+						<div class="form-group">
+							<div class="form-label">
+								Titre de l'avis :
 							</div>
-
-							<p class="cgu-message">
-								Nous vous rappellons que votre avis doit respecter les <a href="">conditions générales</a> d'utilisation.
-							</p>
-
+							{{ form_widget(formReview.title) }}
+						</div>
+						<div class="form-group">
+							<div class="form-label">
+								Contenu de l'avis :
+							</div>
+							{{ form_widget(formReview.content, {'attr':{'rows':10}}) }}
 						</div>
 
-						<div class="d-flex justify-content-center mt-4">
-							{{ form_row(formReview.submit, {'label':'Publier mon avis', 'attr':{'class':'btn btn-primary'}}) }}
-						</div>
-						{{ form_end(formReview) }}
+						<p class="cgu-message">
+							Nous vous rappellons que votre avis doit respecter les
+							<a href="{{ path('app_conditions_generales') }}">conditions générales</a>
+							d'utilisation.
+						</p>
 
-					{% else %}
-						{# display alert for connexion #}
-						<div class="alert alert-warning" role="alert">
-							Vous devez être connecté pour laisser un avis.
-							<a href="{{ path('app_login') }}">Se connecter</a>
-							ou
-							<a href="{{ path('app_register') }}">s'inscrire</a>.
-						</div>
-					{% endif %}
+					</div>
+
+					<div class="d-flex justify-content-center mt-4">
+						{{ form_row(formReview.submit, {'label':'Publier mon avis', 'attr':{'class':'btn btn-primary'}}) }}
+					</div>
+					{{ form_end(formReview) }}
 
 				</div>
 			</div>
