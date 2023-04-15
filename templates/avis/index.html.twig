@@ -246,7 +246,7 @@
 							{# Boutons modifier et supprimer #}
 							<div class="avis-card-actions">
 								<a href="{{ path('app_avis_add', {'id': game.id}) }}" class="avis-card-modify">Modifier</a>
-								<a href="{{ path('app_avis_delete', {'id': game.id }) }}" class="avis-card-delete">Supprimer</a>
+								<a onClick='return confirm("Voulez vous vraiment supprimer votre avis ?")' href="{{ path('app_avis_delete', {'id': game.id }) }}" class="avis-card-delete">Supprimer</a>
 							</div>
 
 
