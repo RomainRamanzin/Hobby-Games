@@ -35,6 +35,10 @@ class ProfilController extends AbstractController
             //TODO gestion image de profil
             $em->persist($user);
             $em->flush();
+            $this->addFlash(
+               'success-UserData',
+               'Les informations ont bien été enregistrées'
+            );
         }
 
         if ($formPassword->isSubmitted() && $formPassword->isValid()) {

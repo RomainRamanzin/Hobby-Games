@@ -15,18 +15,15 @@
 		<h1 class="profil-page-title">Vos informations</h1>
 
 		<div class="user-data">
-			<div class="image-section">
-				<img src=" {{ app.user.avatar }} " alt="Votre image de profil">
-				<div class="image-section-actions">
-					<a href="#" class="btn btn-primary">
-						<i class="fa-solid fa-pen-to-square"></i>
-					</a>
-					<a href="#" class="btn btn-danger">
-						<i class="fa-solid fa-trash-can"></i>
-					</a>
-				</div>
-			</div>
+			<img src=" {{ app.user.avatar }} " alt="Votre image de profil">
 			<div class="inputs-section">
+
+				{% for message in app.flashes('success-UserData') %}
+					<div class="alert alert-success">
+						{{ message }}
+					</div>
+				{% endfor %}
+
 				{{ form_start(formUserData, {'attr': {'class': 'formUser'} }) }}
 				{{ form_row(formUserData.pseudo) }}
 				{{ form_row(formUserData.first_name, { 'label': 'Prénom' }) }}
@@ -34,7 +31,9 @@
 				{{ form_row(formUserData.date_of_birth, { 'label': 'Date de naissance' }) }}
 				{{ form_row(formUserData.email) }}
 				{{ form_row(formUserData.avatar) }}
-				{{ form_row(formUserData.submit, { 'label': 'Enregistrer' }) }}
+				<div class="d-flex justify-content-center">
+					{{ form_row(formUserData.submit, { 'label': 'Enregistrer' }) }}
+				</div>
 				{{ form_end(formUserData) }}
 			</div>
 		</div>
@@ -42,17 +41,17 @@
 		<div class="password-card">
 			<h4 class="password-card-title">Changer de mot de passe</h4>
 
-            {% for message in app.flashes('success-password') %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
-            {% endfor %}
+			{% for message in app.flashes('success-password') %}
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
 
-            {% for message in app.flashes('error-password') %}
-                <div class="alert alert-danger">
-                    {{ message }}
-                </div>
-            {% endfor %}
+			{% for message in app.flashes('error-password') %}
+				<div class="alert alert-danger">
+					{{ message }}
+				</div>
+			{% endfor %}
 
 			<div class="password-card-content">
 
