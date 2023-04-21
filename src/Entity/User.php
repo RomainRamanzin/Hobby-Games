@@ -145,7 +145,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->pseudo;
     }
 
-    public function setPseudo(string $pseudo): self
+    public function setPseudo(?string $pseudo): self
     {
         $this->pseudo = $pseudo;
 
@@ -157,7 +157,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->surname;
     }
 
-    public function setSurname(string $surname): self
+    public function setSurname(?string $surname): self
     {
         $this->surname = $surname;
 
@@ -169,7 +169,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->first_name;
     }
 
-    public function setFirstName(string $first_name): self
+    public function setFirstName(?string $first_name): self
     {
         $this->first_name = $first_name;
 

@@ -26,9 +26,9 @@
 
 				{{ form_start(formUserData, {'attr': {'class': 'formUser'} }) }}
 				{{ form_row(formUserData.pseudo) }}
-				{{ form_row(formUserData.first_name, { 'label': 'Prénom' }) }}
-				{{ form_row(formUserData.surname, { 'label': 'Nom' }) }}
-				{{ form_row(formUserData.date_of_birth, { 'label': 'Date de naissance' }) }}
+				{{ form_row(formUserData.first_name) }}
+				{{ form_row(formUserData.surname) }}
+				{{ form_row(formUserData.date_of_birth) }}
 				{{ form_row(formUserData.email) }}
 				{{ form_row(formUserData.avatar) }}
 				<div class="d-flex justify-content-center">
@@ -58,13 +58,13 @@
 				{{ form_start(formPassword, {'attr': {'class': 'formPassword'} }) }}
 
 				<div class="form-password-inputs">
-					{{ form_row(formPassword.oldPassword, { 'label': 'Mot de passe actuel' }) }}
-					{{ form_row(formPassword.newPassword, { 'label': 'Nouveau mot de passe' }) }}
-					{{ form_row(formPassword.newPasswordConfirm, { 'label': 'Confirmation du mot de passe' }) }}
+					{{ form_row(formPassword.oldPassword) }}
+					{{ form_row(formPassword.newPassword) }}
+					{{ form_row(formPassword.newPasswordConfirm) }}
 				</div>
 
 				<div class="d-flex justify-content-center mb-0">
-					{{ form_row(formPassword.submit, { 'label':'Changer mon mot de passe', 'attr':{ 'class': 'btn-save-password'}}) }}
+					{{ form_row(formPassword.submit, {'attr':{ 'class': 'btn-save-password'}}) }}
 				</div>
 
 				{{ form_end(formPassword) }}
