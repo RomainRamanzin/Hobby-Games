@@ -49,7 +49,7 @@
           {# Connexion / Compte #}
           {% if app.user %}
             <div class="right-header-account">
-              <a href="">
+              <a href="{{ path('app_profil') }}">
                 <img src="{{ app.user.avatar }}" alt="User avatar" />
                 <span>Mon compte</span>
               </a>

@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil | Hobby Games
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="/asset/css/profil.css" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="container glass my-5">
+		<h1 class="profil-page-title">Vos informations</h1>
+
+		<div class="user-data">
+			<img src=" {{ app.user.avatar }} " alt="Votre image de profil">
+			<div class="inputs-section">
+
+				{% for message in app.flashes('success-UserData') %}
+					<div class="alert alert-success">
+						{{ message }}
+					</div>
+				{% endfor %}
+
+				{{ form_start(formUserData, {'attr': {'class': 'formUser'} }) }}
+				{{ form_row(formUserData.pseudo) }}
+				{{ form_row(formUserData.first_name) }}
+				{{ form_row(formUserData.surname) }}
+				{{ form_row(formUserData.date_of_birth) }}
+				{{ form_row(formUserData.email) }}
+				{{ form_row(formUserData.avatar) }}
+				<div class="d-flex justify-content-center">
+					{{ form_row(formUserData.submit, { 'label': 'Enregistrer' }) }}
+				</div>
+				{{ form_end(formUserData) }}
+			</div>
+		</div>
+
+		<div class="password-card">
+			<h4 class="password-card-title">Changer de mot de passe</h4>
+
+			{% for message in app.flashes('success-password') %}
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+
+			{% for message in app.flashes('error-password') %}
+				<div class="alert alert-danger">
+					{{ message }}
+				</div>
+			{% endfor %}
+
+			<div class="password-card-content">
+
+				{{ form_start(formPassword, {'attr': {'class': 'formPassword'} }) }}
+
+				<div class="form-password-inputs">
+					{{ form_row(formPassword.oldPassword) }}
+					{{ form_row(formPassword.newPassword) }}
+					{{ form_row(formPassword.newPasswordConfirm) }}
+				</div>
+
+				<div class="d-flex justify-content-center mb-0">
+					{{ form_row(formPassword.submit, {'attr':{ 'class': 'btn-save-password'}}) }}
+				</div>
+
+				{{ form_end(formPassword) }}
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}
