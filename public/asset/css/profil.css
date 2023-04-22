@@ -116,6 +116,20 @@
      color: #fff;
 }
 
+.section-disconnect {
+     margin-top: 2rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.section-disconnect a {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 1rem;
+}
+
 @media screen and (max-width: 991px) {
      .user-data {
           flex-direction: column;
