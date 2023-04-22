@@ -1,0 +1,265 @@
+/*historique de navigation*/
+.return-before-page {
+    margin-bottom: 3%;
+}
+
+.return-before-link {
+    text-decoration: none;
+    font-size: 15px;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+.return-before-link:hover {
+    color: rgb(253, 13, 213);
+}
+
+.return-before-link i {
+    font-size: 15px;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+.return-before {
+    font-size: 15px;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+.return-slash {
+    color: #fff;
+}
+
+
+.color-valide{
+    /* color valide opacité */
+    background-color: rgba(113, 255, 130, 0.359);
+}
+.color-wainting{
+    background-color: rgba(255, 157, 28, 0.435);
+}
+fieldset {
+    display: none;
+}
+
+
+
+
+
+
+
+/*fond de page*/
+.glass {
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(30px);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    background-clip: padding-box;
+}
+
+/*titre de la page et btn*/
+.box-top-admin{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+    margin: 2% 0;
+    align-items: baseline;
+}
+.title-admin-articles{
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 500;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/*tableau des articles*/
+.table-action-articles, .table-action-pseudo, .table-action-date{
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+.title-of-article, .title-of-pseudo, .title-of-date{
+    vertical-align: middle;
+    color: #ffffff !important;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 1% 0 !important;
+
+}
+.block-btn-actions{
+    padding: 1% 0 !important;
+    vertical-align: middle;
+}
+
+/* icon btn */
+.block-btn-actions a i , .title-of-article a i{
+    color: #ffffff;
+    margin-right: 5px;
+}
+.block-btn-actions{
+    text-align: center;
+}
+/* animation */
+.animation-div {
+    animation: ascend 1s ease-in-out;
+    opacity: 0;
+    /* pour que la div soit invisible au début */
+    transform: translateY(100px);
+    /* pour que la div soit en dehors de l'écran au début */
+    animation-fill-mode: forwards;
+}
+
+@keyframes ascend {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ajouter un article */
+.form-add-title{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: unset;
+}
+.form-add-title:first-letter{
+    text-transform: uppercase;
+}
+.form-add-title i {
+    color: #ffffff;
+    margin-right: 10px;
+}
+.title-form-add-article-element {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 500;
+    overflow: hidden;
+}
+.title-form-add-article-element:first-letter {
+    text-transform: uppercase;
+}
+.content-form-add-article{
+    margin: 2% 0;
+}
+
+/* modifier un article alignement bouton et titre section */
+.section-title-contain{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2% 0;
+}
+
+
+
+/*responsive*/
+@media (max-width: 768px) {
+    /*accueil*/
+    .box-top-admin{
+        margin: 0 0 20px 0;
+    }
+    .title-admin-articles {
+        font-size: 20px;
+    }
+    .table-action-articles {
+        font-size: 13px;
+    }
+    /******************************************/
+    .table-action-pseudo, .table-action-date{
+        display: none;
+    }
+    /***********************************************/
+    .title-of-article {
+        font-size: 13px;
+    }
+    /************************************************/
+    .title-of-pseudo, .title-of-date{
+        display: none;
+    }
+    /***********************************************/
+    .block-btn-actions {
+        padding: 2% 0 !important;
+        text-align: center;
+    }
+    .block-btn-actions a{
+        width: 100%;
+        margin: 2% 0;
+    }
+    /*edit*/
+    .title-form-add-article-element{
+        font-size: 15px;
+    }
+    .section-title-contain{
+        margin: 10% 0;
+    }
+    .form-add-title{
+        font-size: 17px;
+        margin: 10% 0;
+    }
+    .return-before-page{
+        white-space: nowrap;
+    }
+    .return-before-link, .return-before{
+        font-size: 13px;
+        padding: unset;
+    }
+    .btn-add-article {
+        font-size: 1em;
+    }
+}
+@media (max-width: 1200px) {
+    .block-btn-actions {
+        padding: 2% 0 !important;
+        text-align: center;
+    }
+
+    .block-btn-actions a {
+        width: 100%;
+        margin: 2% 0;
+    }
+    /*edit*/
+    .title-form-add-article-element {
+        font-size: 15px;
+    }
+
+    .section-title-contain {
+        margin: 5% 0;
+    }
+
+    .form-add-title {
+        font-size: 17px;
+        margin: 5% 0;
+    }
+    .return-before-page {
+        white-space: nowrap;
+    }
+    
+    .return-before-link,
+    .return-before {
+        font-size: 13px;
+        padding: unset;
+    }
+}
