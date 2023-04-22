@@ -19,12 +19,13 @@ use Exception as GlobalException;
 class AdministrateurArticlesController extends AbstractController
 {
     #[Route('/administrateur-articles', name: 'app_administrateur_articles')]
-
     public function index(ArticleRepository $articleRepository, UserRepository $userRepository): Response
     {
-
         $articles = $articleRepository->findAll();
-
+        //trier par la date de publication
+        usort($articles, function ($a, $b) {
+            return $a->getPublicationDate() < $b->getPublicationDate();
+        });
         $idColorGreen = [];
         $articlesData = [];
         foreach ($articles as $article) {
@@ -107,7 +108,7 @@ class AdministrateurArticlesController extends AbstractController
                 $em->flush();
 
                 $this->addFlash('success', 'Votre article a bien été enregistré !');
-                return $this->redirectToRoute('app_ajout_actualite');
+                return $this->redirectToRoute('app_administrateur_articles');
             }
         } catch (GlobalException $e) {
             $this->addFlash('danger', 'Une erreur est survenue !');
@@ -193,5 +194,22 @@ class AdministrateurArticlesController extends AbstractController
         }
 
         return $this->render('administrateur_articles/add.html.twig', ['SectionForm' => $SectionForm->createView(), 'article' => $article, 'addArticle' => $addArticle]);
+    }
+
+    //valider un article
+    #[Route('/valider-articles/{id}', name: 'app_valider_article')]
+    public function validate(Article $article, EntityManagerInterface $em): Response
+    {
+        try {
+            $article->setIsValided(true);
+            $em->persist($article);
+            $em->flush();
+
+            $this->addFlash('success', 'Votre article a bien été validé !');
+            return $this->redirectToRoute('app_administrateur_articles');
+        } catch (\Exception $e) {
+            $this->addFlash('error', 'Une erreur est survenue lors de la validation de l\'article : ' . $e->getMessage());
+            return $this->redirectToRoute('app_administrateur_articles');
+        }
     }
 }

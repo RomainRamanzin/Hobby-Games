@@ -50,6 +50,7 @@
                     {% else %}
                       <tr class="color-wainting">
                         <td class="title-of-article">
+                          <a href="{{ path('app_valider_article', { id: article.article.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir valider cet article ?')"><i class="fa-solid fa-check"></i></a>
                           <a href="{{ path('app_modifier_article', { id: article.article.id }) }}" class=""><i class="fa-solid fa-pen"></i></a>
                         </td>
                         <td class="title-of-article">{{ article.article.title }}</td>
