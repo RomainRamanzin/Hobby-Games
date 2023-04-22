@@ -3,21 +3,21 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\ChangePasswordType;
 use App\Form\UserDataType;
+use App\Form\ChangePasswordType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class ProfilController extends AbstractController
 {
@@ -63,9 +63,8 @@ class ProfilController extends AbstractController
                             new FileException('Une erreur est survenue lors de la suppression de l\'ancienne image');
                         }
                     }
-
                     // Mise à jour de l'image de profil
-                    $user->setAvatar('profil_pictures/'.$newFilename);
+                    $user->setAvatar($request->getSchemeAndHttpHost() .'/profil_pictures/'.$newFilename);
                 }
 
                 // Enregistrement des données
