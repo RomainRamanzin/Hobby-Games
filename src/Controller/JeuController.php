@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Game;
 use App\Entity\Platform;
 use App\Entity\Type;
+use App\Repository\ArticleRepository;
 use App\Repository\GameRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -80,14 +82,34 @@ class JeuController extends AbstractController
     }
 
     #[Route('/jeu/{id}', name: 'app_jeu')]
-    public function show(Game $game): Response
+    public function show(Game $game, ArticleRepository $articleRepository): Response
     {
+        // Récupérer les 4 derniers articles du jeu ou random si il n'y en a pas 4
+        $nbArticlesToDisplay = 4;
+        $gameArticles = $game->getArticles();
+        $articles = new ArrayCollection();
 
-        //récuperer les articles liés au jeu ou à la plateforme
+        // Si il n'y a pas assez d'articles, on complète avec des articles random
+        if (count($gameArticles) < $nbArticlesToDisplay) {
+
+            $nbArticlesRandom = $nbArticlesToDisplay - count($gameArticles);
+            $lastArticles = $articleRepository->findLastArticles($nbArticlesRandom);
+            
+            foreach ($gameArticles as $article) {
+                $articles->add($article);
+            }
+
+            foreach ($lastArticles as $article) {
+                $articles->add($article);
+            }
+
+        } else {
+            $articles = $gameArticles->slice(0, $nbArticlesToDisplay);
+        }
 
         return $this->render('jeu/show.html.twig', [
-            'controller_name' => 'JeuController',
             'game' => $game,
+            'articles' => $articles,
         ]);
     }
 }
