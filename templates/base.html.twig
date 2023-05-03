@@ -97,6 +97,11 @@
             <li>
               <a href="{{ path('app_jeux') }}">Jeux</a>
             </li>
+            {% if app.user %}
+              <li>
+                <a href="{{ path('app_dashboard') }}">Dashboard</a>
+              </li>
+            {% endif %}
           </ul>
 
           {# Connexion / Compte #}

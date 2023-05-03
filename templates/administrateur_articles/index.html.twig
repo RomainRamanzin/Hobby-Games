@@ -8,64 +8,68 @@
   <link href="/asset/css/admin-articles.css" rel="stylesheet" />
   <div class="container my-5">
     <div class="container">
-      <div class="row">
-        <div class="glass">
-          <div class="animation-div">
-            <div class="col-md-12">
-              <div class="box-top-admin">
-                <h1 class="title-admin-articles">Administration des articles</h1>
-                <a href="{{ path('app_ajout_actualite') }}" class="btn btn-dark">Ajouter un article</a>
-              </div>
-              {% for flash_message in app.session.flashbag.get('danger') %}
-                <div class="alert alert-danger">{{ flash_message }}</div>
-              {% endfor %}
-              {% for flash_message in app.session.flashbag.get('success') %}
-                <div class="alert alert-success">{{ flash_message }}</div>
-              {% endfor %}
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th class="table-action-articles">Modifier</th>
-                    <th class="table-action-articles">Titre des articles</th>
-                    <th class="table-action-pseudo">Rédacteur</th>
-                    <th class="table-action-date">Date de publication</th>
-                    <th class="table-action-articles">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for article in articlesDatas %}
-                    {% if article.article.id in idColorGreen %}
-                      <tr class="color-valide">
-                        <td class="title-of-article">
-                          <a href="{{ path('app_modifier_article', { id: article.article.id }) }}" class=""><i class="fa-solid fa-pen"></i></a>
-                        </td>
-                        <td class="title-of-article">{{ article.article.title }}</td>
-                        <td class="title-of-pseudo">{{ article.userPseudo }}</td>
-                        <td class="title-of-date">{{ article.article.getPublicationDate().format('d-m-Y') }}</td>
-                        <td class="block-btn-actions">
-                          <a href="{{ path('app_ajout_section', { id: article.article.id }) }}"><i class="fa-solid fa-plus"></i></a>
-                          <a href="{{ path('app_supprimer_actualite', { id: article.article.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                      </tr>
-                    {% else %}
-                      <tr class="color-wainting">
-                        <td class="title-of-article">
-                          <a href="{{ path('app_valider_article', { id: article.article.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir valider cet article ?')"><i class="fa-solid fa-check"></i></a>
-                          <a href="{{ path('app_modifier_article', { id: article.article.id }) }}" class=""><i class="fa-solid fa-pen"></i></a>
-                        </td>
-                        <td class="title-of-article">{{ article.article.title }}</td>
-                        <td class="title-of-pseudo">{{ article.userPseudo }}</td>
-                        <td class="title-of-date">{{ article.article.getPublicationDate().format('d-m-Y') }}</td>
-                        <td class="block-btn-actions">
-                          <a href="{{ path('app_ajout_section', { id: article.article.id }) }}"><i class="fa-solid fa-plus"></i></a>
-                          <a href="{{ path('app_supprimer_actualite', { id: article.article.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                      </tr>
-                    {% endif %}
-                  {% endfor %}
-                </tbody>
-              </table>
+      <div class="glass">
+        <div class="animation-div">
+          <div class="return-before-page">
+            <a class="return-before-link" href="{{ path('app_dashboard') }}"><i class="fa-solid fa-newspaper"></i>DashBoard</a><label class="return-slash">/</label><label class="return-before">Administrateur des articles</label>
+          </div>
+          <div class="col-md-12">
+            <div class="box-top-admin">
+              <h1 class="title-admin-articles">Administration des articles</h1>
+              <a href="{{ path('app_ajout_actualite') }}" class="btn btn-dark">Ajouter un article</a>
             </div>
+            {% for flash_message in app.session.flashbag.get('danger') %}
+              <div class="alert alert-danger">{{ flash_message }}</div>
+            {% endfor %}
+            {% for flash_message in app.session.flashbag.get('success') %}
+              <div class="alert alert-success">{{ flash_message }}</div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+              <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="table-action-articles">Modifier</th>
+                  <th class="table-action-articles">Titre des articles</th>
+                  <th class="table-action-pseudo">Rédacteur</th>
+                  <th class="table-action-date">Date de publication</th>
+                  <th class="table-action-articles">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for article in articlesDatas %}
+                  {% if article.article.id in idColorGreen %}
+                    <tr class="color-valide">
+                      <td class="title-of-article">
+                        <a href="{{ path('app_modifier_article', { id: article.article.id }) }}" class=""><i class="fa-solid fa-pen"></i></a>
+                      </td>
+                      <td class="title-of-article">{{ article.article.title }}</td>
+                      <td class="title-of-pseudo">{{ article.userPseudo }}</td>
+                      <td class="title-of-date">{{ article.article.getPublicationDate().format('d-m-Y') }}</td>
+                      <td class="block-btn-actions">
+                        <a href="{{ path('app_ajout_section', { id: article.article.id }) }}"><i class="fa-solid fa-plus"></i></a>
+                        <a href="{{ path('app_supprimer_actualite', { id: article.article.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')"><i class="fa-solid fa-trash"></i></a>
+                      </td>
+                    </tr>
+                  {% else %}
+                    <tr class="color-wainting">
+                      <td class="title-of-article">
+                        <a href="{{ path('app_valider_article', { id: article.article.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir valider cet article ?')"><i class="fa-solid fa-check"></i></a>
+                        <a href="{{ path('app_modifier_article', { id: article.article.id }) }}" class=""><i class="fa-solid fa-pen"></i></a>
+                      </td>
+                      <td class="title-of-article">{{ article.article.title }}</td>
+                      <td class="title-of-pseudo">{{ article.userPseudo }}</td>
+                      <td class="title-of-date">{{ article.article.getPublicationDate().format('d-m-Y') }}</td>
+                      <td class="block-btn-actions">
+                        <a href="{{ path('app_ajout_section', { id: article.article.id }) }}"><i class="fa-solid fa-plus"></i></a>
+                        <a href="{{ path('app_supprimer_actualite', { id: article.article.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')"><i class="fa-solid fa-trash"></i></a>
+                      </td>
+                    </tr>
+                  {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

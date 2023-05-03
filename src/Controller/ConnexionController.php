@@ -14,9 +14,9 @@ class ConnexionController extends AbstractController
     {
         // Si l'utilisateur est déjà connecté, on le redirige vers la page d'accueil
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_accueil');
+            return $this->redirectToRoute('app_dashboard');
         }
-        
+
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user

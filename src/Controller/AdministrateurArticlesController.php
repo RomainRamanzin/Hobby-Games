@@ -8,17 +8,20 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticleRepository;
 use App\Entity\Article;
 use App\Entity\Section;
+use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Form\ArticleFormType;
 use App\Form\SectionFormType;
 use App\Repository\SectionRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Exception as GlobalException;
 
 class AdministrateurArticlesController extends AbstractController
 {
     #[Route('/administrateur-articles', name: 'app_administrateur_articles')]
+    #[IsGranted("ROLE_REDACTEUR")]
     public function index(ArticleRepository $articleRepository, UserRepository $userRepository): Response
     {
         $articles = $articleRepository->findAll();
@@ -49,11 +52,19 @@ class AdministrateurArticlesController extends AbstractController
         ]);
     }
 
-    #[Route('/supprimer-section/{id}', name: 'app_administrateur_articles_delete_section')]
+    #[Route('/administrateur-articles/supprimer-section/{id}', name: 'app_administrateur_articles_delete_section')]
+    #[IsGranted("ROLE_REDACTEUR")]
     public function deleteSection(int $id, EntityManagerInterface $em, SectionRepository $sectionRepository): Response
     {
         try {
-
+            //si il y a qu'une section il est pas possible de supprimer
+            $section = $sectionRepository->find($id);
+            $article = $section->getArticle();
+            $sections = $article->getSections();
+            if (count($sections) == 1) {
+                $this->addFlash('danger', 'Il est impossible de supprimer la section !');
+                return $this->redirectToRoute('app_modifier_article', ['id' => $section->getArticle()->getId()]);
+            }
             // On récupère l'id de la section à supprimer
             $section = $sectionRepository->find($id);
             $em->remove($section);
@@ -67,7 +78,8 @@ class AdministrateurArticlesController extends AbstractController
         }
     }
 
-    #[Route('/ajouter-actualite', name: 'app_ajout_actualite')]
+    #[Route('/administrateur-articles/ajouter-article', name: 'app_ajout_actualite')]
+    #[IsGranted("ROLE_REDACTEUR")]
     public function add(ArticleRepository $articleRepository, Request $request, EntityManagerInterface $em, UserRepository $userRepository): Response
     {
         try {
@@ -95,13 +107,14 @@ class AdministrateurArticlesController extends AbstractController
                     return $this->redirectToRoute('app_ajout_actualite');
                 }
                 // On récupère l'utilisateur connecté
-                $user = $userRepository->find(1);
+                $user = $this->getUser();
                 // On ajoute les informations manquantes à l'article
                 $article->setWritedBy($user);
                 $article->setPublicationDate(new \DateTime());
                 $article->setIsValided(false);
                 $em->persist($article);
                 $em->flush();
+
                 // On ajoute les informations manquantes à la section
                 $section->setArticle($article);
                 $em->persist($section);
@@ -117,7 +130,8 @@ class AdministrateurArticlesController extends AbstractController
         return $this->render('administrateur_articles/add.html.twig', ['form' => $form->createView(), 'addArticle' => $addArticle]);
     }
 
-    #[Route('/modifier-article/{id}', name: 'app_modifier_article')]
+    #[Route('/administrateur-articles/modifier-article/{id}', name: 'app_modifier_article')]
+    #[IsGranted("ROLE_REDACTEUR")]
     public function modifier_article(Section $section, ArticleRepository $articleRepository, Article $article, Request $request, EntityManagerInterface $em): Response
     {
         try {
@@ -126,7 +140,7 @@ class AdministrateurArticlesController extends AbstractController
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
-                $article->setLastModifiedDate(new \DateTime());
+                $article->setLastModifiedDate(new \DateTime('Europe/Paris'));
                 $em->persist($article);
                 $em->flush();
 
@@ -143,7 +157,8 @@ class AdministrateurArticlesController extends AbstractController
         }
     }
 
-    #[Route('/supprimer-actualite/{id}', name: 'app_supprimer_actualite')]
+    #[Route('/administrateur-articles/supprimer-article/{id}', name: 'app_supprimer_actualite')]
+    #[IsGranted("ROLE_REDACTEUR")]
     public function delete(Article $article, SectionRepository $sectionRepository, EntityManagerInterface $em): Response
     {
         try {
@@ -169,47 +184,29 @@ class AdministrateurArticlesController extends AbstractController
     }
 
     //ajouter une section a l'article
-    #[Route('/ajouter-section/{id}', name: 'app_ajout_section')]
+    #[Route('/administrateur-articles/ajouter-section/{id}', name: 'app_ajout_section')]
+    #[IsGranted("ROLE_REDACTEUR")]
     public function sectionAction(Article $article, Request $request, EntityManagerInterface $em): Response
     {
-        try {
-            $addArticle = false;
-            $section = new Section();
+        $addArticle = false;
 
-            $SectionForm = $this->createForm(SectionFormType::class, $section);
+        $section = new Section();
 
-            $SectionForm->handleRequest($request);
+        $section->setArticle($article);
 
-            if ($SectionForm->isSubmitted() && $SectionForm->isValid()) {
-                //set l'id de l'article dans la section
-                $section->setArticle($article);
+        $SectionForm = $this->createForm(SectionFormType::class, $section);
+
+        if ($SectionForm->handleRequest($request) && $SectionForm->isSubmitted() && $SectionForm->isValid()) {
+            try {
                 $em->persist($section);
                 $em->flush();
                 $this->addFlash('success', 'Votre section a bien été ajoutée !');
                 return $this->redirectToRoute('app_ajout_section', ['id' => $article->getId()]);
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'Une erreur est survenue lors de l\'ajout de la section : ' . $e->getMessage());
             }
-        } catch (GlobalException $e) {
-            $this->addFlash('error', 'Une erreur est survenue lors de l\'ajout de la section : ' . $e->getMessage());
-            return $this->redirectToRoute('app_ajout_section', ['id' => $article->getId()]);
         }
 
         return $this->render('administrateur_articles/add.html.twig', ['SectionForm' => $SectionForm->createView(), 'article' => $article, 'addArticle' => $addArticle]);
-    }
-
-    //valider un article
-    #[Route('/valider-articles/{id}', name: 'app_valider_article')]
-    public function validate(Article $article, EntityManagerInterface $em): Response
-    {
-        try {
-            $article->setIsValided(true);
-            $em->persist($article);
-            $em->flush();
-
-            $this->addFlash('success', 'Votre article a bien été validé !');
-            return $this->redirectToRoute('app_administrateur_articles');
-        } catch (\Exception $e) {
-            $this->addFlash('error', 'Une erreur est survenue lors de la validation de l\'article : ' . $e->getMessage());
-            return $this->redirectToRoute('app_administrateur_articles');
-        }
     }
 }

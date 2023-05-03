@@ -23,6 +23,9 @@
             {% for flash_message in app.session.flashbag.get('success') %}
               <div class="alert alert-success">{{ flash_message }}</div>
             {% endfor %}
+            {% for message in app.flashes('error') %}
+              <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
             <h1 class="form-add-title"><i class="fa-solid fa-newspaper"></i>Nouvelle Article</h1>
             {% include 'administrateur_articles/form/_form_add_article.html.twig' %}
           </div>
