@@ -209,4 +209,26 @@ class AdministrateurArticlesController extends AbstractController
 
         return $this->render('administrateur_articles/add.html.twig', ['SectionForm' => $SectionForm->createView(), 'article' => $article, 'addArticle' => $addArticle]);
     }
+
+    //valider un article
+    #[Route('/administrateur-articles/valider-articles/{id}', name: 'app_valider_article')]
+    #[IsGranted("ROLE_REDACTEUR")]
+    public function validate(Article $article, EntityManagerInterface $em): Response
+    {
+        try {
+            if ($this->getUser()->getUserIdentifier() != $article->getWritedBy()->getEmail()) {
+                $article->setIsValided(true);
+                $em->persist($article);
+                $em->flush();
+                $this->addFlash('success', 'Votre article a bien été validé !');
+                return $this->redirectToRoute('app_administrateur_articles');
+            }
+
+            $this->addFlash('danger', 'Vous ne pouvez pas valider votre propre article !');
+            return $this->redirectToRoute('app_administrateur_articles');
+        } catch (\Exception $e) {
+            $this->addFlash('error', 'Une erreur est survenue lors de la validation de l\'article : ' . $e->getMessage());
+            return $this->redirectToRoute('app_administrateur_articles');
+        }
+    }
 }
