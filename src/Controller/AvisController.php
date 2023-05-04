@@ -15,13 +15,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextType as TypeTextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class AvisController extends AbstractController
 {
     #[Route('/avis/{id}', name: 'app_avis')]
     public function index(Game $game, PublicationRepository $publicationRepository): Response
     {
-
         // current user publication
         $user = $this->getUser();
         $authUserPublication = $publicationRepository->findOneBy([
@@ -40,13 +40,11 @@ class AvisController extends AbstractController
 
 
     #[Route('/game/{id}/add-avis', name: 'app_avis_add')]
+    #[IsGranted('ROLE_USER')]
     public function add(Game $game, Request $request, EntityManagerInterface $entityManager, PublicationRepository $publicationRepository): Response
     {
-        //récupérer l'utilisateur connecté
+        // current user
         $user = $this->getUser();
-        if (!$user) {
-            return $this->redirectToRoute('app_login');
-        }
 
         //vérifier si l'utilisateur a deja laisser une publication sur ce jeu
         $publication = $publicationRepository->findOneBy([
@@ -108,6 +106,7 @@ class AvisController extends AbstractController
     }
 
     #[Route('/game/{id}/delete-avis', name: 'app_avis_delete')]
+    #[IsGranted('ROLE_USER')]
     public function delete(Game $game, EntityManagerInterface $entityManager, PublicationRepository $publicationRepository): Response
     {
         // current user
