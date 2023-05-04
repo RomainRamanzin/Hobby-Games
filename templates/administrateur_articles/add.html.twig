@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  HobbyGames | Ajouter une actualité
+{% endblock %}
+
+{% block body %}
+  <link href="/asset/css/admin-articles.css" rel="stylesheet" />
+
+  <div class="container my-5">
+    <div class="container">
+      <div class="glass">
+        {% if addArticle == true %}
+          <div class="animation-div">
+            <div class="return-before-page">
+              <a class="return-before-link" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-newspaper"></i>Interface des articles</a><label class="return-slash">/</label><label class="return-before">Ajout d'un article</label>
+            </div>
+          </div>
+          <div class="animation-div">
+            {% for flash_message in app.session.flashbag.get('danger') %}
+              <div class="alert alert-danger">{{ flash_message }}</div>
+            {% endfor %}
+            {% for flash_message in app.session.flashbag.get('success') %}
+              <div class="alert alert-success">{{ flash_message }}</div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+              <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+            <h1 class="form-add-title"><i class="fa-solid fa-newspaper"></i>Nouvelle Article</h1>
+            {% include 'administrateur_articles/form/_form_add_article.html.twig' %}
+          </div>
+        {% else %}
+          <div class="animation-div">
+            <div class="return-before-page">
+              <a class="return-before-link" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-newspaper"></i>Interface des articles</a><label class="return-slash">/</label><label class="return-before">Ajout d'une section</label>
+            </div>
+          </div>
+          <div class="animation-div">
+            {% for flash_message in app.session.flashbag.get('danger') %}
+              <div class="alert alert-danger">{{ flash_message }}</div>
+            {% endfor %}
+            {% for flash_message in app.session.flashbag.get('success') %}
+              <div class="alert alert-success">{{ flash_message }}</div>
+            {% endfor %}^
+            <h1 class="form-add-title"><i class="fa-solid fa-newspaper"></i>Ajouter une section</h1>
+            {% include 'administrateur_articles/form/_form_add_section.html.twig' %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

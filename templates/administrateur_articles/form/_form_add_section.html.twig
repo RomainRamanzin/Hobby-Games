@@ -1,0 +1,17 @@
+{{ form_start(SectionForm) }}
+<div class="content-form-add-article">
+  <label class="title-form-add-article-element">lien de l'image</label>
+  {{ form_widget(SectionForm.picture) }}
+</div>
+<div class="content-form-add-article">
+  <label class="title-form-add-article-element">titre de la partie</label>
+  {{ form_widget(SectionForm.title) }}
+</div>
+<div class="content-form-add-article">
+  <label class="title-form-add-article-element">description de cette partie</label>
+  {{ form_widget(SectionForm.description) }}
+</div>
+<div class="col-12 d-flex justify-content-center">
+  <button type="submit" class="btn btn-secondary px-4">Créer une section</button>
+</div>
+{{ form_end(SectionForm) }}

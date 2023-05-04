@@ -1,0 +1,92 @@
+/*fond de page*/
+.glass {
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  border: 2px solid transparent;
+  border-radius: 15px;
+  background-clip: padding-box;
+}
+.title-dashboard {
+  font-size: 30px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  margin-bottom: 3%;
+  line-height: normal;
+}
+.title-dashboard:first-letter {
+  text-transform: uppercase;
+}
+.title-dashboard i {
+  font-size: 20px;
+  color: #ffffff;
+  margin-left: 20px;
+}
+.contain-menu {
+  display: grid;
+  gap: 20px;
+  background: rgba(228, 228, 228, 0.641);
+}
+
+/*menu link a */
+.contain-menu .link-menu-dashboard {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  font-size: 15px;
+  padding: 20px;
+  font-weight: 500;
+}
+.contain-menu .link-menu-dashboard i {
+  font-size: 20px;
+  color: #000000;
+  margin-right: 20px;
+}
+.contain-menu .link-menu-dashboard:hover {
+  background-color: #ffffff;
+  color: black;
+}
+
+/* animation */
+.animation-div {
+  animation: ascend 1s ease-in-out;
+  opacity: 0;
+  /* pour que la div soit invisible au début */
+  transform: translateY(100px);
+  /* pour que la div soit en dehors de l'écran au début */
+  animation-fill-mode: forwards;
+}
+
+@keyframes ascend {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .title-dashboard {
+    margin-bottom: 10%;
+    font-size: 20px;
+    line-height: normal;
+  }
+  .contain-menu .link-menu-dashboard {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1200px) {
+  .title-dashboard {
+    margin-bottom: 5%;
+    font-size: 25px;
+    line-height: normal;
+  }
+  .contain-menu .link-menu-dashboard {
+    font-size: 13px;
+  }
+}

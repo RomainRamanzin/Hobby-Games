@@ -206,7 +206,7 @@ class AppFixtures extends Fixture
         $game1->setEditor($editeur2);
         $manager->persist($game1);
 
-       
+
 
         $game2 = new Game();
         $game2->setName('Call of Duty: Black Ops Cold War');
@@ -362,6 +362,18 @@ class AppFixtures extends Fixture
         $user3->setAccountCreationDate(new \DateTime('2020-10-09'));
         $manager->persist($user3);
 
+        $user4 = new User();
+        $user4->setEmail('redacteur.eponge@gmail.com');
+        $plainPassword = '12345678';
+        $encodedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
+        $user4->setPassword($encodedPassword);
+        $user4->setRoles(['ROLE_REDACTEUR']);
+        $user4->setPseudo('plop');
+        $user4->setSurname('Eponge');
+        $user4->setFirstname('redacteur');
+        $user4->setDateOfBirth(new \DateTime('1999-01-01'));
+        $user4->setAccountCreationDate(new \DateTime('2020-10-09'));
+        $manager->persist($user4);
 
         //articles
         $article1 = new Article();
@@ -369,8 +381,7 @@ class AppFixtures extends Fixture
         $article1->setCover("//image.jeuxvideo.com/medias-md/167785/1677849627-5852-card.png");
         $article1->setIsValided(true);
         $article1->setPublicationDate(new \DateTime('2023-03-05T15:00:03.151Z'));
-        $article1->setLastLodifiedDate(new \DateTime('2023-03-05T15:00:03.151Z'));
-        $article1->setNumberOfViews(1836);
+        $article1->setLastModifiedDate(new \DateTime('2023-03-05T15:00:03.151Z'));
         $article1->setWritedBy($user1);
         $article1->setValidatedBy($user2);
         $article1->setGame($game2);
@@ -381,8 +392,7 @@ class AppFixtures extends Fixture
         $article2->setCover('https://www.letudiant.fr/static/uploads/mediatheque/ETU_ETU/1/5/2644415-metier-gamer-pro-letudiant-766x438.jpg');
         $article2->setIsValided(true);
         $article2->setPublicationDate(new \DateTime('2022-12-10'));
-        $article2->setLastLodifiedDate(new \DateTime('2022-12-19'));
-        $article2->setNumberOfViews(17986);
+        $article2->setLastModifiedDate(new \DateTime('2022-12-19'));
         $article2->setWritedBy($user2);
         $article2->setValidatedBy($user1);
         $manager->persist($article2);
@@ -418,8 +428,7 @@ class AppFixtures extends Fixture
         $article2->setCover('//image.jeuxvideo.com/medias-md/167808/1678082642-6292-card.png');
         $article2->setIsValided(true);
         $article2->setPublicationDate(new \DateTime('2023-03-06T06:08:45.437Z'));
-        $article2->setLastLodifiedDate(new \DateTime('2023-03-06T06:08:45.437Z'));
-        $article2->setNumberOfViews(2000);
+        $article2->setLastModifiedDate(new \DateTime('2023-03-06T06:08:45.437Z'));
         $article2->setWritedBy($user1);
         $article2->setValidatedBy($user2);
         $manager->persist($article2);
@@ -454,8 +463,7 @@ class AppFixtures extends Fixture
         $article3->setCover('//image.jeuxvideo.com/medias-md/167809/1678089811-8336-card.png');
         $article3->setIsValided(true);
         $article3->setPublicationDate(new \DateTime('2023-03-06T08:17:26.528Z'));
-        $article3->setLastLodifiedDate(new \DateTime('2023-03-06T08:17:26.528Z'));
-        $article3->setNumberOfViews(3000);
+        $article3->setLastModifiedDate(new \DateTime('2023-03-06T08:17:26.528Z'));
         $article3->setWritedBy($user1);
         $article3->setValidatedBy($user2);
         $manager->persist($article3);
@@ -497,8 +505,7 @@ class AppFixtures extends Fixture
         $article4->setCover('//image.jeuxvideo.com/medias-md/167810/1678098676-9458-card.jpg');
         $article4->setIsValided(true);
         $article4->setPublicationDate(new \DateTime('2023-03-06T10:35:34.481Z'));
-        $article4->setLastLodifiedDate(new \DateTime('2023-03-06T10:35:34.481Z'));
-        $article4->setNumberOfViews(4000);
+        $article4->setLastModifiedDate(new \DateTime('2023-03-06T10:35:34.481Z'));
         $article4->setWritedBy($user1);
         $article4->setValidatedBy($user2);
         $manager->persist($article4);
@@ -534,8 +541,7 @@ class AppFixtures extends Fixture
         $article5->setCover('//image.jeuxvideo.com/medias-md/167810/1678096873-9625-card.png');
         $article5->setIsValided(true);
         $article5->setPublicationDate(new \DateTime('2023-03-06T10:58:14.645Z'));
-        $article5->setLastLodifiedDate(new \DateTime('2023-03-06T10:58:14.645Z'));
-        $article5->setNumberOfViews(4000);
+        $article5->setLastModifiedDate(new \DateTime('2023-03-06T10:58:14.645Z'));
         $article5->setWritedBy($user1);
         $article5->setValidatedBy($user2);
         $manager->persist($article5);
@@ -578,8 +584,7 @@ class AppFixtures extends Fixture
         $article6->setCover('//image.jeuxvideo.com/medias-md/167818/1678175189-9824-card.png');
         $article6->setIsValided(true);
         $article6->setPublicationDate(new \DateTime('2023-03-07T07:55:17.823Z'));
-        $article6->setLastLodifiedDate(new \DateTime('2023-03-07T07:55:17.823Z'));
-        $article6->setNumberOfViews(8000);
+        $article6->setLastModifiedDate(new \DateTime('2023-03-07T07:55:17.823Z'));
         $article6->setWritedBy($user1);
         $article6->setValidatedBy($user2);
         $manager->persist($article6);
@@ -623,8 +628,7 @@ class AppFixtures extends Fixture
         $article7->setCover('//image.jeuxvideo.com/medias-md/167786/1677863576-6787-card.gif');
         $article7->setIsValided(true);
         $article7->setPublicationDate(new \DateTime('2023-03-07T06:30:02.780Z'));
-        $article7->setLastLodifiedDate(new \DateTime('2023-03-07T06:30:02.780Z'));
-        $article7->setNumberOfViews(4800);
+        $article7->setLastModifiedDate(new \DateTime('2023-03-07T06:30:02.780Z'));
         $article7->setWritedBy($user1);
         $article7->setValidatedBy($user2);
         $manager->persist($article7);
@@ -675,8 +679,7 @@ class AppFixtures extends Fixture
         $article8->setCover('//image.jeuxvideo.com/medias-md/167827/1678274000-8730-card.png');
         $article8->setIsValided(true);
         $article8->setPublicationDate(new \DateTime('2023-03-08T13:32:31.542Z'));
-        $article8->setLastLodifiedDate(new \DateTime('2023-03-08T13:32:31.542Z'));
-        $article8->setNumberOfViews(1800);
+        $article8->setLastModifiedDate(new \DateTime('2023-03-08T13:32:31.542Z'));
         $article8->setWritedBy($user1);
         $article8->setValidatedBy($user2);
         $manager->persist($article8);
@@ -729,8 +732,7 @@ class AppFixtures extends Fixture
         $article9->setCover('//image.jeuxvideo.com/medias-md/167828/1678278729-2485-card.jpg');
         $article9->setIsValided(true);
         $article9->setPublicationDate(new \DateTime('2023-03-08T13:21:20.702Z'));
-        $article9->setLastLodifiedDate(new \DateTime('2023-03-08T13:21:20.702Z'));
-        $article9->setNumberOfViews(1800);
+        $article9->setLastModifiedDate(new \DateTime('2023-03-08T13:21:20.702Z'));
         $article9->setWritedBy($user1);
         $article9->setValidatedBy($user2);
         $manager->persist($article9);
@@ -782,8 +784,7 @@ class AppFixtures extends Fixture
         $article10->setCover('//image.jeuxvideo.com/medias-md/167820/1678195304-6839-card.jpg');
         $article10->setIsValided(true);
         $article10->setPublicationDate(new \DateTime('2023-03-07T13:25:38.979Z'));
-        $article10->setLastLodifiedDate(new \DateTime('2023-03-07T13:25:38.979Z'));
-        $article10->setNumberOfViews(500);
+        $article10->setLastModifiedDate(new \DateTime('2023-03-07T13:25:38.979Z'));
         $article10->setWritedBy($user1);
         $article10->setValidatedBy($user2);
         $manager->persist($article10);
@@ -818,8 +819,7 @@ class AppFixtures extends Fixture
         $article11->setCover('//image.jeuxvideo.com/medias-md/167822/1678219345-7168-card.jpg');
         $article11->setIsValided(true);
         $article11->setPublicationDate(new \DateTime('2023-03-07T20:03:23.654Z'));
-        $article11->setLastLodifiedDate(new \DateTime('2023-03-07T20:03:23.654Z'));
-        $article11->setNumberOfViews(580);
+        $article11->setLastModifiedDate(new \DateTime('2023-03-07T20:03:23.654Z'));
         $article11->setWritedBy($user1);
         $article11->setValidatedBy($user2);
         $manager->persist($article11);
@@ -855,8 +855,7 @@ class AppFixtures extends Fixture
         $article12->setCover('//image.jeuxvideo.com/medias-md/167826/1678260518-1570-card.jpg');
         $article12->setIsValided(true);
         $article12->setPublicationDate(new \DateTime('2023-03-08T08:29:50.192Z'));
-        $article12->setLastLodifiedDate(new \DateTime('2023-03-08T08:29:50.192Z'));
-        $article12->setNumberOfViews(800);
+        $article12->setLastModifiedDate(new \DateTime('2023-03-08T08:29:50.192Z'));
         $article12->setWritedBy($user1);
         $article12->setValidatedBy($user2);
         $manager->persist($article12);
@@ -900,8 +899,7 @@ class AppFixtures extends Fixture
         $article13->setCover('//image.jeuxvideo.com/medias-md/167827/1678272791-8953-card.jpeg');
         $article13->setIsValided(true);
         $article13->setPublicationDate(new \DateTime('2023-03-08T11:01:47.467Z'));
-        $article13->setLastLodifiedDate(new \DateTime('2023-03-08T11:01:47.467Z'));
-        $article13->setNumberOfViews(200);
+        $article13->setLastModifiedDate(new \DateTime('2023-03-08T11:01:47.467Z'));
         $article13->setWritedBy($user1);
         $article13->setValidatedBy($user2);
         $manager->persist($article13);
@@ -936,8 +934,7 @@ class AppFixtures extends Fixture
         $article14->setCover("//image.jeuxvideo.com/medias-md/167818/1678183632-8524-card.gif");
         $article14->setIsValided(true);
         $article14->setPublicationDate(new \DateTime('2023-03-07T10:13:54.020Z'));
-        $article14->setLastLodifiedDate(new \DateTime('2023-03-07T10:13:54.020Z'));
-        $article14->setNumberOfViews(200);
+        $article14->setLastModifiedDate(new \DateTime('2023-03-07T10:13:54.020Z'));
         $article14->setWritedBy($user1);
         $article14->setValidatedBy($user2);
         $manager->persist($article14);
@@ -997,7 +994,7 @@ class AppFixtures extends Fixture
         $review4->setPublicationDate(new \DateTime('2022-12-21'));
         $review4->setIsDeleted(true);
         $manager->persist($review4);
-        
+
 
         //publication
         $publication1 = new Publication();
