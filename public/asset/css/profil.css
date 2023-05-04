@@ -1,0 +1,149 @@
+.glass {
+     padding: 30px;
+     background-color: rgba(255, 255, 255, 0.2);
+     backdrop-filter: blur(30px);
+     -webkit-backdrop-filter: blur(30px);
+     border: 2px solid transparent;
+     border-radius: 15px;
+     background-clip: padding-box;
+}
+
+.profil-page-title {
+     font-size: 2rem;
+     font-weight: 700;
+     color: #fff;
+     text-align: center;
+     margin-bottom: 30px;
+}
+
+.user-data {
+     display: flex;
+     justify-content: space-evenly;
+     align-items: center;
+     margin-bottom: 40px;
+}
+
+.user-data img {
+     width: 350px;
+     height: 350px;
+     border-radius: 50%;
+     object-fit: cover;
+}
+
+.image-section-actions {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 1rem;
+}
+
+
+.formUser label, .formUser legend {
+     font-size: .9rem;
+     font-weight: 500;
+     color: #ffff;
+}
+
+/* Change password space */
+
+.password-card {
+     padding: 2rem;
+     border: 2px solid red;
+     border-radius: 10px;
+     background-color: rgba(255, 255, 255, .2);
+}
+
+.password-card-title {
+     font-size: 1.5rem;
+     font-weight: 700;
+     color: red;
+     margin-bottom: 20px;
+}
+
+.password-card-content {
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     align-items: center;
+}
+
+.formPassword {
+     width: 100%;
+}
+
+.form-password-inputs {
+     display: flex;
+     justify-content: space-evenly;
+     gap: 2rem;
+     flex-grow: 100%;
+}
+
+.form-password-inputs div {
+   flex: 1;
+}
+
+.formPassword label {
+     font-size: 1rem;
+     font-weight: 300;
+     color: #fff;
+}
+
+.invalid-feedback {
+     background-color: #fff;
+     padding: .5rem 1rem;
+     border-radius: 5px;
+     border: 2px solid red;
+     color: red;
+     font-size: .8rem;
+     font-weight: 500;
+}
+
+.btn-save-password {
+     margin-top: 1rem;
+     background-color: red;
+     color: #fff;
+     border: none;
+     padding: .5rem 2rem;
+     border-radius: 5px;
+     font-size: 1rem;
+     font-weight: 700;
+     cursor: pointer;
+     transition: all 0.3s ease;
+}
+
+.btn-save-password:hover {
+     background-color: rgb(199, 0, 0);
+     color: #fff;
+}
+
+.section-disconnect {
+     margin-top: 2rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.section-disconnect a {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 1rem;
+}
+
+@media screen and (max-width: 991px) {
+     .user-data {
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+     }
+
+     .user-data img{
+          width: 150px;
+          height: 150px;
+     }
+
+     .form-password-inputs {
+          flex-direction: column;
+          gap: 1rem;
+     }
+}

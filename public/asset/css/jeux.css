@@ -289,6 +289,7 @@
 }
 
 .discover-more a{
+    white-space: nowrap;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -309,6 +310,10 @@
     font-size: 1.5rem;
 }
 
+.article-link{
+    text-decoration: none;
+}
+
 .article-card{
     aspect-ratio: 3/4;
     border-radius: 15px;
@@ -320,6 +325,12 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.article-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, .6);
 }
 
 
