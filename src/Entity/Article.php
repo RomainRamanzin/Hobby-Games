@@ -20,16 +20,13 @@ class Article
     private ?string $cover = null;
 
     #[ORM\Column]
-    private ?bool $is_valided = null;
+    private ?bool $is_valided = false;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $publication_date = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $last_lodified_date = null;
-
-    #[ORM\Column]
-    private ?int $number_of_views = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $last_modified_date = null;
 
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Section::class)]
     private Collection $sections;
@@ -38,7 +35,6 @@ class Article
     private ?Game $game = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles_writed')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?User $writed_by = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles_validated')]
@@ -69,7 +65,7 @@ class Article
         return $this;
     }
 
-    public function isIsValided(): ?bool
+    public function IsValided(): ?bool
     {
         return $this->is_valided;
     }
@@ -93,26 +89,14 @@ class Article
         return $this;
     }
 
-    public function getLastLodifiedDate(): ?\DateTimeInterface
+    public function getLastModifiedDate(): ?\DateTimeInterface
     {
-        return $this->last_lodified_date;
+        return $this->last_modified_date;
     }
 
-    public function setLastLodifiedDate(\DateTimeInterface $last_lodified_date): self
+    public function setLastModifiedDate(\DateTimeInterface $last_modified_date): self
     {
-        $this->last_lodified_date = $last_lodified_date;
-
-        return $this;
-    }
-
-    public function getNumberOfViews(): ?int
-    {
-        return $this->number_of_views;
-    }
-
-    public function setNumberOfViews(int $number_of_views): self
-    {
-        $this->number_of_views = $number_of_views;
+        $this->last_modified_date = $last_modified_date;
 
         return $this;
     }

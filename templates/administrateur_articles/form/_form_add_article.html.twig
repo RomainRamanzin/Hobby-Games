@@ -1,0 +1,30 @@
+{{ form_start(form) }}
+<div class="content-form-add-article">
+  <label class="title-form-add-article-element">Titre de l'article</label>
+  {{ form_widget(form.article.title) }}
+</div>
+<div class="content-form-add-article">
+  <label class="title-form-add-article-element">Image de l'article</label>
+  {{ form_widget(form.article.cover) }}
+</div>
+<div class="content-form-add-article">
+  <label class="title-form-add-article-element">Jeu associé à l'article</label>
+  {{ form_widget(form.article.game) }}
+</div>
+<h1 class="form-add-title"><i class="fa-solid fa-pen-nib"></i>Enfin ajoute le contenu de ton article !</h1>
+<div class="content-form-add-article">
+  <label class="title-form-add-article-element">Titre de la section</label>
+  {{ form_widget(form.section.title) }}
+</div>
+<div class="content-form-add-article">
+  <label class="title-form-add-article-element">Image de la section</label>
+  {{ form_widget(form.section.picture) }}
+</div>
+<div class="content-form-add-article">
+  <label class="title-form-add-article-element">Description de la section</label>
+  {{ form_widget(form.section.description) }}
+</div>
+<div class="col-12 d-flex justify-content-center">
+  <button type="submit" class="btn btn-secondary px-4">Ajouter l'article</button>
+</div>
+{{ form_end(form) }}

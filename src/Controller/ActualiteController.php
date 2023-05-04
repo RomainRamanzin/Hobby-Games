@@ -5,23 +5,32 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ArticleRepository;
 use App\Repository\SectionRepository;
+use App\Repository\GameRepository;
 use App\Entity\Article;
-use App\Entity\Section;
+use App\Repository\UserRepository;
+use App\Form\ArticleFormType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
 
 class ActualiteController extends AbstractController
 {
-
     #[Route('/actualite', name: 'app_actualite')]
     public function index(ArticleRepository $articleRepository): Response
     {
         // Récupération de toutes les actualités
         $articles = $articleRepository->findAllSorted();
 
-        // Création d'un tableau de copie des actualités
-        $copieArticles = $articles;
+        $copieArticles = [];
+        foreach ($articles as $article) {
+            if ($article->IsValided() == true) {
+                $copieArticles[] = $article;
+            }
+        }
 
         // Récupération des 5 dernières actualités
         $topActu = array_slice($copieArticles, 0, 5);
@@ -37,8 +46,12 @@ class ActualiteController extends AbstractController
     }
 
     #[Route('/actualite/{id}', name: 'app_actualite_show', methods: ['GET'])]
+
     public function show(Article $articles, SectionRepository $sectionRepository, ArticleRepository $articleRepository): Response
     {
+        if ($articles->IsValided() == false && !$this->isGranted('ROLE_REDACTEUR')) {
+            return $this->redirectToRoute('app_actualite');
+        }
         // Récupération des sections de l'actualité
         $sections = $sectionRepository->findBy(['article' => $articles->getId()]);
         // Récupération de toutes les actualités
@@ -53,7 +66,7 @@ class ActualiteController extends AbstractController
 
         //boucle pour récupérer toutes les actualités sauf celle dans laquelle on est 
         foreach ($allArticles as $article) {
-            if ($article->getId() != $articles->getId()) {
+            if ($article->getId() != $articles->getId() && $article->IsValided() == true) {
                 $randomArticle[] = $article;
             }
         }
