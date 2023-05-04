@@ -46,8 +46,12 @@ class ActualiteController extends AbstractController
     }
 
     #[Route('/actualite/{id}', name: 'app_actualite_show', methods: ['GET'])]
+
     public function show(Article $articles, SectionRepository $sectionRepository, ArticleRepository $articleRepository): Response
     {
+        if ($articles->IsValided() == false && !$this->isGranted('ROLE_REDACTEUR')) {
+            return $this->redirectToRoute('app_actualite');
+        }
         // Récupération des sections de l'actualité
         $sections = $sectionRepository->findBy(['article' => $articles->getId()]);
         // Récupération de toutes les actualités
@@ -62,7 +66,7 @@ class ActualiteController extends AbstractController
 
         //boucle pour récupérer toutes les actualités sauf celle dans laquelle on est 
         foreach ($allArticles as $article) {
-            if ($article->getId() != $articles->getId()) {
+            if ($article->getId() != $articles->getId() && $article->IsValided() == true) {
                 $randomArticle[] = $article;
             }
         }
