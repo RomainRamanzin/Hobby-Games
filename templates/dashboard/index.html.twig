@@ -10,7 +10,7 @@
     <div class="container">
       <div class="glass">
         <div class="animation-div">
-          <h1 class="title-dashboard">dashBoard | face caché de l'iceBerg<i class="fa-solid fa-icicles"></i></h1>
+          <h1 class="title-dashboard">dashBoard | interface d'administration</h1>
           {# si l'utilisateur a le role admin #}
           <div class="container">
             <div class="row">
@@ -20,13 +20,12 @@
 
                   {% if is_granted('ROLE_REDACTEUR') %}
                   {% endif %}
-                    <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-newspaper"></i>Articles</a>
+                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-newspaper"></i>Articles</a>
+                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-pen-nib"></i>Avis</a>
                   <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-sharp fa-solid fa-gamepad"></i>Jeux</a>
                   <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-computer"></i>Plateformes</a>
-                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-copyright"></i>Marques</a>
-                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-terminal"></i>administrateur éditeur</a>
-                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-user-plus"></i>création d'un utilisateur</a>
-                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-user"></i>mon profil</a>
+                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-terminal"></i>Editeurs</a>
+                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-user-plus"></i>Utilisateurs</a>
                 </div>
               </div>
             </div>

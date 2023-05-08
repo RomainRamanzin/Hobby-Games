@@ -27,7 +27,7 @@
               <div class="alert alert-danger">{{ message }}</div>
             {% endfor %}
             <h1 class="form-add-title"><i class="fa-solid fa-newspaper"></i>Nouvelle Article</h1>
-            {% include 'administrateur_articles/form/_form_add_article.html.twig' %}
+            {% include 'admin/articles/form/_form_add_article.html.twig' %}
           </div>
         {% else %}
           <div class="animation-div">
@@ -43,7 +43,7 @@
               <div class="alert alert-success">{{ flash_message }}</div>
             {% endfor %}^
             <h1 class="form-add-title"><i class="fa-solid fa-newspaper"></i>Ajouter une section</h1>
-            {% include 'administrateur_articles/form/_form_add_section.html.twig' %}
+            {% include 'admin/articles/form/_form_add_section.html.twig' %}
           </div>
         {% endif %}
       </div>

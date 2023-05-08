@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +18,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Exception as GlobalException;
 
-class AdministrateurArticlesController extends AbstractController
+class ArticlesController extends AbstractController
 {
     #[Route('/administrateur-articles', name: 'app_administrateur_articles')]
     #[IsGranted("ROLE_REDACTEUR")]
@@ -45,7 +45,7 @@ class AdministrateurArticlesController extends AbstractController
             ];
         }
 
-        return $this->render('administrateur_articles/index.html.twig', [
+        return $this->render('admin/articles/index.html.twig', [
             'controller_name' => 'AdministrateurArticlesController',
             'articlesDatas' => $articlesData,
             'idColorGreen' => $idColorGreen,
@@ -127,7 +127,7 @@ class AdministrateurArticlesController extends AbstractController
             $this->addFlash('danger', 'Une erreur est survenue !');
             return $this->redirectToRoute('app_ajout_actualite');
         }
-        return $this->render('administrateur_articles/add.html.twig', ['form' => $form->createView(), 'addArticle' => $addArticle]);
+        return $this->render('admin/articles/add.html.twig', ['form' => $form->createView(), 'addArticle' => $addArticle]);
     }
 
     #[Route('/administrateur-articles/modifier-article/{id}', name: 'app_modifier_article')]
@@ -148,7 +148,7 @@ class AdministrateurArticlesController extends AbstractController
                 return $this->redirectToRoute('app_administrateur_articles');
             }
 
-            return $this->render('administrateur_articles/edit.html.twig', [
+            return $this->render('admin/articles/edit.html.twig', [
                 'form' => $form->createView(),
             ]);
         } catch (\Exception $e) {
@@ -207,7 +207,7 @@ class AdministrateurArticlesController extends AbstractController
             }
         }
 
-        return $this->render('administrateur_articles/add.html.twig', ['SectionForm' => $SectionForm->createView(), 'article' => $article, 'addArticle' => $addArticle]);
+        return $this->render('admin/articles/add.html.twig', ['SectionForm' => $SectionForm->createView(), 'article' => $article, 'addArticle' => $addArticle]);
     }
 
     //valider un article
