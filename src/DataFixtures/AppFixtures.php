@@ -3,7 +3,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
-use App\Entity\Brand;
 use App\Entity\CategorySanction;
 use App\Entity\Type;
 use App\Entity\Editor;
@@ -130,29 +129,6 @@ class AppFixtures extends Fixture
         $manager->persist($editeur8);
 
 
-        //brand
-        $brand1 = new Brand();
-        $brand1->setName('Sony');
-        $brand1->setLogo('https://logos-marques.com/wp-content/uploads/2021/03/Sony-Logo.png');
-        $manager->persist($brand1);
-
-        $brand2 = new Brand();
-        $brand2->setName('Microsoft');
-        $brand2->setLogo('https://www.1min30.com/wp-content/uploads/2017/09/logo-microsoft-scaled.jpg');
-        $manager->persist($brand2);
-
-        $brand3 = new Brand();
-        $brand3->setName('Nintendo');
-        $brand3->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Nintendo.svg/2560px-Nintendo.svg.png');
-        $manager->persist($brand3);
-
-        $brand4 = new Brand();
-        $brand4->setName('Sega');
-        $brand4->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/SEGA_logo.svg/2560px-SEGA_logo.svg.png');
-        $manager->persist($brand4);
-
-
-
         //platform
         $platform1 = new Platform();
         $platform1->setName('PC');
@@ -161,31 +137,26 @@ class AppFixtures extends Fixture
 
         $platform2 = new Platform();
         $platform2->setName('Playstation 4');
-        $platform2->setBrand($brand1);
         $platform2->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PlayStation_4_logo_and_wordmark.svg/1280px-PlayStation_4_logo_and_wordmark.svg.png');
         $manager->persist($platform2);
 
         $platform3 = new Platform();
         $platform3->setName('Playstation 5');
-        $platform3->setBrand($brand1);
         $platform3->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/PS5_logo.png/800px-PS5_logo.png');
         $manager->persist($platform3);
 
         $platform4 = new Platform();
         $platform4->setName('Xbox One');
-        $platform4->setBrand($brand2);
         $platform4->setLogo('https://upload.wikimedia.org/wikipedia/fr/c/c4/Xbox_One_Logo.png');
         $manager->persist($platform4);
 
         $platform5 = new Platform();
         $platform5->setName('Xbox Series X');
-        $platform5->setBrand($brand2);
         $platform5->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Xbox_Series_X_logo.svg/2028px-Xbox_Series_X_logo.svg.png');
         $manager->persist($platform5);
 
         $platform6 = new Platform();
         $platform6->setName('Nintendo Switch');
-        $platform6->setBrand($brand3);
         $platform6->setLogo('https://upload.wikimedia.org/wikipedia/commons/3/38/Nintendo_switch_logo.png');
         $manager->persist($platform6);
 

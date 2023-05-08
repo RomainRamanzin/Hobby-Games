@@ -16,12 +16,14 @@
             <div class="row">
               <div class="col-12">
                 <div class="contain-menu">
+                  {# rédacteur : ajout/modif/suppression articles #}
+
                   {% if is_granted('ROLE_REDACTEUR') %}
-                    <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-newspaper"></i>administrateur articles</a>
                   {% endif %}
-                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-sharp fa-solid fa-gamepad"></i>administrateur jeux</a>
-                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-computer"></i>administrateur plateforme</a>
-                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-copyright"></i>administrateur marque</a>
+                    <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-newspaper"></i>Articles</a>
+                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-sharp fa-solid fa-gamepad"></i>Jeux</a>
+                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-computer"></i>Plateformes</a>
+                  <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-copyright"></i>Marques</a>
                   <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-terminal"></i>administrateur éditeur</a>
                   <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-user-plus"></i>création d'un utilisateur</a>
                   <a class="link-menu-dashboard" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-user"></i>mon profil</a>
