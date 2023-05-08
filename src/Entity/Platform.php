@@ -24,9 +24,6 @@ class Platform
     #[ORM\ManyToMany(targetEntity: Game::class, mappedBy: 'platforms')]
     private Collection $games;
 
-    #[ORM\ManyToOne(inversedBy: 'platforms')]
-    private ?Brand $brand = null;
-
     public function __construct()
     {
         $this->games = new ArrayCollection();
@@ -84,18 +81,6 @@ class Platform
         if ($this->games->removeElement($game)) {
             $game->removePlatform($this);
         }
-
-        return $this;
-    }
-
-    public function getBrand(): ?Brand
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(?Brand $brand): self
-    {
-        $this->brand = $brand;
 
         return $this;
     }

@@ -44,7 +44,7 @@
             <li>
               <a href="{{ path('app_jeux') }}">Jeux</a>
             </li>
-            {% if app.user %}
+            {% if is_granted('ROLE_REDACTEUR') %}
               <li>
                 <a href="{{ path('app_dashboard') }}">Dashboard</a>
               </li>
