@@ -47,30 +47,24 @@ class ArticleRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findLastArticles(int $limit = 3): array
+    public function paginationQuery()
     {
         return $this->createQueryBuilder('a')
             ->orderBy('a.publication_date', 'DESC')
-            ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
 
-    //    /**
-    //     * @return Article[] Returns an array of Article objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('a.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function filterQuery($title)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'ASC');
 
+        if ($title) {
+            $query->andWhere('a.title LIKE :title')
+                ->setParameter('title', '%' . $title . '%');
+        }
+        return $query->getQuery();
+    }
     //    public function findOneBySomeField($value): ?Article
     //    {
     //        return $this->createQueryBuilder('a')
