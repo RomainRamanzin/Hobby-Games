@@ -968,7 +968,6 @@ class AppFixtures extends Fixture
         $review1->setContent('Ce jeu est super, je le recommande, il est très fun');
         $review1->setRate(5);
         $review1->setPublicationDate(new \DateTime('2022-12-19'));
-        $review1->setIsDeleted(false);
         $manager->persist($review1);
 
         $review2 = new Review();
@@ -976,7 +975,6 @@ class AppFixtures extends Fixture
         $review2->setContent('Ce jeu est nul, je ne le recommande pas, il est très nul');
         $review2->setRate(1);
         $review2->setPublicationDate(new \DateTime('2022-12-19'));
-        $review2->setIsDeleted(false);
         $manager->persist($review2);
 
         $review3 = new Review();
@@ -984,7 +982,6 @@ class AppFixtures extends Fixture
         $review3->setContent('Ce jeu est super, mais il y a beaucoup de bugs');
         $review3->setRate(3);
         $review3->setPublicationDate(new \DateTime('2022-12-21'));
-        $review3->setIsDeleted(false);
         $manager->persist($review3);
 
         $review4 = new Review();
@@ -992,7 +989,6 @@ class AppFixtures extends Fixture
         $review4->setContent('Vraiment nul on se fait chier');
         $review4->setRate(1);
         $review4->setPublicationDate(new \DateTime('2022-12-21'));
-        $review4->setIsDeleted(true);
         $manager->persist($review4);
 
 

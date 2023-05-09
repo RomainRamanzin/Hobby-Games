@@ -6,6 +6,7 @@
 
 {% block body %}
   <link href="/asset/css/actualite.css" rel="stylesheet" />
+
   <div class="container my-5">
     <div class="container">
       <div class="glass">
@@ -43,13 +44,22 @@
             </div>
           </div>
         </div>
+       
         <div class="actualite-all">
           <div class="animation-div">
+           	{{ form_start(formSearch) }}
+            <div class="search-component">
+              <div class="search-filter-text">Filtrer les articles</div>
+              {{ form_widget(formSearch.title, {'attr': {'class': 'form-control' , 'placeholder': 'Recherche d\'un article' }}) }}
+              {{ form_widget(formSearch.submit, {'attr': {'class': 'btn btn-primary  px-5'}}) }}
+              <a class="btn btn-secondary  px-5" href="{{ path('app_actualite') }}">Supprimer</a>
+            </div>
+            {{ form_end(formSearch) }}
             <div class="block-title-news">
               <h1 class="title-news">Toutes les actualités du mois</h1>
             </div>
             <div class="block-contain-card">
-              {% for Actu in allActu %}
+              {% for Actu in pagination %}
                 <div class="card-actu">
                   <a href="{{ path('app_actualite_show', { id: Actu.id }) }}">
                     <img src="{{ Actu.cover }}" alt="image-card-actualite" />
@@ -61,6 +71,12 @@
                   </a>
                 </div>
               {% endfor %}
+              {% if (pagination|length) == 0 %}
+                <div class="col-12">
+                  <div class="alert alert-danger text-center" role="alert">Aucun résultat</div>
+                </div>
+              {% endif %}
+              <div class="col-12">{{ knp_pagination_render(pagination) }}</div>
             </div>
           </div>
         </div>

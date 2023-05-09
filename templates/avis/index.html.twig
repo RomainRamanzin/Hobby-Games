@@ -204,7 +204,7 @@
 			{# Section avis de l'utilisateur si connecté et un avis est posté pour ce jeu #}
 			{% if authUserPublication %}
 				<div class="row d-flex flex-column align-items-center">
-					<div class="col-9">
+					<div class="col-lg-9 col-12 mb-5">
 						<div class="section-title">
 							Votre avis
 						</div>
@@ -242,6 +242,14 @@
 									{{ authUserPublication.review.content }}
 								</div>
 							</div>
+
+							{# Boutons modifier et supprimer #}
+							<div class="avis-card-actions">
+								<a href="{{ path('app_avis_add', {'id': game.id}) }}" class="avis-card-modify">Modifier</a>
+								<a onClick='return confirm("Voulez vous vraiment supprimer votre avis ?")' href="{{ path('app_avis_delete', {'id': game.id }) }}" class="avis-card-delete">Supprimer</a>
+							</div>
+
+
 						</div>
 					</div>
 				</div>

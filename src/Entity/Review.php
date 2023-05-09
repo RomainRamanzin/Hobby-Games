@@ -23,9 +23,6 @@ class Review
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $publication_date = null;
 
-    #[ORM\Column]
-    private ?bool $is_deleted = null;
-
     #[ORM\OneToOne(mappedBy: 'review', cascade: ['persist', 'remove'])]
     private ?Publication $publication = null;
 
@@ -69,18 +66,6 @@ class Review
     public function setPublicationDate(\DateTimeInterface $publication_date): self
     {
         $this->publication_date = $publication_date;
-
-        return $this;
-    }
-
-    public function isIsDeleted(): ?bool
-    {
-        return $this->is_deleted;
-    }
-
-    public function setIsDeleted(bool $is_deleted): self
-    {
-        $this->is_deleted = $is_deleted;
 
         return $this;
     }

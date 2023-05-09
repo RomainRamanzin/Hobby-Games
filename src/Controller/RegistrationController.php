@@ -16,6 +16,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailHelperInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
@@ -73,7 +74,6 @@ class RegistrationController extends AbstractController
 
             // Rediriger l'utilisateur vers la page de connexion
             return $this->redirectToRoute('app_login');
-
         }
 
         // Afficher le formulaire d'inscription
@@ -83,10 +83,67 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/verify/resend', name: 'app_verify_resend')]
-    public function resendVerifyEmail()
+    public function resendVerifyEmail(Request $request, UserRepository $userRepository, MailerInterface $mailerInterface, VerifyEmailVerifyEmailHelperInterface $verifyEmailHelper)
     {
-        // todo: 
-        return $this->render('registration/resend_verify_email.html.twig');
+        // Afficher le formulaire de renvoi d'email de confirmation
+        $builder = $this->createFormBuilder();
+        $builder->add(
+            'email',
+            EmailType::class,
+            [
+                'label' => 'Votre Email',
+                'attr' => [
+                    'placeholder' => 'Email'
+                ]
+            ]
+        );
+        $formEmail = $builder->getForm();
+
+        $formEmail->handleRequest($request);
+
+        if ($formEmail->isSubmitted() && $formEmail->isValid()) {
+
+            $email = $formEmail->get('email')->getData();
+
+            $user = $userRepository->findOneBy(['email' => $email]);
+
+            if ($user) {
+                // Generate a signature for the email
+                $signatureComponents = $verifyEmailHelper->generateSignature(
+                    'app_verify_email',
+                    $user->getId(),
+                    $user->getEmail(),
+                    ['id' => $user->getId()]
+                );
+
+                // Create a signed url and email it to the user
+                $email = (new TemplatedEmail())
+                    ->from(new Address('sinan.cours@gmail.com', 'sinan'))
+                    ->to($user->getEmail())
+                    ->subject('Merci de confirmer votre email')
+                    ->htmlTemplate('registration/confirmation_email.html.twig')
+                    ->context([
+                        'signedUrl' => $signatureComponents->getSignedUrl(),
+                        'expiresAtMessageKey' => $signatureComponents->getExpirationMessageKey(),
+                        'expiresAtMessageData' => $signatureComponents->getExpirationMessageData(),
+                    ]);
+
+                // Send the email
+                $mailerInterface->send($email);
+
+            }
+
+            // Informer l'utilisateur qu'un email de confirmation lui a été envoyé
+            $this->addFlash('success', 'Un email de confirmation vous a été envoyé, merci de cliquer sur le lien pour valider votre inscription.');
+
+            // Rediriger l'utilisateur vers la page de connexion
+            return $this->redirectToRoute('app_login');
+
+        }
+
+        return $this->render('security/resend_verify_email.html.twig', [
+            'formEmail' => $formEmail->createView(),
+        ]);
     }
 
 
