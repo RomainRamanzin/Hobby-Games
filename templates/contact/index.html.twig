@@ -11,6 +11,15 @@
       <div class="glass">
         <div class="animation-div">
           <h1 class="title-contact">Contactez-nous</h1>
+          {% for flash_message in app.session.flashbag.get('danger') %}
+            <div class="alert alert-danger">{{ flash_message }}</div>
+          {% endfor %}
+          {% for flash_message in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">{{ flash_message }}</div>
+          {% endfor %}
+          {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">{{ message }}</div>
+          {% endfor %}
         </div>
         <div class="container">
           <div class="row">
