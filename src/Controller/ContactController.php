@@ -9,6 +9,7 @@ use App\Form\ContactType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\MailerInterface as Mailer;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class ContactController extends AbstractController
 {
@@ -43,8 +44,14 @@ class ContactController extends AbstractController
                 ->text($nom . " " . "souhaite prendre contact avec nous." . "\n" . "\n" . "Son adresse mail est" . " " . $email . "\n" . "\n" . "message :" . "\n" . $content);
             // ->html('<p>See Twig integration for better HTML integration!</p>');
 
-            //envoi du mail
-            $mailer->send($email);
+            try {
+                $mailer->send($email);
+                $this->addFlash('success', 'Votre message a bien été envoyé !');
+            }
+            //si le mail n'a pas pu être envoyé le composant mailer lance une exception
+            catch (TransportExceptionInterface $e) {
+                $this->addFlash('error', 'Une erreur s\'est produite lors de l\'envoi du message. Veuillez réessayer plus tard.');
+            }
         }
 
         return $this->render('contact/index.html.twig', [
