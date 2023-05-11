@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	HobbyGames | Administration utilisateurs
+{% endblock %}
+
+{% block body %}
+	<link href="/asset/css/admin/utilisateurs.css" rel="stylesheet"/>
+	<div class="container my-5">
+		<div class="container">
+			<div class="glass">
+				<div class="return-before-page">
+					<a class="return-before-link" href="{{ path('app_dashboard') }}">
+						<i class="fa-solid fa-newspaper"></i>DashBoard</a>
+					<label class="return-slash">/</label>
+					<label class="return-before">Administration des utilisateurs</label>
+				</div>
+				<div class="col-md-12">
+					<div class="box-top-admin">
+						<h1 class="title-admin">Administration des utilisateurs</h1>
+					</div>
+					{% for message in app.flashes('success') %}
+						<div class="alert alert-success">{{ message }}</div>
+					{% endfor %}
+					{% for message in app.flashes('error') %}
+						<div class="alert alert-danger">{{ message }}</div>
+					{% endfor %}
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class="table-title">Avatar</th>
+								<th class="table-title">Pseudo</th>
+								<th class="table-title">Nom</th>
+								<th class="table-title">Prénom</th>
+								<th class="table-title">Email</th>
+								<th class="table-title">Rôle</th>
+								<th class="table-title">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for user in users %}
+								<tr>
+									<td class="table-data">
+										<img src="{{ user.getAvatar }}" alt="user avatar" class="table-data-img">
+									</td>
+									<td class="table-data">{{ user.getPseudo }}</td>
+									<td class="table-data">{{ user.getSurname }}</td>
+									<td class="table-data">{{ user.getFirstName }}</td>
+									<td class="table-data">{{ user.getEmail }}</td>
+									<td class="table-data">{{ user.getRoles|join(' | ') }}</td>
+									<td class="table-data">
+										<div class="table-actions">
+											<a href="{{ path('app_admin_utilisateurs_show', {'id': user.getId}) }}">
+												<i class="fa-solid fa-eye"></i>
+											</a>
+											<a href="{{ path('app_admin_utilisateurs_edit', {'id': user.getId}) }}">
+												<i class="fa-solid fa-pen"></i>
+											</a>
+											<a href="{{ path('app_admin_utilisateurs_delete', {'id': user.getId}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">
+												<i class="fa-solid fa-trash"></i>
+											</a>
+										</div>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
