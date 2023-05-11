@@ -50,13 +50,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $account_creation_date = null;
 
-    #[ORM\OneToMany(mappedBy: 'writed_by', targetEntity: Article::class)]
+    #[ORM\OneToMany(mappedBy: 'writed_by', targetEntity: Article::class, orphanRemoval: true)]
     private Collection $articles_writed;
 
-    #[ORM\OneToMany(mappedBy: 'validated_by', targetEntity: Article::class)]
+    #[ORM\OneToMany(mappedBy: 'validated_by', targetEntity: Article::class, orphanRemoval: true)]
     private Collection $articles_validated;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Publication::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Publication::class, orphanRemoval: true)]
     private Collection $publications;
 
     #[ORM\Column(length: 255, nullable: true)]
