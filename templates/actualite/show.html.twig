@@ -10,9 +10,14 @@
     <div class="container">
       <div class="glass">
         <div class="animation-div">
-          <div class="return-before-page">
-            <a class="return-before-link" href="/actualite"><i class="fa-solid fa-newspaper"></i>Actualité</a><label class="return-slash">/</label><label class="return-before">{{ article.title }}</label>
-          </div>
+          {% if is_granted('ROLE_REDACTEUR') and url %}
+            {# bouton pour retourner sur la page administration-articles #}
+            <a href="{{ path('app_administrateur_articles') }}" class="btn btn-primary">retour</a>
+          {% else %}
+            <div class="return-before-page">
+              <a class="return-before-link" href="/actualite"><i class="fa-solid fa-newspaper"></i>Actualité</a><label class="return-slash">/</label><label class="return-before">{{ article.title }}</label>
+            </div>
+          {% endif %}
         </div>
         <div class="animation-div">
           <div class="box-container-title-of-news">

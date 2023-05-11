@@ -12,15 +12,19 @@ use App\Repository\GameRepository;
 use App\Entity\Article;
 use App\Repository\UserRepository;
 use App\Form\ArticleFormType;
+use GuzzleHttp\Psr7\Request as Psr7Request;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
 class ActualiteController extends AbstractController
 {
     #[Route('/actualite', name: 'app_actualite')]
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(ArticleRepository $articleRepository, PaginatorInterface $paginator, Request $request, EntityManagerInterface $em): Response
     {
         // Récupération de toutes les actualités
         $articles = $articleRepository->findAllSorted();
@@ -38,10 +42,39 @@ class ActualiteController extends AbstractController
         // Récupération de toutes les actualités sauf les 5 dernières
         $allActu = array_slice($copieArticles, 5);
 
+        $formSearch = $this->createFormBuilder()
+            ->setMethod('GET')
+            ->add('title', TextType::class, [
+                'required' => false,
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Rechercher',
+            ])
+            ->getForm();
+
+        $formSearch->handleRequest($request);
+
+        if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+
+            $data = $formSearch->getData();
+
+            $title = $data['title'];
+        } else {
+            $title = null;
+        }
+
+        $pagination = $paginator->paginate(
+            $articleRepository->filterQuery($title),
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('actualite/index.html.twig', [
             'controller_name' => 'ActualiteController',
             'allActu' => $allActu,
             'topActu' => $topActu,
+            'pagination' => $pagination,
+            'formSearch' => $formSearch->createView(),
         ]);
     }
 
@@ -49,6 +82,13 @@ class ActualiteController extends AbstractController
 
     public function show(Article $articles, SectionRepository $sectionRepository, ArticleRepository $articleRepository): Response
     {
+        //l'url par laquelle arrive l'utilisateur
+        $url = (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '');
+        $urlAdmin = false;
+        if (strpos($url, '/administrateur-articles')) {
+            $urlAdmin = true;
+        }
+
         if ($articles->IsValided() == false && !$this->isGranted('ROLE_REDACTEUR')) {
             return $this->redirectToRoute('app_actualite');
         }
@@ -81,6 +121,7 @@ class ActualiteController extends AbstractController
         $dateActu = $articles->getPublicationDate();
 
         return $this->render('actualite/show.html.twig', [
+            'url' => $urlAdmin,
             'article' => $articles,
             'sections' => $sections,
             'dateActu' => $dateActu,
