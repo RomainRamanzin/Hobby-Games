@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	HobbyGames | Administration plateformes
+{% endblock %}
+
+{% block body %}
+	<link href="/asset/css/admin/utilisateurs.css" rel="stylesheet"/>
+	<div class="container my-5">
+		<div class="container">
+			<div class="glass">
+				<div class="return-before-page">
+					<a class="return-before-link" href="{{ path('app_admin_plateformes') }}">
+						<i class="fa-solid fa-newspaper"></i>plateformes</a>
+					<label class="return-slash">/</label>
+					<label class="return-before">Plateforme n°
+						{{ platform.getId }}</label>
+				</div>
+				<div class="col-md-12">
+					<div class="box-top-admin">
+						<h1 class="title-admin">Plateforme n°
+							{{ platform.getId }}</h1>
+					</div>
+					{# afficher toutes les infos de la plateforme #}
+					<div class="data-info">
+
+						<div class="data-element">
+							<label class="data-label">Nom :
+							</label>
+							<label class="data-value">{{ platform.getName }}</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">Logo :
+							</label>
+							<label class="data-value">{{ platform.getLogo }}</label>
+						</div>
+
+						<div class="data-actions">
+							<a class="btn btn-primary" href="{{ path('app_admin_plateforme_edit', {'id': platform.getId}) }}">
+								<i class="fa-solid fa-pencil"></i>Modifier</a>
+							<a class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette plateforme ?')" href="{{ path('app_admin_plateforme_delete', {'id': platform.getId}) }}">
+								<i class="fa-solid fa-trash"></i>Supprimer</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
