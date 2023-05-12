@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	HobbyGames | Administration Commentaires
+{% endblock %}
+
+{% block body %}
+	<link href="/asset/css/admin/utilisateurs.css" rel="stylesheet"/>
+	<div class="container my-5">
+		<div class="container">
+			<div class="glass">
+				<div class="return-before-page">
+					<a class="return-before-link" href="{{ path('app_admin_commentaires') }}">
+						<i class="fa-solid fa-newspaper"></i>Commentaires</a>
+					<label class="return-slash">/</label>
+					<label class="return-before">Commentaire n°
+						{{ review.getId }}</label>
+				</div>
+				<div class="col-md-12">
+					<div class="box-top-admin">
+						<h1 class="title-admin">Commentaire n°
+							{{ review.getId }}</h1>
+					</div>
+					{# afficher toutes les infos du commentaire #}
+					<div class="data-info">
+
+						<div class="data-element">
+							<label class="data-label">Pseudo :
+							</label>
+							<label class="data-value">
+								<a href="{{ path('app_admin_utilisateurs_show', {'id':review.getPublication.getUser.getID }) }}">{{ review.getPublication.getUser.getPseudo }}</a>
+							</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">Nom :
+							</label>
+							<label class="data-value">{{ review.getPublication.getUser.getFirstName }}</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">Prénom :
+							</label>
+							<label class="data-value">{{ review.getPublication.getUser.getSurname }}</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">date de naissance :
+							</label>
+							<label class="data-value">{{ review.getPublication.getUser.getDateOfBirth|date('d/m/Y') }}</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">email :
+							</label>
+							<label class="data-value">{{ review.getPublication.getUser.getEmail }}</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">Titre du commentaire :
+							</label>
+							<label class="data-value">{{ review.getTitle }}</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">Contenu du commentaire :
+							</label>
+							<label class="data-value">{{ review.getContent }}</label>
+						</div>
+                              <div class="data-element">
+							<label class="data-label">Note :
+							</label>
+							<label class="data-value">{{ review.getRate }}/5</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">Date de publication du commentaire :
+							</label>
+							<label class="data-value">{{ review.getPublicationDate|date('d/m/Y') }}</label>
+						</div>
+
+						<div class="data-actions">
+							<a class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?')" href="{{ path('app_admin_commentaire_delete', {'id': review.getId}) }}">
+								<i class="fa-solid fa-trash"></i>Supprimer</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
