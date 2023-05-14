@@ -90,74 +90,60 @@ class AppFixtures extends Fixture
         // Editeurs
         $editeur1 = new Editor();
         $editeur1->setName('Ubisoft');
-        $editeur1->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ubisoft_logo.svg/1000px-Ubisoft_logo.svg.png');
         $manager->persist($editeur1);
 
         $editeur2 = new Editor();
         $editeur2->setName('EA');
-        $editeur2->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Electronic-Arts-Logo.svg/2048px-Electronic-Arts-Logo.svg.png');
         $manager->persist($editeur2);
 
         $editeur3 = new Editor();
         $editeur3->setName('Activision');
-        $editeur3->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Activision.svg/2560px-Activision.svg.png');
         $manager->persist($editeur3);
 
         $editeur4 = new Editor();
         $editeur4->setName('Bethesda');
-        $editeur4->setLogo('https://logo-marque.com/wp-content/uploads/2021/02/Bethesda-Logo.png');
         $manager->persist($editeur4);
 
         $editeur5 = new Editor();
         $editeur5->setName('Rockstar');
-        $editeur5->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/1200px-Rockstar_Games_Logo.svg.png');
         $manager->persist($editeur5);
 
         $editeur6 = new Editor();
         $editeur6->setName('Microsoft');
-        $editeur6->setLogo('https://www.1min30.com/wp-content/uploads/2017/09/logo-microsoft-scaled.jpg');
         $manager->persist($editeur6);
 
         $editeur7 = new Editor();
         $editeur7->setName('Sony');
-        $editeur7->setLogo('https://logos-marques.com/wp-content/uploads/2021/03/Sony-Logo.png');
         $manager->persist($editeur7);
 
         $editeur8 = new Editor();
         $editeur8->setName('Nintendo');
-        $editeur8->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Nintendo.svg/2560px-Nintendo.svg.png');
         $manager->persist($editeur8);
 
 
         //platform
         $platform1 = new Platform();
         $platform1->setName('PC');
-        $platform1->setLogo('https://img2.freepng.fr/20180324/ujw/kisspng-windows-7-microsoft-logo-windows-8-microsoft-5ab6ff6b526bf9.4269304415219423793376.jpg');
         $manager->persist($platform1);
 
         $platform2 = new Platform();
         $platform2->setName('Playstation 4');
-        $platform2->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PlayStation_4_logo_and_wordmark.svg/1280px-PlayStation_4_logo_and_wordmark.svg.png');
         $manager->persist($platform2);
 
         $platform3 = new Platform();
         $platform3->setName('Playstation 5');
-        $platform3->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/PS5_logo.png/800px-PS5_logo.png');
         $manager->persist($platform3);
 
         $platform4 = new Platform();
         $platform4->setName('Xbox One');
-        $platform4->setLogo('https://upload.wikimedia.org/wikipedia/fr/c/c4/Xbox_One_Logo.png');
         $manager->persist($platform4);
 
         $platform5 = new Platform();
         $platform5->setName('Xbox Series X');
-        $platform5->setLogo('https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Xbox_Series_X_logo.svg/2028px-Xbox_Series_X_logo.svg.png');
         $manager->persist($platform5);
 
         $platform6 = new Platform();
         $platform6->setName('Nintendo Switch');
-        $platform6->setLogo('https://upload.wikimedia.org/wikipedia/commons/3/38/Nintendo_switch_logo.png');
         $manager->persist($platform6);
 
 

@@ -18,9 +18,6 @@ class Editor
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $logo = null;
-
     #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Game::class)]
     private Collection $games;
 
@@ -42,18 +39,6 @@ class Editor
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getLogo(): ?string
-    {
-        return $this->logo;
-    }
-
-    public function setLogo(string $logo): self
-    {
-        $this->logo = $logo;
 
         return $this;
     }

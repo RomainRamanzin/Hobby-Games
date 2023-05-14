@@ -18,9 +18,6 @@ class Platform
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $logo = null;
-
     #[ORM\ManyToMany(targetEntity: Game::class, mappedBy: 'platforms')]
     private Collection $games;
 
@@ -42,18 +39,6 @@ class Platform
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getLogo(): ?string
-    {
-        return $this->logo;
-    }
-
-    public function setLogo(string $logo): self
-    {
-        $this->logo = $logo;
 
         return $this;
     }

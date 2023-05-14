@@ -14,7 +14,6 @@ class EditeurFormType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('logo')
             ->add('Valider', SubmitType::class)
         ;
     }

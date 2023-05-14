@@ -32,7 +32,6 @@
 						<thead>
 							<tr>
 								<th class="table-title">Nom</th>
-								<th class="table-title">Logo</th>
                                 <th class="table-title">Actions</th>
 							</tr>
 						</thead>
@@ -40,7 +39,6 @@
 							{% for platform in platforms %}
 								<tr>
 									<td class="table-data">{{ platform.getName }}</td>
-									<td class="table-data">{{ platform.getLogo }}</td>
 									<td class="table-data">
 										<div class="table-actions">
 											<a href="{{ path('app_admin_plateforme_show', {'id': platform.getId}) }}">
