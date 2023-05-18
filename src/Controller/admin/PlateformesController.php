@@ -7,6 +7,7 @@ use App\Form\admin\PlateformeFormType as AdminPlateformeFormType;
 use App\Repository\PlatformRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,10 +17,37 @@ class PlateformesController extends AbstractController
 {
     #[Route('/admin-plateformes', name: 'app_admin_plateformes')]
     #[IsGranted('ROLE_ADMIN')]
-    public function index(PlatformRepository $platformRepository): Response
+    public function index(PlatformRepository $platformRepository, Request $request): Response
     {
+        $searchForm = $this->createFormBuilder()
+            ->setMethod('GET')
+            ->add('Nom', null, [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Rechercher par nom',
+                ],
+            ])
+            ->add('rechercher', SubmitType::class, [
+                'label' => 'Rechercher',
+                'attr' => [
+                    'class' => 'btn btn-primary',
+                ],
+            ])
+            ->getForm();
+        $searchForm->handleRequest($request);
+
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+            $data = $searchForm->getData();
+            $nom = $data['Nom'];
+        } else {
+            $nom = null;
+        }
+
+        $platforms = $platformRepository->search($nom);
+
         return $this->render('admin/plateformes/index.html.twig', [
-            'platforms' => $platformRepository->findAll(),
+            'platforms' => $platforms,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 
@@ -53,7 +81,7 @@ class PlateformesController extends AbstractController
             $platform = new Platform();
         }
 
-        $form = $this->createForm(AdminPlateformeFormType ::class, $platform);
+        $form = $this->createForm(AdminPlateformeFormType::class, $platform);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -70,5 +98,4 @@ class PlateformesController extends AbstractController
             'platform' => $platform,
         ]);
     }
-
 }

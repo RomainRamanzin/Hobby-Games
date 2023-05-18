@@ -46,7 +46,6 @@ class GameRepository extends ServiceEntityRepository
             ->getQuery();
     }
 
-
     public function filterQuery($search, $type, $platform)
     {
         $query = $this->createQueryBuilder('g')
@@ -70,7 +69,7 @@ class GameRepository extends ServiceEntityRepository
                 ->setParameter('platform', $platform);
         }
 
-        return $query->getQuery();
+        return $query->getQuery()->getResult();
     }
 
     //    /**

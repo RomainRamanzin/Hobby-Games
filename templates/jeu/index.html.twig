@@ -29,7 +29,7 @@
 				class="row">
 				{# Game Card #}
 				{% for game in games %}
-					<div class="col-lg-3 col-md-6 p-2">
+					<div class="col-lg-3 col-md-4 col-6 p-2">
 						<a class="link-card-jeux" href="{{ path('app_jeu', {'id' : game.id }) }}">
 							<div class="card-jeux" style="background-image: url('{{ game.poster }}');">
 								<div class="card-jeux-overlay">

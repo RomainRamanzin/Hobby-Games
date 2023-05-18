@@ -18,7 +18,7 @@ class Editor
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Game::class)]
+    #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Game::class, cascade: ['persist', 'remove'])]
     private Collection $games;
 
     public function __construct()

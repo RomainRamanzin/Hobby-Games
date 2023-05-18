@@ -71,6 +71,10 @@
     cursor: pointer;
 }
 
+tr{
+    border-bottom: 1px solid #ffffff;
+}
+
 .table-data{
     vertical-align: middle;
     color: #dadada !important;
@@ -80,6 +84,7 @@
     overflow: hidden;
     cursor: pointer;
     padding: 1rem 0;
+    border: none;
 }
 
 .table-data-img{
@@ -126,7 +131,7 @@
 }
 
 .data-value{
-    color: #fd0dd5;
+    color: #4e82fd;
     font-size: 20px;
     font-weight: 700;
     font-weight: 500;
@@ -161,3 +166,38 @@
     font-weight: 500;
 }
 
+.img-poster-admin {
+    height: 100px;
+    aspect-ratio: 3/4;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.section-title {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.game-no-image {
+    color: #ffffff;
+}
+
+.game-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.game-image-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}

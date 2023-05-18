@@ -39,6 +39,19 @@ class EditorRepository extends ServiceEntityRepository
         }
     }
 
+    public function search($query): array
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->orderBy('e.name', 'ASC');
+
+        if($query) {
+            $qb->where('e.name LIKE :query')
+                ->setParameter('query', "%$query%");
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Editor[] Returns an array of Editor objects
 //     */

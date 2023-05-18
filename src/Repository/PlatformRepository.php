@@ -39,6 +39,19 @@ class PlatformRepository extends ServiceEntityRepository
         }
     }
 
+    public function search($query): array
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->orderBy('p.name', 'ASC');
+
+        if($query) {
+            $qb->where('p.name LIKE :query')
+                ->setParameter('query', "%$query%");
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Platform[] Returns an array of Platform objects
 //     */

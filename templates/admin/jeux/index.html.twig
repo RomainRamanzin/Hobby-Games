@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	HobbyGames | Administration Jeux
+{% endblock %}
+
+{% block body %}
+	<link href="/asset/css/admin/utilisateurs.css" rel="stylesheet"/>
+	<div class="container my-5">
+		<div class="container">
+			<div class="glass">
+				<div class="return-before-page">
+					<a class="return-before-link" href="{{ path('app_dashboard') }}">
+						<i class="fa-solid fa-newspaper"></i>DashBoard</a>
+					<label class="return-slash">/</label>
+					<label class="return-before">Administration des jeux</label>
+				</div>
+				<div class="col-md-12">
+					<div class="box-top-admin">
+						<h1 class="title-admin">Administration des jeux</h1>
+					</div>
+					<div class="box-second-admin d-flex justify-content-center mb-3">
+						<a href="{{ path('app_admin_jeux_add') }}" class="btn btn-primary">
+							<i class="fa-solid fa-plus"></i>
+							Ajouter un jeu</a>
+					</div>
+					{{ form_start(searchForm) }}
+					<div class="d-flex gap-3 justify-content-center flex-column flex-lg-row">
+						{{ form_row(searchForm.Nom) }}
+						{{ form_row(searchForm.Genre) }}
+						{{ form_row(searchForm.Plateforme) }}
+						{{ form_row(searchForm.rechercher, {'attr': {'class': 'btn btn-primary'}}) }}
+					</div>
+					{{ form_end(searchForm) }}
+					{% for message in app.flashes('success') %}
+						<div class="alert alert-success">{{ message }}</div>
+					{% endfor %}
+					{% for message in app.flashes('error') %}
+						<div class="alert alert-danger">{{ message }}</div>
+					{% endfor %}
+					<div class="table-container">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th class="table-title">Affiche</th>
+									<th class="table-title">Nom</th>
+									<th class="table-title">Editeur</th>
+									<th class="table-title">Catégorie(s)</th>
+									<th class="table-title">Plateforme(s)</th>
+									<th class="table-title">Date de sortie</th>
+									<th class="table-title">Age minimum</th>
+									<th class="table-title">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for game in games %}
+									<tr>
+										{# asset('asset/images/games/' ~ game.getPoster) #}
+										<td class="table-data"><img src="{{ game.getPoster }}" alt="{{ game.getName }}" class="img-poster-admin"></td>
+										<td class="table-data">{{ game.getName }}</td>
+										<td class="table-data">{{ game.getEditor.getName }}</td>
+										<td class="table-data">
+											{% for type in game.getTypes %}
+												{{ type.getName }}
+												|
+											{% endfor %}
+										</td>
+										<td class="table-data">
+											{% for platform in game.getPlatforms %}
+												{{ platform.getName }}
+												|
+											{% endfor %}
+										</td>
+										<td class="table-data">{{ game.getReleaseDate|date('d/m/Y') }}</td>
+										<td class="table-data">{{ game.getAgeLimit }}</td>
+										<td class="table-data">
+											<div class="table-actions">
+												<a href="{{ path('app_admin_jeux_show', {'id': game.getId}) }}">
+													<i class="fa-solid fa-eye"></i>
+												</a>
+												<a href="{{ path('app_admin_jeux_edit', {'id': game.getId}) }}">
+													<i class="fa-solid fa-pen"></i>
+												</a>
+												<a href="{{ path('app_admin_jeux_delete', {'id': game.getId}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce jeux ?')">
+													<i class="fa-solid fa-trash"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+								{% endfor %}
+								{% if games|length == 0 %}
+									<tr>
+										<td colspan="8" class="table-data text-center">Aucun jeu trouvée</td>
+									</tr>
+								{% endif %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

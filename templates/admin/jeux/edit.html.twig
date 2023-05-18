@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	HobbyGames | Administration Jeux
+{% endblock %}
+
+{% block body %}
+	<link href="/asset/css/admin/utilisateurs.css" rel="stylesheet"/>
+	<div class="container my-5">
+		<div class="container">
+			<div class="glass">
+				<div class="return-before-page">
+					<a class="return-before-link" href="{{ path('app_admin_jeux') }}">
+						<i class="fa-solid fa-newspaper"></i>Jeux</a>
+					<label class="return-slash">/</label>
+					<label class="return-before">jeu n°
+						{{ game.getId }}</label>
+				</div>
+				<div class="col-md-12">
+					<div class="box-top-admin">
+						<h1 class="title-admin">Jeu n°
+							{{ game.getId }}</h1>
+					</div>
+					{# afficher toutes les infos du jeu #}
+					<div class="col d-flex justify-content-center">
+						<div class="col-12 col-md-6">
+							<div class="data-info">
+								{{ form_start(form) }}
+								{{ form_end(form) }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
