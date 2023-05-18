@@ -31,7 +31,7 @@ class Game
     #[ORM\Column(nullable: true)]
     private ?int $age_limit = null;
 
-    #[ORM\OneToMany(mappedBy: 'game', targetEntity: GamePicture::class)]
+    #[ORM\OneToMany(mappedBy: 'game', targetEntity: GamePicture::class, cascade: ['persist', 'remove'])]
     private Collection $pictures;
 
     #[ORM\ManyToMany(targetEntity: Platform::class, inversedBy: 'games')]
@@ -40,14 +40,13 @@ class Game
     #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'games')]
     private Collection $types;
 
-    #[ORM\ManyToOne(inversedBy: 'games')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'games', targetEntity: Editor::class)]
     private ?Editor $editor = null;
 
     #[ORM\OneToMany(mappedBy: 'game', targetEntity: Article::class)]
     private Collection $articles;
 
-    #[ORM\OneToMany(mappedBy: 'game', targetEntity: Publication::class)]
+    #[ORM\OneToMany(mappedBy: 'game', targetEntity: Publication::class, cascade: ['persist', 'remove'])]
     private Collection $publications;
 
     public function __construct()

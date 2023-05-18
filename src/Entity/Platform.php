@@ -18,7 +18,7 @@ class Platform
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: Game::class, mappedBy: 'platforms')]
+    #[ORM\ManyToMany(targetEntity: Game::class, mappedBy: 'platforms', cascade: ['persist', 'remove'])]
     private Collection $games;
 
     public function __construct()

@@ -39,6 +39,27 @@ class ReviewRepository extends ServiceEntityRepository
         }
     }
 
+    public function filterQuery($pseudo, $jeu)
+    {
+        $query = $this->createQueryBuilder('r')
+            ->orderBy('r.id', 'ASC')
+            ->join('r.publication', 'p')
+            ->join('p.user', 'u');
+
+        if ($pseudo) {
+            $query->andWhere('u.pseudo LIKE :pseudo')
+                ->setParameter('pseudo', '%' . $pseudo . '%');
+        }
+
+        if ($jeu) {
+                $query->join('p.game', 'g')
+                ->andWhere('g = :jeu')
+                ->setParameter('jeu', $jeu);
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Review[] Returns an array of Review objects
 //     */

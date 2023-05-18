@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	HobbyGames | Administration Jeux
+{% endblock %}
+
+{% block body %}
+	<link href="/asset/css/admin/utilisateurs.css" rel="stylesheet"/>
+	<div class="container my-5">
+		<div class="container">
+			<div class="glass">
+				<div class="return-before-page">
+					<a class="return-before-link" href="{{ path('app_admin_jeux') }}">
+						<i class="fa-solid fa-newspaper"></i>Jeux</a>
+					<label class="return-slash">/</label>
+					<label class="return-before">Jeu n°
+						{{ game.getId }}</label>
+				</div>
+
+				{% for message in app.flashes('success') %}
+					<div class="alert alert-success">{{ message }}</div>
+				{% endfor %}
+
+				<div class="col-md-12">
+					<div class="box-top-admin">
+						<h1 class="title-admin">Jeu n°
+							{{ game.getId }}</h1>
+					</div>
+					{# afficher toutes les infos du jeu #}
+					<div class="data-info">
+
+						<div class="data-element">
+							<img class="img-poster-admin" src="{{ game.getPoster }}" alt="image du jeu" style="height: 200px;">
+						</div>
+
+						<div class="data-element">
+							<label class="data-label">Nom :
+							</label>
+							<label class="data-value">
+								{{ game.getName }}
+							</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">Description :
+							</label>
+							<label class="data-value">
+								{{ game.getDescription }}
+							</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">Editeur :
+							</label>
+							<label class="data-value">{{ game.getEditor.getName }}</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">Catégorie(s) :
+							</label>
+							{% for type in game.getTypes %}
+								<label class="data-value">{{ type.getName }}
+									|</label>
+							{% endfor %}
+						</div>
+						<div class="data-element">
+							<label class="data-label">Plateforme(s) :
+							</label>
+							{% for platform in game.getPlatforms %}
+								<label class="data-value">{{ platform.getName }}
+									|</label>
+							{% endfor %}
+						</div>
+						<div class="data-element">
+							<label class="data-label">Date de sortie :
+							</label>
+							<label class="data-value">{{ game.getReleaseDate|date('d/m/Y') }}</label>
+						</div>
+						<div class="data-element">
+							<label class="data-label">Age minimum :
+							</label>
+							<label class="data-value">{{ game.getAgeLimit }}</label>
+						</div>
+						<div class="data-actions">
+							<a class="btn btn-primary" href="{{ path('app_admin_jeux_edit', {'id': game.getId}) }}">
+								<i class="fa-solid fa-pencil"></i>Modifier</a>
+							<a class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce jeu ?')" href="{{ path('app_admin_jeux_delete', {'id': game.getId}) }}">
+								<i class="fa-solid fa-trash"></i>Supprimer</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 mt-5">
+					<h2 class="section-title">Les images du jeu</h2>
+					<div class="row">
+						{% if game.getPictures|length == 0 %}
+							<p class="game-no-image text-center">il n'y a aucune image
+							</p>
+						{% endif %}
+						{% for gamePicture in game.getPictures %}
+							<div class="mb-4 col-12 col-sm-6 col-lg-4 col-xl-3">
+								<img class="game-image" src="{{ gamePicture.getPicture }}" alt="Image du jeu">
+								<div class="game-image-actions">
+									<a class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?')" href="{{ path('app_admin_jeux_delete_picture', {'id': gamePicture.getId}) }}">
+										<i class="fa-solid fa-trash"></i>Supprimer</a>
+								</div>
+							</div>
+						{% endfor %}
+						<div class="mb-4 col-12 col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center align-items-center">
+							<a class="btn btn-primary d-flex justify-content-center align-items-center gap-3" href="{{ path('app_admin_jeux_add_picture', {'id': game.getId}) }}">
+								<i class="fa-solid fa-plus"></i>Ajouter une image</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

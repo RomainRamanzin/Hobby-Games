@@ -22,6 +22,12 @@
                     <div class="box-second-admin d-flex justify-content-center mb-3">
                         <a href="{{ path('app_admin_plateforme_add') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Ajouter une plateforme</a>
                     </div>
+				{{ form_start(searchForm) }}
+				<div class="d-flex gap-3 justify-content-center">
+					{{ form_row(searchForm.Nom) }}
+					{{ form_row(searchForm.rechercher, {'attr': {'class': 'btn btn-primary'}}) }}
+				</div>
+				{{ form_end(searchForm) }}
 					{% for message in app.flashes('success') %}
 						<div class="alert alert-success">{{ message }}</div>
 					{% endfor %}
@@ -54,6 +60,11 @@
 									</td>
 								</tr>
 							{% endfor %}
+							{% if platforms|length == 0 %}
+								<tr>
+									<td colspan="2" class="table-data text-center">Aucune plateforme trouvée</td>
+								</tr>
+							{% endif %}
 						</tbody>
 					</table>
 				</div>
