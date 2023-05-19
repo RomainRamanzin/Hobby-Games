@@ -72,6 +72,31 @@ class GameRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+
+    //recupérer les jeux don la date de sortie est supérieure à la date du jour
+    public function findUpcomingGames()
+    {
+        return $this->createQueryBuilder('g')
+            ->andWhere('g.release_date > :date')
+            ->setParameter('date', new \DateTime())
+            ->orderBy('g.release_date', 'ASC')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult();
+    }
+
+    //recupérer les jeux dont la date de sortie est inférieure à la date du jour
+    public function findLastGames()
+    {
+        return $this->createQueryBuilder('g')
+            ->andWhere('g.release_date < :date')
+            ->setParameter('date', new \DateTime())
+            ->orderBy('g.release_date', 'DESC')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Game[] Returns an array of Game objects
     //     */
