@@ -919,6 +919,306 @@ class AppFixtures extends Fixture
         $section46->setArticle($article14);
         $manager->persist($section46);
 
+        /**************************/
+
+        //articles
+        $article15 = new Article();
+        $article15->setTitle("Ce titre déjanté noté 16/20 est à moins de 10€ sur Steam !");
+        $article15->setCover("//image.jeuxvideo.com/medias-md/168433/1684332656-9938-card.jpeg");
+        $article15->setIsValided(true);
+        $article15->setPublicationDate(new \DateTime('2023-05-21T08:35:02.930Z'));
+        $article15->setLastModifiedDate(new \DateTime('2023-05-21T08:35:02.930Z'));
+        $article15->setWritedBy($user1);
+        $article15->setValidatedBy($user2);
+        $manager->persist($article15);
+
+        //section articles
+        $section47 = new Section();
+        $section47->setTitle("Introduction");
+        $section47->setDescription("Borderlands 3 est un looter-shooter aussi bourrin que déjanté où le joueur est amené à affronter les jumeaux Calypso qui cherchent à dominer le monde. Parmi les points positifs mis en valeur dans notre test, figurent des combats d’armes à feu particulièrement nerveux, un contenu généreux, une grande qualité de doublage VO et VF et un sentiment omniprésent de progression.");
+        $section47->setPicture('https://image.jeuxvideo.com/medias-md/168433/1684332495-9401-capture-d-ecran.jpg');
+        $section47->setArticle($article15);
+        $manager->persist($section47);
+
+        //section articles
+        $section48 = new Section();
+        $section48->setTitle('Borderlands 3 à 8,99€ au lieu de 59,99€ (-85%)');
+        $section48->setDescription("Eh oui, ce troisième opus de cette saga culte est disponible sur Steam à moins de 10€ ! Si vous n’avez pas encore découvert ce jeu, l’opportunité s’offre à vous avec cette grande réduction. À -85%, ce titre noté 16/20 vaut réellement le coup, si on apprécie l’univers de la franchise. Notez cependant que cette promotion prend fin le 30 mai, ce qui laisse quelques jours pour en profiter. Une autre promotion est intéressante sur Steam, il s’agit du Borderlands 3 Ultimate Edition qui contient un grand nombre de DLC et tous les packs cosmétiques bonus. Cette édition est à seulement 29,36€ au lieu de 254,80€ grâce à sa réduction de -88%. En bref, les amoureux de la licence peuvent trouver leur bonheur sur Steam, mais également ceux qui souhaitent la découvrir !");
+        $section48->setPicture('https://image.jeuxvideo.com/medias-md/168433/1684332495-9401-capture-d-ecran.jpg');
+        $section48->setArticle($article15);
+        $manager->persist($section48);
+
+        //section articles
+
+        $article16 = new Article();
+        $article16->setTitle("Noté 16/20, ce FPS d’Ubisoft est à moins de 20€ sur Steam !");
+        $article16->setCover("//image.jeuxvideo.com/medias-md/168432/1684319812-8286-card.jpeg");
+        $article16->setIsValided(true);
+        $article16->setPublicationDate(new \DateTime('2023-05-21T05:15:01.989Z'));
+        $article16->setLastModifiedDate(new \DateTime('2023-05-21T05:15:01.989Z'));
+        $article16->setWritedBy($user1);
+        $article16->setValidatedBy($user2);
+        $manager->persist($article16);
+
+        $section49 = new Section();
+        $section49->setTitle('Introduction');
+        $section49->setDescription("De nombreux joueurs à travers le monde profitent des promotions Steam pour se procurer des titres vidéoludique de qualité, à moindre coût ! En ce moment, c’est un jeu Ubisoft qui est concerné par une grosse réduction.");
+        $section49->setArticle($article16);
+        $manager->persist($section49);
+
+        $section50 = new Section();
+        $section50->setTitle('Information');
+        $section50->setDescription("Si vous appréciez les FPS à l’histoire haletante, vous avez sans doute déjà joué à l’un des jeux de la licence Far Cry. Difficile de passer à côté de cette licence légendaire, dont le troisième opus noté 18/20 sur JV à l’époque avait rencontré un très grand succès auprès des fans. Fier de cette saga, Ubisoft a déjà sorti six opus de Far Cry ! Ainsi, après un titre aux Etats-Unis en compagnie d’un culte de fanatique, Far Cry 6 a proposé un détour sur une île tropicale.");
+        $section50->setArticle($article16);
+        $manager->persist($section50);
+
+        $section51 = new Section();
+        $section51->setTitle('Suite');
+        $section51->setDescription("Parmi les points positifs figure notamment le fait que le héros et le méchant sont des personnages charismatiques. Il faut dire que l’antagoniste principal est incarné par Giancarlo Esposito, connu surtout pour avoir joué Gus Fring dans Breaking Bad et Better Call Saul. La narration est l’un des points forts du jeu tant Ubisoft semble avoir mis l’accès sur cet aspect, renforçant l’immersion dans l’île fictive de Yara. Bien qu’il possède quelques points négatifs, comme l’intelligence artificielle qui n’est pas au point et la redondance des objectifs, il reste un jeu agréable.");
+        $section51->setPicture('https://image.jeuxvideo.com/medias-md/168432/1684319587-4627-capture-d-ecran.jpg');
+        $section51->setArticle($article16);
+        $manager->persist($section51);
+
+        $section52 = new Section();
+        $section52->setTitle('Far Cry 6 à 15€ au lieu de 59,99€ sur Steam (-75%)');
+        $section52->setDescription("Si vous êtes un joueur PC, vous serez peut-être intéressé par cette offre qui met en avant un jeu plutôt récent, à moins de 20€. La moyenne des évaluations Steam sur ce titre est “plutôt positive” et beaucoup d’internautes ont témoigné s’être sentis immergés à Yara, dans un univers tropical graphiquement très beau. Ne tardez pas, car cette promotion se termine le 25 mai. Néanmoins, si vous êtes intéressés par la licence Far Cry et que vous n’y avez pas encore joué, une autre offre pourrait vous intéresser ! Il s’agit du Far Cry Bundle à 229,42€ au lieu de 299,91€ sur Steam.");
+        $section52->setArticle($article16);
+        $manager->persist($section52);
+
+        /****************************************************************/
+
+        $article17 = new Article();
+        $article17->setTitle("Il y a 10 ans, Microsoft ratait l’annonce de sa Xbox One");
+        $article17->setCover("//image.jeuxvideo.com/medias-md/168009/1680089052-5629-card.png");
+        $article17->setIsValided(true);
+        $article17->setPublicationDate(new \DateTime('2023-05-21T05:00:02.457Z'));
+        $article17->setLastModifiedDate(new \DateTime('2023-05-21T05:00:02.457Z'));
+        $article17->setWritedBy($user1);
+        $article17->setValidatedBy($user2);
+        $manager->persist($article17);
+
+        $section53 = new Section();
+        $section53->setTitle('Introduction');
+        $section53->setDescription("Nous fêtons un drôle d’anniversaire aujourd’hui, celui de l’annonce ratée de la Xbox One. Il y a 10 ans en effet, le géant américain organisait une conférence de presse à Redmond afin de présenter le futur de la marque. La suite, on la connaît : des joueurs du monde entier hurlent leur colère et Microsoft entame un 180° tonitruant.");
+        $section53->setArticle($article17);
+        $manager->persist($section53);
+
+
+        $section54 = new Section();
+        $section54->setTitle('L’héritage de Don Mattrick');
+        $section54->setDescription("Le 21 mai 2013, Microsoft présente au monde entier sa future console de jeux, la Xbox One. L’événement, qui se déroule directement à Redmond, ville du géant américain, est filmé pour être retransmis en direct sur Internet. Toutes les planètes semblent alignées pour un événement renversant : la firme de Redmond bombe le torse, elle joue à domicile et bénéficie d’un avantage considérable en matière de communication, puisqu’elle passe trois mois après Sony qui avait dévoilé sa PlayStation 4 le 21 février 2013. De quoi rebondir sereinement sur chacun des arguments avancés par son concurrent.");
+        $section54->setPicture('https://image.jeuxvideo.com/medias-md/168009/1680089098-2493-photo.jpg');
+        $section54->setArticle($article17);
+        $manager->persist($section54);
+
+        $section55 = new Section();
+        $section55->setTitle('Information');
+        $section55->setDescription('L’homme fort chez Xbox à cette époque, c’est Don Mattrick. L’ancien président des studios Electronic Arts a pris ses fonctions de directeur de la branche Interactive Entertainment Business chez Microsoft (comprenant la Xbox et les jeux PC) en 2007 sous l’impulsion de Robbie Bach. Sous le règne de Mattrick, la base installée de Xbox 360 dans le monde est passée de 10 millions à plus de 76 millions, alors que le nombre d’abonnés au Xbox Live (silver et gold) a été multiplié par 8, passant de 6 millions à 48 millions. Des chiffres impressionnants qui ont réussi à maintenir Sony et sa PlayStation 3 sous pression.');
+        $section55->setPicture('https://image.jeuxvideo.com/images-sm/x3/k/i/kinect-sports-xbox-360-002.jpg');
+        $section55->setArticle($article17);
+        $manager->persist($section55);
+
+        $section56 = new Section();
+        $section56->setTitle('Suite');
+        $section56->setDescription('Quand je suis arrivé chez Microsoft, Steve Ballmer m’a dit qu’il fallait miser sur de nouvelles catégories, innover et créer les nouveaux succès du jeu vidéo et du divertissement” se souvient Don Mattrick dans le reportage Power On. Conformément aux souhaits de Ballmer, Mattrick ne veut pas vendre 30 millions de consoles, mais 300 millions. Pour tenter d’y arriver, sa stratégie va reposer sur des expériences grand public. Il mise sur le divertissement, sur le cinéma, sur Netflix, sur HBO, sur Facebook ou encore sur Twitter qui débarquent sur Xbox 360.');
+        $section56->setPicture('https://image.jeuxvideo.com/images-sm/x3/l/i/lipsx3005.jpg');
+        $section56->setArticle($article17);
+        $manager->persist($section56);
+
+        $section57 = new Section();
+        $section57->setTitle('Retours mortels');
+        $section57->setDescription('Suite à l’événement, les retours des joueurs mais aussi de la presse spécialisée sont catastrophiques. Microsoft a beau promettre un E3 à venir dédié aux jeux, ce qu’il a montré de la Xbox One n’a pas convaincu. L’importance de Kinect dans l’écosystème Xbox One commence à soulever différentes interrogations, et le virage “divertissement télévisé” n’est pas du goût de tous. Pire, le géant américain ferme la porte à la rétrocompatibilité, et veut instaurer un système payant pour que le joueur installe un soft sur une seconde machine. Enfin, Don Mattrick explique qu’il faudra régulièrement connecter sa machine au Xbox Live pour que le système vérifie les licences. Des décisions allant à l’encontre des utilisateurs, estiment de nombreux joueurs.');
+        $section57->setPicture('https://image.jeuxvideo.com/images-sm/pc/r/y/ryse-son-of-rome-pc-1407431965-001.jpg');
+        $section57->setArticle($article17);
+        $manager->persist($section57);
+
+        $section58 = new Section();
+        $section58->setTitle('Conclusion');
+        $section58->setDescription('Lors de l’E3 2013, alors que Microsoft a déjà la tête dans le sable à cause des histoires de connexion permanente pour sa Xbox One empêchant les joueurs de se prêter des softs simplement, Sony publie une vidéo vacharde montrant la simplicité du don de jeu à un autre camarade sur PlayStation 4. Un coup de génie qui ridiculise immédiatement la firme de Redmond et ses mesures allant à l’encontre du marché de l’occasion. En outre, pendant cet E3 2013, rien ne sourit à Microsoft. Tout d’abord, la Xbox One vendue à 100 euros de plus que la PlayStation 4 est très mal perçue. Ensuite, Ryse son of Rome, pourtant impressionnant techniquement, est vivement critiqué à cause de son gameplay jugé trop simple. Killer Instinct, de son côté, essuie de lourdes plaintes à cause de son business model peu répandu à l’époque. Malgré la présence d’une bande-annonce pour Halo 5, d’un trailer pour Quantum Break, d’une vidéo pour Sunset Overdrive et de la démonstration surprise de Titanfall à la fin du show, la Xbox One continue de se prendre un torrent de critiques. Lors d’une interview, Don Mattrick dira à propos de la connexion obligatoire : “si vous n’avez pas internet, nous avons la Xbox 360”. Ce sera la phrase de trop.');
+        $section58->setPicture('https://image.jeuxvideo.com/medias-md/167968/1679678292-7367-photo.jpg');
+        $section58->setArticle($article17);
+        $manager->persist($section58);
+
+        /*************************************************************************************************/
+
+        $article18 = new Article();
+        $article18->setTitle("Une victoire de plus pour Microsoft ! Un nouveau marché majeur valide le rachat d'Activision Blizzard");
+        $article18->setCover("//image.jeuxvideo.com/medias-md/168459/1684586346-5372-card.jpg");
+        $article18->setIsValided(true);
+        $article18->setPublicationDate(new \DateTime('2023-05-20T12:49:10.832Z'));
+        $article18->setLastModifiedDate(new \DateTime('2023-05-20T12:49:10.832Z'));
+        $article18->setWritedBy($user1);
+        $article18->setValidatedBy($user2);
+        $manager->persist($article18);
+
+        $section59 = new Section();
+        $section59->setTitle('Introduction');
+        $section59->setDescription("Et un de plus ! Un marché majeur supplémentaire vient de donner son accord à Microsoft pour poursuivre le rachat d'Activision-Blizzard quelques jours seulement après la validation de l'Europe.");
+        $section59->setArticle($article18);
+        $manager->persist($section59);
+
+        $section60 = new Section();
+        $section60->setTitle("Une marche après l'autre");
+        $section60->setDescription("Microsoft poursuit son travail auprès des différents régulateurs du monde entier pour se faire entendre et obtenir leur feu vert en vue du rachat du groupe Activision-Blizzard-King. Rien n'est encore joué pour l'instant, tandis que la CMA, le régulateur britannique, a décidé de s'opposer à la transaction à la fin du mois dernier. Mais la firme de Redmond reste encore dans la course. Il y a quelques jours, la Commission européenne a décidé de pencher en faveur du géant américain. Une excellente nouvelle pour Microsoft, qui devra néanmoins répondre à plusieurs conditions, dont un investissement important dans le Cloud. La firme s’est ainsi engagée à accorder des licences gratuites aux fournisseurs de services Cloud afin que les consommateurs puissent jouer en streaming aux jeux Activision Blizzard qu’ils ont achetés, peu importe le système d’exploitation utilisé et le service souscrit. Peu de temps après cette validation plus qu'importante, c'est au tour d'un autre marché majeur de donner son accord comme l'a rapporté Microsoft'.");
+        $section60->setArticle($article18);
+        $manager->persist($section60);
+
+        $section61 = new Section();
+        $section61->setTitle("La Chine donne son feu vert");
+        $section61->setDescription("Après l'Europe, c'est au tour de la Chine de donner son accord en vue du rachat d'Activision-Blizzard. Tom Warren, journaliste pour The Verge, a notamment relayé le communiqué de Microsoft faisant suite à la validation accordée par la SAMR (State Administration for Market Regulation )");
+        $section61->setPicture('https://pbs.twimg.com/media/FwgbojyXwAk-ah3?format=jpg&name=small');
+        $section61->setArticle($article18);
+        $manager->persist($section61);
+
+        $section62 = new Section();
+        $section62->setTitle("Conclusion");
+        $section62->setDescription("Malgré tout, il reste encore quelques étapes avant que Microsoft ne parvienne à boucler ce rachat. L'approbation de la Chine pourrait jouer en faveur du géant lorsqu'il tentera de renverser la décision de la CMA en appel prochainement, tout comme celle de la FTC, l'instance régulatrice américaine.");
+        $section62->setArticle($article18);
+        $manager->persist($section62);
+
+
+        /*************************************************************************************************/
+
+        $article19 = new Article();
+        $article19->setTitle("Marvel’s Spider-Man 2 : une suite « sans concession », va-t-on avoir droit à l’exclu PS5 la plus folle à ce jour ?");
+        $article19->setCover("//image.jeuxvideo.com/medias-md/168457/1684574405-6619-card.jpg");
+        $article19->setIsValided(true);
+        $article19->setPublicationDate(new \DateTime('2023-05-20T09:30:32.558Z'));
+        $article19->setLastModifiedDate(new \DateTime('2023-05-20T09:30:32.558Z'));
+        $article19->setWritedBy($user1);
+        $article19->setValidatedBy($user2);
+        $manager->persist($article19);
+
+        $section63 = new Section();
+        $section63->setTitle("Introduction");
+        $section63->setDescription("Sony l'a assuré à maintes reprises : Peter Parker et Miles Morales reprendront du service cette année avec la sortie de Marvel's Spider-Man 2. Une exclusivité PS5 à suivre de très près ? Assurément, surtout si l'on croit les dernières déclarations de Jim Ryan.");
+        $section63->setArticle($article19);
+        $manager->persist($section63);
+
+        $section64 = new Section();
+        $section64->setTitle("Spider-Man, le retour");
+        $section64->setDescription("Pour ce début d'année 2023, force est de constater que les joueurs PS5 restent quelque peu sur leur faim. Pas de panique cela dit, il y a de belles choses qui se profilent à l'horizon du côté des exclusivités. Le mois prochain, c'est Final Fantasy XVI qui arrive sur la console de Sony. Et peu de temps après, les joueurs auront droit au très attendu Marvel's Spider-Man 2, suite du très bon jeu d'Insomniac Games sorti en 2018.");
+        $section64->setPicture('https://image.jeuxvideo.com/medias-md/168457/1684574417-8862-artwork.jpg');
+        $section64->setArticle($article19);
+        $manager->persist($section64);
+
+        $section65 = new Section();
+        $section65->setTitle("Information");
+        $section65->setDescription("Reste à savoir quand exactement ce nouvel opus arrivera dans le catalogue de la PS5. Pour l'instant, Sony affirme viser une sortie pour l'année, mais aucune date précise n'a été communiquée à ce jour. Cette date pourrait cependant être dévoilée la semaine prochaine à l'occasion du nouveau Playstation Showcase. En attendant, Jim Ryan, le président de Sony Interactive Entertainment, a eu l'occasion de parler du titre auprès de Famitsu. Et ses déclarations ont de quoi attiser notre curiosité.");
+        $section65->setPicture('https://image.jeuxvideo.com/medias-md/168457/1684574417-8862-artwork.jpg');
+        $section65->setArticle($article19);
+        $manager->persist($section65);
+
+        $section66 = new Section();
+        $section66->setTitle("Une vraie exclu PS5");
+        $section66->setDescription("C'est dans une longue interview accordée au média nippon Famitsu que Jim Ryan a pu évoqué Marvel's Spider-Man 2. Selon lui, à l'instar de FF16, ce nouvel opus dédié au tisseur serait parfait pour la PS5 et tirerait pleinement parti de la puissance de la console. Ainsi, Insomniac Games aurait conçu cet opus \"sans faire de compromis\". Le studio aurait eu pour consigne de se focaliser sur l'optimisation du titre et d'exploiter pleinement les fonctionnalités de la PS5. Le président de SIE va plus loin et évoque également les premiers retours qui parlent d'un jeu \"magnifique\" et \"vraiment impressionnant\". On se souvient notamment des sensations grisantes d'exploration de New York dans la peau de Spidey, on ne peut donc qu'espérer retrouver une expérience encore meilleure au sein de cet opus. Jim Ryan promet ici évidemment de belles choses pour un soft de son écurie, mais on restera tout de même assez excité à l'idée de découvrir ce qu'Insomniac a concocté pour les fans. Rendez-vous prochainement - idéalement dès le 24 mai au cours du Playstation Showcase - pour en savoir plus !");
+        $section66->setArticle($article19);
+        $manager->persist($section66);
+
+        $section67 = new Section();
+        $section67->setTitle("Conclusion");
+        $section67->setDescription("Le président de SIE va plus loin et évoque également les premiers retours qui parlent d'un jeu \"magnifique\" et \"vraiment impressionnant\". On se souvient notamment des sensations grisantes d'exploration de New York dans la peau de Spidey, on ne peut donc qu'espérer retrouver une expérience encore meilleure au sein de cet opus. Jim Ryan promet ici évidemment de belles choses pour un soft de son écurie, mais on restera tout de même assez excité à l'idée de découvrir ce qu'Insomniac a concocté pour les fans. Rendez-vous prochainement - idéalement dès le 24 mai au cours du Playstation Showcase - pour en savoir plus !");
+        $section67->setArticle($article19);
+        $manager->persist($section67);
+
+
+        /*****************************************************************/
+
+
+        $article20 = new Article();
+        $article20->setTitle("Diablo 4 annonce son premier Twitch Drop, mais il y a un souci : pour obtenir cette monture exclusive, il faudra payer");
+        $article20->setCover("//image.jeuxvideo.com/medias-md/168452/1684517659-4031-card.jpg");
+        $article20->setIsValided(true);
+        $article20->setPublicationDate(new \DateTime('2023-05-19T18:00:03.179Z'));
+        $article20->setLastModifiedDate(new \DateTime('2023-05-19T18:00:03.179Z'));
+        $article20->setWritedBy($user1);
+        $article20->setValidatedBy($user2);
+        $manager->persist($article20);
+
+        $section68 = new Section();
+        $section68->setTitle("Introduction");
+        $section68->setDescription("C'est le 6 juin prochain que les joueurs pourront retourner à Sanctuary et y rester ! Après trois phases de bêtas, Diablo IV est passé Gold et Blizzard s'apprête à mettre sur le marché son nouveau jeu. Très attendu, il devrait également investir Twitch dès l'ouverture des serveurs.");
+        $section68->setArticle($article20);
+        $manager->persist($section68);
+
+        $section69 = new Section();
+        $section69->setTitle("Les bêtas sont passées, Diablo IV prêt au lancement");
+        $section69->setDescription("Diablo IV a été jouable plusieurs fois ces dernières semaines et la hype autour du jeu semble incontestable. Il y a d'abord eu une bêta fermée réservée aux joueurs ayant précommandé le jeu, puis une bêta ouverte et enfin un \"server slam\" le week-end dernier. L'occasion pour le public d'essayer les différentes classes et pour Blizzard d'effectuer des ajustements, quitte à se faire taper sur les doigts. A un peu moins de trois semaines du lancement, les équipes apportent les dernières touches au titre, qui devrait logiquement être gratifié d'un solide patch Day One, et espèrent sûrement que les serveurs tiennent le coup.");
+        $section69->setArticle($article20);
+        $manager->persist($section69);
+
+        $section70 = new Section();
+        $section70->setTitle("Information");
+        $section70->setDescription("Comme vous le savez peut-être, tout dans Diablo est affaire de loot et de choses à faire et à refaire. Les joueurs pourront compter sur une campagne au ton particulièrement sombre, mais également sur des saisons, un monde ouvert remplit d'événements, de grottes, de donjons et d'autres joueurs. Le but : dézinguer du monstre par paquets, accomplir de défis et améliorer ses personnages avec de l'équipement toujours plus rare, toujours plus puissant. Comme ses prédecesseurs, Diablo IV entend nous garder actif pendant des mois et des années, avec du nouveau contenu, des boss temporaires et des loots spéciaux.");
+        $section70->setPicture('https://image.jeuxvideo.com/medias-sm/168449/1684487952-3822-capture-d-ecran.jpg');
+        $section70->setArticle($article20);
+        $manager->persist($section70);
+
+        $section71 = new Section();
+        $section71->setTitle("Suite");
+        $section71->setDescription("Comme de nombreux autres titres, Diablo IV devrait tenter d'attirer les joueurs en passant par Twitch. De nombreux streams seront organisés par les créateurs de contenus, mais il semble que Blizzard va également mettre la main à la patte en participant au programme Drops ! Si vous regardez régulièrement du contenu sur la plateforme d'Amazon, vous avez sûrement déjà remarqué qu'en plus d'obtenir des choses grâce à Prime Gaming, vous pouvez débloquer du contenu en regardant des streams partenaires.");
+        $section71->setPicture('https://image.jeuxvideo.com/medias-sm/163594/1635935451-8344-capture-d-ecran.jpg');
+        $section71->setArticle($article20);
+        $manager->persist($section71);
+
+        $section72 = new Section();
+        $section72->setTitle("Une monture payante proposée via Twitch Drops ?");
+        $section72->setDescription("Grâce à un utilisateur de Reddit, on apprend que Blizzard aurait prévu de distribuer une monture exclusive par l'intermédiaire des Twitch Drops. La liste des streameurs partenaires n'a pas encore été dévoilée, mais on sait que l'initiative n'est plus une rumeur. Adam Fletcher de chez Blizzard a en effet confirmé l'information, précisant qu'il y aurait d'autre choses à récupérer grâce au système de drops. S'il précise cela, c'est parce que la monture Primal Insctinct ne devrait pas être accessible simplement en ouvrant un stream partenaire.");
+        $section72->setPicture('https://image.jeuxvideo.com/medias-sm/168452/1684517508-7473-capture-d-ecran.jpg');
+        $section72->setArticle($article20);
+        $manager->persist($section72);
+
+        $section73 = new Section();
+        $section73->setTitle("Conclusion");
+        $section73->setDescription("Quand aux autres drops mentionnés par Adam Fletcher, le flou règne encore. On ne sait pas ce qu'ils contiendront, ni s'il seront distribués en même temps ou à la suite de la monture Primal Instinct. Ce qu'on sait en revanche, c'est que certains éléments seront proposés de façon plus classique, c'est à dire qu'il devrait suffir de regarder un stream partenaire pour espérer obtenir l'élement cosmétique distribué.");
+        $section73->setArticle($article20);
+        $manager->persist($section73);
+
+
+        /*****************************************************************/
+
+
+        $article21 = new Article();
+        $article21->setTitle("Nintendo Switch : trois classiques de la Game Boy Advance arrivent dans le Pack additionnel");
+        $article21->setCover("//image.jeuxvideo.com/medias-md/168451/1684512430-2230-card.png");
+        $article21->setIsValided(true);
+        $article21->setPublicationDate(new \DateTime('2023-05-19T18:00:03.179Z'));
+        $article21->setLastModifiedDate(new \DateTime('2023-05-19T18:00:03.179Z'));
+        $article21->setWritedBy($user1);
+        $article21->setValidatedBy($user2);
+        $manager->persist($article21);
+
+        $section74 = new Section();
+        $section74->setTitle("Introduction");
+        $section74->setDescription("Nintendo a annoncé une nouvelle vague de jeux pour le Nintendo Switch Online. Les derniers ajouts font partie du Pack additionnel, ajoutant trois titres Super Mario sur Game Boy Advance.");
+        $section74->setArticle($article21);
+        $manager->persist($section74);
+
+        $section75 = new Section();
+        $section75->setTitle("Informations");
+        $section75->setDescription("Le 26 mai prochain, la Switch accueillera trois nouveaux titres Game Boy Advance ! Il s'agit des trois premiers épisodes de la série Super Mario Advance. Il y aura donc Super Mario Advance (2001), Super Mario World : Super Mario Advance 2 (2001) et Yoshi's Island : Super Mario Advance 3 (2002). La console proposait déjà Super Mario Advance 4 : Super Mario Bros. 3 (2003) dans son catalogue, la série est donc complétée. Ces jeux seront accessibles depuis l'émulateur Game Boy Advance de la Switch, disponible via l'abonnement Nintendo Switch Online + Pack additionnel. C'est la version premium de l'abonnement online de Nintendo (39,99€ pour 12 mois).");
+        $section75->setPicture('https://image.jeuxvideo.com/medias-md/168451/1684506045-9997-capture-d-ecran.jpg');
+        $section75->setArticle($article21);
+        $manager->persist($section75);
+
+        $section76 = new Section();
+        $section76->setTitle("Un abonnement premium aux nombreux avantages");
+        $section76->setDescription("Le Pack additionnel du Nintendo Switch Online permet, entre autres, de bénéficier de DLC bonus pour Splatoon 2, Animal Crossing : New Horizons mais aussi des circuits supplémentaires ajoutés à Mario Kart 8 Deluxe. Il permet également d'avoir accès aux émulateurs Game Boy Advance, Nintendo 64 et Mega Drive. Vu la manière dont la société japonaise propose des émulateurs de ses anciennes consoles, si une interface Gamecube voit le jour, il y a de fortes chances qu'elle soit disponible via cet abonnement premium.");
+        $section76->setArticle($article21);
+        $manager->persist($section76);
+
+        $section77 = new Section();
+        $section77->setTitle("Un abonnement premium aux nombreux avantages");
+        $section77->setDescription("Le Pack additionnel du Nintendo Switch Online permet, entre autres, de bénéficier de DLC bonus pour Splatoon 2, Animal Crossing : New Horizons mais aussi des circuits supplémentaires ajoutés à Mario Kart 8 Deluxe. Il permet également d'avoir accès aux émulateurs Game Boy Advance, Nintendo 64 et Mega Drive. Vu la manière dont la société japonaise propose des émulateurs de ses anciennes consoles, si une interface Gamecube voit le jour, il y a de fortes chances qu'elle soit disponible via cet abonnement premium.");
+        $section77->setArticle($article21);
+        $manager->persist($section77);
+
+        $section78 = new Section();
+        $section78->setTitle("Conclusion");
+        $section78->setDescription("En attendant, l'émulateur Mega Drive propose des classiques comme : Sonic 2, Golden Axe, Altered Beast, Flicky ou encore Kid Chameleon. Les jeux Nintendo 64 disponibles sont quant à eux bien plus nombreux, on retiendra : Mario 64, Ocarina of Time et Majora's Mask, Sin and Punishment, etc... Et même GoldenEye 007 et Pokémon Stadium jouables en ligne ! Pour ce qui est de l'émulateur GBA, nous avons des titres comme Zelda Minish Cap, Metroid Fusion, Mario & Luigi : Superstar Saga, Mario Kart : Super Circuit et Wario Ware Inc.");
+        $section78->setArticle($article21);
+        $manager->persist($section78);
+
         //reviews
         $review1 = new Review();
         $review1->setTitle('Ce jeu est vraiment bien');
