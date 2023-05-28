@@ -1,134 +1,164 @@
-.page-contain{
+.page-contain {
     margin: 5% 0;
 }
-.title{
+
+.title {
     font-size: 25px;
     text-align: center;
     text-transform: uppercase;
     border-top: solid 2px #cececc;
     border-bottom: solid 2px #cececc;
     padding: 10px 0;
-        color: white;
+    color: white;
     width: 100%;
 }
+
 .glass {
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(30px);
     border: 2px solid transparent;
     border-radius: 15px;
     background-clip: padding-box;
 }
-.title span{
+
+.title span {
     color: #6685ff;
 }
-.title-history{
+
+.title-history {
     font-size: 20px;
     font-weight: 500;
     line-height: 2em;
     margin-bottom: 3%;
-        color: white;
+    color: white;
 }
-.paragraphe-entreprise{
+
+.paragraphe-entreprise {
     font-size: 15px;
     line-height: 1.5em;
     text-align: justify;
-        color: white;
+    color: white;
 }
-.image-entreprise{
+
+.image-entreprise {
     display: flex;
     min-height: 100%;
     justify-content: center;
     align-items: center;
 }
-.image-entreprise img{
+
+.image-entreprise img {
     max-width: 100%;
 }
-.title-worth{
+
+.title-worth {
     font-size: 20px;
     font-weight: 500;
-        color: white;
+    color: white;
 }
-.block-history{
+
+.block-history {
     padding: 0 3%;
     display: flex;
     justify-content: center;
     height: 100%;
     width: 100%;
     flex-direction: column;
-        color: white;
+    color: white;
 }
-.icon-title{
+
+.icon-title {
     display: flex;
     align-items: center;
 }
+
 .block-worth i {
     font-size: 30px;
     margin: 0 5%;
-    color: #6685ff;;
+    color: #6685ff;
+    ;
 }
-.description-worth{
+
+.description-worth {
     margin: 5%;
     text-align: justify;
     font-size: 15px;
-        color: white;
+    color: white;
 }
-.block-presentation, .block-teams, .block-community{
+
+.block-presentation, .block-teams, .block-community {
     margin: 5% 0;
 }
-.icon-teams{
+
+.icon-teams {
     display: flex;
     justify-content: space-evenly;
     margin: 5% 0;
 }
+
 .icon-teams i {
     font-size: 35px;
     color: #6685ff;
 }
+
 .animation-div {
     animation: ascend 1s ease-in-out;
-    opacity: 0; /* pour que la div soit invisible au début */
-    transform: translateY(100px); /* pour que la div soit en dehors de l'écran au début */
+    opacity: 0;
+    /* pour que la div soit invisible au début */
+    transform: translateY(100px);
+    /* pour que la div soit en dehors de l'écran au début */
     animation-fill-mode: forwards;
-  }
-  @keyframes ascend {
-    from{
-      opacity: 0;
-      transform: translateY(100px);
+}
+
+@keyframes ascend {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
     }
-    to{
-      opacity: 1;
-      transform: translateY(0);
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-@media screen and (max-width: 576px){
-    .page-contain{
+}
+
+@media screen and (max-width: 576px) {
+    .page-contain {
         margin: 10% 0;
     }
-    .block-presentation .container .row{
+
+    .block-presentation .container .row {
         display: flex;
         flex-direction: column-reverse;
     }
-    .block-community .container .row{
+
+    .block-community .container .row {
         display: flex;
         flex-direction: column-reverse;
     }
-    .block-history{
+
+    .block-history {
         padding: 3%;
     }
-    .title{
+
+    .title {
         font-size: 20px;
     }
-    .title-history{
+
+    .title-history {
         font-size: 17px;
     }
-    .title-worth{
+
+    .title-worth {
         font-size: 17px;
     }
-    .block-presentation{
+
+    .block-presentation {
         margin: 10% 0;
     }
-    .glass{
+
+    .glass {
         padding: 10px;
     }
 }

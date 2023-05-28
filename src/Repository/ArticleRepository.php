@@ -47,13 +47,6 @@ class ArticleRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function paginationQuery()
-    {
-        return $this->createQueryBuilder('a')
-            ->orderBy('a.publication_date', 'DESC')
-            ->getQuery();
-    }
-
     public function findLastArticles(int $limit = 3): array
     {
         return $this->createQueryBuilder('a')
@@ -66,7 +59,7 @@ class ArticleRepository extends ServiceEntityRepository
     public function filterQuery($title)
     {
         $query = $this->createQueryBuilder('a')
-            ->orderBy('a.id', 'ASC');
+            ->orderBy('a.publication_date', 'DESC');
 
         if ($title) {
             $query->andWhere('a.title LIKE :title')
