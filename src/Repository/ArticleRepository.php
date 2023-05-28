@@ -50,6 +50,7 @@ class ArticleRepository extends ServiceEntityRepository
     public function findLastArticles(int $limit = 3): array
     {
         return $this->createQueryBuilder('a')
+            ->where('a.is_valided = true')
             ->orderBy('a.publication_date', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
@@ -59,6 +60,7 @@ class ArticleRepository extends ServiceEntityRepository
     public function filterQuery($title)
     {
         $query = $this->createQueryBuilder('a')
+            ->where('a.is_valided = true')
             ->orderBy('a.publication_date', 'DESC');
 
         if ($title) {
