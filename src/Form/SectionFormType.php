@@ -24,7 +24,7 @@ class SectionFormType extends AbstractType
                 'required' => false,
             ])
             ->add('description', TextareaType::class, [
-                'attr' => ['rows' => 6],
+                'attr' => ['rows' => 6, 'maxlength' => 1000],
                 'label' => false,
                 'required' => false,
             ])

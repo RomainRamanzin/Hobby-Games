@@ -99,7 +99,12 @@ class ActualiteController extends AbstractController
 
         // Suppression des sections Introduction, Conclusion, Information et Suite
         foreach ($sections as $section) {
-            if ($section->getTitle() == 'Introduction' || $section->getTitle() == 'Conclusion' || $section->getTitle() == 'Information' || $section->getTitle() == 'Suite' || $section->getTitle() == 'Pour en conclure') {
+            //mettre en minuscul le titre
+            $titre = strtolower($section->getTitle());
+            if (
+                strpos($titre, 'introduction') || strpos($titre, 'conclusion') || strpos($titre, 'information')
+                || strpos($titre, 'suite') || strpos($titre, 'pour en conclure')
+            ) {
                 $section->setTitle('');
             }
         }
