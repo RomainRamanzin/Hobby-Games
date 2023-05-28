@@ -1,12 +1,13 @@
 /*fond de page*/
 .glass {
   padding: 30px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(30px);
   border: 2px solid transparent;
   border-radius: 15px;
   background-clip: padding-box;
 }
+
 .title-dashboard {
   font-size: 30px;
   font-weight: 500;
@@ -15,14 +16,17 @@
   margin-bottom: 3%;
   line-height: normal;
 }
+
 .title-dashboard:first-letter {
   text-transform: uppercase;
 }
+
 .title-dashboard i {
   font-size: 20px;
   color: #ffffff;
   margin-left: 20px;
 }
+
 .contain-menu {
   display: grid;
   gap: 20px;
@@ -38,11 +42,13 @@
   padding: 20px;
   font-weight: 500;
 }
+
 .contain-menu .link-menu-dashboard i {
   font-size: 20px;
   color: #000000;
   margin-right: 20px;
 }
+
 .contain-menu .link-menu-dashboard:hover {
   background-color: #ffffff;
   color: black;
@@ -76,16 +82,19 @@
     font-size: 20px;
     line-height: normal;
   }
+
   .contain-menu .link-menu-dashboard {
     font-size: 13px;
   }
 }
+
 @media (max-width: 1200px) {
   .title-dashboard {
     margin-bottom: 5%;
     font-size: 25px;
     line-height: normal;
   }
+
   .contain-menu .link-menu-dashboard {
     font-size: 13px;
   }

@@ -44,7 +44,6 @@ class ArticlesController extends AbstractController
                 // ajoutez d'autres informations nécessaires ici
             ];
         }
-
         return $this->render('admin/articles/index.html.twig', [
             'controller_name' => 'AdministrateurArticlesController',
             'articlesDatas' => $articlesData,
@@ -61,9 +60,10 @@ class ArticlesController extends AbstractController
             $section = $sectionRepository->find($id);
             $article = $section->getArticle();
             $sections = $article->getSections();
+            // On vérifie qu'il y a plus d'une section
             if (count($sections) == 1) {
                 $this->addFlash('danger', 'Il est impossible de supprimer la section !');
-                return $this->redirectToRoute('app_modifier_article', ['id' => $section->getArticle()->getId()]);
+                return $this->redirectToRoute('app_modifier_article', ['id' => $article->getId()]);
             }
             // On récupère l'id de la section à supprimer
             $section = $sectionRepository->find($id);
@@ -71,10 +71,10 @@ class ArticlesController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'La section a bien été supprimée !');
-            return $this->redirectToRoute('app_modifier_article', ['id' => $section->getArticle()->getId()]);
-        } catch (GlobalException $e) {
+            return $this->redirectToRoute('app_modifier_article', ['id' => $article->getId()]);
+        } catch (\Exception $e) {
             $this->addFlash('danger', 'Une erreur est survenue lors de la suppression de la section !');
-            return $this->render('app_modifier_article', ['id' => $section->getArticle()->getId()]);
+            return $this->render('app_modifier_article', ['id' => $article->getId()]);
         }
     }
 
@@ -82,22 +82,28 @@ class ArticlesController extends AbstractController
     #[IsGranted("ROLE_REDACTEUR")]
     public function add(ArticleRepository $articleRepository, Request $request, EntityManagerInterface $em, UserRepository $userRepository): Response
     {
-        try {
-            $addArticle = true;
-            // On crée un nouvel article
-            $form = $this->createFormBuilder()
-                // On ajoute les champs de l'article dans le formulaire
-                ->add('article', ArticleFormType::class, ['label' => false])
-                // On ajoute les champs de la section dans le formulaire
-                ->add('section', SectionFormType::class, ['label' => false])
-                //obtenir le formulaire
-                ->getForm();
 
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
+        $addArticle = true;
+        // On crée un nouvel article
+        $form = $this->createFormBuilder()
+            // On ajoute les champs de l'article dans le formulaire
+            ->add('article', ArticleFormType::class, ['label' => false])
+            // On ajoute les champs de la section dans le formulaire
+            ->add('section', SectionFormType::class, ['label' => false])
+            //obtenir le formulaire
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
                 $data = $form->getData();
                 $article = $data['article'];
                 $section = $data['section'];
+
+                if (strlen($section->getDescription()) > 1000) {
+                    $this->addFlash('danger', 'La description de la section est trop longue !');
+                    return $this->redirectToRoute('app_ajout_actualite');
+                }
 
                 // On vérifie que l'article n'existe pas déjà
                 $existingArticle = $articleRepository->findOneBy(['title' => $article->getTitle()]);
@@ -113,20 +119,21 @@ class ArticlesController extends AbstractController
                 $article->setPublicationDate(new \DateTime());
                 $article->setIsValided(false);
                 $em->persist($article);
-                $em->flush();
 
                 // On ajoute les informations manquantes à la section
                 $section->setArticle($article);
                 $em->persist($section);
+
                 $em->flush();
 
                 $this->addFlash('success', 'Votre article a bien été enregistré !');
                 return $this->redirectToRoute('app_administrateur_articles');
+            } catch (\Exception $e) {
+                $this->addFlash('danger', 'Une erreur est survenue lors de l\'ajout de l\'article : ' . $e->getMessage());
+                return $this->redirectToRoute('app_ajout_actualite');
             }
-        } catch (GlobalException $e) {
-            $this->addFlash('danger', 'Une erreur est survenue !');
-            return $this->redirectToRoute('app_ajout_actualite');
         }
+
         return $this->render('admin/articles/add.html.twig', ['form' => $form->createView(), 'addArticle' => $addArticle]);
     }
 
@@ -136,9 +143,7 @@ class ArticlesController extends AbstractController
     {
         try {
             $form = $this->createForm(ArticleFormType::class, $article);
-
             $form->handleRequest($request);
-
             if ($form->isSubmitted() && $form->isValid()) {
                 $article->setLastModifiedDate(new \DateTime('Europe/Paris'));
                 $em->persist($article);
@@ -148,12 +153,16 @@ class ArticlesController extends AbstractController
                 return $this->redirectToRoute('app_administrateur_articles');
             }
 
+            /**
+             * afficher à l'utilisateur le formulaire de modification de l'article
+             *  avec les erreurs de validation éventuelles
+             **/
             return $this->render('admin/articles/edit.html.twig', [
                 'form' => $form->createView(),
             ]);
         } catch (\Exception $e) {
             $this->addFlash('error', 'Une erreur est survenue lors de la validation du formulaire: ' . $e->getMessage());
-            return $this->redirectToRoute('app_modifier_article', ['id' => $section->getArticle()->getId()]);
+            return $this->redirectToRoute('app_modifier_article', ['id' => $article->getId()]);
         }
     }
 
@@ -166,18 +175,16 @@ class ArticlesController extends AbstractController
 
             $sections = $sectionRepository->findBy(['article' => $id]);
 
-            if ($sections != '') {
-                foreach ($sections as $section) {
-                    $em->remove($section);
-                }
+            foreach ($sections as $section) {
+                $em->remove($section);
             }
+
             $em->remove($article);
             $em->flush();
 
             $this->addFlash('success', 'Votre article a bien été supprimé !');
             return $this->redirectToRoute('app_administrateur_articles');
         } catch (\Exception $e) {
-
             $this->addFlash('error', 'Une erreur est survenue lors de la suppression de l\'article : ' . $e->getMessage());
             return $this->redirectToRoute('app_administrateur_articles');
         }
@@ -191,12 +198,12 @@ class ArticlesController extends AbstractController
         $addArticle = false;
 
         $section = new Section();
-
         $section->setArticle($article);
 
         $SectionForm = $this->createForm(SectionFormType::class, $section);
+        $SectionForm->handleRequest($request);
 
-        if ($SectionForm->handleRequest($request) && $SectionForm->isSubmitted() && $SectionForm->isValid()) {
+        if ($SectionForm->isSubmitted() && $SectionForm->isValid()) {
             try {
                 $em->persist($section);
                 $em->flush();
@@ -204,6 +211,7 @@ class ArticlesController extends AbstractController
                 return $this->redirectToRoute('app_ajout_section', ['id' => $article->getId()]);
             } catch (\Exception $e) {
                 $this->addFlash('error', 'Une erreur est survenue lors de l\'ajout de la section : ' . $e->getMessage());
+                return $this->redirectToRoute('app_ajout_section', ['id' => $article->getId()]);
             }
         }
 

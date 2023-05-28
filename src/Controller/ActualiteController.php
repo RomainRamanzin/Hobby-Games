@@ -82,6 +82,7 @@ class ActualiteController extends AbstractController
 
     public function show(Article $articles, SectionRepository $sectionRepository, ArticleRepository $articleRepository): Response
     {
+
         //l'url par laquelle arrive l'utilisateur
         $url = (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '');
         $urlAdmin = false;
@@ -107,6 +108,14 @@ class ActualiteController extends AbstractController
             ) {
                 $section->setTitle('');
             }
+
+            $texte = $section->getDescription();
+
+            //terminer jusqu'au prochaine .
+            $texte = mb_substr($texte, 0, 1000);
+            $texte = mb_substr($texte, 0, mb_strrpos($texte, "."));
+            $texte = $texte . ".";
+            $section->setDescription($texte);
         }
 
         //boucle pour récupérer toutes les actualités sauf celle dans laquelle on est 
