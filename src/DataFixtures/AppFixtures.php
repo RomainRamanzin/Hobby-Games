@@ -311,7 +311,7 @@ class AppFixtures extends Fixture
         $plainPassword = '12345678';
         $encodedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
         $user3->setPassword($encodedPassword);
-        $user3->setRoles(['ROLE_ADMIN']);
+        $user3->setRoles(['ROLE_REDACTEUR']);
         $user3->setPseudo('Boblp');
         $user3->setSurname('Eponge');
         $user3->setFirstname('Bob');
@@ -331,6 +331,20 @@ class AppFixtures extends Fixture
         $user4->setDateOfBirth(new \DateTime('1999-01-01'));
         $user4->setAccountCreationDate(new \DateTime('2020-10-09'));
         $manager->persist($user4);
+
+
+        $user5 = new User();
+        $user5->setEmail('jean.francois@gmail.com');
+        $plainPassword = '12345678';
+        $encodedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
+        $user5->setPassword($encodedPassword);
+        $user5->setRoles(['ROLE_USER']);
+        $user5->setPseudo('jean.francois');
+        $user5->setSurname('francois');
+        $user5->setFirstname('jean');
+        $user5->setDateOfBirth(new \DateTime('1999-01-01'));
+        $user5->setAccountCreationDate(new \DateTime('2020-10-09'));
+        $manager->persist($user5);
 
         //articles
         $article1 = new Article();
@@ -1105,7 +1119,6 @@ class AppFixtures extends Fixture
         $section65 = new Section();
         $section65->setTitle("Information");
         $section65->setDescription("Reste à savoir quand exactement ce nouvel opus arrivera dans le catalogue de la PS5. Pour l'instant, Sony affirme viser une sortie pour l'année, mais aucune date précise n'a été communiquée à ce jour. Cette date pourrait cependant être dévoilée la semaine prochaine à l'occasion du nouveau Playstation Showcase. En attendant, Jim Ryan, le président de Sony Interactive Entertainment, a eu l'occasion de parler du titre auprès de Famitsu. Et ses déclarations ont de quoi attiser notre curiosité.");
-        $section65->setPicture('https://image.jeuxvideo.com/medias-md/168457/1684574417-8862-artwork.jpg');
         $section65->setArticle($article19);
         $manager->persist($section65);
 

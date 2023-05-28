@@ -98,24 +98,25 @@ class ActualiteController extends AbstractController
         // Récupération de toutes les actualités
         $allArticles = $articleRepository->findAllSorted();
 
-        // Suppression des sections Introduction, Conclusion, Information et Suite
+        // Suppression des titres sections Introduction, Conclusion, Information et Suite
         foreach ($sections as $section) {
             //mettre en minuscul le titre
-            $titre = strtolower($section->getTitle());
+            $titre = strtoupper($section->getTitle());
+
             if (
                 strpos($titre, 'introduction') || strpos($titre, 'conclusion') || strpos($titre, 'information')
                 || strpos($titre, 'suite') || strpos($titre, 'pour en conclure')
             ) {
                 $section->setTitle('');
             }
-
-            $texte = $section->getDescription();
-
-            //terminer jusqu'au prochaine .
-            $texte = mb_substr($texte, 0, 1000);
-            $texte = mb_substr($texte, 0, mb_strrpos($texte, "."));
-            $texte = $texte . ".";
-            $section->setDescription($texte);
+            //afficher les 1000 caractères de la description si plus alors coupé a la fin de la phrase 
+            $description = $section->getDescription();
+            if (strlen($description) > 1000) {
+                $description = substr($description, 0, 1000);
+                //a partir des 1000 caractères on cherche le prochain point pour couper la phrase
+                $description = substr($description, 0, strrpos($description, ".") + 1);
+                $section->setDescription($description);
+            }
         }
 
         //boucle pour récupérer toutes les actualités sauf celle dans laquelle on est 
@@ -127,7 +128,6 @@ class ActualiteController extends AbstractController
 
         // Mélange du tableau
         shuffle($randomArticle);
-
         // Récupération des 5 premiers éléments
         $randomFive = array_slice($randomArticle, 0, 5);
 
