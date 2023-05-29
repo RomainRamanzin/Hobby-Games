@@ -82,6 +82,7 @@ class ActualiteController extends AbstractController
 
     public function show(Article $articles, SectionRepository $sectionRepository, ArticleRepository $articleRepository): Response
     {
+
         //l'url par laquelle arrive l'utilisateur
         $url = (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '');
         $urlAdmin = false;
@@ -97,10 +98,24 @@ class ActualiteController extends AbstractController
         // Récupération de toutes les actualités
         $allArticles = $articleRepository->findAllSorted();
 
-        // Suppression des sections Introduction, Conclusion, Information et Suite
+        // Suppression des titres sections Introduction, Conclusion, Information et Suite
         foreach ($sections as $section) {
-            if ($section->getTitle() == 'Introduction' || $section->getTitle() == 'Conclusion' || $section->getTitle() == 'Information' || $section->getTitle() == 'Suite' || $section->getTitle() == 'Pour en conclure') {
+            //mettre en minuscul le titre
+            $titre = strtoupper($section->getTitle());
+
+            if (
+                strpos($titre, 'introduction') || strpos($titre, 'conclusion') || strpos($titre, 'information')
+                || strpos($titre, 'suite') || strpos($titre, 'pour en conclure')
+            ) {
                 $section->setTitle('');
+            }
+            //afficher les 1000 caractères de la description si plus alors coupé a la fin de la phrase 
+            $description = $section->getDescription();
+            if (strlen($description) > 1000) {
+                $description = substr($description, 0, 1000);
+                //a partir des 1000 caractères on cherche le prochain point pour couper la phrase
+                $description = substr($description, 0, strrpos($description, ".") + 1);
+                $section->setDescription($description);
             }
         }
 
@@ -113,7 +128,6 @@ class ActualiteController extends AbstractController
 
         // Mélange du tableau
         shuffle($randomArticle);
-
         // Récupération des 5 premiers éléments
         $randomFive = array_slice($randomArticle, 0, 5);
 

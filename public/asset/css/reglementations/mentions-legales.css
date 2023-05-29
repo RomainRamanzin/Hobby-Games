@@ -1,25 +1,33 @@
-body {
-    background: #f5f5f5;
+
+.glass {
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(30px);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    background-clip: padding-box;
 }
-.page-contain{
-    margin: 5%;
-}
-.title-page{
+
+.title-page {
     font-size: 25px;
     text-align: center;
     margin-bottom: 3%;
+    color: rgb(255, 255, 255);
 }
-.title-mentions{
+
+.title-mentions {
     font-size: 20px;
-    color: black;
+    color: rgb(255, 255, 255);
     font-weight: bold;
 }
+
 .text-mentions {
     font-size: 17px;
-    color: black;
+    color: rgb(255, 255, 255);
     line-height: 1.5em;
     margin: 3% 0;
 }
+
 .animation-div {
     animation: ascend 1s ease-in-out;
     opacity: 0;
