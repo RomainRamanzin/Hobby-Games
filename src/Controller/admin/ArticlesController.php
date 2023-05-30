@@ -17,6 +17,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Exception as GlobalException;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class ArticlesController extends AbstractController
 {
@@ -80,9 +82,8 @@ class ArticlesController extends AbstractController
 
     #[Route('/administrateur-articles/ajouter-article', name: 'app_ajout_actualite')]
     #[IsGranted("ROLE_REDACTEUR")]
-    public function add(ArticleRepository $articleRepository, Request $request, EntityManagerInterface $em, UserRepository $userRepository): Response
+    public function add(MailerInterface $mailer, ArticleRepository $articleRepository, Request $request, EntityManagerInterface $em, UserRepository $userRepository): Response
     {
-
         $addArticle = true;
         // On crée un nouvel article
         $form = $this->createFormBuilder()
@@ -125,6 +126,23 @@ class ArticlesController extends AbstractController
                 $em->persist($section);
 
                 $em->flush();
+
+                $redacteurs = $userRepository->findByRole($role = 'ROLE_REDACTEUR');
+                $utilisateurConnecte = $this->getUser();
+
+                foreach ($redacteurs as $redacteur) {
+                    if ($redacteur !== $utilisateurConnecte) {
+                        $email = (new Email())
+                            ->from('contact.hobbygames@gmail.com')
+                            ->to($redacteur->getEmail())
+                            ->subject('Nouvel article à valider')
+                            ->html('Salut ' . $redacteur->getPseudo() . '<br>' . '<br>' .
+                                'Nous sommes heureux de vous informer qu\'un nouvel article passionnant vient d\'arriver et attend maintenant votre validation. Cet article promet d\'apporter de nouvelles perspectives et de captiver notre public. ' . '<br>' . '<br>' .
+                                'Voici le titre de l\'article : ' . '"' . $article->getTitle() . '"' . '<br>' . '<br>' .
+                                'Vous pouvez consulter l\'article en attente de validation en cliquant sur le lien suivant : <a href="http://127.0.0.1:8000/login">Hobby Games</a>');
+                        $mailer->send($email);
+                    }
+                }
 
                 $this->addFlash('success', 'Votre article a bien été enregistré !');
                 return $this->redirectToRoute('app_administrateur_articles');
