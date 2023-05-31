@@ -24,7 +24,7 @@ class JeuFormType extends AbstractType
             ->add('poster', FileType::class, [
                 'label' => 'Image',
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Image',
                 ],

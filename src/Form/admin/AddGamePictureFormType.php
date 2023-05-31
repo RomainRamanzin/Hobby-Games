@@ -17,7 +17,7 @@ class AddGamePictureFormType extends AbstractType
             ->add('picture', FileType::class, [
                 'label' => 'Image',
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Image',
                 ],
