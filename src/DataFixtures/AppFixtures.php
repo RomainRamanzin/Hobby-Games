@@ -2055,6 +2055,18 @@ class AppFixtures extends Fixture
             $manager->persist(${'publication' . $j});
         }
 
+        /*****************************************************************/
+
+        for($k = 1; $k <= 59; $k++){
+            for($l = 1; $l <= 4; $l++){
+                ${'gamePicture' . $k . $l} = new GamePicture();
+                ${'gamePicture' . $k . $l}->setGame(${ 'game' . $k });
+                ${'gamePicture' . $k . $l}->setPicture('/game_pictures/' . $l . '.webp');
+                $manager->persist(${'gamePicture' . $k . $l});
+            }
+        }
+
+
         // Save data in database
         $manager->flush();
     }
