@@ -149,61 +149,40 @@ class AppFixtures extends Fixture
 
         //games
         $game1 = new Game();
-        $game1->setName('Assassin\'s Creed Valhalla');
-        $game1->setReleaseDate(new \DateTime('2020-11-10'));
-        $game1->setDescription('Assassin\'s Creed Valhalla est un jeu vidéo d\'action-aventure et de rôle développé par Ubisoft Montréal et édité par Ubisoft. Il est sorti le 10 novembre 2020 sur PlayStation 4, Xbox One, Stadia, Microsoft Windows, PlayStation 5 et Xbox Series X/S. Il s\'agit du dixième opus de la série Assassin\'s Creed et du premier à se dérouler en Angleterre. Le jeu est également disponible sur PlayStation 5 et Xbox Series X/S en version améliorée, avec une résolution 4K et des chargements plus rapides.');
-        $game1->setPoster("https://image.jeuxvideo.com/medias/158826/1588264397-5261-jaquette-avant.jpg");
-        $game1->setAgeLimit(18);
+        $game1->setName('Diablo IV');
+        $game1->setReleaseDate(new \DateTime('2023-06-06T00:00:00.000Z'));
+        $game1->setDescription('Dans Diablo IV, les amateurs de hack\'n slash sont réunis dans un monde partagé pour braver des donjons aléatoires remplis d\'ennemis et de butins ou pour s’entre-tuer lors de combats PvP. Cinq classes sont jouables, dont le barbare, la sorcière et le druide. Chacune dispose d\'arbres de talents et de compétences personnalisables, à conjuguer avec un système de butincomprenant des objets légendaires et d’ensemble à collectionner, des combinaisons de runes et de mots runiques, et des montures personnalisées pour parcourir le monde ouvert.');
+        $game1->setPoster('/game_poster/game_poster-50275152.webp');
+        $game1->setAgeLimit(7);
         $game1->addPlatform($platform1);
         $game1->addPlatform($platform2);
         $game1->addPlatform($platform3);
         $game1->addType($type1);
         $game1->addType($type2);
         $game1->addType($type3);
-        $game1->setEditor($editeur2);
+        $game1->setEditor($editeur5);
         $manager->persist($game1);
 
-
-
         $game2 = new Game();
-        $game2->setName('Call of Duty: Black Ops Cold War');
-        $game2->setReleaseDate(new \DateTime('2020-11-13'));
-        $game2->setDescription('Call of Duty: Black Ops Cold War est un jeu vidéo de tir à la première personne développé par Treyarch et Raven Software et édité par Activision. Il est sorti le 13 novembre 2020 sur PlayStation 4, Xbox One, Stadia, Microsoft Windows, PlayStation 5 et Xbox Series X/S. Il s\'agit du dixième opus de la série Call of Duty et du sixième à se dérouler dans les années 1980. Le jeu est également disponible sur PlayStation 5 et Xbox Series X/S en version améliorée, avec une résolution 4K et des chargements plus rapides.');
-        $game2->setPoster("https://image.jeuxvideo.com/medias/163301/1633014178-150-jaquette-avant.gif");
-        $game2->setAgeLimit(18);
+        $game2->setName('Hogwarts Legacy : l\'Héritage de Poudlard');
+        $game2->setReleaseDate(new \DateTime('2023-02-10T00:00:00.000Z'));
+        $game2->setDescription('Hogwarts Legacy : l\'Héritage de Poudlard est un jeu de rôle se déroulant au XIXe siècle dans l\'univers d\'Harry Potter. Le joueur y incarne un étudiant et peut librement explorer Poudlard et s\'y forger sa carrière de sorcier.');
+        $game2->setPoster('/game_poster/game_poster-3871100.webp');
+        $game2->setAgeLimit(12);
         $game2->addPlatform($platform1);
-        $game2->addPlatform($platform4);
+        $game2->addPlatform($platform2);
         $game2->addPlatform($platform3);
+        $game2->addType($type1);
         $game2->addType($type2);
         $game2->addType($type3);
-        $game2->setEditor($editeur3);
+        $game2->setEditor($editeur5);
         $manager->persist($game2);
 
-        $picture1 = new GamePicture();
-        $picture1->setPicture('https://image.jeuxvideo.com/medias/159967/1599666332-6811-capture-d-ecran.jpg');
-        $picture1->setGame($game2);
-        $manager->persist($picture1);
-
-        $picture2 = new GamePicture();
-        $picture2->setPicture('https://image.jeuxvideo.com/medias/159967/1599666332-7835-capture-d-ecran.jpg');
-        $picture2->setGame($game2);
-        $manager->persist($picture2);
-
-        $picture3 = new GamePicture();
-        $picture3->setPicture('https://image.jeuxvideo.com/medias/159967/1599666333-3976-capture-d-ecran.jpg');
-        $picture3->setGame($game2);
-        $manager->persist($picture3);
-
-        $picture4 = new GamePicture();
-        $picture4->setPicture('https://image.jeuxvideo.com/medias/159967/1599666333-4679-capture-d-ecran.jpg');
-        $picture4->setGame($game2);
-        $manager->persist($picture4);
-
         $game3 = new Game();
-        $game3->setName('Cyberpunk 2077');
-        $game3->setReleaseDate(new \DateTime('2020-12-10'));
-        $game3->setDescription('Cyberpunk 2077 est un jeu vidéo d\'action-RPG développé et édité par CD Projekt. Il est sorti le 10 décembre 2020 sur PlayStation 4, Xbox One, Stadia, Microsoft Windows, PlayStation 5 et Xbox Series X/S. Il s\'agit du premier jeu de la série Cyberpunk et du neuvième opus de la série The Witcher. Le jeu est également disponible sur PlayStation 5 et Xbox Series X/S en version améliorée, avec une résolution 4K et des chargements plus rapides.');
-        $game3->setPoster("https://image.jeuxvideo.com/medias/163835/1638354762-4961-jaquette-avant.gif");
+        $game3->setName('Call of Duty : Modern Warfare 2 (2022)');
+        $game3->setReleaseDate(new \DateTime('2022-10-28T00:00:00.000Z'));
+        $game3->setDescription('Version reboot de l\'emblématique jeu de tir à la première personne sorti en 2009, Call of Duty Modern Warfare 2 offre une expérience multi et solo ayant pour but de raviver la flamme de son illustre prédécesseur. Le jeu bénéficie de nouveaux graphismes et d\'une refonte complète. Il devrait être le début d\'une nouvelle ère pour la licence.');
+        $game3->setPoster('/game_poster/game_poster-40041555.webp');
         $game3->setAgeLimit(18);
         $game3->addPlatform($platform1);
         $game3->addPlatform($platform2);
@@ -211,15 +190,15 @@ class AppFixtures extends Fixture
         $game3->addType($type1);
         $game3->addType($type2);
         $game3->addType($type3);
-        $game3->setEditor($editeur4);
+        $game3->setEditor($editeur5);
         $manager->persist($game3);
 
         $game4 = new Game();
-        $game4->setName('Grand Theft Auto V');
-        $game4->setReleaseDate(new \DateTime('2013-09-17'));
-        $game4->setDescription('Grand Theft Auto V est un jeu vidéo d\'action-aventure développé par Rockstar North et édité par Rockstar Games. Il est sorti le 17 septembre 2013 sur PlayStation 3 et Xbox 360, puis le 18 novembre 2014 sur PlayStation 4 et Xbox One, et le 14 avril 2015 sur Microsoft Windows. Il s\'agit du dixième opus de la série Grand Theft Auto et du premier à avoir lieu dans un univers ouvert. Le jeu est également disponible sur PlayStation 5 et Xbox Series X/S en version améliorée, avec une résolution 4K et des chargements plus rapides.');
-        $game4->setPoster("https://image.jeuxvideo.com/medias/163129/1631287693-8700-jaquette-avant.jpg");
-        $game4->setAgeLimit(18);
+        $game4->setName('Star Wars Jedi : Survivor');
+        $game4->setReleaseDate(new \DateTime('2023-04-28T00:00:00.000Z'));
+        $game4->setDescription('Star Wars Jedi : Survivor se passe cinq années après Fallen Order et plonge le joueur une nouvelle fois dans l\'histoire de Cal Kestis. Notre héros est désormais un Jedi accompli et tente de survivre aux confins de la Galaxie. Toujours accompagné de BD-1, le Jedi affrontera à nouveau le terrible Empire galactique.');
+        $game4->setPoster('/game_poster/game_poster-89023724.webp');
+        $game4->setAgeLimit(16);
         $game4->addPlatform($platform1);
         $game4->addPlatform($platform2);
         $game4->addPlatform($platform3);
@@ -230,11 +209,11 @@ class AppFixtures extends Fixture
         $manager->persist($game4);
 
         $game5 = new Game();
-        $game5->setName('Red Dead Redemption 2');
-        $game5->setReleaseDate(new \DateTime('2018-10-26'));
-        $game5->setDescription('Red Dead Redemption 2 est un jeu vidéo d\'action-aventure développé par Rockstar Studios et édité par Rockstar Games. Il est sorti le 26 octobre 2018 sur PlayStation 4 et Xbox One, puis le 5 novembre 2019 sur Microsoft Windows. Il s\'agit du dixième opus de la série Grand Theft Auto et du premier à avoir lieu dans un univers ouvert. Le jeu est également disponible sur PlayStation 5 et Xbox Series X/S en version améliorée, avec une résolution 4K et des chargements plus rapides.');
-        $game5->setPoster("https://image.jeuxvideo.com/medias/165165/1651652506-3619-jaquette-avant.jpg");
-        $game5->setAgeLimit(18);
+        $game5->setName('Resident Evil 4 (2023)');
+        $game5->setReleaseDate(new \DateTime('2023-03-24T00:00:00.000Z'));
+        $game5->setDescription('Leon Kennedy revient avec le remake de Resident Evil 4. Ce survival-horror proposera une aventure totalement repensée et modernisée, à l\'instar de ce qui a été fait avec Resident Evil 2 et Resident Evil 3. Un mode spécial en VR est prévu pour fonctionner avec le PSVR2.');
+        $game5->setPoster('/game_poster/game_poster-4180177.webp');
+        $game5->setAgeLimit(12);
         $game5->addPlatform($platform1);
         $game5->addPlatform($platform2);
         $game5->addPlatform($platform3);
@@ -245,10 +224,10 @@ class AppFixtures extends Fixture
         $manager->persist($game5);
 
         $game6 = new Game();
-        $game6->setName('Assetto Corsa Competizione');
-        $game6->setReleaseDate(new \DateTime('2019-06-27'));
-        $game6->setDescription('Assetto Corsa Competizione est un jeu vidéo de course développé par Kunos Simulazioni et édité par 505 Games. Il est sorti le 27 juin 2019 sur PlayStation 4, Xbox One et Microsoft Windows. Il s\'agit du troisième opus de la série Assetto Corsa. Le jeu est également disponible sur PlayStation 5 et Xbox Series X/S en version améliorée, avec une résolution 4K et des chargements plus rapides.');
-        $game6->setPoster("https://image.jeuxvideo.com/medias/158394/1583942452-4805-jaquette-avant.jpg");
+        $game6->setName('Dead Island 2');
+        $game6->setReleaseDate(new \DateTime('2023-04-21T00:00:00.000Z'));
+        $game6->setDescription('Dead Island 2 est un FPS, suite directe du premier volet. Plusieurs mois après les événements qui se sont déroulés à Banoi, les Etats-Unis se voient obligés de mettre la Californie en quarantaine. Désormais zone interdite, "l\'Etat doré" est devenu un paradis sanglant pour ceux qui ont refusé de quitter leur maison, et un terrain de chasse rêvé pour les renégats qui cherchent l’aventure, la gloire et un nouveau départ.');
+        $game6->setPoster('/game_poster/game_poster-63019979.webp');
         $game6->setAgeLimit(3);
         $game6->addPlatform($platform1);
         $game6->addPlatform($platform2);
@@ -256,25 +235,807 @@ class AppFixtures extends Fixture
         $game6->addType($type1);
         $game6->addType($type2);
         $game6->addType($type3);
-        $game6->setEditor($editeur6);
+        $game6->setEditor($editeur5);
         $manager->persist($game6);
 
         $game7 = new Game();
-        $game7->setName('FIFA 21');
-        $game7->setReleaseDate(new \DateTime('2020-10-09'));
-        $game7->setDescription('FIFA 21 est un jeu vidéo de football développé par EA Vancouver et EA Bucharest et édité par Electronic Arts. Il est sorti le 9 octobre 2020 sur PlayStation 4, Xbox One, PlayStation 5, Xbox Series X/S, Nintendo Switch et Microsoft Windows. Il s\'agit du 28e opus de la série FIFA. Le jeu est également disponible sur PlayStation 5 et Xbox Series X/S en version améliorée, avec une résolution 4K et des chargements plus rapides.');
-        $game7->setPoster("https://image.jeuxvideo.com/medias/159543/1595431314-3197-jaquette-avant.jpg");
-        $game7->setAgeLimit(3);
+        $game7->setName('Honkai : Star Rail');
+        $game7->setReleaseDate(new \DateTime('2023-04-26T00:00:00.000Z'));
+        $game7->setDescription('Honkai : Star Rail est la nouvelle production de miHoYo, les créateurs du free-to-play Genshin Impact. Elle se présentera sous la forme d\'un RPG s\'inscrivant dans leur franchise Honkai, un univers peuplé de Valkyries se combattant contre un terrible fléau.');
+        $game7->setPoster('/game_poster/game_poster-78248744.webp');
+        $game7->setAgeLimit(12);
         $game7->addPlatform($platform1);
         $game7->addPlatform($platform2);
         $game7->addPlatform($platform3);
         $game7->addType($type1);
         $game7->addType($type2);
         $game7->addType($type3);
-        $game7->setEditor($editeur7);
+        $game7->setEditor($editeur5);
         $manager->persist($game7);
 
+        $game8 = new Game();
+        $game8->setName('Redfall');
+        $game8->setReleaseDate(new \DateTime('2023-05-02T00:00:00.000Z'));
+        $game8->setDescription('Redfall est un FPS en open-world se déroulant sur l\'île du même nom, que les vampires ont peu à peu envahie. Le jeu se joue aussi bien seul qu\'avec des amis et vous invite à monter la meilleure équipe de sorciers, afin d\'anéantir ces créatures aux longues canines.');
+        $game8->setPoster('/game_poster/game_poster-35100071.webp');
+        $game8->setAgeLimit(16);
+        $game8->addPlatform($platform1);
+        $game8->addPlatform($platform2);
+        $game8->addPlatform($platform3);
+        $game8->addType($type1);
+        $game8->addType($type2);
+        $game8->addType($type3);
+        $game8->setEditor($editeur5);
+        $manager->persist($game8);
 
+        $game9 = new Game();
+        $game9->setName('Disney Dreamlight Valley');
+        $game9->setReleaseDate(new \DateTime('2022-09-06T00:00:00.000Z'));
+        $game9->setDescription('Disney Dreamlight Valley est un jeu free-to-play mélangeant simulation et exploration développé et édité par Gameloft. Plongez dans une aventure magique et un monde riche en magie au coté de vos personnages Disney et Pixar favoris.');
+        $game9->setPoster('/game_poster/game_poster-95404371.webp');
+        $game9->setAgeLimit(7);
+        $game9->addPlatform($platform1);
+        $game9->addPlatform($platform2);
+        $game9->addPlatform($platform3);
+        $game9->addType($type1);
+        $game9->addType($type2);
+        $game9->addType($type3);
+        $game9->setEditor($editeur5);
+        $manager->persist($game9);
+
+        $game10 = new Game();
+        $game10->setName('Le Seigneur des Anneaux : Gollum');
+        $game10->setReleaseDate(new \DateTime('2023-05-25T00:00:00.000Z'));
+        $game10->setDescription('Ce jeu d’action-aventure se focalise sur l\'un des personnages emblématiques de Tolkien : Gollum. Notre anti-héros débute son épopée dans les geôles de Barad-dûr, demeure de Sauron, et est au cœur d\'une aventure portée par des mécaniques centrées sur sa double-personnalité. Vous y retrouverez également de vastes niveaux, annoncés comme esthétiquement inspirés par les dessins de Tolkien.');
+        $game10->setPoster('/game_poster/game_poster-28947921.webp');
+        $game10->setAgeLimit(18);
+        $game10->addPlatform($platform1);
+        $game10->addPlatform($platform2);
+        $game10->addPlatform($platform3);
+        $game10->addType($type1);
+        $game10->addType($type2);
+        $game10->addType($type3);
+        $game10->setEditor($editeur5);
+        $manager->persist($game10);
+
+        $game11 = new Game();
+        $game11->setName('God of War : Ragnarok');
+        $game11->setReleaseDate(new \DateTime('2022-11-09T00:00:00.000Z'));
+        $game11->setDescription('God of War : Ragnarok est un jeu d\'action sur PS5 développé par Santa Monica, qui fait suite au soft reboot de la série God of War sur PS4. Le Ragnarök, célèbre événement de la mythologie nordique est ici la toile de fond scénaristique du jeu.');
+        $game11->setPoster('/game_poster/game_poster-58148989.webp');
+        $game11->setAgeLimit(3);
+        $game11->addPlatform($platform1);
+        $game11->addPlatform($platform2);
+        $game11->addPlatform($platform3);
+        $game11->addType($type1);
+        $game11->addType($type2);
+        $game11->addType($type3);
+        $game11->setEditor($editeur5);
+        $manager->persist($game11);
+
+        $game12 = new Game();
+        $game12->setName('Final Fantasy XVI');
+        $game12->setReleaseDate(new \DateTime('2023-06-22T00:00:00.000Z'));
+        $game12->setDescription('Final Fantasy XVI est un Action RPG qui a été annoncé au cours de la conférence présentant les jeux, le prix et la date de sortie de la PlayStation 5. Celui-ci se déroule dans un univers medieval fantastique bien plus proche de l\'Heroic Fantasy que ne l\'était son prédécesseur.');
+        $game12->setPoster('/game_poster/game_poster-37114483.webp');
+        $game12->setAgeLimit(18);
+        $game12->addPlatform($platform1);
+        $game12->addPlatform($platform2);
+        $game12->addPlatform($platform3);
+        $game12->addType($type1);
+        $game12->addType($type2);
+        $game12->addType($type3);
+        $game12->setEditor($editeur5);
+        $manager->persist($game12);
+
+        $game13 = new Game();
+        $game13->setName('Horizon Forbidden West : Burning Shores');
+        $game13->setReleaseDate(new \DateTime('2023-04-19T00:00:00.000Z'));
+        $game13->setDescription('Horizon Forbidden West : Burning Shores est un DLC du jeu principal. Le jeu d\'action aventure sur PS4 nous propose de réincarner Aloy, l’héroïne du premier volet, dans un monde post-apocalyptique. Explorez des terres gelées jusqu\'aux eaux tropicales en découvrant les ruines de l\'ancien monde.');
+        $game13->setPoster('/game_poster/game_poster-68701165.webp');
+        $game13->setAgeLimit(12);
+        $game13->addPlatform($platform1);
+        $game13->addPlatform($platform2);
+        $game13->addPlatform($platform3);
+        $game13->addType($type1);
+        $game13->addType($type2);
+        $game13->addType($type3);
+        $game13->setEditor($editeur5);
+        $manager->persist($game13);
+
+        $game14 = new Game();
+        $game14->setName('Street Fighter 6');
+        $game14->setReleaseDate(new \DateTime('2023-06-02T00:00:00.000Z'));
+        $game14->setDescription('Street Fighter 6 est un jeu de combat compétitif. Prenez part à des combats en face à face contre des adversaires du monde entier. Devenez un meilleur combattant en perfectionnant vos techniques et combos pour être vainqueur.');
+        $game14->setPoster('/game_poster/game_poster-62921793.webp');
+        $game14->setAgeLimit(18);
+        $game14->addPlatform($platform1);
+        $game14->addPlatform($platform2);
+        $game14->addPlatform($platform3);
+        $game14->addType($type1);
+        $game14->addType($type2);
+        $game14->addType($type3);
+        $game14->setEditor($editeur5);
+        $manager->persist($game14);
+
+        $game15 = new Game();
+        $game15->setName('Call of Duty : Warzone 2.0');
+        $game15->setReleaseDate(new \DateTime('2022-11-16T00:00:00.000Z'));
+        $game15->setDescription('Call of Duty : Warzone 2.0 est un jeu de type Battle Royale présenté en free-to-play. Distribué par Activision, ce FPS vous offrira des affrontements en ligne nerveux et compétitifs. Il devrait offrir une nouvelle carte bien plus grande, des innovations, un nouveau Goulag et d\'autres nouveautés le différenciant du premier opus.');
+        $game15->setPoster('/game_poster/game_poster-32193865.webp');
+        $game15->setAgeLimit(18);
+        $game15->addPlatform($platform1);
+        $game15->addPlatform($platform2);
+        $game15->addPlatform($platform3);
+        $game15->addType($type1);
+        $game15->addType($type2);
+        $game15->addType($type3);
+        $game15->setEditor($editeur5);
+        $manager->persist($game15);
+
+        $game16 = new Game();
+        $game16->setName('Marvel\'s Spider-Man 2');
+        $game16->setReleaseDate(new \DateTime('2023-01-01T00:00:00.000Z'));
+        $game16->setDescription('Peter Parker et Miles Morales sont de retour dans cette nouvelle aventure vidéoludique originale signée Insomniac Games. Comme son prédécesseur, Spider-Man 2 est un jeu d\'action-aventure en monde ouvert qui vous met dans la peau des deux hommes-araignées. Vous devrez affronter les petits criminels de New-York comme les grands méchants iconiques des comics, et ici en l\'occurrence l\'abominable symbiote Venom.');
+        $game16->setPoster('/game_poster/game_poster-58283622.webp');
+        $game16->setAgeLimit(3);
+        $game16->addPlatform($platform1);
+        $game16->addPlatform($platform2);
+        $game16->addPlatform($platform3);
+        $game16->addType($type1);
+        $game16->addType($type2);
+        $game16->addType($type3);
+        $game16->setEditor($editeur5);
+        $manager->persist($game16);
+
+        $game17 = new Game();
+        $game17->setName('Overwatch 2');
+        $game17->setReleaseDate(new \DateTime('2022-10-04T00:00:00.000Z'));
+        $game17->setDescription('Overwatch 2 est la suite du Hero Shooter de Blizzard. Le titre prolonge l\'expérience PvP du jeu tout en y ajoutant une nouvelle dimension PvE sous forme de missions scénarisées et de contenus en coopération rejouables. Dans ces modes joueurs contre l\'environnement, des points de talent font leur apparition et permettent de modifier le gameplay des différents héros du jeu.');
+        $game17->setPoster('/game_poster/game_poster-91376253.webp');
+        $game17->setAgeLimit(16);
+        $game17->addPlatform($platform1);
+        $game17->addPlatform($platform2);
+        $game17->addPlatform($platform3);
+        $game17->addType($type1);
+        $game17->addType($type2);
+        $game17->addType($type3);
+        $game17->setEditor($editeur5);
+        $manager->persist($game17);
+
+        $game18 = new Game();
+        $game18->setName('Pokémon Écarlate / Violet');
+        $game18->setReleaseDate(new \DateTime('2022-11-18T00:00:00.000Z'));
+        $game18->setDescription('Pokémon Écarlate/ Violet est un RPG du studio Game Freak. Cet opus introduit la 9ème génération de Pokémon et permet pour la première fois d\'explorer le jeu dans un vaste monde ouvert. Combattez en tour par tour et devenez le meilleur dresseur de la région.');
+        $game18->setPoster('/game_poster/game_poster-10638165.webp');
+        $game18->setAgeLimit(16);
+        $game18->addPlatform($platform1);
+        $game18->addPlatform($platform2);
+        $game18->addPlatform($platform3);
+        $game18->addType($type1);
+        $game18->addType($type2);
+        $game18->addType($type3);
+        $game18->setEditor($editeur5);
+        $manager->persist($game18);
+
+        $game19 = new Game();
+        $game19->setName('FIFA 23');
+        $game19->setReleaseDate(new \DateTime('2022-09-30T00:00:00.000Z'));
+        $game19->setDescription('Il s\'agit de la dernière version  du célèbre licence de football en collaboration avec la FIFA. FIFA 23 apporte des améliorations techniques, de nouveaux modes et de nouveaux joueurs pour créer les équipes de foot.');
+        $game19->setPoster('/game_poster/game_poster-26259849.webp');
+        $game19->setAgeLimit(7);
+        $game19->addPlatform($platform1);
+        $game19->addPlatform($platform2);
+        $game19->addPlatform($platform3);
+        $game19->addType($type1);
+        $game19->addType($type2);
+        $game19->addType($type3);
+        $game19->setEditor($editeur5);
+        $manager->persist($game19);
+
+        $game20 = new Game();
+        $game20->setName('Starfield');
+        $game20->setReleaseDate(new \DateTime('2023-09-06T00:00:00.000Z'));
+        $game20->setDescription('Starfield est un jeu de rôle développé et édité par Bethesda Softworks. Ce dernier nous emmène vers un univers futuriste, notamment dans les confins les plus reculés de l\'espace, loin de notre chère planète bleue.');
+        $game20->setPoster('/game_poster/game_poster-21420582.webp');
+        $game20->setAgeLimit(12);
+        $game20->addPlatform($platform1);
+        $game20->addPlatform($platform2);
+        $game20->addPlatform($platform3);
+        $game20->addType($type1);
+        $game20->addType($type2);
+        $game20->addType($type3);
+        $game20->setEditor($editeur5);
+        $manager->persist($game20);
+
+        $game21 = new Game();
+        $game21->setName('LEGO 2K Drive');
+        $game21->setReleaseDate(new \DateTime('2023-05-19T00:00:00.000Z'));
+        $game21->setDescription('LEGO 2K Drive se déroule dans l\'univers LEGO. Ce jeu de course en monde ouvert vous permettra d\'expérimenter tous types de véhicules (voitures, bateaux...) dans une série de défis, d\'épreuves, et de mini-jeux.');
+        $game21->setPoster('/game_poster/game_poster-21442854.webp');
+        $game21->setAgeLimit(12);
+        $game21->addPlatform($platform1);
+        $game21->addPlatform($platform2);
+        $game21->addPlatform($platform3);
+        $game21->addType($type1);
+        $game21->addType($type2);
+        $game21->addType($type3);
+        $game21->setEditor($editeur5);
+        $manager->persist($game21);
+
+        $game22 = new Game();
+        $game22->setName('TT Isle of Man: Ride on the Edge 3');
+        $game22->setReleaseDate(new \DateTime('2023-05-11T00:00:00.000Z'));
+        $game22->setDescription('TT Isle of Man: Ride on the Edge 3 est un jeu de simulation de course de motos. Encore plus ambitieux que ses deux prédécesseurs, le titre propose désormais un monde ouvert où il sera possible de parcourir l\'île de Man. Plusieurs modes comme le multijoueur, la carrière ou course rapide vous attendent.');
+        $game22->setPoster('/game_poster/game_poster-40388090.webp');
+        $game22->setAgeLimit(18);
+        $game22->addPlatform($platform1);
+        $game22->addPlatform($platform2);
+        $game22->addPlatform($platform3);
+        $game22->addType($type1);
+        $game22->addType($type2);
+        $game22->addType($type3);
+        $game22->setEditor($editeur5);
+        $manager->persist($game22);
+
+        $game23 = new Game();
+        $game23->setName('Trinity Trigger');
+        $game23->setReleaseDate(new \DateTime('2023-05-16T00:00:00.000Z'));
+        $game23->setDescription('Trinity Trigger est un Action-RPG conçu par d\'anciens développeurs de Trials Of Mania, Xenoblades Chronicles et Octopath Traveler. Le jeu nous permettra d\'incarner trois héros : Cyan, Elise et Zantis, afin de sauver le continent de Trinitia, ravagé par la guerre entre les Dieux de l\'Ordre et les Dieux du Chaos. Pendant notre aventure, nous seront aidés par les Triggers, des petits être vivants tout mignon, capable de se transformer en arme.');
+        $game23->setPoster('/game_poster/game_poster-72903283.webp');
+        $game23->setAgeLimit(12);
+        $game23->addPlatform($platform1);
+        $game23->addPlatform($platform2);
+        $game23->addPlatform($platform3);
+        $game23->addType($type1);
+        $game23->addType($type2);
+        $game23->addType($type3);
+        $game23->setEditor($editeur5);
+        $manager->persist($game23);
+
+        $game24 = new Game();
+        $game24->setName('Cyberpunk 2077 - Phantom Liberty');
+        $game24->setReleaseDate(new \DateTime('2023-01-01T00:00:00.000Z'));
+        $game24->setDescription('Premier DLC de Cyberpunk 2077,  Phantom Liberty nous emmène directement dans un lieu inédit de Pacifica, un district de non-droit où règne l\'anarchie. Retrouvez V et Johnny Silverhand et parcourez des environnements clos et malfamés où règnent la terreur et des gangs qui n\'hésitent pas à faire parler les poings.');
+        $game24->setPoster('/game_poster/game_poster-40495706.webp');
+        $game24->setAgeLimit(7);
+        $game24->addPlatform($platform1);
+        $game24->addPlatform($platform2);
+        $game24->addPlatform($platform3);
+        $game24->addType($type1);
+        $game24->addType($type2);
+        $game24->addType($type3);
+        $game24->setEditor($editeur5);
+        $manager->persist($game24);
+
+        $game25 = new Game();
+        $game25->setName('The Lords of the Fallen');
+        $game25->setReleaseDate(new \DateTime('2023-10-13T00:00:00.000Z'));
+        $game25->setDescription('Un vaste monde vous attend dans le tout nouveau RPG d\'action de dark fantasy, The Lords of the Fallen. Lancez-vous dans une quête épique pour renverser Adyr, le dieu démon. Prévu pour 2023 sur Steam et consoles.');
+        $game25->setPoster('/game_poster/game_poster-95513629.webp');
+        $game25->setAgeLimit(18);
+        $game25->addPlatform($platform1);
+        $game25->addPlatform($platform2);
+        $game25->addPlatform($platform3);
+        $game25->addType($type1);
+        $game25->addType($type2);
+        $game25->addType($type3);
+        $game25->setEditor($editeur5);
+        $manager->persist($game25);
+
+        $game26 = new Game();
+        $game26->setName('Advance Wars 1+2 Re-Boot Camp');
+        $game26->setReleaseDate(new \DateTime('2023-04-21T00:00:00.000Z'));
+        $game26->setDescription('Advance Wars 1+2: Re-Boot Camp est le remake des deux jeux Advance Wars et Advance Wars 2 : Black Hole Rising. Prenez les commandes de l\'armée d\'Orange Star, et gagnez les batailles stratégies au tour par tour qui se déroulent aussi bien sur la terre ferme, que dans les airs, ou bien sur l\'eau. Capturez des villes et des bases militaires afin de remporter la victoire.');
+        $game26->setPoster('/game_poster/game_poster-20307922.webp');
+        $game26->setAgeLimit(3);
+        $game26->addPlatform($platform1);
+        $game26->addPlatform($platform2);
+        $game26->addPlatform($platform3);
+        $game26->addType($type1);
+        $game26->addType($type2);
+        $game26->addType($type3);
+        $game26->setEditor($editeur5);
+        $manager->persist($game26);
+
+        $game27 = new Game();
+        $game27->setName('Meet Your Maker');
+        $game27->setReleaseDate(new \DateTime('2023-04-04T00:00:00.000Z'));
+        $game27->setDescription('Meet Your Maker est un jeu de construction, mais aussi un FPS à la première personne qui se déroule dans un monde post-apocalyptique. D\'un côté, il est possible d\'incarner le Mastermind pour concevoir des niveaux de A à Z, et de l\'autre de faire équipe avec d\'autres joueurs pour essayer de survivre aux attaques sournoises du maître du jeu.');
+        $game27->setPoster('/game_poster/game_poster-95876497.webp');
+        $game27->setAgeLimit(3);
+        $game27->addPlatform($platform1);
+        $game27->addPlatform($platform2);
+        $game27->addPlatform($platform3);
+        $game27->addType($type1);
+        $game27->addType($type2);
+        $game27->addType($type3);
+        $game27->setEditor($editeur5);
+        $manager->persist($game27);
+
+        $game28 = new Game();
+        $game28->setName('Company of Heroes 3');
+        $game28->setReleaseDate(new \DateTime('2023-02-23T00:00:00.000Z'));
+        $game28->setDescription('Company of Heroes 3 est le nouvel épisode de la licence bien connue des fans de stratégie en temps réel. Porté par une nouvelle campagne dynamique, COH3  devrait plonger les joueurs au cœur de bataille en pleine méditerranée.');
+        $game28->setPoster('/game_poster/game_poster-98247234.webp');
+        $game28->setAgeLimit(3);
+        $game28->addPlatform($platform1);
+        $game28->addPlatform($platform2);
+        $game28->addPlatform($platform3);
+        $game28->addType($type1);
+        $game28->addType($type2);
+        $game28->addType($type3);
+        $game28->setEditor($editeur5);
+        $manager->persist($game28);
+
+        $game29 = new Game();
+        $game29->setName('Hello Neighbor VR : Search and Rescue');
+        $game29->setReleaseDate(new \DateTime('2023-05-26T00:00:00.000Z'));
+        $game29->setDescription('Hello Neighbor VR : Search and Rescue est un jeu d\'horreur et d\'infiltration à la première personne. Dans cette version, le joueur doit se faufiler dans la maison du voisin afin de trouver ce qu\'il se cache dans le sous-sol. L\'Intelligence Artificielle apprend de vos actions, renforçant la difficulté.');
+        $game29->setPoster('/game_poster/game_poster-40001796.webp');
+        $game29->setAgeLimit(12);
+        $game29->addPlatform($platform1);
+        $game29->addPlatform($platform2);
+        $game29->addPlatform($platform3);
+        $game29->addType($type1);
+        $game29->addType($type2);
+        $game29->addType($type3);
+        $game29->setEditor($editeur5);
+        $manager->persist($game29);
+
+        $game30 = new Game();
+        $game30->setName('Minecraft Legends');
+        $game30->setReleaseDate(new \DateTime('2023-04-18T00:00:00.000Z'));
+        $game30->setDescription('Troisième opus de la licence, Minecraft Legends est un nouveau jeu d\'action et stratégie. Explorez une terre riche en ressources et pourtant au bord de la destruction : les piglins menace d\'envahir ce monde. C\'est donc aux joueurs de se rassembler et de participer à des batailles stratégiques pour sauver l\'Overworld.');
+        $game30->setPoster('/game_poster/game_poster-38393579.webp');
+        $game30->setAgeLimit(12);
+        $game30->addPlatform($platform1);
+        $game30->addPlatform($platform2);
+        $game30->addPlatform($platform3);
+        $game30->addType($type1);
+        $game30->addType($type2);
+        $game30->addType($type3);
+        $game30->setEditor($editeur5);
+        $manager->persist($game30);
+
+        $game31 = new Game();
+        $game31->setName('Humanity');
+        $game31->setReleaseDate(new \DateTime('2023-05-16T00:00:00.000Z'));
+        $game31->setDescription('Humanity est développé par Enhance Games sur PS4. C\'est un jeu à forte intention artistique où des foules s\'affrontent de différentes manières. Ce jeu souhaite transformer ses joueurs avec ce concept aussi nébuleux que curieux. Un support pour le PS VR est disponible.');
+        $game31->setPoster('/game_poster/game_poster-59548782.webp');
+        $game31->setAgeLimit(16);
+        $game31->addPlatform($platform1);
+        $game31->addPlatform($platform2);
+        $game31->addPlatform($platform3);
+        $game31->addType($type1);
+        $game31->addType($type2);
+        $game31->addType($type3);
+        $game31->setEditor($editeur5);
+        $manager->persist($game31);
+
+        $game32 = new Game();
+        $game32->setName('World of Warcraft : DragonFlight');
+        $game32->setReleaseDate(new \DateTime('2022-11-29T00:00:00.000Z'));
+        $game32->setDescription('World of Warcraft : Dragonflight est l\'extension faisant suite à Shadowlands et marque le retour en Azeroth. La Grande Fracture a provoqué l\'apparition des îles aux dragons, déclenchant un nouveau conflit. Pour la première fois depuis six ans, World of Warcraft va recevoir une treizième classe jouable qui sera appelée Évocateurs. Les joueurs souhaitant jouer cette classe devront obligatoirement créer un Dracthyr, une race de dragons ayant grandi sur l’île.');
+        $game32->setPoster('/game_poster/game_poster-33644166.webp');
+        $game32->setAgeLimit(18);
+        $game32->addPlatform($platform1);
+        $game32->addPlatform($platform2);
+        $game32->addPlatform($platform3);
+        $game32->addType($type1);
+        $game32->addType($type2);
+        $game32->addType($type3);
+        $game32->setEditor($editeur5);
+        $manager->persist($game32);
+
+        $game33 = new Game();
+        $game33->setName('Mortal Kombat 1');
+        $game33->setReleaseDate(new \DateTime('2023-09-19T00:00:00.000Z'));
+        $game33->setDescription('Mortal Kombat 1 est le douzième épisode de la mythique franchise de combat, toujours signé NetherReal Studios. Cette fois-ci, la franchise opte pour un reboot total de son univers. L\'une des nouveautés de gameplay permet d\'associer les pouvoirs et techniques de deux Kombattants, en plus d\'une toute nouvelle carrière, fatalities et bien plus.');
+        $game33->setPoster('/game_poster/game_poster-46964850.webp');
+        $game33->setAgeLimit(18);
+        $game33->addPlatform($platform1);
+        $game33->addPlatform($platform2);
+        $game33->addPlatform($platform3);
+        $game33->addType($type1);
+        $game33->addType($type2);
+        $game33->addType($type3);
+        $game33->setEditor($editeur5);
+        $manager->persist($game33);
+
+        $game34 = new Game();
+        $game34->setName('Terra Nil');
+        $game34->setReleaseDate(new \DateTime('2023-03-28T00:00:00.000Z'));
+        $game34->setDescription('Terra Nil est un city builder un peu particulier, puisqu\'il met la reconstruction de l\'écosystème au cœur de son gameplay. Votre but ? Transformer une terre en friche stérile en un paradis écologique avec une faune et une flore variées.');
+        $game34->setPoster('/game_poster/game_poster-21895530.webp');
+        $game34->setAgeLimit(12);
+        $game34->addPlatform($platform1);
+        $game34->addPlatform($platform2);
+        $game34->addPlatform($platform3);
+        $game34->addType($type1);
+        $game34->addType($type2);
+        $game34->addType($type3);
+        $game34->setEditor($editeur5);
+        $manager->persist($game34);
+
+        $game35 = new Game();
+        $game35->setName('Alan Wake II');
+        $game35->setReleaseDate(new \DateTime('2023-01-01T00:00:00.000Z'));
+        $game35->setDescription('Comme le premier opus, le joueur sera plongé dans un univers psychologique intense, sous fond de thriller et de tension psychologique. Vous incarnez à nouveau Alan Wake, embarqué dans une nouvelle quête angoissante.');
+        $game35->setPoster('/game_poster/game_poster-24799620.webp');
+        $game35->setAgeLimit(3);
+        $game35->addPlatform($platform1);
+        $game35->addPlatform($platform2);
+        $game35->addPlatform($platform3);
+        $game35->addType($type1);
+        $game35->addType($type2);
+        $game35->addType($type3);
+        $game35->setEditor($editeur5);
+        $manager->persist($game35);
+
+        $game36 = new Game();
+        $game36->setName('Daymare: 1994 Sandcastle');
+        $game36->setReleaseDate(new \DateTime('2022-01-01T00:00:00.000Z'));
+        $game36->setDescription('Daymare: 1994 Sandcastle est un jeu d\'horreur d\'action jouable à la troisième personne. Ce jeu est un prologue à Daymare: 1998 sorti en 2019. Mettez-vous dans la peau de l\'agent spécial Dalila Reyes, espionne pour le gouvernement et aventurez vous dans les lieux les plus sombres et mystérieux de toute l\'histoire...');
+        $game36->setPoster('/game_poster/game_poster-46389578.webp');
+        $game36->setAgeLimit(12);
+        $game36->addPlatform($platform1);
+        $game36->addPlatform($platform2);
+        $game36->addPlatform($platform3);
+        $game36->addType($type1);
+        $game36->addType($type2);
+        $game36->addType($type3);
+        $game36->setEditor($editeur5);
+        $manager->persist($game36);
+
+        $game37 = new Game();
+        $game37->setName('Farming Simulator 23');
+        $game37->setReleaseDate(new \DateTime('2023-05-23T00:00:00.000Z'));
+        $game37->setDescription('Farming Simulator 23 est le prochain épisode du jeu de simulation agricole de Giants Software. Comme à l\'accoutumée, il est question de gérer cultures, vente des récoltes, élevage d\'animaux, dans le but de développer votre exploitation. Pour cette année, plusieurs ajouts comme deux nouvelles cartes, l\'apparition des raisons, olives et sergho comme cultures exploitables et les poules comme nouvelle espèce animale.');
+        $game37->setPoster('/game_poster/game_poster-32052475.webp');
+        $game37->setAgeLimit(7);
+        $game37->addPlatform($platform1);
+        $game37->addPlatform($platform2);
+        $game37->addPlatform($platform3);
+        $game37->addType($type1);
+        $game37->addType($type2);
+        $game37->addType($type3);
+        $game37->setEditor($editeur5);
+        $manager->persist($game37);
+
+        $game38 = new Game();
+        $game38->setName('Alone in the Dark Remake');
+        $game38->setReleaseDate(new \DateTime('2023-10-25T00:00:00.000Z'));
+        $game38->setDescription('Le remake de Alone in the Dark, mais qui n\'est ni un reboot, ni un sequel. Les joueurs vont retourner dans la Louisiane des années 1920 pour revisiter d\'une nouvelle manière le premier jeu sorti en 1992.');
+        $game38->setPoster('/game_poster/game_poster-62955908.webp');
+        $game38->setAgeLimit(16);
+        $game38->addPlatform($platform1);
+        $game38->addPlatform($platform2);
+        $game38->addPlatform($platform3);
+        $game38->addType($type1);
+        $game38->addType($type2);
+        $game38->addType($type3);
+        $game38->setEditor($editeur5);
+        $manager->persist($game38);
+
+        $game39 = new Game();
+        $game39->setName('Forspoken');
+        $game39->setReleaseDate(new \DateTime('2023-01-24T00:00:00.000Z'));
+        $game39->setDescription('Forspoken, précédemment connu sous le nom de Project Athia,  est un jeu de type action-RPG, développé par Luminous Production, une branche de Square Enix. L\'héroïne se nomme Frey Holland et utilise des pouvoirs magiques pour survivre dans un monde fantastique.');
+        $game39->setPoster('/game_poster/game_poster-27933442.webp');
+        $game39->setAgeLimit(3);
+        $game39->addPlatform($platform1);
+        $game39->addPlatform($platform2);
+        $game39->addPlatform($platform3);
+        $game39->addType($type1);
+        $game39->addType($type2);
+        $game39->addType($type3);
+        $game39->setEditor($editeur5);
+        $manager->persist($game39);
+
+        $game40 = new Game();
+        $game40->setName('Tchia');
+        $game40->setReleaseDate(new \DateTime('2023-03-21T00:00:00.000Z'));
+        $game40->setDescription('Tchia est un jeu d\'aventure développé par Awaceb. Il vous propose d\'incarner Tchia dans un titre florissant inspiré par les terres de Nouvelle-Calédonie. Glisser, nager, grimper et jouer de l\'ukulélé sont des capacités à acquérir pour avancer dans des décors magnifiques.');
+        $game40->setPoster('/game_poster/game_poster-76083868.webp');
+        $game40->setAgeLimit(12);
+        $game40->addPlatform($platform1);
+        $game40->addPlatform($platform2);
+        $game40->addPlatform($platform3);
+        $game40->addType($type1);
+        $game40->addType($type2);
+        $game40->addType($type3);
+        $game40->setEditor($editeur5);
+        $manager->persist($game40);
+
+        $game41 = new Game();
+        $game41->setName('Warlander');
+        $game41->setReleaseDate(new \DateTime('2023-01-24T00:00:00.000Z'));
+        $game41->setDescription('Manipulez les pouvoirs de puissants guerriers, prêtresses et mages avec un style unique mélangeant un univers médiéval, des objets fantastiques... et même de PUISSANTS ROBOTS ! Maîtrisez des armes de siège et des sorts cataclysmiques pour détruire vos ennemis !');
+        $game41->setPoster('/game_poster/game_poster-36433433.webp');
+        $game41->setAgeLimit(7);
+        $game41->addPlatform($platform1);
+        $game41->addPlatform($platform2);
+        $game41->addPlatform($platform3);
+        $game41->addType($type1);
+        $game41->addType($type2);
+        $game41->addType($type3);
+        $game41->setEditor($editeur5);
+        $manager->persist($game41);
+
+        $game42 = new Game();
+        $game42->setName('Hi-Fi Rush');
+        $game42->setReleaseDate(new \DateTime('2023-01-25T00:00:00.000Z'));
+        $game42->setDescription('Hi-Fi Rush est un jeu d\'action et de rythme dans lequel Chai, future rockstar, s\'en va combattre une redoutable corporation d\'améliorations robotiques dans un monde où tout est synchronisé avec la musique. Des mouvements de l\'environnement aux coups donnés en passant par les esquives, le joueur doit s\'aligner sur le tempo, avec même la possibilité d\'enregistrer un clip vidéo après certains combos. Il s\'agit notamment d\'un jeu développé par Tango Gameworks, studio derrière The Evil Within et Ghostwire Tokyo.');
+        $game42->setPoster('/game_poster/game_poster-8846146.webp');
+        $game42->setAgeLimit(12);
+        $game42->addPlatform($platform1);
+        $game42->addPlatform($platform2);
+        $game42->addPlatform($platform3);
+        $game42->addType($type1);
+        $game42->addType($type2);
+        $game42->addType($type3);
+        $game42->setEditor($editeur5);
+        $manager->persist($game42);
+
+        $game43 = new Game();
+        $game43->setName('Sherlock Holmes : The Awakened');
+        $game43->setReleaseDate(new \DateTime('2023-04-11T00:00:00.000Z'));
+        $game43->setDescription('Sherlock Holmes The Awakened est le remake de Sherlock Holmes La Nuit Des Sacrifiés. ce jeu d\'action-aventure à la troisième personne croise les aventures d\'Arthur Conan Doyle avec celle de Lovecraft. Ici, Sherlock Holmes et Watson doivent résoudre le mystère autour d\'une disparition qui à un lieu avec le dieu ancien Cthulhu.');
+        $game43->setPoster('/game_poster/game_poster-13174399.webp');
+        $game43->setAgeLimit(12);
+        $game43->addPlatform($platform1);
+        $game43->addPlatform($platform2);
+        $game43->addPlatform($platform3);
+        $game43->addType($type1);
+        $game43->addType($type2);
+        $game43->addType($type3);
+        $game43->setEditor($editeur5);
+        $manager->persist($game43);
+
+        $game44 = new Game();
+        $game44->setName('Armored Core VI : Fires of Rubicon');
+        $game44->setReleaseDate(new \DateTime('2023-08-25T00:00:00.000Z'));
+        $game44->setDescription('Un nouvel épisode de la série phare fait son apparition. On sait déjà que l\'on retrouvera des combats entre robots géants ainsi que des combats à distance avec d’imposantes armes à feu. Prévu pour 2023 sur PC et consoles.');
+        $game44->setPoster('/game_poster/game_poster-14952881.webp');
+        $game44->setAgeLimit(7);
+        $game44->addPlatform($platform1);
+        $game44->addPlatform($platform2);
+        $game44->addPlatform($platform3);
+        $game44->addType($type1);
+        $game44->addType($type2);
+        $game44->addType($type3);
+        $game44->setEditor($editeur5);
+        $manager->persist($game44);
+
+        $game45 = new Game();
+        $game45->setName('Planet of Lana');
+        $game45->setReleaseDate(new \DateTime('2023-05-23T00:00:00.000Z'));
+        $game45->setDescription('Planet of Lana est un jeu d\'aventure et de puzzle, ancré dans un univers aux décors peints à la main. Le joueur incarne Lana, une jeune fille, parcourant une planète extra-terrestre à la recherche de sa soeur. Celle-ci est accompagnée de Mui, une sorte de chat. Le voyage ne sera pas de tout repos, et de mystérieuses créatures et machines évoluent sur ces terres.');
+        $game45->setPoster('/game_poster/game_poster-84044941.webp');
+        $game45->setAgeLimit(12);
+        $game45->addPlatform($platform1);
+        $game45->addPlatform($platform2);
+        $game45->addPlatform($platform3);
+        $game45->addType($type1);
+        $game45->addType($type2);
+        $game45->addType($type3);
+        $game45->setEditor($editeur5);
+        $manager->persist($game45);
+
+        $game46 = new Game();
+        $game46->setName('Counter-Strike 2');
+        $game46->setReleaseDate(new \DateTime('2023-07-01T00:00:00.000Z'));
+        $game46->setDescription('');
+        $game46->setPoster('/game_poster/game_poster-662292.webp');
+        $game46->setAgeLimit(12);
+        $game46->addPlatform($platform1);
+        $game46->addPlatform($platform2);
+        $game46->addPlatform($platform3);
+        $game46->addType($type1);
+        $game46->addType($type2);
+        $game46->addType($type3);
+        $game46->setEditor($editeur5);
+        $manager->persist($game46);
+
+        $game47 = new Game();
+        $game47->setName('Wo Long : Fallen Dynasty');
+        $game47->setReleaseDate(new \DateTime('2023-03-03T00:00:00.000Z'));
+        $game47->setDescription('Wo Long : Fallen Dynasty est le nouveau jeu de Team Ninja, les créateurs de Nioh et produit par Masaaki Yamagiwa (Bloodborne). Le titre nous embarque en pleine Chine féodale, dans la peau d\'un guerrier sans nom.');
+        $game47->setPoster('/game_poster/game_poster-39909349.webp');
+        $game47->setAgeLimit(18);
+        $game47->addPlatform($platform1);
+        $game47->addPlatform($platform2);
+        $game47->addPlatform($platform3);
+        $game47->addType($type1);
+        $game47->addType($type2);
+        $game47->addType($type3);
+        $game47->setEditor($editeur5);
+        $manager->persist($game47);
+
+        $game48 = new Game();
+        $game48->setName('Everspace 2');
+        $game48->setReleaseDate(new \DateTime('2023-04-09T00:00:00.000Z'));
+        $game48->setDescription('Everspace 2 est un shooter en monde ouvert se déroulant dans l\'espace. Partez alors explorer des horizons galactiques dans une campagne de plusieurs dizaines d\'heures, avant de vous lancer dans le mode multijoueur et ses batailles épiques...');
+        $game48->setPoster('/game_poster/game_poster-10544933.webp');
+        $game48->setAgeLimit(18);
+        $game48->addPlatform($platform1);
+        $game48->addPlatform($platform2);
+        $game48->addPlatform($platform3);
+        $game48->addType($type1);
+        $game48->addType($type2);
+        $game48->addType($type3);
+        $game48->setEditor($editeur5);
+        $manager->persist($game48);
+
+        $game49 = new Game();
+        $game49->setName('Octopath Traveler 2');
+        $game49->setReleaseDate(new \DateTime('2023-02-24T00:00:00.000Z'));
+        $game49->setDescription('Octopath Traveler II est la suite de l\'opus sorti en 2018. Retrouvez 8 nouveaux voyageurs pour entamer un périple à travers Solistia. Explorez un monde mouvementé qui évolue dans un cycle jour/nuit, avec une histoire unique pour chaque personnage.');
+        $game49->setPoster('/game_poster/game_poster-81755458.webp');
+        $game49->setAgeLimit(7);
+        $game49->addPlatform($platform1);
+        $game49->addPlatform($platform2);
+        $game49->addPlatform($platform3);
+        $game49->addType($type1);
+        $game49->addType($type2);
+        $game49->addType($type3);
+        $game49->setEditor($editeur5);
+        $manager->persist($game49);
+
+        $game50 = new Game();
+        $game50->setName('Assassin\'s Creed Infinity');
+        $game50->setReleaseDate(new \DateTime('2024-01-01T00:00:00.000Z'));
+        $game50->setDescription('Assassin\'s Creed Infinity est un Action-RPG en open world qui marque un tournant dans la célèbre série d\'Ubisoft. Il devrait s\'agir d\'un "Metaverse", réunissant plusieurs expériences en une, au sein d\'un jeu-service évolutif.');
+        $game50->setPoster('/game_poster/game_poster-81507789.webp');
+        $game50->setAgeLimit(7);
+        $game50->addPlatform($platform1);
+        $game50->addPlatform($platform2);
+        $game50->addPlatform($platform3);
+        $game50->addType($type1);
+        $game50->addType($type2);
+        $game50->addType($type3);
+        $game50->setEditor($editeur5);
+        $manager->persist($game50);
+
+        $game51 = new Game();
+        $game51->setName('NBA 2K23');
+        $game51->setReleaseDate(new \DateTime('2022-09-09T00:00:00.000Z'));
+        $game51->setDescription('Découvrez l\'édition 2023 de la fameuse licence de jeux de Basketball, réintroduisant les Jordan Challenges, encourageant les joueurs à reproduire 15 moments iconiques de l\'un des plus grands joueurs de l\'histoire.');
+        $game51->setPoster('/game_poster/game_poster-48861192.webp');
+        $game51->setAgeLimit(18);
+        $game51->addPlatform($platform1);
+        $game51->addPlatform($platform2);
+        $game51->addPlatform($platform3);
+        $game51->addType($type1);
+        $game51->addType($type2);
+        $game51->addType($type3);
+        $game51->setEditor($editeur5);
+        $manager->persist($game51);
+
+        $game52 = new Game();
+        $game52->setName('Strayed Lights');
+        $game52->setReleaseDate(new \DateTime('2023-04-25T00:00:00.000Z'));
+        $game52->setDescription('Strayed Lights est un jeu d\'action-aventure en 3D où le joueur incarne un être de lumière, dont le destin est d\'affronter les forces de l\'ombre dans un monde fantastique aux villes corrompues. Il devra notamment faire face à ses propres démons et trouver l\'éveil pour restaurer l\'équilibre de cet univers mystique aux couleurs éclatantes.');
+        $game52->setPoster('/game_poster/game_poster-41706760.webp');
+        $game52->setAgeLimit(12);
+        $game52->addPlatform($platform1);
+        $game52->addPlatform($platform2);
+        $game52->addPlatform($platform3);
+        $game52->addType($type1);
+        $game52->addType($type2);
+        $game52->addType($type3);
+        $game52->setEditor($editeur5);
+        $manager->persist($game52);
+
+        $game53 = new Game();
+        $game53->setName('Ravenswatch');
+        $game53->setReleaseDate(new \DateTime('2023-04-06T00:00:00.000Z'));
+        $game53->setDescription('Ravenswatch est le nouveau rogue-lite de Passtech Games, studio à l\'origine de Curse of the Dead Gods. Dans ce jeu d\'action en vue du dessus, prenez le contrôle d\'anciens héros issus de contes et légendes, à l\'image Des 3 Petits Cochons ou des Mille et Une Nuits.');
+        $game53->setPoster('/game_poster/game_poster-73968552.webp');
+        $game53->setAgeLimit(7);
+        $game53->addPlatform($platform1);
+        $game53->addPlatform($platform2);
+        $game53->addPlatform($platform3);
+        $game53->addType($type1);
+        $game53->addType($type2);
+        $game53->addType($type3);
+        $game53->setEditor($editeur5);
+        $manager->persist($game53);
+
+        $game54 = new Game();
+        $game54->setName('Need for Speed Unbound');
+        $game54->setReleaseDate(new \DateTime('2022-12-02T00:00:00.000Z'));
+        $game54->setDescription('Need for Speed Unbound est le prochain opus NfS de Electronic Arts, développé par Criterion Games. Il proposera des défis avec la police, de la personnalisation de voiture et des courses qualificatives hebdomadaires dans le monde ouvert de Lakeshore.');
+        $game54->setPoster('/game_poster/game_poster-67439007.webp');
+        $game54->setAgeLimit(18);
+        $game54->addPlatform($platform1);
+        $game54->addPlatform($platform2);
+        $game54->addPlatform($platform3);
+        $game54->addType($type1);
+        $game54->addType($type2);
+        $game54->addType($type3);
+        $game54->setEditor($editeur5);
+        $manager->persist($game54);
+
+        $game55 = new Game();
+        $game55->setName('The Mageseeker');
+        $game55->setReleaseDate(new \DateTime('2023-04-18T00:00:00.000Z'));
+        $game55->setDescription('Riot Forge s\'apprête à étendre davantage l\'univers de League of Legends avec sa nouvelle sortie : The Mageseeker. Dans la peau de Sylas, ce RPG d\'action en 2D hit-bit vous proposera "un gameplay dynаmіquе еt рlеіn d\'асtіоn" selon les mots de Riot Games.');
+        $game55->setPoster('/game_poster/game_poster-76452677.webp');
+        $game55->setAgeLimit(16);
+        $game55->addPlatform($platform1);
+        $game55->addPlatform($platform2);
+        $game55->addPlatform($platform3);
+        $game55->addType($type1);
+        $game55->addType($type2);
+        $game55->addType($type3);
+        $game55->setEditor($editeur5);
+        $manager->persist($game55);
+
+        $game56 = new Game();
+        $game56->setName('The Day Before');
+        $game56->setReleaseDate(new \DateTime('2023-11-10T00:00:00.000Z'));
+        $game56->setDescription('The Day Before est un MMORPG d\'action/aventure. Dans une Amérique plongé dans la pandémie, des infectés sanguinaires sont apparus. Les derniers survivants se battent pour mettre la main sur des ressources pour survivre. Dans ce TPS, vous devrez chercher l\'origine de cette pandémie tout en survivant.');
+        $game56->setPoster('/game_poster/game_poster-56533296.webp');
+        $game56->setAgeLimit(16);
+        $game56->addPlatform($platform1);
+        $game56->addPlatform($platform2);
+        $game56->addPlatform($platform3);
+        $game56->addType($type1);
+        $game56->addType($type2);
+        $game56->addType($type3);
+        $game56->setEditor($editeur5);
+        $manager->persist($game56);
+
+        $game57 = new Game();
+        $game57->setName('God of Rock');
+        $game57->setReleaseDate(new \DateTime('2023-04-18T00:00:00.000Z'));
+        $game57->setDescription('God of Rock mélange rythme et action : les plus grands musiciens de l\'univers se disputent la suprématie musicale. Les armes et le rythme sont les armes des joueurs dans des combats musicaux sur plus de 40 morceaux.');
+        $game57->setPoster('/game_poster/game_poster-99697777.webp');
+        $game57->setAgeLimit(12);
+        $game57->addPlatform($platform1);
+        $game57->addPlatform($platform2);
+        $game57->addPlatform($platform3);
+        $game57->addType($type1);
+        $game57->addType($type2);
+        $game57->addType($type3);
+        $game57->setEditor($editeur5);
+        $manager->persist($game57);
+
+        $game58 = new Game();
+        $game58->setName('Sonic Frontiers');
+        $game58->setReleaseDate(new \DateTime('2022-11-08T00:00:00.000Z'));
+        $game58->setDescription('Sonic Frontiers est la nouvelle aventure du hérisson Réalisée par la Sonic Team, celle-ci sera pour la première fois en monde ouvert. À l\'image d\'un titre comme Breath of the Wild, Sonic va se retrouver dans la nature et faire face à une nouvelle menace.');
+        $game58->setPoster('/game_poster/game_poster-92980380.webp');
+        $game58->setAgeLimit(3);
+        $game58->addPlatform($platform1);
+        $game58->addPlatform($platform2);
+        $game58->addPlatform($platform3);
+        $game58->addType($type1);
+        $game58->addType($type2);
+        $game58->addType($type3);
+        $game58->setEditor($editeur5);
+        $manager->persist($game58);
+
+        $game59 = new Game();
+        $game59->setName('Road 96: Mile 0');
+        $game59->setReleaseDate(new \DateTime('2023-04-04T00:00:00.000Z'));
+        $game59->setDescription('Road 96: Mile 0 est le préquel du jeu éponyme de DigixArt. Publié par Ravenscourt, ce jeu propose une identité visuelle et graphique atypique et colorée. Dans une vue à la troisième personne, ce jeu mets le rythme au cœur de l\'expérience de jeu.');
+        $game59->setPoster('/game_poster/game_poster-52091150.webp');
+        $game59->setAgeLimit(12);
+        $game59->addPlatform($platform1);
+        $game59->addPlatform($platform2);
+        $game59->addPlatform($platform3);
+        $game59->addType($type1);
+        $game59->addType($type2);
+        $game59->addType($type3);
+        $game59->setEditor($editeur5);
+        $manager->persist($game59);
+
+
+
+        
         //users
         $user1 = new User();
         $user1->setAvatar('https://cdn-s-www.leprogres.fr/images/ED82BE29-CBAC-40EC-B71C-285CD717A43C/NW_raw/la-voiture-noire-de-bugatti-modele-unique-photo-dr-1608828241.jpg');
@@ -283,7 +1044,7 @@ class AppFixtures extends Fixture
         $plainPassword = '12345678';
         $encodedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
         $user1->setPassword($encodedPassword);
-
+        $user1->setIsVerified(true);
         $user1->setRoles(['ROLE_ADMIN']);
         $user1->setPseudo('RomainRr');
         $user1->setSurname('Ramanzin');
@@ -345,6 +1106,17 @@ class AppFixtures extends Fixture
         $user5->setDateOfBirth(new \DateTime('1999-01-01'));
         $user5->setAccountCreationDate(new \DateTime('2020-10-09'));
         $manager->persist($user5);
+
+        $user6 = new User();
+        $user6->setEmail('antoine.lemoine@gmail.com');
+        $plainPassword = '12345678';
+        $encodedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
+        $user6->setPassword($encodedPassword);
+        $user6->setRoles(['ROLE_USER']);
+        $user6->setPseudo('antoine.lemoine');
+        $user6->setSurname('lemoine');
+        $user6->setFirstname('antoine');
+        $user6->setDateOfBirth(new \DateTime('1968-01-01'));
 
         //articles
         $article1 = new Article();
@@ -1232,59 +2004,56 @@ class AppFixtures extends Fixture
         $section78->setArticle($article21);
         $manager->persist($section78);
 
+
+        /*****************************************************************/
+
+
+        $possible_title = [
+            'Un super jeu que je recommande !',
+            'Un jeu très fun !',
+            'Un jeu très sympa !',
+            'Toute la famille adore !',
+            'Super jeu !',
+            'Pas mal',
+            'Un jeu très moyen',
+            'Un jeu très mauvais',
+            'Un jeu à éviter',
+            'Un jeu à ne pas acheter',
+            'Vraiment pas terrible',
+            'Un jeu très décevant',
+        ];
+
+        $possible_content = [
+            'Ce jeu est super, je le recommande, il est très fun. Toute la famille peut y jouer !',
+            'Ce jeu est très fun, je le recommande !',
+            'Génial les graphismes sont incroyables je recommande !',
+            'Ce jeu est très sympa, je le recommande !',
+            'Pas mal, quelques ratés mais dans l\'ensemble c\'est un bon jeu !',
+            'Un jeu très moyen, je ne le recommande pas, les graphismes ne sont pas aux rendez vous, cest dommage !',
+            'Vraiment déçu par ce jeu, je ne le recommande pas !',
+        ];
+
+
         //reviews
-        $review1 = new Review();
-        $review1->setTitle('Ce jeu est vraiment bien');
-        $review1->setContent('Ce jeu est super, je le recommande, il est très fun');
-        $review1->setRate(5);
-        $review1->setPublicationDate(new \DateTime('2022-12-19'));
-        $manager->persist($review1);
 
-        $review2 = new Review();
-        $review2->setTitle('Ce jeu est vraiment nul');
-        $review2->setContent('Ce jeu est nul, je ne le recommande pas, il est très nul');
-        $review2->setRate(1);
-        $review2->setPublicationDate(new \DateTime('2022-12-19'));
-        $manager->persist($review2);
+        for($i = 1; $i < 59; $i++){
+            ${'review' . $i} = new Review();
+            ${'review' . $i}->setTitle($possible_title[rand(0, count($possible_title) - 1)]);
+            ${'review' . $i}->setContent($possible_content[rand(0, count($possible_content) - 1)]);
+            ${'review' . $i}->setRate(rand(1, 5));
+            ${'review' . $i}->setPublicationDate(new \DateTime('2022-12-19'));
+            $manager->persist(${'review' . $i});
+        }
 
-        $review3 = new Review();
-        $review3->setTitle('Que des bugs');
-        $review3->setContent('Ce jeu est super, mais il y a beaucoup de bugs');
-        $review3->setRate(3);
-        $review3->setPublicationDate(new \DateTime('2022-12-21'));
-        $manager->persist($review3);
+        /*****************************************************************/
 
-        $review4 = new Review();
-        $review4->setTitle('C\'est de la merde');
-        $review4->setContent('Vraiment nul on se fait chier');
-        $review4->setRate(1);
-        $review4->setPublicationDate(new \DateTime('2022-12-21'));
-        $manager->persist($review4);
-
-
-        //publication
-        $publication1 = new Publication();
-        $publication1->setUser($user1);
-        $publication1->setGame($game1);
-        $publication1->setReview($review1);
-        $manager->persist($publication1);
-
-        $publication2 = new Publication();
-        $publication2->setUser($user2);
-        $publication2->setGame($game2);
-        $publication2->setReview($review2);
-        $manager->persist($publication2);
-
-        $publication3 = new Publication();
-        $publication3->setUser($user3);
-        $publication3->setGame($game3);
-        $publication3->setReview($review3);
-
-        $publication4 = new Publication();
-        $publication4->setUser($user3);
-        $publication4->setGame($game3);
-        $publication4->setReview($review4);
-        $manager->persist($publication4);
+        for($j = 1; $j < 59; $j++){
+            ${'publication' . $j} = new Publication();
+            ${'publication' . $j}->setUser($user5);
+            ${'publication' . $j}->setGame(${ 'game' . $j });
+            ${'publication' . $j}->setReview(${ 'review' . $j });
+            $manager->persist(${'publication' . $j});
+        }
 
         // Save data in database
         $manager->flush();

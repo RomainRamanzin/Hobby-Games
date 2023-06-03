@@ -17,11 +17,14 @@ class AddGamePictureFormType extends AbstractType
             ->add('picture', FileType::class, [
                 'label' => 'Image',
                 'mapped' => false,
-                'required' => false,
+                'required' => true,
                 'attr' => [
                     'placeholder' => 'Image',
                 ],
                 'constraints' => [
+                    new \Symfony\Component\Validator\Constraints\NotBlank([
+                        'message' => 'Veuillez choisir une image',
+                    ]),
                     new \Symfony\Component\Validator\Constraints\File([
                         'mimeTypes' => [
                             'image/png',
