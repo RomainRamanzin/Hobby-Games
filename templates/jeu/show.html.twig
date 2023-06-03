@@ -167,7 +167,7 @@
 						<p class="no-image">Aucune image disponible</p>
 					</div>
 				{% else %}
-					{% for gamePicture in game.pictures|slice(0, 4) %}
+					{% for gamePicture in game.pictures %}
 						<div class="col-md-6 col-12 mb-4">
 							<img class="avis-section-image" src="{{ gamePicture.picture }}" alt="">
 						</div>
