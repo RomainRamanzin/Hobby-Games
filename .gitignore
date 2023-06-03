@@ -11,7 +11,7 @@
 
 
 ###> Exclusion des fichiers images ###
-/public/game_pictures/
-/public/game_poster/
+# /public/game_pictures/
+# /public/game_poster/
 /public/profil_pictures/
 ###< Exclusion des fichiers images ###

@@ -71,7 +71,7 @@ class JeuController extends AbstractController
         $games = $paginator->paginate(
             $gameRepository->filterQuery($search, $type, $platform),
             $request->query->getInt('page', 1),
-            36
+            20
         );
 
         return $this->render('jeu/index.html.twig', [

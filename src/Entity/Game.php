@@ -25,7 +25,7 @@ class Game
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $poster = null;
 
     #[ORM\Column(nullable: true)]
@@ -101,7 +101,8 @@ class Game
 
     public function getPoster(): ?string
     {
-        return $this->poster;
+        return $this->poster ? $this->poster :'/asset/image/no-image.jpg';
+        //return $this->poster;
     }
 
     public function setPoster(string $poster): self
