@@ -139,7 +139,7 @@ class ArticlesController extends AbstractController
 
     #[Route('/administrateur-articles/modifier-article/{id}', name: 'app_modifier_article')]
     #[IsGranted("ROLE_REDACTEUR")]
-    public function modifier_article(Section $section, ArticleRepository $articleRepository, Article $article, Request $request, EntityManagerInterface $em): Response
+    public function modifier_article(Article $article, Request $request, EntityManagerInterface $em): Response
     {
         try {
             $form = $this->createForm(ArticleFormType::class, $article);
