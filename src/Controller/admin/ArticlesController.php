@@ -16,8 +16,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Exception as GlobalException;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Constraints\File;
+use Doctrine\ORM\PersistentCollection;
 
 class ArticlesController extends AbstractController
 {
@@ -107,6 +112,37 @@ class ArticlesController extends AbstractController
                 $article = $data['article'];
                 $section = $data['section'];
 
+                $pictureArticleFile = $form->get('article')['cover']->getData();
+                $pictureSectionFile = $form->get('section')['picture']->getData();
+
+                if ($pictureArticleFile && $pictureSectionFile) {
+                    $originalFilenameA = pathinfo($pictureArticleFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilenameA = uniqid() . '.' . $pictureArticleFile->guessExtension();
+
+                    $originalFilenameS = pathinfo($pictureSectionFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilenameS = uniqid() . '.' . $pictureSectionFile->guessExtension();
+
+                    try {
+                        $pictureArticleFile->move(
+                            'article_image',
+                            $newFilenameA
+                        );
+
+                        $pictureSectionFile->move(
+                            'section_image',
+                            $newFilenameS
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    $article->setCover('/article_cover/' . $newFilenameA);
+                    $section->setPicture('/section_image/' . $newFilenameS);
+                }
+
+
+
+
                 if (strlen($section->getDescription()) > 1000) {
                     $this->addFlash('danger', 'La description de la section est trop longue !');
                     return $this->redirectToRoute('app_ajout_actualite');
@@ -133,22 +169,22 @@ class ArticlesController extends AbstractController
 
                 $em->flush();
 
-                $redacteurs = $userRepository->findByRole($role = 'ROLE_REDACTEUR');
-                $utilisateurConnecte = $this->getUser();
+                // $redacteurs = $userRepository->findByRole($role = 'ROLE_REDACTEUR');
+                // $utilisateurConnecte = $this->getUser();
 
-                foreach ($redacteurs as $redacteur) {
-                    if ($redacteur !== $utilisateurConnecte) {
-                        $email = (new Email())
-                            ->from('contact.hobbygames@gmail.com')
-                            ->to($redacteur->getEmail())
-                            ->subject('Nouvel article à valider')
-                            ->html('Salut ' . $redacteur->getPseudo() . '<br>' . '<br>' .
-                                'Nous sommes heureux de vous informer qu\'un nouvel article passionnant vient d\'arriver et attend maintenant votre validation. Cet article promet d\'apporter de nouvelles perspectives et de captiver notre public. ' . '<br>' . '<br>' .
-                                'Voici le titre de l\'article : ' . '"' . $article->getTitle() . '"' . '<br>' . '<br>' .
-                                'Vous pouvez consulter l\'article en attente de validation en cliquant sur le lien suivant : <a href="http://127.0.0.1:8000/login">Hobby Games</a>');
-                        $mailer->send($email);
-                    }
-                }
+                // foreach ($redacteurs as $redacteur) {
+                //     if ($redacteur !== $utilisateurConnecte) {
+                //         $email = (new Email())
+                //             ->from('contact.hobbygames@gmail.com')
+                //             ->to($redacteur->getEmail())
+                //             ->subject('Nouvel article à valider')
+                //             ->html('Salut ' . $redacteur->getPseudo() . '<br>' . '<br>' .
+                //                 'Nous sommes heureux de vous informer qu\'un nouvel article passionnant vient d\'arriver et attend maintenant votre validation. Cet article promet d\'apporter de nouvelles perspectives et de captiver notre public. ' . '<br>' . '<br>' .
+                //                 'Voici le titre de l\'article : ' . '"' . $article->getTitle() . '"' . '<br>' . '<br>' .
+                //                 'Vous pouvez consulter l\'article en attente de validation en cliquant sur le lien suivant : <a href="http://127.0.0.1:8000/login">Hobby Games</a>');
+                //         $mailer->send($email);
+                //     }
+                // }
 
                 $this->addFlash('success', 'Votre article a bien été enregistré !');
                 return $this->redirectToRoute('app_administrateur_articles');
@@ -173,6 +209,68 @@ class ArticlesController extends AbstractController
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
+
+                $article = $form->getData();
+
+                //edit image de l'article et de la section
+                $pictureArticleFile = $form->get('cover')->getData();
+
+                if ($pictureArticleFile && $pictureSectionFile) {
+                    $originalFilenameA = pathinfo($pictureArticleFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilenameA = uniqid() . '.' . $pictureArticleFile->guessExtension();
+
+                    $originalFilenameS = pathinfo($pictureSectionFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilenameS = uniqid() . '.' . $pictureSectionFile->guessExtension();
+
+                    try {
+                        $pictureArticleFile->move(
+                            'article_image',
+                            $newFilenameA
+                        );
+
+                        $pictureSectionFile->move(
+                            'section_image',
+                            $newFilenameS
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    $article->setCover('/article_image/' . $newFilenameA);
+                    $section->setPicture('/section_image/' . $newFilenameS);
+                }
+
+                // $pictureFile = $form->get('cover')->getData();
+                // $pictureFileS = $form->get('picture')->getData();
+
+                // if ($pictureFile && $pictureFileS) {
+                //     $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                //     $originalFilenameS = pathinfo($pictureFileS->getClientOriginalName(), PATHINFO_FILENAME);
+                //     // this is needed to safely include the file name as part of the URL
+                //     //$safeFilename = $slugger->slug($originalFilename);
+                //     $newFilename = uniqid() . '.' . $pictureFile->guessExtension();
+                //     $newFilenameS = uniqid() . '.' . $pictureFileS->guessExtension();
+
+                //     // Move the file to the directory where brochures are stored
+                //     try {
+                //         $pictureFile->move(
+                //             'article_image',
+                //             $newFilename
+                //         );
+                //         $pictureFileS->move(
+                //             'section_image',
+                //             $newFilenameS
+                //         );
+                //     } catch (FileException $e) {
+                //         // ... handle exception if something happens during file upload
+                //     }
+
+                //     $article->setCover('/article_image/' . $newFilename);
+                //     $section->setPicture('/section_image/' . $newFilenameS);
+                // }
+
+
+
                 $article->setLastModifiedDate(new \DateTime('Europe/Paris'));
                 $em->persist($article);
                 $em->flush();
@@ -241,6 +339,23 @@ class ArticlesController extends AbstractController
 
         if ($SectionForm->isSubmitted() && $SectionForm->isValid()) {
             try {
+                $pictureSectionFile = $SectionForm->get('picture')->getData();
+
+                if ($pictureSectionFile) {
+                    $originalFilenameS = pathinfo($pictureSectionFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilenameS = uniqid() . '.' . $pictureSectionFile->guessExtension();
+
+                    try {
+                        $pictureSectionFile->move(
+                            'section_image',
+                            $newFilenameS
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+                    $section->setPicture('/section_image/' . $newFilenameS);
+                }
+
                 $em->persist($section);
                 $em->flush();
                 $this->addFlash('success', 'Votre section a bien été ajoutée !');
