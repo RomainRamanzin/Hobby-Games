@@ -212,64 +212,49 @@ class ArticlesController extends AbstractController
 
                 $article = $form->getData();
 
-                //edit image de l'article et de la section
+                //edit de l'article
                 $pictureArticleFile = $form->get('cover')->getData();
 
-                if ($pictureArticleFile && $pictureSectionFile) {
-                    $originalFilenameA = pathinfo($pictureArticleFile->getClientOriginalName(), PATHINFO_FILENAME);
-                    $newFilenameA = uniqid() . '.' . $pictureArticleFile->guessExtension();
-
-                    $originalFilenameS = pathinfo($pictureSectionFile->getClientOriginalName(), PATHINFO_FILENAME);
-                    $newFilenameS = uniqid() . '.' . $pictureSectionFile->guessExtension();
+                if($pictureArticleFile){
+                    $newFilename = uniqid() . '.' . $pictureArticleFile->guessExtension();
 
                     try {
                         $pictureArticleFile->move(
                             'article_image',
-                            $newFilenameA
-                        );
-
-                        $pictureSectionFile->move(
-                            'section_image',
-                            $newFilenameS
+                            $newFilename
                         );
                     } catch (FileException $e) {
                         // ... handle exception if something happens during file upload
                     }
 
-                    $article->setCover('/article_image/' . $newFilenameA);
-                    $section->setPicture('/section_image/' . $newFilenameS);
+                    $article->setCover('/article_cover/' . $newFilename);
                 }
 
-                // $pictureFile = $form->get('cover')->getData();
-                // $pictureFileS = $form->get('picture')->getData();
+                //sections
 
-                // if ($pictureFile && $pictureFileS) {
-                //     $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
-                //     $originalFilenameS = pathinfo($pictureFileS->getClientOriginalName(), PATHINFO_FILENAME);
-                //     // this is needed to safely include the file name as part of the URL
-                //     //$safeFilename = $slugger->slug($originalFilename);
-                //     $newFilename = uniqid() . '.' . $pictureFile->guessExtension();
-                //     $newFilenameS = uniqid() . '.' . $pictureFileS->guessExtension();
+                // get all sections in the form
+                $sections = $form->get('sections');
+                // $pictureSectionFile = $form->get('sections')[0]->get('picture')->getData();
+                foreach($sections as $formSection){
+                    $pictureSectionFile = $formSection->get('picture')->getData();
+                    $Section = $formSection->getData();
 
-                //     // Move the file to the directory where brochures are stored
-                //     try {
-                //         $pictureFile->move(
-                //             'article_image',
-                //             $newFilename
-                //         );
-                //         $pictureFileS->move(
-                //             'section_image',
-                //             $newFilenameS
-                //         );
-                //     } catch (FileException $e) {
-                //         // ... handle exception if something happens during file upload
-                //     }
+                    if($pictureSectionFile){
+                        $newFilename = uniqid() . '.' . $pictureSectionFile->guessExtension();
 
-                //     $article->setCover('/article_image/' . $newFilename);
-                //     $section->setPicture('/section_image/' . $newFilenameS);
-                // }
+                        try {
+                            $pictureSectionFile->move(
+                                'section_image',
+                                $newFilename
+                            );
+                        } catch (FileException $e) {
+                            // ... handle exception if something happens during file upload
+                        }
 
-
+                        $Section->setPicture('/section_image/' . $newFilename);
+                        $em->persist($Section);
+                    }
+                }
 
                 $article->setLastModifiedDate(new \DateTime('Europe/Paris'));
                 $em->persist($article);
