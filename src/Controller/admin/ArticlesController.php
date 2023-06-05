@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticleRepository;
 use App\Entity\Article;
 use App\Entity\Section;
-use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Form\ArticleFormType;
 use App\Form\SectionFormType;
@@ -31,13 +30,18 @@ class ArticlesController extends AbstractController
         usort($articles, function ($a, $b) {
             return $a->getPublicationDate() < $b->getPublicationDate();
         });
+
         $idColorGreen = [];
         $articlesData = [];
+        // On récupère les articles
         foreach ($articles as $article) {
+            // On vérifie si l'article est validé
             if ($article->IsValided() == true) {
                 $idColorGreen[] = $article->getId();
             }
+            // On récupère l'id de l'utilisateur qui a écrit l'article
             $id = $article->getWritedBy()->getId();
+            // On récupère l'utilisateur qui a écrit l'article
             $user = $userRepository->find($id);
             // On ajoute le pseudo de l'utilisateur à l'article
             $articlesData[] = [
@@ -94,7 +98,9 @@ class ArticlesController extends AbstractController
             //obtenir le formulaire
             ->getForm();
 
+        //permet de recuperer les données et de les associer au formulaire
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $data = $form->getData();
@@ -157,11 +163,15 @@ class ArticlesController extends AbstractController
 
     #[Route('/administrateur-articles/modifier-article/{id}', name: 'app_modifier_article')]
     #[IsGranted("ROLE_REDACTEUR")]
-    public function modifier_article(Section $section, ArticleRepository $articleRepository, Article $article, Request $request, EntityManagerInterface $em): Response
+    public function modifier_article(Article $article, Request $request, EntityManagerInterface $em): Response
     {
         try {
+            //créer le formulaire de modification de l'article
             $form = $this->createForm(ArticleFormType::class, $article);
+
+            //permet de recuperer les données et de les associer au formulaire
             $form->handleRequest($request);
+
             if ($form->isSubmitted() && $form->isValid()) {
                 $article->setLastModifiedDate(new \DateTime('Europe/Paris'));
                 $em->persist($article);
@@ -191,12 +201,15 @@ class ArticlesController extends AbstractController
         try {
             $id = $article->getId();
 
+            // On récupère les sections de l'article
             $sections = $sectionRepository->findBy(['article' => $id]);
 
+            // On supprime les sections de l'article
             foreach ($sections as $section) {
                 $em->remove($section);
             }
 
+            // On supprime l'article
             $em->remove($article);
             $em->flush();
 
@@ -215,10 +228,15 @@ class ArticlesController extends AbstractController
     {
         $addArticle = false;
 
+        // On crée une nouvelle section
         $section = new Section();
+        // On ajoute l'article à la section
         $section->setArticle($article);
 
+        // On crée le formulaire de la section
         $SectionForm = $this->createForm(SectionFormType::class, $section);
+
+        //permet de recuperer les données et de les associer au formulaire
         $SectionForm->handleRequest($request);
 
         if ($SectionForm->isSubmitted() && $SectionForm->isValid()) {
@@ -242,6 +260,7 @@ class ArticlesController extends AbstractController
     public function validate(Article $article, EntityManagerInterface $em): Response
     {
         try {
+            // On vérifie que l'utilisateur connecté n'est pas l'auteur de l'article
             if ($this->getUser()->getUserIdentifier() != $article->getWritedBy()->getEmail()) {
                 $article->setIsValided(true);
                 $em->persist($article);

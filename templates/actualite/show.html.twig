@@ -27,6 +27,11 @@
             <div class="row">
               {% for sectionInfo in sections %}
                 {% if sectionInfo.picture == '' %}
+                  {% if sectionInfo.title != '' %}
+                    <div class="title-left-news">
+                      <label class="sub-title-news">{{ sectionInfo.title }}</label>
+                    </div>
+                  {% endif %}
                   <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                     <label class="sub-description-news">{{ sectionInfo.description }}</label>
                   </div>

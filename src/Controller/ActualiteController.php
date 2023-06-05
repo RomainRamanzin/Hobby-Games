@@ -8,15 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ArticleRepository;
 use App\Repository\SectionRepository;
-use App\Repository\GameRepository;
 use App\Entity\Article;
-use App\Repository\UserRepository;
-use App\Form\ArticleFormType;
-use GuzzleHttp\Psr7\Request as Psr7Request;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
-use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -24,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class ActualiteController extends AbstractController
 {
     #[Route('/actualite', name: 'app_actualite')]
-    public function index(ArticleRepository $articleRepository, PaginatorInterface $paginator, Request $request, EntityManagerInterface $em): Response
+    public function index(ArticleRepository $articleRepository, PaginatorInterface $paginator, Request $request): Response
     {
         // Récupération de toutes les actualités
         $articles = $articleRepository->findAllSorted();
@@ -103,10 +97,7 @@ class ActualiteController extends AbstractController
             //mettre en minuscul le titre
             $titre = strtoupper($section->getTitle());
 
-            if (
-                strpos($titre, 'introduction') || strpos($titre, 'conclusion') || strpos($titre, 'information')
-                || strpos($titre, 'suite') || strpos($titre, 'pour en conclure')
-            ) {
+            if ($titre == 'introduction' || $titre == 'conclusion' || $titre == 'information' || $titre == 'suite' || $titre == 'pour en conclure') {
                 $section->setTitle('');
             }
             //afficher les 1000 caractères de la description si plus alors coupé a la fin de la phrase 
