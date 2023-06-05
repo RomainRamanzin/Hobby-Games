@@ -23,9 +23,6 @@ class Section
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $picture = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $rate = null;
-
     #[ORM\ManyToOne(inversedBy: 'sections')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Article $article = null;
@@ -67,18 +64,6 @@ class Section
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
-
-        return $this;
-    }
-
-    public function getRate(): ?int
-    {
-        return $this->rate;
-    }
-
-    public function setRate(?int $rate): self
-    {
-        $this->rate = $rate;
 
         return $this;
     }
