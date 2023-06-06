@@ -41,7 +41,7 @@
           {% for sectionForm in form.sections %}
             <div class="section-title-contain">
               <h1 class="form-add-title"><i class="fa-solid fa-pen-nib"></i>Section {{ loop.index }}</h1>
-              <a class="btn btn-danger" href="{{ path('app_administrateur_articles_delete_section', { id: sectionForm.vars.value.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer la section</a>
+              <a class="btn btn-danger" href="{{ path('app_administrateur_articles_delete_section', { id: sectionForm.vars.value.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet section ?')">Supprimer la section</a>
             </div>
             <div class="content-form-add-article">
               <label class="title-form-add-article-element">Titre de la section</label>

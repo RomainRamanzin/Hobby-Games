@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Game;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class SectionFormType extends AbstractType
 {
@@ -28,12 +29,23 @@ class SectionFormType extends AbstractType
                 'label' => false,
                 'required' => false,
             ])
-            ->add('picture', textType::class, [
+            ->add('picture', FileType::class, [
+                'label' => 'Image',
+                'mapped' => false,
+                'required' => true,
                 'attr' => [
-                    'placeholder' => 'image de la section',
+                    'placeholder' => 'Image',
                 ],
-                'label' => false,
-                'required' => false,
+                'constraints' => [
+                    new \Symfony\Component\Validator\Constraints\File([
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpeg',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez choisir un fichier de type png, jpeg ou jpg',
+                    ]),
+                ],
             ]);
     }
 

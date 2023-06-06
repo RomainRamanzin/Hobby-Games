@@ -63,12 +63,18 @@ class ArticleRepository extends ServiceEntityRepository
             ->where('a.is_valided = true')
             ->orderBy('a.publication_date', 'DESC');
 
+        //Si le titre n'est pas vide
         if ($title) {
             $query->andWhere('a.title LIKE :title')
                 ->setParameter('title', '%' . $title . '%');
         }
-        return $query->getQuery();
+
+        //Pour éviter de récupérer les 5 dernières actualités
+        $filteredResults = array_slice($query->getQuery()->getResult(), 5);
+
+        return $filteredResults;
     }
+
     //    public function findOneBySomeField($value): ?Article
     //    {
     //        return $this->createQueryBuilder('a')

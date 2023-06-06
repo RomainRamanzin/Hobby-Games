@@ -14,6 +14,7 @@ use App\Entity\Section;
 use App\Form\DataTransformer\GameTransformer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ArticleFormType extends AbstractType
 {
@@ -27,12 +28,23 @@ class ArticleFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('cover', null, [
-                'attr' => [
-                    'placeholder' => 'Lien de l\'image d\'illustration',
-                ],
-                'label' => false,
+            ->add('cover', FileType::class, [
+                'label' => 'Image',
+                'mapped' => false,
                 'required' => true,
+                'attr' => [
+                    'placeholder' => 'Image',
+                ],
+                'constraints' => [
+                    new \Symfony\Component\Validator\Constraints\File([
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpeg',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez choisir un fichier de type png, jpeg ou jpg',
+                    ]),
+                ],
             ])
             ->add('title', textType::class, [
                 'attr' => [

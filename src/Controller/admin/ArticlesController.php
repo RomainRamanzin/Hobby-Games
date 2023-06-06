@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticleRepository;
 use App\Entity\Article;
 use App\Entity\Section;
-use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Form\ArticleFormType;
 use App\Form\SectionFormType;
@@ -17,6 +16,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Exception as GlobalException;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Constraints\File;
+use Doctrine\ORM\PersistentCollection;
 
 class ArticlesController extends AbstractController
 {
@@ -29,13 +35,18 @@ class ArticlesController extends AbstractController
         usort($articles, function ($a, $b) {
             return $a->getPublicationDate() < $b->getPublicationDate();
         });
+
         $idColorGreen = [];
         $articlesData = [];
+        // On récupère les articles
         foreach ($articles as $article) {
+            // On vérifie si l'article est validé
             if ($article->IsValided() == true) {
                 $idColorGreen[] = $article->getId();
             }
+            // On récupère l'id de l'utilisateur qui a écrit l'article
             $id = $article->getWritedBy()->getId();
+            // On récupère l'utilisateur qui a écrit l'article
             $user = $userRepository->find($id);
             // On ajoute le pseudo de l'utilisateur à l'article
             $articlesData[] = [
@@ -80,9 +91,8 @@ class ArticlesController extends AbstractController
 
     #[Route('/administrateur-articles/ajouter-article', name: 'app_ajout_actualite')]
     #[IsGranted("ROLE_REDACTEUR")]
-    public function add(ArticleRepository $articleRepository, Request $request, EntityManagerInterface $em, UserRepository $userRepository): Response
+    public function add(MailerInterface $mailer, ArticleRepository $articleRepository, Request $request, EntityManagerInterface $em, UserRepository $userRepository): Response
     {
-
         $addArticle = true;
         // On crée un nouvel article
         $form = $this->createFormBuilder()
@@ -93,12 +103,44 @@ class ArticlesController extends AbstractController
             //obtenir le formulaire
             ->getForm();
 
+        //permet de recuperer les données et de les associer au formulaire
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $data = $form->getData();
                 $article = $data['article'];
                 $section = $data['section'];
+
+                // récupération du fichier image pour la couverture de l'article
+                $pictureArticleFile = $form->get('article')['cover']->getData();
+                if($pictureArticleFile){
+                    $newFilename = uniqid() . '.' . $pictureArticleFile->guessExtension();
+                    try {
+                        $pictureArticleFile->move(
+                            'article_image',
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+                    $article->setCover('/article_cover/' . $newFilename);
+                }
+                
+                // récupération du fichier image pour la section
+                $pictureSectionFile = $form->get('section')['picture']->getData();
+                if($pictureSectionFile){
+                    $newFilename = uniqid() . '.' . $pictureSectionFile->guessExtension();
+                    try {
+                        $pictureSectionFile->move(
+                            'section_image',
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+                    $section->setPicture('/section_image/' . $newFilename);
+                }
 
                 if (strlen($section->getDescription()) > 1000) {
                     $this->addFlash('danger', 'La description de la section est trop longue !');
@@ -126,6 +168,23 @@ class ArticlesController extends AbstractController
 
                 $em->flush();
 
+                // $redacteurs = $userRepository->findByRole($role = 'ROLE_REDACTEUR');
+                // $utilisateurConnecte = $this->getUser();
+
+                // foreach ($redacteurs as $redacteur) {
+                //     if ($redacteur !== $utilisateurConnecte) {
+                //         $email = (new Email())
+                //             ->from('contact.hobbygames@gmail.com')
+                //             ->to($redacteur->getEmail())
+                //             ->subject('Nouvel article à valider')
+                //             ->html('Salut ' . $redacteur->getPseudo() . '<br>' . '<br>' .
+                //                 'Nous sommes heureux de vous informer qu\'un nouvel article passionnant vient d\'arriver et attend maintenant votre validation. Cet article promet d\'apporter de nouvelles perspectives et de captiver notre public. ' . '<br>' . '<br>' .
+                //                 'Voici le titre de l\'article : ' . '"' . $article->getTitle() . '"' . '<br>' . '<br>' .
+                //                 'Vous pouvez consulter l\'article en attente de validation en cliquant sur le lien suivant : <a href="http://127.0.0.1:8000/login">Hobby Games</a>');
+                //         $mailer->send($email);
+                //     }
+                // }
+
                 $this->addFlash('success', 'Votre article a bien été enregistré !');
                 return $this->redirectToRoute('app_administrateur_articles');
             } catch (\Exception $e) {
@@ -142,9 +201,60 @@ class ArticlesController extends AbstractController
     public function modifier_article(Article $article, Request $request, EntityManagerInterface $em): Response
     {
         try {
+            //créer le formulaire de modification de l'article
             $form = $this->createForm(ArticleFormType::class, $article);
+
+            //permet de recuperer les données et de les associer au formulaire
             $form->handleRequest($request);
+
             if ($form->isSubmitted() && $form->isValid()) {
+
+                $article = $form->getData();
+
+                //edit de l'article
+                $pictureArticleFile = $form->get('cover')->getData();
+
+                if($pictureArticleFile){
+                    $newFilename = uniqid() . '.' . $pictureArticleFile->guessExtension();
+
+                    try {
+                        $pictureArticleFile->move(
+                            'article_image',
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    $article->setCover('/article_cover/' . $newFilename);
+                }
+
+                //sections
+
+                // get all sections in the form
+                $sections = $form->get('sections');
+                // $pictureSectionFile = $form->get('sections')[0]->get('picture')->getData();
+                foreach($sections as $formSection){
+                    $pictureSectionFile = $formSection->get('picture')->getData();
+                    $Section = $formSection->getData();
+
+                    if($pictureSectionFile){
+                        $newFilename = uniqid() . '.' . $pictureSectionFile->guessExtension();
+
+                        try {
+                            $pictureSectionFile->move(
+                                'section_image',
+                                $newFilename
+                            );
+                        } catch (FileException $e) {
+                            // ... handle exception if something happens during file upload
+                        }
+
+                        $Section->setPicture('/section_image/' . $newFilename);
+                        $em->persist($Section);
+                    }
+                }
+
                 $article->setLastModifiedDate(new \DateTime('Europe/Paris'));
                 $em->persist($article);
                 $em->flush();
@@ -173,12 +283,15 @@ class ArticlesController extends AbstractController
         try {
             $id = $article->getId();
 
+            // On récupère les sections de l'article
             $sections = $sectionRepository->findBy(['article' => $id]);
 
+            // On supprime les sections de l'article
             foreach ($sections as $section) {
                 $em->remove($section);
             }
 
+            // On supprime l'article
             $em->remove($article);
             $em->flush();
 
@@ -197,14 +310,36 @@ class ArticlesController extends AbstractController
     {
         $addArticle = false;
 
+        // On crée une nouvelle section
         $section = new Section();
+        // On ajoute l'article à la section
         $section->setArticle($article);
 
+        // On crée le formulaire de la section
         $SectionForm = $this->createForm(SectionFormType::class, $section);
+
+        //permet de recuperer les données et de les associer au formulaire
         $SectionForm->handleRequest($request);
 
         if ($SectionForm->isSubmitted() && $SectionForm->isValid()) {
             try {
+                $pictureSectionFile = $SectionForm->get('picture')->getData();
+
+                if ($pictureSectionFile) {
+                    $originalFilenameS = pathinfo($pictureSectionFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilenameS = uniqid() . '.' . $pictureSectionFile->guessExtension();
+
+                    try {
+                        $pictureSectionFile->move(
+                            'section_image',
+                            $newFilenameS
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+                    $section->setPicture('/section_image/' . $newFilenameS);
+                }
+
                 $em->persist($section);
                 $em->flush();
                 $this->addFlash('success', 'Votre section a bien été ajoutée !');
@@ -224,6 +359,7 @@ class ArticlesController extends AbstractController
     public function validate(Article $article, EntityManagerInterface $em): Response
     {
         try {
+            // On vérifie que l'utilisateur connecté n'est pas l'auteur de l'article
             if ($this->getUser()->getUserIdentifier() != $article->getWritedBy()->getEmail()) {
                 $article->setIsValided(true);
                 $em->persist($article);

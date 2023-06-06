@@ -280,6 +280,10 @@
   text-align: center;
 }
 
+.title-left-news {
+  text-align: left;
+}
+
 .sub-description-news {
   font-size: 17px;
   color: #fff;
@@ -455,7 +459,7 @@
     font-size: 15px;
   }
 
-  .title-center-news {
+  .title-center-news, .title-left-news {
     margin: 1.5% 0 0 0;
   }
 
