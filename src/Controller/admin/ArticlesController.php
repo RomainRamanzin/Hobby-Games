@@ -276,6 +276,23 @@ class ArticlesController extends AbstractController
         }
     }
 
+    #[Route('/administrateur-articles/supprimer-image-section/{id}', name: 'app_supprimer_image_section')]
+    #[IsGranted("ROLE_REDACTEUR")]
+    public function deleteImageSection(Section $section, EntityManagerInterface $em): Response
+    {
+        try {
+            $section->setPicture(null);
+            $em->persist($section);
+            $em->flush();
+
+            $this->addFlash('success', 'Votre image a bien été supprimée !');
+            return $this->redirectToRoute('app_modifier_article', ['id' => $section->getArticle()->getId()]);
+        } catch (\Exception $e) {
+            $this->addFlash('error', 'Une erreur est survenue lors de la suppression de l\'image : ' . $e->getMessage());
+            return $this->redirectToRoute('app_modifier_article', ['id' => $section->getArticle()->getId()]);
+        }
+    }
+
     #[Route('/administrateur-articles/supprimer-article/{id}', name: 'app_supprimer_actualite')]
     #[IsGranted("ROLE_REDACTEUR")]
     public function delete(Article $article, SectionRepository $sectionRepository, EntityManagerInterface $em): Response

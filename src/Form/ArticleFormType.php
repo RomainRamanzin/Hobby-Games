@@ -29,9 +29,9 @@ class ArticleFormType extends AbstractType
     {
         $builder
             ->add('cover', FileType::class, [
-                'label' => 'Image',
+                'label' => false,
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Image',
                 ],

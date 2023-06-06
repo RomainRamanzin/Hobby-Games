@@ -16,7 +16,7 @@ class Article
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $cover = null;
 
     #[ORM\Column]
@@ -55,7 +55,7 @@ class Article
 
     public function getCover(): ?string
     {
-        return $this->cover;
+        return $this->cover ? $this->cover :'/asset/image/no-image.jpg';
     }
 
     public function setCover(string $cover): self

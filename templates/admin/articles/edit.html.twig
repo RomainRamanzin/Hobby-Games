@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="animation-div">
-          {% for flash_message in app.session.flashbag.get('danger') %}
+          {% for flash_message in app.session.flashbag.get('error') %}
             <div class="alert alert-danger">{{ flash_message }}</div>
           {% endfor %}
           {% for flash_message in app.session.flashbag.get('success') %}
@@ -54,10 +54,15 @@
             <div class="content-form-add-article">
               <label class="title-form-add-article-element">Image de la section</label>
               {{ form_row(sectionForm.picture) }}
+              {% if sectionForm.vars.value.picture %}
+                <p class="title-form-add-article-element">Image actuelle:</p>
+                <img src="{{ sectionForm.vars.value.picture }}" style="height: 200px; aspect-ratio: 16/9;" alt="">
+                <a href="{{ path('app_supprimer_image_section', {'id': sectionForm.vars.value.id }) }}" class="btn btn-outline-danger">Supprimer l'image actuelle</a>
+              {% endif %}
             </div>
           {% endfor %}
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-secondary px-4">Modifier l'article</button>
+            <button type="submit" class="btn btn-primary px-4">Modifier l'article</button>
           </div>
         </div>
         {{ form_end(form) }}
