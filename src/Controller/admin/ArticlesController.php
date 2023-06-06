@@ -112,36 +112,35 @@ class ArticlesController extends AbstractController
                 $article = $data['article'];
                 $section = $data['section'];
 
+                // récupération du fichier image pour la couverture de l'article
                 $pictureArticleFile = $form->get('article')['cover']->getData();
-                $pictureSectionFile = $form->get('section')['picture']->getData();
-
-                if ($pictureArticleFile && $pictureSectionFile) {
-                    $originalFilenameA = pathinfo($pictureArticleFile->getClientOriginalName(), PATHINFO_FILENAME);
-                    $newFilenameA = uniqid() . '.' . $pictureArticleFile->guessExtension();
-
-                    $originalFilenameS = pathinfo($pictureSectionFile->getClientOriginalName(), PATHINFO_FILENAME);
-                    $newFilenameS = uniqid() . '.' . $pictureSectionFile->guessExtension();
-
+                if($pictureArticleFile){
+                    $newFilename = uniqid() . '.' . $pictureArticleFile->guessExtension();
                     try {
                         $pictureArticleFile->move(
                             'article_image',
-                            $newFilenameA
-                        );
-
-                        $pictureSectionFile->move(
-                            'section_image',
-                            $newFilenameS
+                            $newFilename
                         );
                     } catch (FileException $e) {
                         // ... handle exception if something happens during file upload
                     }
-
-                    $article->setCover('/article_cover/' . $newFilenameA);
-                    $section->setPicture('/section_image/' . $newFilenameS);
+                    $article->setCover('/article_cover/' . $newFilename);
                 }
-
-
-
+                
+                // récupération du fichier image pour la section
+                $pictureSectionFile = $form->get('section')['picture']->getData();
+                if($pictureSectionFile){
+                    $newFilename = uniqid() . '.' . $pictureSectionFile->guessExtension();
+                    try {
+                        $pictureSectionFile->move(
+                            'section_image',
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+                    $section->setPicture('/section_image/' . $newFilename);
+                }
 
                 if (strlen($section->getDescription()) > 1000) {
                     $this->addFlash('danger', 'La description de la section est trop longue !');
