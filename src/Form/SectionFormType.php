@@ -30,9 +30,9 @@ class SectionFormType extends AbstractType
                 'required' => false,
             ])
             ->add('picture', FileType::class, [
-                'label' => 'Image',
+                'label' => false,
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Image',
                 ],
