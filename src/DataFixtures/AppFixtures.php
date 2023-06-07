@@ -1121,7 +1121,7 @@ class AppFixtures extends Fixture
         //articles
         $article1 = new Article();
         $article1->setTitle("Dépasser les frontières du réalisme : le pari tenu par Red Dead Redemption II");
-        $article1->setCover("//image.jeuxvideo.com/medias-md/167785/1677849627-5852-card.png");
+        $article1->setCover("/article_image/4353465465476575675.png");
         $article1->setIsValided(true);
         $article1->setPublicationDate(new \DateTime('2023-03-05T15:00:03.151Z'));
         $article1->setLastModifiedDate(new \DateTime('2023-03-05T15:00:03.151Z'));
@@ -1132,7 +1132,7 @@ class AppFixtures extends Fixture
 
         $article2 = new Article();
         $article2->setTitle('Comment devenir un pro du jeu vidéo ?');
-        $article2->setCover('https://www.letudiant.fr/static/uploads/mediatheque/ETU_ETU/1/5/2644415-metier-gamer-pro-letudiant-766x438.jpg');
+        $article2->setCover('/article_image/5465475687685654.webp');
         $article2->setIsValided(true);
         $article2->setPublicationDate(new \DateTime('2022-12-10'));
         $article2->setLastModifiedDate(new \DateTime('2022-12-19'));
@@ -1168,7 +1168,7 @@ class AppFixtures extends Fixture
         //articles
         $article2 = new Article();
         $article2->setTitle('Dragon Ball Budokai Tenkaichi : surprise, la mythique franchise fait son grand retour ! Premières images');
-        $article2->setCover('//image.jeuxvideo.com/medias-md/167808/1678082642-6292-card.png');
+        $article2->setCover('/article_image/45364545756765456.png');
         $article2->setIsValided(true);
         $article2->setPublicationDate(new \DateTime('2023-03-06T06:08:45.437Z'));
         $article2->setLastModifiedDate(new \DateTime('2023-03-06T06:08:45.437Z'));
@@ -1203,7 +1203,7 @@ class AppFixtures extends Fixture
         //articles
         $article3 = new Article();
         $article3->setTitle('Un pilote de F1 compare la Red Bull championne du monde à… Call of Duty');
-        $article3->setCover('//image.jeuxvideo.com/medias-md/167809/1678089811-8336-card.png');
+        $article3->setCover('/article_image/5645767567856.png');
         $article3->setIsValided(true);
         $article3->setPublicationDate(new \DateTime('2023-03-06T08:17:26.528Z'));
         $article3->setLastModifiedDate(new \DateTime('2023-03-06T08:17:26.528Z'));
@@ -1245,7 +1245,7 @@ class AppFixtures extends Fixture
         //articles
         $article4 = new Article();
         $article4->setTitle('Fortnite va bientôt faire du Call of Duty, une vraie révolution ?');
-        $article4->setCover('//image.jeuxvideo.com/medias-md/167810/1678098676-9458-card.jpg');
+        $article4->setCover('/article_image/565475765756756.jpg');
         $article4->setIsValided(true);
         $article4->setPublicationDate(new \DateTime('2023-03-06T10:35:34.481Z'));
         $article4->setLastModifiedDate(new \DateTime('2023-03-06T10:35:34.481Z'));
@@ -1281,7 +1281,7 @@ class AppFixtures extends Fixture
         //articles
         $article5 = new Article();
         $article5->setTitle("Star Wars Jedi Survivor : \"j'ai toujours voulu voir ça comme une trilogie\" déclare le réalisateur");
-        $article5->setCover('//image.jeuxvideo.com/medias-md/167810/1678096873-9625-card.png');
+        $article5->setCover('/article_image/5465765756868.png');
         $article5->setIsValided(true);
         $article5->setPublicationDate(new \DateTime('2023-03-06T10:58:14.645Z'));
         $article5->setLastModifiedDate(new \DateTime('2023-03-06T10:58:14.645Z'));
@@ -1324,7 +1324,7 @@ class AppFixtures extends Fixture
         //articles
         $article6 = new Article();
         $article6->setTitle("C'est flippant ! 14 minutes de gameplay pour Dead Island 2");
-        $article6->setCover('//image.jeuxvideo.com/medias-md/167818/1678175189-9824-card.png');
+        $article6->setCover('/article_image/435346546456563.png');
         $article6->setIsValided(true);
         $article6->setPublicationDate(new \DateTime('2023-03-07T07:55:17.823Z'));
         $article6->setLastModifiedDate(new \DateTime('2023-03-07T07:55:17.823Z'));
@@ -1368,7 +1368,7 @@ class AppFixtures extends Fixture
         //articles
         $article7 = new Article();
         $article7->setTitle("Il y a 20 ans, Metal Gear Solid 2 sortait sur Xbox. Le début d’une histoire en pointillé entre Konami, Kojima et Microsoft");
-        $article7->setCover('//image.jeuxvideo.com/medias-md/167786/1677863576-6787-card.gif');
+        $article7->setCover('/article_image/645657576786867.gif');
         $article7->setIsValided(true);
         $article7->setPublicationDate(new \DateTime('2023-03-07T06:30:02.780Z'));
         $article7->setLastModifiedDate(new \DateTime('2023-03-07T06:30:02.780Z'));
@@ -1419,7 +1419,7 @@ class AppFixtures extends Fixture
         //articles
         $article8 = new Article();
         $article8->setTitle("Zelda Breath of the Wild : énorme performance de ce joueur qui termine le jeu à 100% à l’aveugle");
-        $article8->setCover('//image.jeuxvideo.com/medias-md/167827/1678274000-8730-card.png');
+        $article8->setCover('/article_image/5655768768564646.png');
         $article8->setIsValided(true);
         $article8->setPublicationDate(new \DateTime('2023-03-08T13:32:31.542Z'));
         $article8->setLastModifiedDate(new \DateTime('2023-03-08T13:32:31.542Z'));
@@ -1472,7 +1472,7 @@ class AppFixtures extends Fixture
         //articles
         $article9 = new Article();
         $article9->setTitle("Énervés, ces développeurs affichent et insultent les tricheurs de leur jeu");
-        $article9->setCover('//image.jeuxvideo.com/medias-md/167828/1678278729-2485-card.jpg');
+        $article9->setCover('/article_image/4654565765756756.jpg');
         $article9->setIsValided(true);
         $article9->setPublicationDate(new \DateTime('2023-03-08T13:21:20.702Z'));
         $article9->setLastModifiedDate(new \DateTime('2023-03-08T13:21:20.702Z'));
@@ -1524,7 +1524,7 @@ class AppFixtures extends Fixture
         //articles
         $article10 = new Article();
         $article10->setTitle("Resident Evil 4 : un remake qui ridiculise les précédents, la taille du jeu enfin connue !");
-        $article10->setCover('//image.jeuxvideo.com/medias-md/167820/1678195304-6839-card.jpg');
+        $article10->setCover('/article_image/56456754634634.jpg');
         $article10->setIsValided(true);
         $article10->setPublicationDate(new \DateTime('2023-03-07T13:25:38.979Z'));
         $article10->setLastModifiedDate(new \DateTime('2023-03-07T13:25:38.979Z'));
@@ -1559,7 +1559,7 @@ class AppFixtures extends Fixture
         //articles
         $article11 = new Article();
         $article11->setTitle("GTA : le grand méchant de Vice City est mort, un hommage vibrant de la part de Rockstar Games ");
-        $article11->setCover('//image.jeuxvideo.com/medias-md/167822/1678219345-7168-card.jpg');
+        $article11->setCover('/article_image/546456757567456.jpg');
         $article11->setIsValided(true);
         $article11->setPublicationDate(new \DateTime('2023-03-07T20:03:23.654Z'));
         $article11->setLastModifiedDate(new \DateTime('2023-03-07T20:03:23.654Z'));
@@ -1595,7 +1595,7 @@ class AppFixtures extends Fixture
         //articles
         $article12 = new Article();
         $article12->setTitle("Le meilleur Zelda-like de ces dernières années arrive enfin en boîte (et notice) sur Nintendo Switch et PS4 !");
-        $article12->setCover('//image.jeuxvideo.com/medias-md/167826/1678260518-1570-card.jpg');
+        $article12->setCover('/article_image/565765786876856.jpg');
         $article12->setIsValided(true);
         $article12->setPublicationDate(new \DateTime('2023-03-08T08:29:50.192Z'));
         $article12->setLastModifiedDate(new \DateTime('2023-03-08T08:29:50.192Z'));
@@ -1639,7 +1639,7 @@ class AppFixtures extends Fixture
         //articles
         $article13 = new Article();
         $article13->setTitle('The Last of Us : cette parodie avec des Claqueurs sous Unreal Engine 5 est aussi drôle qu’impressionnante');
-        $article13->setCover('//image.jeuxvideo.com/medias-md/167827/1678272791-8953-card.jpeg');
+        $article13->setCover('/article_image/564756765756756.jpeg');
         $article13->setIsValided(true);
         $article13->setPublicationDate(new \DateTime('2023-03-08T11:01:47.467Z'));
         $article13->setLastModifiedDate(new \DateTime('2023-03-08T11:01:47.467Z'));
@@ -1674,7 +1674,7 @@ class AppFixtures extends Fixture
         //articles
         $article14 = new Article();
         $article14->setTitle("Square Enix et les NFT, ce n'est malheureusement pas finia");
-        $article14->setCover("//image.jeuxvideo.com/medias-md/167818/1678183632-8524-card.gif");
+        $article14->setCover("/article_image/6575687687967854.gif");
         $article14->setIsValided(true);
         $article14->setPublicationDate(new \DateTime('2023-03-07T10:13:54.020Z'));
         $article14->setLastModifiedDate(new \DateTime('2023-03-07T10:13:54.020Z'));
@@ -1710,7 +1710,7 @@ class AppFixtures extends Fixture
         //articles
         $article15 = new Article();
         $article15->setTitle("Ce titre déjanté noté 16/20 est à moins de 10€ sur Steam !");
-        $article15->setCover("//image.jeuxvideo.com/medias-md/168433/1684332656-9938-card.jpeg");
+        $article15->setCover("/article_image/6578987654323456.webp");
         $article15->setIsValided(true);
         $article15->setPublicationDate(new \DateTime('2023-05-21T08:35:02.930Z'));
         $article15->setLastModifiedDate(new \DateTime('2023-05-21T08:35:02.930Z'));
@@ -1738,7 +1738,7 @@ class AppFixtures extends Fixture
 
         $article16 = new Article();
         $article16->setTitle("Noté 16/20, ce FPS d’Ubisoft est à moins de 20€ sur Steam !");
-        $article16->setCover("//image.jeuxvideo.com/medias-md/168432/1684319812-8286-card.jpeg");
+        $article16->setCover("/article_image/65765875764532.jpeg");
         $article16->setIsValided(true);
         $article16->setPublicationDate(new \DateTime('2023-05-21T05:15:01.989Z'));
         $article16->setLastModifiedDate(new \DateTime('2023-05-21T05:15:01.989Z'));
@@ -1775,7 +1775,7 @@ class AppFixtures extends Fixture
 
         $article17 = new Article();
         $article17->setTitle("Il y a 10 ans, Microsoft ratait l’annonce de sa Xbox One");
-        $article17->setCover("//image.jeuxvideo.com/medias-md/168009/1680089052-5629-card.png");
+        $article17->setCover("/article_image/676856754643543.webp");
         $article17->setIsValided(true);
         $article17->setPublicationDate(new \DateTime('2023-05-21T05:00:02.457Z'));
         $article17->setLastModifiedDate(new \DateTime('2023-05-21T05:00:02.457Z'));
@@ -1829,7 +1829,7 @@ class AppFixtures extends Fixture
 
         $article18 = new Article();
         $article18->setTitle("Une victoire de plus pour Microsoft ! Un nouveau marché majeur valide le rachat d'Activision Blizzard");
-        $article18->setCover("//image.jeuxvideo.com/medias-md/168459/1684586346-5372-card.jpg");
+        $article18->setCover("/article_image/5464765566434.webp");
         $article18->setIsValided(true);
         $article18->setPublicationDate(new \DateTime('2023-05-20T12:49:10.832Z'));
         $article18->setLastModifiedDate(new \DateTime('2023-05-20T12:49:10.832Z'));
@@ -1867,7 +1867,7 @@ class AppFixtures extends Fixture
 
         $article19 = new Article();
         $article19->setTitle("Marvel’s Spider-Man 2 : une suite « sans concession », va-t-on avoir droit à l’exclu PS5 la plus folle à ce jour ?");
-        $article19->setCover("//image.jeuxvideo.com/medias-md/168457/1684574405-6619-card.jpg");
+        $article19->setCover("/article_image/453465476745.webp");
         $article19->setIsValided(true);
         $article19->setPublicationDate(new \DateTime('2023-05-20T09:30:32.558Z'));
         $article19->setLastModifiedDate(new \DateTime('2023-05-20T09:30:32.558Z'));
@@ -1912,7 +1912,7 @@ class AppFixtures extends Fixture
 
         $article20 = new Article();
         $article20->setTitle("Diablo 4 annonce son premier Twitch Drop, mais il y a un souci : pour obtenir cette monture exclusive, il faudra payer");
-        $article20->setCover("//image.jeuxvideo.com/medias-md/168452/1684517659-4031-card.jpg");
+        $article20->setCover("/article_image/45788756432234354.webp");
         $article20->setIsValided(true);
         $article20->setPublicationDate(new \DateTime('2023-05-19T18:00:03.179Z'));
         $article20->setLastModifiedDate(new \DateTime('2023-05-19T18:00:03.179Z'));
@@ -1965,7 +1965,7 @@ class AppFixtures extends Fixture
 
         $article21 = new Article();
         $article21->setTitle("Nintendo Switch : trois classiques de la Game Boy Advance arrivent dans le Pack additionnel");
-        $article21->setCover("//image.jeuxvideo.com/medias-md/168451/1684512430-2230-card.png");
+        $article21->setCover("/article_image/5657656534424665787669.png");
         $article21->setIsValided(true);
         $article21->setPublicationDate(new \DateTime('2023-05-19T18:00:03.179Z'));
         $article21->setLastModifiedDate(new \DateTime('2023-05-19T18:00:03.179Z'));
