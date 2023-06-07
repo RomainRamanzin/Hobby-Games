@@ -1710,7 +1710,7 @@ class AppFixtures extends Fixture
         //articles
         $article15 = new Article();
         $article15->setTitle("Ce titre déjanté noté 16/20 est à moins de 10€ sur Steam !");
-        $article15->setCover("/article_image/6578987654323456.webp");
+        $article15->setCover("/article_image/54645675756756756.jpg");
         $article15->setIsValided(true);
         $article15->setPublicationDate(new \DateTime('2023-05-21T08:35:02.930Z'));
         $article15->setLastModifiedDate(new \DateTime('2023-05-21T08:35:02.930Z'));
@@ -1738,7 +1738,7 @@ class AppFixtures extends Fixture
 
         $article16 = new Article();
         $article16->setTitle("Noté 16/20, ce FPS d’Ubisoft est à moins de 20€ sur Steam !");
-        $article16->setCover("/article_image/65765875764532.jpeg");
+        $article16->setCover("/article_image/56546456564645.jpg");
         $article16->setIsValided(true);
         $article16->setPublicationDate(new \DateTime('2023-05-21T05:15:01.989Z'));
         $article16->setLastModifiedDate(new \DateTime('2023-05-21T05:15:01.989Z'));
@@ -1775,7 +1775,7 @@ class AppFixtures extends Fixture
 
         $article17 = new Article();
         $article17->setTitle("Il y a 10 ans, Microsoft ratait l’annonce de sa Xbox One");
-        $article17->setCover("/article_image/676856754643543.webp");
+        $article17->setCover("/article_image/564756476566867.png");
         $article17->setIsValided(true);
         $article17->setPublicationDate(new \DateTime('2023-05-21T05:00:02.457Z'));
         $article17->setLastModifiedDate(new \DateTime('2023-05-21T05:00:02.457Z'));
