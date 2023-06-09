@@ -56,7 +56,7 @@ class RegistrationController extends AbstractController
 
             // Create a signed url and email it to the user
             $email = (new TemplatedEmail())
-                ->from(new Address('sinan.cours@gmail.com', 'sinan'))
+                ->from(new Address('contact.hobbygames@gmail.com', 'HobbyGames'))
                 ->to($user->getEmail())
                 ->subject('Merci de confirmer votre email')
                 ->htmlTemplate('registration/confirmation_email.html.twig')
@@ -118,7 +118,7 @@ class RegistrationController extends AbstractController
 
                 // Create a signed url and email it to the user
                 $email = (new TemplatedEmail())
-                    ->from(new Address('sinan.cours@gmail.com', 'sinan'))
+                    ->from(new Address('contact.hobbygames@gmail.com', 'HobbyGames'))
                     ->to($user->getEmail())
                     ->subject('Merci de confirmer votre email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
@@ -130,7 +130,6 @@ class RegistrationController extends AbstractController
 
                 // Send the email
                 $mailerInterface->send($email);
-
             }
 
             // Informer l'utilisateur qu'un email de confirmation lui a été envoyé
@@ -138,7 +137,6 @@ class RegistrationController extends AbstractController
 
             // Rediriger l'utilisateur vers la page de connexion
             return $this->redirectToRoute('app_login');
-
         }
 
         return $this->render('security/resend_verify_email.html.twig', [

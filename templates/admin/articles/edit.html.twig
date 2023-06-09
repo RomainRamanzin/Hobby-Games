@@ -56,8 +56,8 @@
               {{ form_row(sectionForm.picture) }}
               {% if sectionForm.vars.value.picture %}
                 <p class="title-form-add-article-element">Image actuelle:</p>
-                <img src="{{ sectionForm.vars.value.picture }}" style="height: 200px; aspect-ratio: 16/9;" alt="">
-                <a href="{{ path('app_supprimer_image_section', {'id': sectionForm.vars.value.id }) }}" class="btn btn-outline-danger">Supprimer l'image actuelle</a>
+                <img src="{{ sectionForm.vars.value.picture }}" style="height: 200px; aspect-ratio: 16/9;" alt="" />
+                <a href="{{ path('app_supprimer_image_section', { id: sectionForm.vars.value.id }) }}" class="btn btn-outline-danger">Supprimer l'image actuelle</a>
               {% endif %}
             </div>
           {% endfor %}

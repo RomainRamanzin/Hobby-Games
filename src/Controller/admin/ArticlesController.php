@@ -114,7 +114,7 @@ class ArticlesController extends AbstractController
 
                 // récupération du fichier image pour la couverture de l'article
                 $pictureArticleFile = $form->get('article')['cover']->getData();
-                if($pictureArticleFile){
+                if ($pictureArticleFile) {
                     $newFilename = uniqid() . '.' . $pictureArticleFile->guessExtension();
                     try {
                         $pictureArticleFile->move(
@@ -126,10 +126,10 @@ class ArticlesController extends AbstractController
                     }
                     $article->setCover('/article_cover/' . $newFilename);
                 }
-                
+
                 // récupération du fichier image pour la section
                 $pictureSectionFile = $form->get('section')['picture']->getData();
-                if($pictureSectionFile){
+                if ($pictureSectionFile) {
                     $newFilename = uniqid() . '.' . $pictureSectionFile->guessExtension();
                     try {
                         $pictureSectionFile->move(
@@ -168,22 +168,22 @@ class ArticlesController extends AbstractController
 
                 $em->flush();
 
-                // $redacteurs = $userRepository->findByRole($role = 'ROLE_REDACTEUR');
-                // $utilisateurConnecte = $this->getUser();
+                $redacteurs = $userRepository->findByRole($role = 'ROLE_REDACTEUR');
+                $utilisateurConnecte = $this->getUser();
 
-                // foreach ($redacteurs as $redacteur) {
-                //     if ($redacteur !== $utilisateurConnecte) {
-                //         $email = (new Email())
-                //             ->from('contact.hobbygames@gmail.com')
-                //             ->to($redacteur->getEmail())
-                //             ->subject('Nouvel article à valider')
-                //             ->html('Salut ' . $redacteur->getPseudo() . '<br>' . '<br>' .
-                //                 'Nous sommes heureux de vous informer qu\'un nouvel article passionnant vient d\'arriver et attend maintenant votre validation. Cet article promet d\'apporter de nouvelles perspectives et de captiver notre public. ' . '<br>' . '<br>' .
-                //                 'Voici le titre de l\'article : ' . '"' . $article->getTitle() . '"' . '<br>' . '<br>' .
-                //                 'Vous pouvez consulter l\'article en attente de validation en cliquant sur le lien suivant : <a href="http://127.0.0.1:8000/login">Hobby Games</a>');
-                //         $mailer->send($email);
-                //     }
-                // }
+                foreach ($redacteurs as $redacteur) {
+                    if ($redacteur !== $utilisateurConnecte) {
+                        $email = (new Email())
+                            ->from('contact.hobbygames@gmail.com')
+                            ->to($redacteur->getEmail())
+                            ->subject('Nouvel article à valider')
+                            ->html('Salut ' . $redacteur->getPseudo() . '<br>' . '<br>' .
+                                'Nous sommes heureux de vous informer qu\'un nouvel article passionnant vient d\'arriver et attend maintenant votre validation. Cet article promet d\'apporter de nouvelles perspectives et de captiver notre public. ' . '<br>' . '<br>' .
+                                'Voici le titre de l\'article : ' . '"' . $article->getTitle() . '"' . '<br>' . '<br>' .
+                                'Vous pouvez consulter l\'article en attente de validation en cliquant sur le lien suivant : <a href="http://127.0.0.1:8000/login">Hobby Games</a>');
+                        $mailer->send($email);
+                    }
+                }
 
                 $this->addFlash('success', 'Votre article a bien été enregistré !');
                 return $this->redirectToRoute('app_administrateur_articles');
@@ -214,7 +214,7 @@ class ArticlesController extends AbstractController
                 //edit de l'article
                 $pictureArticleFile = $form->get('cover')->getData();
 
-                if($pictureArticleFile){
+                if ($pictureArticleFile) {
                     $newFilename = uniqid() . '.' . $pictureArticleFile->guessExtension();
 
                     try {
@@ -234,11 +234,11 @@ class ArticlesController extends AbstractController
                 // get all sections in the form
                 $sections = $form->get('sections');
                 // $pictureSectionFile = $form->get('sections')[0]->get('picture')->getData();
-                foreach($sections as $formSection){
+                foreach ($sections as $formSection) {
                     $pictureSectionFile = $formSection->get('picture')->getData();
                     $Section = $formSection->getData();
 
-                    if($pictureSectionFile){
+                    if ($pictureSectionFile) {
                         $newFilename = uniqid() . '.' . $pictureSectionFile->guessExtension();
 
                         try {
@@ -379,6 +379,7 @@ class ArticlesController extends AbstractController
             // On vérifie que l'utilisateur connecté n'est pas l'auteur de l'article
             if ($this->getUser()->getUserIdentifier() != $article->getWritedBy()->getEmail()) {
                 $article->setIsValided(true);
+                $article->setValidatedBy($this->getUser());
                 $em->persist($article);
                 $em->flush();
                 $this->addFlash('success', 'Votre article a bien été validé !');

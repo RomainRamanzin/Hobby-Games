@@ -60,6 +60,7 @@ class ArticleFormType extends AbstractType
                 'label' => false,
                 'required' => false,
             ])
+            //pour gérer de façon dynamique les sections
             ->add('sections', CollectionType::class, [
                 'entry_type' => SectionFormType::class,
                 'allow_add' => true,
