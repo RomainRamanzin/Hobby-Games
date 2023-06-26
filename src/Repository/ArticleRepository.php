@@ -69,10 +69,7 @@ class ArticleRepository extends ServiceEntityRepository
                 ->setParameter('title', '%' . $title . '%');
         }
 
-        //Pour éviter de récupérer les 5 dernières actualités
-        $filteredResults = array_slice($query->getQuery()->getResult(), 5);
-
-        return $filteredResults;
+        return $query->getQuery()->getResult();
     }
 
     //    public function findOneBySomeField($value): ?Article
