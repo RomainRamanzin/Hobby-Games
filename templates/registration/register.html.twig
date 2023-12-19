@@ -44,7 +44,7 @@
                   {{ form_widget(registrationForm.date_of_birth) }}
                 </div>
                 <div class="condition-agree">
-                  <label class="label-text">J'accepte les conditions d'utilisation</label>{{ form_widget(registrationForm.agreeTerms) }}
+                  <label class="label-text">J'accepte les <a href="{{ path('app_conditions_generales') }}">conditions d'utilisation</a></label>{{ form_widget(registrationForm.agreeTerms) }}
                 </div>
                 <div class="content-boutton">
                   <button class="btn-login" type="submit">s'inscrire</button>
