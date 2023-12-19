@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  HobbyGames | Demande de réinitialisation du mot de passe
+{% endblock %}
+
+{% block body %}
+  <link href="/asset/css/login.css" rel="stylesheet" />
+
+  <div class="page-container">
+    <div class="container">
+      <div class="row">
+        <div class="ascend-div">
+          <div class="block-login">
+            <div class="card-form-login">
+              {% for flash_error in app.flashes('reset_password_error') %}
+                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+              {% endfor %}
+              <h1 class="title-connexion-interface">Réinitialiser mon mot de passe</h1>
+              <div class="box-center">
+                <label class="label-text">Veuillez renseigner votre email pour pouvoir, effectuer la modification de votre mot de passe.</label>
+                {{ form_start(requestForm) }}
+                <div class="content-input">{{ form_row(requestForm.email) }}</div>
+              </div>
+              <div class="box-reset-btn">
+                <button class="btn-login">envoyer</button>
+              </div>
+              {{ form_end(requestForm) }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

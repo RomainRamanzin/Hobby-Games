@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('asset/css/home.css') }}" />
+{% endblock %}
+
+{% block title %}
+  Accueil | Hobby Games
+{% endblock %}
+
+{% block body %}
+  <div class="container my-5">
+    <div class="glass">
+      <h1 class="page-title">A la une</h1>
+
+      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+        </div>
+        <div class="carousel-inner">
+          {% set count = 0 %}
+          {% for topActu in topActus %}
+            {% if count == 0 %}
+              <div class="carousel-item active">
+                <img style="width: 100%; object-fit: cover; " src="{{ topActu.getCover }}" alt="" />
+                <div class="container">
+                  <div class="carousel-caption">
+                    <h1>{{ topActu.getTitle }}</h1>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              <div class="carousel-item">
+                <img style="width: 100%; object-fit: cover;" src="{{ topActu.getCover }}" alt="" />
+                <div class="container">
+                  <div class="carousel-caption">
+                    <h1>{{ topActu.getTitle }}</h1>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+            {% set count = count + 1 %}
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="section-prochaine-sortie">
+        <div class="section-title">Les prochaines sorties</div>
+        <div class="row">
+          {% for game in comingGames %}
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3">
+              <a class="link-card-jeux" href="{{ path('app_jeu', { id: game.id }) }}">
+                <div class="card-jeux" style="background-image: url('{{ game.poster }}');">
+                  <div class="card-jeux-overlay">
+                    <div class="card-jeux-title">{{ game.name }}</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="section-nouveaux-jeux">
+        <div class="section-title">Les jeux les plus récents</div>
+        <div class="row">
+          {% for game in lastGames %}
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3">
+              <a class="link-card-jeux" href="{{ path('app_jeu', { id: game.id }) }}">
+                <div class="card-jeux" style="background-image: url('{{ game.poster }}');">
+                  <div class="card-jeux-overlay">
+                    <div class="card-jeux-title">{{ game.name }}</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="section-derniers-articles">
+        <div class="section-title">Les derniers articles</div>
+        <div class="row">
+          {% for actu in lastActu %}
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3">
+              <a class="link-card-jeux" href="{{ path('app_actualite_show', { id: actu.id }) }}">
+                <div class="card-jeux" style="background-image: url('{{ actu.cover }}');">
+                  <div class="card-jeux-overlay">
+                    <div class="card-jeux-title">{{ (actu.getTitle|length) > 40 ? (actu.getTitle|slice(0, 40)) ~ '...' : actu.getTitle }}</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="section-rejoindre-communaute">
+        <div class="section-rejoindre-title">Tu souhaite vivre une expérience unique ?</div>
+
+        <div class="part-1">
+          <img src="{{ asset('/asset/image/gaming-comunity.png') }}" alt="image hobby Games" />
+          <div class="part-1-content">
+            <div class="part-1-title">Faire vivre une passion</div>
+            <p class="part-1-text">Nous sommes une communauté de passionnés de jeux vidéo et de jeux de société. Nous souhaitons partager cette passion avec le plus grand nombre. Nous donnons la possibilité à nos membres de partager leurs expériences et leurs avis sur les jeux qu'ils ont pu tester. Nous souhaitons également faire découvrir de nouveaux jeux à nos membres. Nous organisons des événements pour que nos membres puissent se rencontrer et partager leurs expériences.</p>
+          </div>
+        </div>
+
+        <div class="part-2">
+          <img src="{{ asset('/asset/image/nous-rejoindre.jpeg') }}" alt="image hobby Games" />
+          <div class="part-1-content">
+            <div class="part-1-title">Construison ensemble</div>
+            <p class="part-1-text">Hobby Games est une plateforme à but non lucratif. Le site est maintenu et mis à jours par des bénévoles. Nous souhaitons que notre communauté puisse participer à l'évolution du site. Nous souhaitons que nos membres puissent proposer des améliorations et des nouvelles fonctionnalités. Nous souhaitons que nos membres puissent participer à la vie du site en proposant des articles et des jeux à ajouter à la base de données. Vous pouvez nous contactez pour postuler au programe de sélection des rédacteurs.</p>
+          </div>
+        </div>
+        <div class="box-redactor">
+          <a href="{{ path('app_contact') }}" class="btn-redacteur">Devenir rédacteur</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

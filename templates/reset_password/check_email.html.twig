@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  HobbyGames | Renvoyer réinitialisation mot de passe
+{% endblock %}
+
+{% block body %}
+  <link href="/asset/css/login.css" rel="stylesheet" />
+
+  <div class="page-container">
+    <div class="container">
+      <div class="row">
+        <div class="ascend-div">
+          <div class="block-login">
+            <div class="card-form-login">
+              <label class="label-text">Si un compte correspondant à votre adresse e-mail existe, un e-mail vient d'être envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe. Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</label>
+              <label class="label-text">Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam ou <a class="link-connexion" href="{{ path('app_forgot_password_request') }}">Renvoyer</a>.</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

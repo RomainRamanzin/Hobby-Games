@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  HobbyGames | Actualités
+{% endblock %}
+
+{% block body %}
+  <link href="/asset/css/actualite.css" rel="stylesheet" />
+
+  <div class="container my-5">
+    <div class="container">
+      <div class="glass">
+        <div class="actualite-top-five">
+          <div class="animation-div">
+            <div class="block-title-news-top">
+              <h1 class="title-news">Top 5 des articles</h1>
+            </div>
+            <div class="contain-top-actu-card">
+              {% for actu in topActu %}
+                {% if loop.first %}
+                  <a class="link-of-actuality" href="{{ path('app_actualite_show', { id: actu.id }) }}">
+                    <div class="content-first">
+                      <div class="actu-image">
+                        <img class="top-actu-image" src="{{ actu.cover }}" alt="image-presentation-actualite" />
+                      </div>
+                      <div class="actu-text">
+                        <label class="label-title">{{ actu.title }}</label>
+                      </div>
+                    </div>
+                  </a>
+                {% else %}
+                  <a class="link-of-actuality" href="{{ path('app_actualite_show', { id: actu.id }) }}">
+                    <div class="content-actu">
+                      <div class="actu-image">
+                        <img class="top-actu-image" src="{{ actu.cover }}" alt="image-presentation-actualite" />
+                      </div>
+                      <div class="actu-text">
+                        <label class="label-title">{{ actu.title }}</label>
+                      </div>
+                    </div>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+       
+        <div class="actualite-all">
+          <div class="animation-div">
+           	{{ form_start(formSearch) }}
+            <div class="search-component">
+              <div class="search-filter-text">Filtrer les articles</div>
+              {{ form_widget(formSearch.title, {'attr': {'class': 'form-control' , 'placeholder': 'Recherche d\'un article' }}) }}
+              {{ form_widget(formSearch.submit, {'attr': {'class': 'btn btn-primary  px-5'}}) }}
+            </div>
+            {{ form_end(formSearch) }}
+            <div class="block-title-news">
+              <h1 class="title-news">Tous les articles du mois</h1>
+            </div>
+            <div class="block-contain-card">
+              {% for Actu in pagination %}
+                <div class="card-actu">
+                  <a href="{{ path('app_actualite_show', { id: Actu.id }) }}">
+                    <img src="{{ Actu.cover }}" alt="image-card-actualite" />
+                    <div class="card-title">
+                      <div>
+                        <label class="label-actualite">{{ Actu.title }}</label>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              {% endfor %}
+              {% if (pagination|length) == 0 %}
+                <div class="col-12">
+                  <div class="alert alert-danger text-center" role="alert">Aucun résultat</div>
+                </div>
+              {% endif %}
+              <div class="col-12">{{ knp_pagination_render(pagination) }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

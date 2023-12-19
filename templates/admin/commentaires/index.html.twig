@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	HobbyGames | Administration commentaires
+{% endblock %}
+
+{% block body %}
+	<link href="/asset/css/admin/utilisateurs.css" rel="stylesheet"/>
+	<div class="container my-5">
+		<div class="container">
+			<div class="glass">
+				<div class="return-before-page">
+					<a class="return-before-link" href="{{ path('app_dashboard') }}">
+						<i class="fa-solid fa-newspaper"></i>DashBoard</a>
+					<label class="return-slash">/</label>
+					<label class="return-before">Administration des commentaires</label>
+				</div>
+				<div class="col-md-12">
+					<div class="box-top-admin">
+						<h1 class="title-admin">Administration des commentaires</h1>
+					</div>
+					{{ form_start(searchForm) }}
+					<div class="d-flex gap-3 justify-content-center flex-column flex-lg-row">
+						{{ form_row(searchForm.Pseudo) }}
+						{{ form_row(searchForm.Game) }}
+						{{ form_row(searchForm.Submit, {'attr': {'class': 'btn btn-primary'}}) }}
+					</div>
+					{{ form_end(searchForm) }}
+					{% for message in app.flashes('success') %}
+						<div class="alert alert-success">{{ message }}</div>
+					{% endfor %}
+					{% for message in app.flashes('error') %}
+						<div class="alert alert-danger">{{ message }}</div>
+					{% endfor %}
+					<div class="table-container">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th class="table-title">Pseudo Utilisateur</th>
+									<th class="table-title">Date de publication</th>
+									<th class="table-title">Titre de l'avis</th>
+									<th class="table-title">Jeu</th>
+									<th class="table-title">Note</th>
+									<th class="table-title">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for review in reviews %}
+									<tr>
+										<td class="table-data">
+											<a href="{{ path('app_admin_utilisateurs_show', {'id':review.getPublication.getUser.getID }) }}">{{ review.getPublication.getUser.getPseudo }}</a>
+										</td>
+										<td class="table-data">{{ review.getPublicationDate|date('d/m/Y') }}</td>
+										<td class="table-data">{{ review.getTitle }}</td>
+										<td class="table-data">{{ review.getPublication.getGame.getName }}</td>
+										<td class="table-data">{{ review.getRate }}/5</td>
+										<td class="table-data">
+											<div class="table-actions">
+												<a href="{{ path('app_admin_commentaire_show', {'id': review.getId}) }}">
+													<i class="fa-solid fa-eye"></i>
+												</a>
+												<a href="{{ path('app_admin_commentaire_delete', {'id': review.getId}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?')">
+													<i class="fa-solid fa-trash"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+								{% endfor %}
+								{% if reviews|length == 0 %}
+									<tr>
+										<td colspan="8" class="table-data text-center">Aucun avis trouvé</td>
+									</tr>
+								{% endif %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

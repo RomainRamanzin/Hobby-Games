@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  HobbyGames | Réinitialisation le mot de passe
+{% endblock %}
+
+{% block body %}
+  <link href="/asset/css/login.css" rel="stylesheet" />
+  <div class="page-container">
+    <div class="container">
+      <div class="row">
+        <div class="ascend-div">
+          <div class="block-login">
+            <div class="card-form-login">
+              <h1 class="reset-title">Veuillez saisir votre nouveau mot de passe</h1>
+              {{ form_start(resetForm) }}
+              {{ form_row(resetForm.plainPassword) }}
+              <div class="center-box-reset-btn">
+                <button class="btn-reset-pw">Réinitialiser mot de passe</button>
+              </div>
+              {{ form_end(resetForm) }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

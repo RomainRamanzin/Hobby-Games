@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  HobbyGames | Modifier un article
+{% endblock %}
+
+{% block body %}
+  <link href="/asset/css/administrateur/admin-articles.css" rel="stylesheet" />
+
+  <div class="container my-5">
+    <div class="container">
+      <div class="glass">
+        <div class="animation-div">
+          <div class="return-before-page">
+            <a class="return-before-link" href="{{ path('app_administrateur_articles') }}"><i class="fa-solid fa-newspaper"></i>Interface des articles</a><label class="return-slash">/</label><label class="return-before">Modification de l'article</label>
+          </div>
+        </div>
+        <div class="animation-div">
+          {% for flash_message in app.session.flashbag.get('error') %}
+            <div class="alert alert-danger">{{ flash_message }}</div>
+          {% endfor %}
+          {% for flash_message in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">{{ flash_message }}</div>
+          {% endfor %}
+        </div>
+        <div class="animation-div">
+          <h1 class="form-add-title"><i class="fa-solid fa-newspaper"></i>Modifier un article</h1>
+          {{ form_start(form) }}
+          <div class="content-form-add-article">
+            <label class="title-form-add-article-element">Titre de l'article</label>
+            {{ form_row(form.title) }}
+          </div>
+          <div class="content-form-add-article">
+            <label class="title-form-add-article-element">Image de l'article</label>
+            {{ form_row(form.cover) }}
+          </div>
+          <div class="content-form-add-article">
+            <label class="title-form-add-article-element">Modification du jeu</label>
+            {{ form_row(form.game) }}
+          </div>
+          {% for sectionForm in form.sections %}
+            <div class="section-title-contain">
+              <h1 class="form-add-title"><i class="fa-solid fa-pen-nib"></i>Section {{ loop.index }}</h1>
+              <a class="btn btn-danger" href="{{ path('app_administrateur_articles_delete_section', { id: sectionForm.vars.value.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet section ?')">Supprimer la section</a>
+            </div>
+            <div class="content-form-add-article">
+              <label class="title-form-add-article-element">Titre de la section</label>
+              {{ form_row(sectionForm.title) }}
+            </div>
+            <div class="content-form-add-article">
+              <label class="title-form-add-article-element">Description de la section</label>
+              {{ form_row(sectionForm.description) }}
+            </div>
+            <div class="content-form-add-article">
+              <label class="title-form-add-article-element">Image de la section</label>
+              {{ form_row(sectionForm.picture) }}
+              {% if sectionForm.vars.value.picture %}
+                <p class="title-form-add-article-element">Image actuelle:</p>
+                <img src="{{ sectionForm.vars.value.picture }}" style="height: 200px; aspect-ratio: 16/9;" alt="" />
+                <a href="{{ path('app_supprimer_image_section', { id: sectionForm.vars.value.id }) }}" class="btn btn-outline-danger">Supprimer l'image actuelle</a>
+              {% endif %}
+            </div>
+          {% endfor %}
+          <div class="col-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary px-4">Modifier l'article</button>
+          </div>
+        </div>
+        {{ form_end(form) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

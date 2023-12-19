@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	HobbyGames | Administration plateformes
+{% endblock %}
+
+{% block body %}
+	<link href="/asset/css/admin/utilisateurs.css" rel="stylesheet"/>
+	<div class="container my-5">
+		<div class="container">
+			<div class="glass">
+				<div class="return-before-page">
+					<a class="return-before-link" href="{{ path('app_dashboard') }}">
+						<i class="fa-solid fa-newspaper"></i>DashBoard</a>
+					<label class="return-slash">/</label>
+					<label class="return-before">Administration des plateformes</label>
+				</div>
+				<div class="col-md-12">
+					<div class="box-top-admin">
+						<h1 class="title-admin">Administration des plateformes</h1>
+					</div>
+                    <div class="box-second-admin d-flex justify-content-center mb-3">
+                        <a href="{{ path('app_admin_plateforme_add') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Ajouter une plateforme</a>
+                    </div>
+				{{ form_start(searchForm) }}
+				<div class="d-flex gap-3 justify-content-center">
+					{{ form_row(searchForm.Nom) }}
+					{{ form_row(searchForm.rechercher, {'attr': {'class': 'btn btn-primary'}}) }}
+				</div>
+				{{ form_end(searchForm) }}
+					{% for message in app.flashes('success') %}
+						<div class="alert alert-success">{{ message }}</div>
+					{% endfor %}
+					{% for message in app.flashes('error') %}
+						<div class="alert alert-danger">{{ message }}</div>
+					{% endfor %}
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class="table-title">Nom</th>
+                                <th class="table-title">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for platform in platforms %}
+								<tr>
+									<td class="table-data">{{ platform.getName }}</td>
+									<td class="table-data">
+										<div class="table-actions">
+											<a href="{{ path('app_admin_plateforme_show', {'id': platform.getId}) }}">
+												<i class="fa-solid fa-eye"></i>
+											</a>
+											<a href="{{ path('app_admin_plateforme_edit', {'id': platform.getId}) }}">
+												<i class="fa-solid fa-pen"></i>
+											</a>
+											<a href="{{ path('app_admin_plateforme_delete', {'id': platform.getId}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette plateforme ?')">
+												<i class="fa-solid fa-trash"></i>
+											</a>
+										</div>
+									</td>
+								</tr>
+							{% endfor %}
+							{% if platforms|length == 0 %}
+								<tr>
+									<td colspan="2" class="table-data text-center">Aucune plateforme trouvée</td>
+								</tr>
+							{% endif %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
